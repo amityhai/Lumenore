@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lumenore Homepage — Design Review</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy:    #051A3C;
+    --violet:  #7747b6;
+    --blue:    #2863c3;
+    --cyan:    #1ca9c9;
+    --white:   #fcfcfc;
+    --gray-1:  #f7f8fa;
+    --gray-2:  #e8ecf2;
+    --gray-3:  #4a5568;
+    --text:    #1a202c;
+    --red:     #e53e3e;
+    --orange:  #dd6b20;
+    --yellow:  #d69e2e;
+    --green:   #2f855a;
+    --border:  #e2e8f0;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: var(--text);
+    background: #fff;
+    line-height: 1.6;
+  }
+
+  /* ── COVER ── */
+  .cover {
+    background: var(--navy);
+    color: var(--white);
+    padding: 72px 64px 56px;
+    min-height: 260px;
+    position: relative;
+    overflow: hidden;
+    page-break-after: always;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 380px; height: 380px;
+    background: radial-gradient(circle, rgba(119,71,182,.35) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .cover-logo {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    opacity: .6;
+    margin-bottom: 36px;
+  }
+  .cover h1 {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 12px;
+  }
+  .cover h1 span {
+    background: linear-gradient(90deg, #7747b6, #4075c9, #1ca9c9);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .cover-sub {
+    font-size: 14px;
+    opacity: .7;
+    margin-bottom: 40px;
+  }
+  .cover-meta {
+    display: flex;
+    gap: 32px;
+    font-size: 12px;
+    opacity: .55;
+    border-top: 1px solid rgba(255,255,255,.12);
+    padding-top: 20px;
+  }
+  .cover-meta strong { opacity: 1; font-weight: 600; }
+
+  /* ── LAYOUT ── */
+  .page { padding: 48px 56px; }
+  .page + .page { border-top: 2px solid var(--gray-2); }
+
+  /* ── SECTION HEADINGS ── */
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--violet);
+    margin-bottom: 6px;
+  }
+  .section-label::before {
+    content: '';
+    display: inline-block;
+    width: 24px; height: 2px;
+    background: var(--violet);
+    border-radius: 2px;
+  }
+  .section-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 6px;
+    line-height: 1.25;
+  }
+  .section-desc {
+    font-size: 13px;
+    color: var(--gray-3);
+    margin-bottom: 28px;
+    max-width: 680px;
+    line-height: 1.65;
+  }
+
+  /* ── SCORE CARD ── */
+  .score-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .score-card {
+    background: var(--gray-1);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 16px;
+    text-align: center;
+  }
+  .score-num {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .score-num.good  { color: var(--green); }
+  .score-num.warn  { color: var(--yellow); }
+  .score-num.bad   { color: var(--orange); }
+  .score-label { font-size: 11px; color: var(--gray-3); font-weight: 500; }
+
+  /* ── PRIORITY BADGES ── */
+  .badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .badge-critical  { background: #fff5f5; color: #c53030; border: 1px solid #fed7d7; }
+  .badge-high      { background: #fffaf0; color: #c05621; border: 1px solid #fbd38d; }
+  .badge-medium    { background: #fffff0; color: #975a16; border: 1px solid #faf089; }
+  .badge-low       { background: #f0fff4; color: #276749; border: 1px solid #9ae6b4; }
+  .badge-good      { background: #ebf8ff; color: #2b6cb0; border: 1px solid #bee3f8; }
+
+  /* ── FINDING ROWS ── */
+  .findings { border: 1px solid var(--border); border-radius: 10px; overflow: hidden; margin-bottom: 24px; }
+  .finding {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    border-bottom: 1px solid var(--border);
+  }
+  .finding:last-child { border-bottom: none; }
+  .finding-priority {
+    padding: 14px 12px;
+    background: var(--gray-1);
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    border-right: 1px solid var(--border);
+  }
+  .finding-body { padding: 14px 16px; }
+  .finding-title { font-weight: 600; font-size: 13px; color: var(--navy); margin-bottom: 4px; }
+  .finding-desc  { font-size: 12px; color: var(--gray-3); line-height: 1.55; }
+  .finding-rec   { font-size: 12px; color: #2b6cb0; margin-top: 6px; font-style: italic; }
+
+  /* ── GOOD/BAD SPLIT ── */
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
+  .split-col { border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+  .split-head {
+    padding: 10px 14px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+  }
+  .split-head.good { background: #f0fff4; color: var(--green); border-bottom: 1px solid #c6f6d5; }
+  .split-head.bad  { background: #fff5f5; color: #c53030;     border-bottom: 1px solid #fed7d7; }
+  .split-list { list-style: none; padding: 10px 14px; }
+  .split-list li {
+    font-size: 12px;
+    color: var(--gray-3);
+    padding: 5px 0;
+    border-bottom: 1px solid var(--border);
+    line-height: 1.5;
+  }
+  .split-list li:last-child { border-bottom: none; }
+  .split-list li::before { content: ''; }
+
+  /* ── COLOR SWATCHES ── */
+  .swatch-row { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 20px; }
+  .swatch { text-align: center; }
+  .swatch-box { width: 64px; height: 40px; border-radius: 6px; border: 1px solid var(--border); margin-bottom: 4px; }
+  .swatch-name { font-size: 10px; color: var(--gray-3); font-weight: 500; }
+  .swatch-hex  { font-size: 10px; color: #a0aec0; }
+
+  /* ── TYPOGRAPHY SPECIMEN ── */
+  .type-row {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .type-row:last-child { border-bottom: none; }
+  .type-meta { width: 140px; flex-shrink: 0; font-size: 11px; color: var(--gray-3); }
+  .type-sample { color: var(--navy); }
+
+  /* ── RECOMMENDATION CARDS ── */
+  .rec-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 24px; }
+  .rec-card {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px;
+    background: var(--gray-1);
+  }
+  .rec-card-title { font-weight: 600; font-size: 12px; color: var(--navy); margin-bottom: 6px; }
+  .rec-card-body  { font-size: 12px; color: var(--gray-3); line-height: 1.55; }
+
+  /* ── PRIORITY TABLE ── */
+  table { width: 100%; border-collapse: collapse; font-size: 12px; margin-bottom: 24px; }
+  th {
+    background: var(--navy);
+    color: var(--white);
+    padding: 10px 12px;
+    text-align: left;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .04em;
+  }
+  td { padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  tr:nth-child(even) td { background: var(--gray-1); }
+
+  /* ── DIVIDER ── */
+  .divider { border: none; border-top: 2px solid var(--gray-2); margin: 32px 0; }
+
+  /* ── PAGE BREAK ── */
+  .break { page-break-before: always; }
+
+  /* ── FOOTNOTE ── */
+  .footnote { font-size: 11px; color: #a0aec0; text-align: center; margin-top: 40px; padding-top: 16px; border-top: 1px solid var(--border); }
+</style>
+</head>
+<body>
+
+<!-- ══ COVER PAGE ══ -->
+<div class="cover">
+  <p class="cover-logo">Lumenore Inc.</p>
+  <h1>Homepage <span>Design Review</span></h1>
+  <p class="cover-sub">Visual design, layout, hierarchy, typography, color, and component quality audit<br>of <code style="font-size:12px;opacity:.7">home.html</code> — evaluated against modern enterprise SaaS standards</p>
+  <div class="cover-meta">
+    <div><strong>Reviewed</strong><br>June 2026</div>
+    <div><strong>Scope</strong><br>Design perspective only</div>
+    <div><strong>Benchmark</strong><br>Salesforce · Snowflake · Notion · Linear · ThoughtSpot</div>
+    <div><strong>Overall Score</strong><br>7.4 / 10</div>
+  </div>
+</div>
+
+<!-- ══ PAGE 1 — OVERVIEW ══ -->
+<div class="page">
+  <p class="section-label">Executive Summary</p>
+  <h2 class="section-title">Overall Design Health</h2>
+  <p class="section-desc">The Lumenore homepage demonstrates a premium enterprise SaaS visual language — dark navy hero, multi-layer gradient animations, and a consistent Fraunces + Inter type pairing. The section flow is well-sequenced and the branding is cohesive. Key opportunities lie in spacing consistency, component polish at small breakpoints, and tightening the visual hierarchy in the mid-page sections.</p>
+
+  <div class="score-grid">
+    <div class="score-card">
+      <div class="score-num good">8.5</div>
+      <div class="score-label">Visual Identity &amp; Branding</div>
+    </div>
+    <div class="score-card">
+      <div class="score-num good">8.0</div>
+      <div class="score-label">Hero &amp; Above-Fold Design</div>
+    </div>
+    <div class="score-card">
+      <div class="score-num warn">7.0</div>
+      <div class="score-label">Typography &amp; Hierarchy</div>
+    </div>
+    <div class="score-card">
+      <div class="score-num warn">7.5</div>
+      <div class="score-label">Color &amp; Contrast</div>
+    </div>
+    <div class="score-card">
+      <div class="score-num good">8.0</div>
+      <div class="score-label">Navigation Design</div>
+    </div>
+    <div class="score-card">
+      <div class="score-num warn">6.5</div>
+      <div class="score-label">Spacing &amp; Layout Rhythm</div>
+    </div>
+    <div class="score-card">
+      <div class="score-num warn">7.0</div>
+      <div class="score-label">CTA Design &amp; Visibility</div>
+    </div>
+    <div class="score-card">
+      <div class="score-num warn">6.5</div>
+      <div class="score-label">Social Proof Credibility</div>
+    </div>
+  </div>
+
+  <p class="section-label">What Is Working</p>
+  <div class="split">
+    <div class="split-col">
+      <div class="split-head good">✓ Design Strengths</div>
+      <ul class="split-list">
+        <li>Dark navy hero stage with layered gradient orbs and particle animation creates immediate premium enterprise feel</li>
+        <li>Fraunces (serif display) + Inter (sans UI) pairing is sophisticated and contemporary — matches Notion/Linear quality</li>
+        <li>Gradient text on "AI Agents" and section accent phrases provides intentional focal points</li>
+        <li>Multi-column mega menus are visually rich and well-proportioned — a clear competitive differentiator</li>
+        <li>Product section GIF previews inside a contained card with ambient orb glow is excellent storytelling</li>
+        <li>Persona section animated scene cards with layered depth feel genuinely interactive and modern</li>
+        <li>Inverted "Request a Demo" button with gradient border is well-executed and visually distinct from primary CTA</li>
+        <li>Footer "Got more questions?" CTA with halo glow is premium and well-integrated</li>
+        <li>Compliance badge row (HIPAA · GDPR · SOC 2) is cleanly presented</li>
+        <li>Consistent use of eyebrow labels + dot separators across all sections creates strong visual rhythm</li>
+      </ul>
+    </div>
+    <div class="split-col">
+      <div class="split-head bad">✗ Design Gaps</div>
+      <ul class="split-list">
+        <li>Logo section sits on dark navy but logos have mixed light/dark originals — no visual consistency treatment</li>
+        <li>Testimonials section has no author photos or company logos — looks sparse against industry benchmarks</li>
+        <li>Pricing section shows no numbers — creates visual emptiness and reduces trust signal</li>
+        <li>Success story card images are large JPG/PNG without consistent aspect ratio treatment</li>
+        <li>Feature cards (12-card marquee) have no hover state — feels flat and non-interactive</li>
+        <li>Section background transitions are abrupt in a few places (features → personas, success → testimonial)</li>
+        <li>Hello bar text hierarchy is weak — announcement, CTA, login, and free consultation have near-identical visual weight</li>
+        <li>Footer is link-dense with no visual breathing room between column groups</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ══ PAGE 2 — HERO + NAV ══ -->
+<div class="page break">
+  <p class="section-label">Section 01</p>
+  <h2 class="section-title">Navigation &amp; Hello Bar Design</h2>
+  <p class="section-desc">The navigation is among the strongest elements on the page — visually polished, well-structured, and well-differentiated with dual CTAs. A few refinements would elevate it to top-tier.</p>
+
+  <div class="findings">
+    <div class="finding">
+      <div class="finding-priority"><span class="badge badge-good">Strong</span></div>
+      <div class="finding-body">
+        <div class="finding-title">Dual CTA hierarchy is well-executed</div>
+        <div class="finding-desc">"Request a Demo" (inverted gradient border, dark fill) and "Start for Free" (solid gradient fill) are clearly differentiated in visual weight. The gradient border on the demo button is a sophisticated touch that matches premium SaaS standards.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="finding-priority"><span class="badge badge-high">High</span></div>
+      <div class="finding-body">
+        <div class="finding-title">Hello bar lacks visual hierarchy between its four elements</div>
+        <div class="finding-desc">The announcement message, "Register Now" CTA, "Free Consultation", and "Log in" all render at the same visual weight (bold white, 15px). The eye has no clear reading path.</div>
+        <div class="finding-rec">Recommendation: Give "Register Now" a subtle pill background (e.g. violet at 20% opacity) to distinguish it as the bar's primary action. Reduce "Log in" weight to 400 since it's a utility link, not a conversion CTA.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="finding-priority"><span class="badge badge-medium">Medium</span></div>
+      <div class="finding-body">
+        <div class="finding-title">AI nav item has no visual state or destination cue</div>
+        <div class="finding-desc">The AI sparkle-icon nav item looks like an orphaned element — it has no dropdown caret, no hover underline, and no distinct background on hover. It reads as broken to a new visitor.</div>
+        <div class="finding-rec">Recommendation: Either add a dropdown like other items, style it as a featured "New" badge pill, or give it a clear active hover state that signals it's a link to an AI landing page.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="finding-priority"><span class="badge badge-medium">Medium</span></div>
+      <div class="finding-body">
+        <div class="finding-title">No mobile nav visible in the design</div>
+        <div class="finding-desc">On smaller screens, there is no hamburger menu, slide-out drawer, or bottom nav bar. The entire top navigation disappears, leaving mobile visitors with no wayfinding.</div>
+        <div class="finding-rec">Recommendation: Implement a slide-in drawer nav for mobile, following the Salesforce/Linear pattern — logo left, hamburger right, full-screen overlay with large tap targets.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="finding-priority"><span class="badge badge-low">Low</span></div>
+      <div class="finding-body">
+        <div class="finding-title">Mega menu Recent Blogs sidebar content is identical across three menus</div>
+        <div class="finding-desc">Solutions, Company, and Resources mega menus all show "View All Blogs" as the footer CTA. The sidebar titles differ (Recent Releases vs Recent Blogs) but the links are all placeholder. For a live design, each menu should surface contextually relevant recent content.</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <p class="section-label">Section 02</p>
+  <h2 class="section-title">Hero Section Design</h2>
+  <p class="section-desc">The hero is visually the strongest section on the page — premium, modern, and differentiated. The animated search widget is genuinely unique in the BI/analytics space.</p>
+
+  <div class="findings">
+    <div class="finding">
+      <div class="finding-priority"><span class="badge badge-good">Strong</span></div>
+      <div class="finding-body">
+        <div class="finding-title">Gradient orb + particle background is world-class</div>
+        <div class="finding-desc">Three layered orbs (violet, cyan, blue) with CSS blur and parallax scroll creates a premium immersive backdrop that matches the best enterprise hero sections (Vercel, Linear, Notion). The grain texture overlay at 6% opacity adds subtle analog warmth that prevents the gradient from feeling cheap.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="finding-priority"><span class="badge badge-good">Strong</span></div>
+      <div class="finding-body">
+        <div class="finding-title">Animated AI search widget is a strong differentiator</div>
+        <div class="finding-desc">The search prompt widget with rotating example queries (Brand · Retail, Operations · Supply, Product · SaaS) immediately communicates the product's core value proposition in a way that a static screenshot never could. This is excellent product storytelling in the above-the-fold viewport.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="finding-priority"><span class="badge badge-high">High</span></div>
+      <div class="finding-body">
+        <div class="finding-title">Hero subtitle is too long and generic</div>
+        <div class="finding-desc">"Go from data to decisions, faster with enterprise-grade AI-driven analytics platform built to make complex analysis tasks easier" is 20 words and contains no specific claim. It reads as filler. Premium SaaS sites use 8–12 word subtitles with a concrete, defensible statement.</div>
+        <div class="finding-rec">Recommendation: Trim to something like: "Natural language. Live data. Instant answers. No SQL required." — specific, punchy, and scannable in under 2 seconds.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="finding-priority"><span class="badge badge-medium">Medium</span></div>
+      <div class="finding-body">
+        <div class="finding-title">"Click to explore" CTA is the weakest label on the page</div>
+        <div class="finding-desc">The primary action button in the hero search widget says "Click to explore" — a device-specific, passive instruction that communicates no value. It reduces the urgency and clarity of the primary hero action.</div>
+        <div class="finding-rec">Recommendation: Replace with "Try it Now →" or "See it Live" — active, benefit-first, device-neutral.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="finding-priority"><span class="badge badge-low">Low</span></div>
+      <div class="finding-body">
+        <div class="finding-title">Search widget footer connector icons are decorative but unrecognizable</div>
+        <div class="finding-desc">The three small icon bubbles at the bottom of the search card represent data connectors, but they are generic SVG line icons — not recognizable brand logos (Salesforce, SAP, etc.). The "50+" label beside them is the only meaningful element.</div>
+        <div class="finding-rec">Recommendation: Replace the three generic icons with actual recognizable data source logos (Salesforce, HubSpot, BigQuery) for immediate credibility.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ PAGE 3 — LOGO + PRODUCT ══ -->
+<div class="page break">
+  <p class="section-label">Section 03</p>
+  <h2 class="section-title">Trusted Logos Section</h2>
+  <p class="section-desc">The infinite-scroll marquee format is the right choice for this many logos. The current implementation has key visual inconsistencies that reduce its credibility impact.</p>
+
+  <div class="findings">
+    <div class="finding">
+      <div class="finding-priority"><span class="badge badge-high">High</span></div>
+      <div class="finding-body">
+        <div class="finding-title">Logo visual inconsistency — mixed colors, sizes, and styles</div>
+        <div class="finding-desc">The logos display in their original colors (Bayer red cross, SiriusXM color, etc.) but the section background is dark navy (#051A3C). Some logos are clearly designed for white backgrounds and appear as colored blobs against the dark canvas. Industry standard for dark-background logo strips is either all-white treatment OR a light/neutral section background where original colors can breathe.</div>
+        <div class="finding-rec">Recommendation: Either (A) move the logo section to a white/light gray background so original logo colors work correctly, or (B) apply a consistent white filter treatment to unify all logos on the dark background.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="finding-priority"><span class="badge badge-high">High</span></div>
+      <div class="finding-body">
+        <div class="finding-title">Section heading competes with hero H1 in visual weight</div>
+        <div class="finding-desc">"Lumenore is Trusted By 20,000+ Users Across 100+ Enterprise Teams" at 44px Fraunces is a full display heading. Social proof sections should use smaller, supporting typography — typically 16–20px medium weight — so the logos are the star, not the heading.</div>
+        <div class="finding-rec">Recommendation: Reduce to ~20px Inter 500, styled as a label above the logo strip rather than a standalone section headline.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="finding-priority"><span class="badge badge-medium">Medium</span></div>
+      <div class="finding-body">
+        <div class="finding-title">Logo strip has no fade-out edges</div>
+        <div class="finding-desc">The logos abruptly start and end at the container edges. Premium implementations use a CSS mask with a transparent-to-color gradient on both sides to create a seamless infinite-scroll illusion and visually frame the strip.</div>
+        <div class="finding-rec">Recommendation: Add <code>mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)</code> on <code>.logo-slider</code>.</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <p class="section-label">Section 04</p>
+  <h2 class="section-title">Product Suite Section</h2>
+  <p class="section-desc">The scroll-driven product switcher is technically and visually impressive — this section is close to industry-leading quality with a few refinements needed.</p>
+
+  <div class="findings">
+    <div class="finding">
+      <div class="finding-priority"><span class="badge badge-good">Strong</span></div>
+      <div class="finding-body">
+        <div class="finding-title">Scroll-pinned product switching is best-in-class UX storytelling</div>
+        <div class="finding-desc">Locking the product panel while the track scrolls, then switching content based on scroll progress, is the exact pattern used by Stripe, Apple, and Webflow product pages. It forces deliberate engagement with each product and prevents users from skipping the story.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="finding-priority"><span class="badge badge-good">Strong</span></div>
+      <div class="finding-body">
+        <div class="finding-title">Inline customer quotes per product are highly effective</div>
+        <div class="finding-desc">Showing a specific ROI quote ("Reporting cycle: 3 weeks → 4 days", "80% reduction in ad-hoc IT data requests") directly inside each product panel is a textbook example of contextual social proof. It converts product claims into third-party validation at the exact moment of consideration.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="finding-priority"><span class="badge badge-high">High</span></div>
+      <div class="finding-body">
+        <div class="finding-title">Product GIF previews have no containing frame or device mock</div>
+        <div class="finding-desc">The GIFs (Ask Me, Insights Dashboard, Data Magnet) float inside the product visual container with only ambient orb glow behind them. Without a browser chrome, laptop mock, or card frame, they read as unpolished assets rather than deliberate product screenshots.</div>
+        <div class="finding-rec">Recommendation: Add a subtle browser chrome SVG wrapper (top bar with 3 dots + URL bar) around each GIF to ground it as a real application interface, similar to Notion's and ThoughtSpot's product screenshots.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="finding-priority"><span class="badge badge-medium">Medium</span></div>
+      <div class="finding-body">
+        <div class="finding-title">Product tab selector lacks a clear active indicator design</div>
+        <div class="finding-desc">The active product tab uses an underline or background highlight, but at a glance the selected state and hover state are visually similar. For a section this important, the active tab should be unmistakably differentiated — stronger background fill, bolder text, or a left-border accent.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="finding-priority"><span class="badge badge-medium">Medium</span></div>
+      <div class="finding-body">
+        <div class="finding-title">Feature chips are styled as interactive but are not clickable</div>
+        <div class="finding-desc">The pill tags (e.g. "Semantic Search", "Contextual Intelligence") are styled with border and background suggesting clickability. Users will try to click them expecting to filter or expand. Non-interactive pills should be visually flatter (no border, smaller, muted color).</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ PAGE 4 — FEATURES + PERSONAS ══ -->
+<div class="page break">
+  <p class="section-label">Section 05</p>
+  <h2 class="section-title">Features &amp; Capabilities Section</h2>
+  <p class="section-desc">The auto-scrolling feature card strip is efficient and visually clean. Several small details prevent it from reaching its full impact.</p>
+
+  <div class="findings">
+    <div class="finding">
+      <div class="finding-priority"><span class="badge badge-high">High</span></div>
+      <div class="finding-body">
+        <div class="finding-title">Feature cards have no hover interaction design</div>
+        <div class="finding-desc">The 12 feature cards are completely static — no hover lift, no glow, no color shift. On a page full of animated, interactive elements this section reads as flat and unfinished by comparison. The marquee also prevents users from lingering on individual cards.</div>
+        <div class="finding-rec">Recommendation: Add a subtle hover state (translateY(-4px), card background lightens slightly, icon color shifts to accent). Pause the marquee on card hover to let users read.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="finding-priority"><span class="badge badge-medium">Medium</span></div>
+      <div class="finding-body">
+        <div class="finding-title">Section heading "10x your business impact" is weakened by overuse in SaaS</div>
+        <div class="finding-desc">"10x" appears on nearly every BI/analytics homepage. It signals generic positioning. The italic accent treatment on the phrase is visually correct but the copy itself undermines the premium design context.</div>
+        <div class="finding-rec">Recommendation: Replace with a specific claim tied to a real metric from a customer story — e.g., "From 3 weeks to 4 days — for every team."</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="finding-priority"><span class="badge badge-medium">Medium</span></div>
+      <div class="finding-body">
+        <div class="finding-title">Feature card icons are uniform size/style but visually indistinct from each other</div>
+        <div class="finding-desc">All 12 icons share the same stroke weight, size, and muted color. When 12 identical-weight icons are aligned in a row they lose individual character. Some variation in icon weight, or a subtle background tint, would help differentiation.</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <p class="section-label">Section 06</p>
+  <h2 class="section-title">Personas Section</h2>
+  <p class="section-desc">The animated persona scene cards are among the most visually distinctive elements on the page — a strong execution of the Lemni/Framer storytelling pattern.</p>
+
+  <div class="findings">
+    <div class="finding">
+      <div class="finding-priority"><span class="badge badge-good">Strong</span></div>
+      <div class="finding-body">
+        <div class="finding-title">Animated scene cards with staggered entry are genuinely premium</div>
+        <div class="finding-desc">Each persona switch triggers layered card animations with parallax depth. The data shown in the cards (revenue charts, model accuracy scores, ETL pipeline health) is contextually tailored per role. This is a standout execution — better than most BI competitors' personas sections.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="finding-priority"><span class="badge badge-high">High</span></div>
+      <div class="finding-body">
+        <div class="finding-title">No per-persona CTA</div>
+        <div class="finding-desc">After reading about their role ("Turn questions into insights without waiting on anyone"), there is no action for the user to take. Every persona description ends with chips and then nothing. This is a significant lost conversion moment — personas are where intent peaks.</div>
+        <div class="finding-rec">Recommendation: Add a small contextual CTA per persona — e.g. Analyst → "See Analyst features →", Engineer → "Explore Data Magnet →". These can be text links, not full buttons.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="finding-priority"><span class="badge badge-medium">Medium</span></div>
+      <div class="finding-body">
+        <div class="finding-title">Persona selector tab design lacks sufficient contrast between active/inactive states</div>
+        <div class="finding-desc">The four role tabs (Analyst · Leader · Scientist · Engineer) need a stronger visual differentiation between active and inactive states. The active indicator should be immediately obvious at a glance, especially since this is an interactive control driving a major content change.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ PAGE 5 — PRICING + STORIES + TESTIMONIALS ══ -->
+<div class="page break">
+  <p class="section-label">Section 07</p>
+  <h2 class="section-title">Pricing Section</h2>
+
+  <div class="findings">
+    <div class="finding">
+      <div class="finding-priority"><span class="badge badge-good">Strong</span></div>
+      <div class="finding-body">
+        <div class="finding-title">Asymmetric pricing layout with insight cards is visually sophisticated</div>
+        <div class="finding-desc">The split layout — main pricing panel left, stacked KPI + value cards right — is a contemporary pattern that avoids the boring 3-column pricing table. The GIF preview inside the value card immediately shows what each feature looks like in use.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="finding-priority"><span class="badge badge-critical">Critical</span></div>
+      <div class="finding-body">
+        <div class="finding-title">No pricing numbers creates a visual and trust vacuum</div>
+        <div class="finding-desc">The pricing section is visually polished but communicates zero pricing information. Enterprise buyers who have been conditioned by Notion, Snowflake, and Salesforce to see at minimum a "Free / Pro / Enterprise" starting-price range will interpret the absence as evasiveness. The section heading "Explore the Right Way to Get Started" further obscures intent.</div>
+        <div class="finding-rec">Recommendation: Add at minimum "Free forever · up to X users" for Freemium, and "Custom pricing" with a "Talk to Sales" CTA for Enterprise. Even vague anchors reduce bounce from the pricing section.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="finding-priority"><span class="badge badge-medium">Medium</span></div>
+      <div class="finding-body">
+        <div class="finding-title">Enterprise plan button and Freemium plan button look identical at rest</div>
+        <div class="finding-desc">The two plan selector buttons have the same visual weight and style. Enterprise should be visually distinguished — either with a "Most Popular" badge, a gradient border, or a slightly elevated card — to signal its intended conversion priority.</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <p class="section-label">Section 08</p>
+  <h2 class="section-title">Success Stories Carousel</h2>
+
+  <div class="findings">
+    <div class="finding">
+      <div class="finding-priority"><span class="badge badge-good">Strong</span></div>
+      <div class="finding-body">
+        <div class="finding-title">Real named case studies with industry labels are highly credible</div>
+        <div class="finding-desc">Using actual case study titles (THK Rhythm Automotive, DWIHN, Ford Credit) with specific industries immediately elevates this above generic testimonials. The card format with image + eyebrow + title + CTA arrow is well-executed.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="finding-priority"><span class="badge badge-high">High</span></div>
+      <div class="finding-body">
+        <div class="finding-title">No outcome metrics on the success story cards</div>
+        <div class="finding-desc">Each case study card shows only the story title and industry label. Missing is the single most persuasive element: a headline metric ("80% faster reporting", "2M events/day"). These numbers exist in the product section quotes but are absent from the dedicated success section.</div>
+        <div class="finding-rec">Recommendation: Add one bold stat per card below the title — 3 words max. Example: "80% faster reporting" in a violet accent color. This is the pattern used by Snowflake and Tableau's case study pages.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="finding-priority"><span class="badge badge-medium">Medium</span></div>
+      <div class="finding-body">
+        <div class="finding-title">Three consecutive Healthcare case studies reduce perceived industry breadth</div>
+        <div class="finding-desc">The carousel leads with cards #1, #2, #3 all tagged "Healthcare" before showing Manufacturing or Agriculture. A visitor who sees the first two cards will assume Lumenore is a healthcare-specific tool. Reorder to show variety immediately.</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <p class="section-label">Section 09</p>
+  <h2 class="section-title">Testimonials Section</h2>
+
+  <div class="findings">
+    <div class="finding">
+      <div class="finding-priority"><span class="badge badge-high">High</span></div>
+      <div class="finding-body">
+        <div class="finding-title">No author photos reduces emotional credibility</div>
+        <div class="finding-desc">The testimonial section has a large quote, a name, a title, and five stars — but no human face. Research consistently shows that testimonials with a photo convert at significantly higher rates than text-only quotes. The section currently looks like a template with placeholder text rather than real people.</div>
+        <div class="finding-rec">Recommendation: Add a circular headshot (40–48px) beside the tab button for each testimonial author. If professional photos aren't available, use a company logo as a fallback.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="finding-priority"><span class="badge badge-high">High</span></div>
+      <div class="finding-body">
+        <div class="finding-title">First testimonial is two paragraphs (100+ words) — far too long</div>
+        <div class="finding-desc">Homepage testimonials should be 25–40 words maximum. The first quote by Arvind Patkar is a full paragraph that starts well but ends with generic filler ("we look forward to continued success…"). The wall of text in a high-contrast quote box is visually overwhelming.</div>
+        <div class="finding-rec">Recommendation: Trim to the most impactful single sentence — "With Lumenore's customized dashboards and predictive insights, we've gained a competitive edge, allowing us to make informed decisions faster and more accurately." — and cut everything else.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ PAGE 6 — TYPOGRAPHY + COLOR ══ -->
+<div class="page break">
+  <p class="section-label">Design System</p>
+  <h2 class="section-title">Typography</h2>
+  <p class="section-desc">The type system is well-chosen and consistent. A few sizing and weight decisions reduce the hierarchy's clarity at a glance.</p>
+
+  <div style="border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:24px;">
+    <div class="type-row" style="padding:12px 16px;">
+      <div class="type-meta">H1 — Fraunces 300<br>48–56px / dark bg</div>
+      <div class="type-sample" style="font-size:32px;font-weight:300;font-family:Georgia,serif;color:#051A3C;">Enterprise BI Platform</div>
+    </div>
+    <div class="type-row" style="padding:12px 16px;background:var(--gray-1);">
+      <div class="type-meta">H2 — Fraunces 300<br>44px / sections</div>
+      <div class="type-sample" style="font-size:24px;font-weight:300;font-family:Georgia,serif;color:#051A3C;">Trusted by 20,000+ Users</div>
+    </div>
+    <div class="type-row" style="padding:12px 16px;">
+      <div class="type-meta">H3 — Inter 600<br>28–32px</div>
+      <div class="type-sample" style="font-size:20px;font-weight:600;color:#051A3C;">Conversational Data</div>
+    </div>
+    <div class="type-row" style="padding:12px 16px;background:var(--gray-1);">
+      <div class="type-meta">Body — Inter 400<br>15–16px</div>
+      <div class="type-sample" style="font-size:14px;color:#4a5568;">Go from data to decisions, faster with enterprise-grade analytics.</div>
+    </div>
+    <div class="type-row" style="padding:12px 16px;">
+      <div class="type-meta">Eyebrow — Inter 700<br>11–12px / uppercase</div>
+      <div class="type-sample" style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#7747b6;">Features &amp; Capabilities</div>
+    </div>
+  </div>
+
+  <div class="findings">
+    <div class="finding">
+      <div class="finding-priority"><span class="badge badge-medium">Medium</span></div>
+      <div class="finding-body">
+        <div class="finding-title">H2 weight (300 Fraunces) can appear too light on white backgrounds</div>
+        <div class="finding-desc">Fraunces 300 is beautiful on dark backgrounds where negative contrast amplifies its elegance. On white section backgrounds (Personas, Success, Testimonial), 300 weight at 44px reads as thin and reduces the visual anchor the section heading should provide.</div>
+        <div class="finding-rec">Recommendation: Use Fraunces 400 (not 300) for H2s on white/light backgrounds. Reserve 300 for the dark hero and finale sections where it reads best.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="finding-priority"><span class="badge badge-medium">Medium</span></div>
+      <div class="finding-body">
+        <div class="finding-title">Section subtitle (section-sub) font is too similar in weight to body copy</div>
+        <div class="finding-desc">The <code>.section-sub</code> class uses Inter 400 at 15px — identical weight to body paragraph text. These subtitle descriptions lose hierarchy and blend into surrounding content. They need to feel like a "supporting statement" below the heading, not body copy.</div>
+        <div class="finding-rec">Recommendation: Set section-sub to Inter 400 at 17px with line-height 1.7, and color #4a5568 (already updated). Slightly larger than body makes the hierarchy legible.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="finding-priority"><span class="badge badge-low">Low</span></div>
+      <div class="finding-body">
+        <div class="finding-title">Line height on hero H1 could be slightly tighter</div>
+        <div class="finding-desc">The hero H1 uses generous line-height which works on single-line headings but creates extra space on the two-line "Enterprise BI and Analytics Platform / Powered By AI Agents" split. Tightening to line-height: 1.1 would feel more impactful and editorial.</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <p class="section-label">Design System</p>
+  <h2 class="section-title">Color Palette</h2>
+
+  <div class="swatch-row">
+    <div class="swatch">
+      <div class="swatch-box" style="background:#051A3C;"></div>
+      <div class="swatch-name">Royal Navy</div>
+      <div class="swatch-hex">#051A3C</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-box" style="background:#7747b6;"></div>
+      <div class="swatch-name">Violet 450</div>
+      <div class="swatch-hex">#7747b6</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-box" style="background:#2863c3;"></div>
+      <div class="swatch-name">Royal Blue</div>
+      <div class="swatch-hex">#2863c3</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-box" style="background:#1ca9c9;"></div>
+      <div class="swatch-name">Turquoise</div>
+      <div class="swatch-hex">#1ca9c9</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-box" style="background:#12b6f8;"></div>
+      <div class="swatch-name">Sky Blue 500</div>
+      <div class="swatch-hex">#12b6f8</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-box" style="background:#fcfcfc;border:1px solid #e2e8f0;"></div>
+      <div class="swatch-name">Base White</div>
+      <div class="swatch-hex">#fcfcfc</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-box" style="background:#4a5568;"></div>
+      <div class="swatch-name">Slate Gray</div>
+      <div class="swatch-hex">#4a5568</div>
+    </div>
+  </div>
+
+  <div class="findings">
+    <div class="finding">
+      <div class="finding-priority"><span class="badge badge-good">Strong</span></div>
+      <div class="finding-body">
+        <div class="finding-title">Three-color gradient system (Violet → Blue → Cyan) is cohesive</div>
+        <div class="finding-desc">The consistent use of the violet-to-cyan gradient across the hero background, CTA buttons, gradient text accents, and interactive elements creates a strong, recognizable brand signature. This is better color discipline than most BI competitors.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="finding-priority"><span class="badge badge-medium">Medium</span></div>
+      <div class="finding-body">
+        <div class="finding-title">White and light-section backgrounds lack a tinted alternative</div>
+        <div class="finding-desc">The page alternates between dark navy and pure white (#fff). There is no intermediate surface color (a very light tinted gray or blue-tinted white like #f8faff) to create visual separation between adjacent white sections without relying on spacing alone. This makes the mid-page feel flat.</div>
+        <div class="finding-rec">Recommendation: Introduce a light surface token (e.g. #f4f7ff — a very subtle blue-tinted white) as an alternating section background. Use it for Pricing, Testimonial, or FAQ sections.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ PAGE 7 — PRIORITY SUMMARY ══ -->
+<div class="page break">
+  <p class="section-label">Action Plan</p>
+  <h2 class="section-title">Prioritized Design Improvements</h2>
+  <p class="section-desc">Items ordered by conversion impact and implementation effort. Quick wins are items where the fix is small but the design improvement is large.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width:40px;">#</th>
+        <th style="width:80px;">Priority</th>
+        <th>Finding</th>
+        <th style="width:90px;">Section</th>
+        <th style="width:80px;">Effort</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td><span class="badge badge-critical">Critical</span></td>
+        <td>Add mobile navigation (hamburger + slide drawer)</td>
+        <td>Navigation</td>
+        <td>High</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td><span class="badge badge-critical">Critical</span></td>
+        <td>Show pricing anchors — "Free forever" or starting price for Freemium</td>
+        <td>Pricing</td>
+        <td>Low</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td><span class="badge badge-high">High</span></td>
+        <td>Add author headshots to testimonial tabs</td>
+        <td>Testimonials</td>
+        <td>Low</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td><span class="badge badge-high">High</span></td>
+        <td>Trim first testimonial quote from 100+ words to one sentence</td>
+        <td>Testimonials</td>
+        <td>Low</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td><span class="badge badge-high">High</span></td>
+        <td>Add a headline metric stat to each success story card</td>
+        <td>Case Studies</td>
+        <td>Low</td>
+      </tr>
+      <tr>
+        <td>6</td>
+        <td><span class="badge badge-high">High</span></td>
+        <td>Wrap product GIFs in browser chrome mock for product context</td>
+        <td>Products</td>
+        <td>Medium</td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td><span class="badge badge-high">High</span></td>
+        <td>Add edge fade (mask-image) to logo slider for seamless scroll</td>
+        <td>Logos</td>
+        <td>Low</td>
+      </tr>
+      <tr>
+        <td>8</td>
+        <td><span class="badge badge-high">High</span></td>
+        <td>Reduce logo section H2 to 20px label — logos are the hero, not the text</td>
+        <td>Logos</td>
+        <td>Low</td>
+      </tr>
+      <tr>
+        <td>9</td>
+        <td><span class="badge badge-high">High</span></td>
+        <td>Add per-persona CTA link ("See [role] features →")</td>
+        <td>Personas</td>
+        <td>Low</td>
+      </tr>
+      <tr>
+        <td>10</td>
+        <td><span class="badge badge-high">High</span></td>
+        <td>Add hover pause + lift animation to feature cards</td>
+        <td>Features</td>
+        <td>Low</td>
+      </tr>
+      <tr>
+        <td>11</td>
+        <td><span class="badge badge-medium">Medium</span></td>
+        <td>Replace "Click to explore" with "Try it Now" in hero search</td>
+        <td>Hero</td>
+        <td>Low</td>
+      </tr>
+      <tr>
+        <td>12</td>
+        <td><span class="badge badge-medium">Medium</span></td>
+        <td>Reorder success stories: Healthcare → Manufacturing → Agriculture → Healthcare × 2</td>
+        <td>Case Studies</td>
+        <td>Low</td>
+      </tr>
+      <tr>
+        <td>13</td>
+        <td><span class="badge badge-medium">Medium</span></td>
+        <td>Introduce a light-tinted surface color (#f4f7ff) for alternating sections</td>
+        <td>Global</td>
+        <td>Low</td>
+      </tr>
+      <tr>
+        <td>14</td>
+        <td><span class="badge badge-medium">Medium</span></td>
+        <td>Replace connector placeholder icons in hero with real recognizable logos</td>
+        <td>Hero</td>
+        <td>Medium</td>
+      </tr>
+      <tr>
+        <td>15</td>
+        <td><span class="badge badge-medium">Medium</span></td>
+        <td>Use Fraunces 400 (not 300) for H2s on white section backgrounds</td>
+        <td>Typography</td>
+        <td>Low</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <hr class="divider">
+
+  <p class="section-label">Quick Wins</p>
+  <h2 class="section-title">High Impact, Low Effort — Implement First</h2>
+
+  <div class="rec-grid">
+    <div class="rec-card">
+      <div class="rec-card-title">Logo slider fade edges</div>
+      <div class="rec-card-body">One CSS rule on <code>.logo-slider</code>: <code>mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)</code>. Instantly elevates the strip to Salesforce/Snowflake quality.</div>
+    </div>
+    <div class="rec-card">
+      <div class="rec-card-title">Testimonial photo + quote trim</div>
+      <div class="rec-card-body">Add a 44px circular headshot beside each testimonial tab button and trim quotes to ≤ 40 words. Takes 30 minutes and has the largest credibility ROI of any single change on the page.</div>
+    </div>
+    <div class="rec-card">
+      <div class="rec-card-title">Pricing anchor text</div>
+      <div class="rec-card-body">Add "Free forever" below the Freemium plan button. Two words. Removes the single biggest objection enterprise evaluators have when reviewing the pricing section: "is this actually free?"</div>
+    </div>
+    <div class="rec-card">
+      <div class="rec-card-title">Hero CTA copy swap</div>
+      <div class="rec-card-body">Change "Click to explore" → "Try it Now →" in the hero search widget. One word change that removes the device-specific passive instruction and replaces it with an active, benefit-framed CTA.</div>
+    </div>
+    <div class="rec-card">
+      <div class="rec-card-title">Feature card hover state</div>
+      <div class="rec-card-body">Add <code>transition: transform .2s; transform: translateY(-4px)</code> on <code>.feature-card:hover</code> plus a faint box-shadow. The marquee should pause on hover. Three CSS lines, large perceived quality jump.</div>
+    </div>
+    <div class="rec-card">
+      <div class="rec-card-title">Success story metrics</div>
+      <div class="rec-card-body">Add one bold stat per case study card — e.g. "3 weeks → 4 days" in violet under the title. The numbers already exist in the product section quotes. Copy them across.</div>
+    </div>
+  </div>
+
+  <p class="footnote">Lumenore Homepage Design Review · June 2026 · Evaluated against Salesforce, Snowflake, Notion, Linear, ThoughtSpot · Overall score 7.4 / 10</p>
+</div>
+
+</body>
+</html>

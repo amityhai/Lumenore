@@ -1,0 +1,1750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lumenore Ask Me — Conversational Analytics Powered by Agentic Assistants</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600;700&family=Material+Symbols+Rounded&display=swap" rel="stylesheet">
+    <link href="assets/css/v2o/index.css" rel="stylesheet">
+    <link href="assets/css/v2o/ask-me.css" rel="stylesheet">
+
+    <!-- Lumenore Ask Me — internal product page under home.html.
+         Shares the home.html dark premium canvas (hero-stage with orbs/particles/grid,
+         mega-menu nav, page-finale gradient, footer with integrated CTA). The
+         ask-me-specific middle sections (hero content, AI Agent 3-col, Just Ask,
+         Features, Resources, Other Products) carry their own distinct layouts so
+         this page never reads as a copy of home.html. -->
+    <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+</head>
+<body>
+
+<!-- ===== CUSTOM CURSOR — magnetic dot + trailing ring ===== -->
+<div class="cursor" id="customCursor" aria-hidden="true">
+    <span class="cursor__ring"></span>
+    <span class="cursor__dot"></span>
+</div>
+
+<!-- ═══════════ HERO STAGE — nav + hero share one premium dark canvas (common theme) ═══════════ -->
+<div class="hero-stage">
+
+    <!-- low-opacity tech grid overlay (spans nav → hero) -->
+    <div class="hero-grid" aria-hidden="true"></div>
+
+    <!-- soft glowing gradient orbs (parallax on scroll) -->
+    <div class="hero-orbs" aria-hidden="true" data-hero-orbs>
+        <span class="hero-orb orb-violet"></span>
+        <span class="hero-orb orb-cyan"></span>
+        <span class="hero-orb orb-blue"></span>
+    </div>
+
+    <!-- small floating glowing particles -->
+    <div class="hero-particles" aria-hidden="true">
+        <span class="particle"></span><span class="particle"></span><span class="particle"></span>
+        <span class="particle"></span><span class="particle"></span><span class="particle"></span>
+        <span class="particle"></span><span class="particle"></span><span class="particle"></span>
+        <span class="particle"></span><span class="particle"></span><span class="particle"></span>
+    </div>
+
+<!-- ═══════════ SITE TOP — hello bar + mega-menu nav (verbatim common with home.html) ═══════════ -->
+<div class="site-top">
+
+    <!-- Hello bar (announcement) -->
+    <div class="hello-bar">
+        <div class="hello-left">
+            <span class="hello-badge">Webinar</span>
+            <div class="hello-msg-group">
+                <span class="hello-message">We are Heading to AAHOACON 2026</span>
+                <a href="#" class="hello-cta">
+                    Register Now
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                </a>
+            </div>
+        </div>
+        <a href="#" class="hello-consult">Free Consultation</a>
+        <a href="#" class="hello-login">Log in</a>
+    </div>
+
+    <!-- Main nav bar -->
+    <header class="site-header headerTop is-scrolled">
+        <a href="#" class="brand-mark" aria-label="Lumenore home">
+            <img src="assets/images/homeV2o/Lumenore logo.svg" alt="Lumenore" class="nav-logo-img">
+        </a>
+
+        <nav>
+            <ul class="nav-links">
+                <!-- PLATFORM — 3-column mega menu: Products + Capabilities | grid/detail | releases -->
+                <li class="nav-item has-dropdown nav-item--platform" data-mega-id="platformMega">
+                    <a href="#" class="nav-trigger">Platform
+                        <svg class="caret" viewBox="0 0 8 4" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 0l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                    <div class="nav-mega nav-mega--platform" role="menu" id="platformMega">
+
+                        <!-- COL 1 — Just 3 products + a single Capabilities entry.
+                             Hovering a product shows its detail pane in Col 2;
+                             hovering Capabilities shows the 12-card grid. -->
+                        <div class="np-nav">
+                            <div class="np-nav-section">
+                                <h6 class="np-nav-title">Products</h6>
+                                <ul class="np-nav-list">
+                                    <li><a href="#"                    data-platform-item="insights"   data-platform-type="product">Lumenore Insights</a></li>
+                                    <li><a href="lumenore-ask-me.html" data-platform-item="askme"      data-platform-type="product">Lumenore Ask Me</a></li>
+                                    <li><a href="#"                    data-platform-item="datamagnet" data-platform-type="product">Lumenore Data Magnet</a></li>
+                                </ul>
+                            </div>
+                            <div class="np-nav-section">
+                                <ul class="np-nav-list">
+                                    <li><a href="#" data-platform-item="all-capabilities" data-platform-type="capability" class="np-cap-link">
+                                        <span>Capabilities</span>
+                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                                    </a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- COL 2 — Two views:
+                             · Default + capability hover → grid of all 12 capabilities
+                             · Product hover → product-detail pane (title + desc + CTAs)
+                             JS toggles `.np-detail.is-product-view` to swap them. -->
+                        <div class="np-detail" id="platformDetail">
+
+                            <!-- Product-detail pane (hidden by default).
+                                 Learn More is an inline text link tucked
+                                 directly under the description so it reads
+                                 as "read more about this" rather than a
+                                 competing primary action — Start Free and
+                                 Pricing are the two CTAs at the bottom. -->
+                            <div class="np-product-pane" id="platformProductPane" hidden>
+                                <span class="np-pane-kind"><span class="np-kind-dot"></span>Product</span>
+                                <p class="np-pane-tagline" id="npProductTagline">Self-Service Analytics</p>
+                                <h4 class="np-pane-title" id="npProductTitle">Lumenore Insights</h4>
+                                <p class="np-pane-desc"  id="npProductDesc">Democratize data with self-service, AI-powered dashboards that empower every employee to make data-driven decisions and maximize ROI instantly.</p>
+                                <a class="np-learn-more" id="npProductLearn" href="#">
+                                    Learn more
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                                </a>
+                                <div class="np-pane-actions">
+                                    <a class="np-cta np-cta--primary"   id="npProductStart"   href="#">Start Free</a>
+                                    <a class="np-cta np-cta--secondary" id="npProductPricing" href="#">Pricing</a>
+                                </div>
+                            </div>
+
+                            <!-- Capability grid — hidden by default. Only shown
+                                 when the "Capabilities" link in Col 1 is hovered. -->
+                            <h6 class="np-nav-title np-grid-title" id="platformGridTitle" hidden>All Capabilities</h6>
+                            <div class="np-grid" id="platformGrid" hidden>
+                                <a href="#" class="np-grid-card" data-platform-card="connectors">
+                                    <svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12h6M3 7h4M3 17h4M17 7h4M17 17h4"/><circle cx="12" cy="12" r="3"/><circle cx="5" cy="7" r="1.5"/><circle cx="5" cy="17" r="1.5"/><circle cx="19" cy="7" r="1.5"/><circle cx="19" cy="17" r="1.5"/></svg>
+                                    <span>Data Connectors</span>
+                                </a>
+                                <a href="#" class="np-grid-card" data-platform-card="integration">
+                                    <svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4v6a3 3 0 0 0 3 3h4a3 3 0 0 1 3 3v4"/><circle cx="7" cy="3" r="1.5"/><circle cx="17" cy="21" r="1.5"/></svg>
+                                    <span>Data Integration</span>
+                                </a>
+                                <a href="#" class="np-grid-card" data-platform-card="lakehouse">
+                                    <svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v6a9 3 0 0 0 18 0V5M3 11v6a9 3 0 0 0 18 0v-6"/></svg>
+                                    <span>Data Lakehouse</span>
+                                </a>
+                                <a href="#" class="np-grid-card" data-platform-card="visualization">
+                                    <svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V10M10 21V6M15 21V13M20 21V8"/></svg>
+                                    <span>Data Visualization</span>
+                                </a>
+                                <a href="#" class="np-grid-card" data-platform-card="universe">
+                                    <svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="9" ry="3.5"/><path d="M3 12h18"/></svg>
+                                    <span>Data Universe</span>
+                                </a>
+                                <a href="#" class="np-grid-card" data-platform-card="dashboard">
+                                    <svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="5" rx="1.5"/><rect x="13" y="10" width="8" height="11" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/></svg>
+                                    <span>Dashboard</span>
+                                </a>
+                                <a href="#" class="np-grid-card" data-platform-card="advanced">
+                                    <svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18l4-6 4 3 6-9 4 5"/></svg>
+                                    <span>Advanced Analytics</span>
+                                </a>
+                                <a href="#" class="np-grid-card" data-platform-card="embedded">
+                                    <svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M9 10l-2 2 2 2M15 10l2 2-2 2"/></svg>
+                                    <span>Embedded Analytics</span>
+                                </a>
+                                <a href="#" class="np-grid-card" data-platform-card="conversational">
+                                    <svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                                    <span>Conversational Intelligence</span>
+                                </a>
+                                <a href="#" class="np-grid-card" data-platform-card="decision">
+                                    <svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/><circle cx="12" cy="12" r="4"/></svg>
+                                    <span>Decision Intelligence</span>
+                                </a>
+                                <a href="#" class="np-grid-card" data-platform-card="selfservice">
+                                    <svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
+                                    <span>Self-Service Analytics</span>
+                                </a>
+                                <a href="#" class="np-grid-card" data-platform-card="predictive">
+                                    <svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12c0-5 4-9 9-9s9 4 9 9"/><path d="M12 7v5l3 2"/><circle cx="12" cy="12" r="9" stroke-dasharray="2 3"/></svg>
+                                    <span>Predictive Analytics</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- COL 3 — Recent Releases sidebar -->
+                        <aside class="np-releases">
+                            <h6 class="np-nav-title">Recent Releases</h6>
+                            <a class="np-release" href="#">
+                                <span class="np-release-tag">New</span>
+                                <span class="np-release-title">Ask Me Agentic RAG Upgrade</span>
+                                <span class="np-release-sub">Self-correction &amp; multimodal support — surfaces governed answers from documents, images, and tables.</span>
+                            </a>
+                            <a class="np-release" href="#">
+                                <span class="np-release-title">Local LLM Integration</span>
+                                <span class="np-release-sub">Keep sensitive data in-house with on-prem inference.</span>
+                            </a>
+                            <a class="np-release" href="#">
+                                <span class="np-release-title">Visual Pipeline Builder</span>
+                                <span class="np-release-sub">Low-code ETL flows in a drag-and-drop canvas.</span>
+                            </a>
+                            <a class="np-view-all" href="#">
+                                View All Releases
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                            </a>
+                        </aside>
+                    </div>
+                </li>
+
+                <!-- SOLUTIONS — 3-column mega: 2 nav entries | grid | recent blogs -->
+                <li class="nav-item has-dropdown nav-item--solutions" data-mega-id="solutionMega">
+                    <a href="#" class="nav-trigger">Solutions
+                        <svg class="caret" viewBox="0 0 8 4" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 0l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                    <div class="nav-mega nav-mega--platform nav-mega--solutions" role="menu" id="solutionMega">
+
+                        <!-- COL 1 — Just two categories -->
+                        <div class="np-nav">
+                            <ul class="np-nav-list">
+                                <li><a href="#" data-solution-item="industry"   class="np-cap-link">
+                                    <span>By Industry</span>
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                                </a></li>
+                                <li><a href="#" data-solution-item="department" class="np-cap-link">
+                                    <span>By Department</span>
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                                </a></li>
+                            </ul>
+                        </div>
+
+                        <!-- COL 2 — Industry grid OR Department grid (swapped by JS) -->
+                        <div class="np-detail" id="solutionDetail">
+
+                            <!-- BY INDUSTRY (hidden until hovered) -->
+                            <h6 class="np-nav-title np-grid-title" id="solIndustryTitle" hidden>By Industry</h6>
+                            <div class="np-grid" id="solIndustryGrid" hidden>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v16M4 12h16"/></svg><span>Healthcare</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6h15l-1.5 9H7.5L6 6zM6 6L5 3H2M9 21a1 1 0 1 0 0-2 1 1 0 0 0 0 2zM18 21a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/></svg><span>Retail</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0M1.42 9a16 16 0 0 1 21.16 0M8.53 16.11a6 6 0 0 1 6.95 0M12 20h.01"/></svg><span>Telecom</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 18 0v6a2 2 0 0 1-2 2h-1v-6h3M3 18v-6h3v6H5a2 2 0 0 1-2-2z"/></svg><span>Contact Care</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12l9-8 9 8M5 10v10h14V10"/></svg><span>Real Estate</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg><span>Insurance</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l5-3v4l5-3v4l8-3v17z"/></svg><span>Manufacturing</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="18" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.6a2 2 0 0 0 2-1.6L23 6H6"/></svg><span>E-Commerce</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M9 6c0-1.5 1-3 3-3s3 1.5 3 3-1 3-3 3"/><path d="M7 21h10"/></svg><span>Oil &amp; Gas</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V8l7-4 7 4v13M9 21v-7h6v7"/></svg><span>Government &amp; Public</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg><span>Education</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3"/></svg><span>Technology</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span>Financial Services</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h2l2-5h6l2 5h2a1 1 0 0 0 1-1v-4l-2-2H6L4 12v4a1 1 0 0 0 1 1z"/><circle cx="7.5" cy="17.5" r="1.5"/><circle cx="16.5" cy="17.5" r="1.5"/></svg><span>Automobile</span></a>
+                            </div>
+
+                            <!-- BY DEPARTMENT (hidden until hovered) -->
+                            <h6 class="np-nav-title np-grid-title" id="solDepartmentTitle" hidden>By Department</h6>
+                            <div class="np-grid" id="solDepartmentGrid" hidden>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span>Finance</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18l6-6 4 4 8-8"/><path d="M17 8h4v4"/></svg><span>Sales</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l18-8v18z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg><span>Marketing</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg><span>Human Resources</span></a>
+                            </div>
+
+                        </div>
+
+                        <!-- COL 3 — Recent Blogs sidebar -->
+                        <aside class="np-releases">
+                            <h6 class="np-nav-title">Recent Blogs</h6>
+                            <a class="np-release" href="#">
+                                <span class="np-release-tag">Featured</span>
+                                <span class="np-release-title">How AI-Powered Analytics is Reshaping Healthcare</span>
+                                <span class="np-release-sub">Real-world results from teams using Lumenore to cut reporting cycles in half.</span>
+                            </a>
+                            <a class="np-release" href="#">
+                                <span class="np-release-title">5 Ways Sales Teams Use Self-Service BI</span>
+                                <span class="np-release-sub">Faster pipeline insights without filing IT tickets.</span>
+                            </a>
+                            <a class="np-release" href="#">
+                                <span class="np-release-title">Manufacturing Forecasting at Scale</span>
+                                <span class="np-release-sub">Connect 50+ sources with low-code ETL.</span>
+                            </a>
+                            <a class="np-view-all" href="#">
+                                View All Blogs
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                            </a>
+                        </aside>
+                    </div>
+                </li>
+
+                <!-- PRICING -->
+                <li class="nav-item">
+                    <a href="#" class="nav-trigger">Pricing</a>
+                </li>
+
+                <!-- RESOURCES — 2-col: all text links | Recent Blogs sidebar -->
+                <li class="nav-item has-dropdown nav-item--resources" data-mega-id="resourcesMega">
+                    <a href="#" class="nav-trigger">Resources
+                        <svg class="caret" viewBox="0 0 8 4" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 0l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                    <div class="nav-mega nav-mega--resources" role="menu" id="resourcesMega">
+
+                        <!-- COL 1 — All resource link groups -->
+                        <div class="np-nav np-nav--wide">
+                            <div class="np-nav-section">
+                                <h6 class="np-nav-title">Watch</h6>
+                                <ul class="np-nav-list">
+                                    <li><a href="#">Demo</a></li>
+                                    <li><a href="#">Webinars &amp; Events</a></li>
+                                    <li><a href="#">Training</a></li>
+                                </ul>
+                            </div>
+                            <div class="np-nav-section">
+                                <h6 class="np-nav-title">Read</h6>
+                                <ul class="np-nav-list">
+                                    <li><a href="#">Blogs</a></li>
+                                    <li><a href="#">Use Cases</a></li>
+                                    <li><a href="#">eBooks &amp; Whitepapers</a></li>
+                                    <li><a href="#">News &amp; Media</a></li>
+                                    <li><a href="#">Success Stories</a></li>
+                                </ul>
+                            </div>
+                            <div class="np-nav-section">
+                                <h6 class="np-nav-title">Learn</h6>
+                                <ul class="np-nav-list">
+                                    <li><a href="#">Certification</a></li>
+                                    <li><a href="#">Support Portal</a></li>
+                                    <li><a href="#">Knowledge Base</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- COL 2 — Recent Blogs sidebar -->
+                        <aside class="np-releases">
+                            <h6 class="np-nav-title">Recent Blogs</h6>
+                            <a class="np-release" href="#">
+                                <span class="np-release-tag">Featured</span>
+                                <span class="np-release-title">Agentic RAG: Beyond Simple Retrieval</span>
+                                <span class="np-release-sub">How self-correcting AI workflows are changing how teams query their data.</span>
+                            </a>
+                            <a class="np-release" href="#">
+                                <span class="np-release-title">A Practical Guide to Self-Service BI</span>
+                                <span class="np-release-sub">Patterns that scale beyond the analytics team.</span>
+                            </a>
+                            <a class="np-release" href="#">
+                                <span class="np-release-title">Reading Forecasts You Can Trust</span>
+                                <span class="np-release-sub">Confidence intervals, explainability, and outcome tracking.</span>
+                            </a>
+                            <a class="np-view-all" href="#">
+                                View All Blogs
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                            </a>
+                        </aside>
+                    </div>
+                </li>
+
+                <!-- COMPANY — 3-col mega: single nav entry | full item grid | recent blogs -->
+                <li class="nav-item has-dropdown nav-item--company" data-mega-id="companyMega">
+                    <a href="#" class="nav-trigger">Company
+                        <svg class="caret" viewBox="0 0 8 4" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 0l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                    <div class="nav-mega nav-mega--platform nav-mega--company" role="menu" id="companyMega">
+
+                        <!-- COL 1 — Single Company entry, mirrors Platform's Capabilities link -->
+                        <div class="np-nav">
+                            <ul class="np-nav-list">
+                                <li><a href="#" data-company-item="all" class="np-cap-link">
+                                    <span>Company</span>
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                                </a></li>
+                            </ul>
+                        </div>
+
+                        <!-- COL 2 — All 7 items in one grid (no filter splits) -->
+                        <div class="np-detail" id="companyDetail">
+                            <h6 class="np-nav-title np-grid-title" id="coAllTitle" hidden>Company</h6>
+                            <div class="np-grid" id="coAllGrid" hidden>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 7 7 .8-5.3 4.8 1.7 7.4-7.4-4-7.4 4 1.7-7.4L0 9.8 7 9z"/></svg><span>Lumenore Difference</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 11l-3 3-1.5-1.5"/></svg><span>Partners</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg><span>Professional Services</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4M8 23h8"/></svg><span>Latest Releases</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg><span>Careers</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span>Contact Us</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18l6-6 4 4 8-8"/><path d="M17 8h4v4"/></svg><span>Contact Sales</span></a>
+                            </div>
+                        </div>
+
+                        <!-- COL 3 — Recent Blogs sidebar -->
+                        <aside class="np-releases">
+                            <h6 class="np-nav-title">Recent Blogs</h6>
+                            <a class="np-release" href="#">
+                                <span class="np-release-tag">Story</span>
+                                <span class="np-release-title">Inside Lumenore: How We Build for Enterprise</span>
+                                <span class="np-release-sub">The product principles behind self-correcting AI workflows.</span>
+                            </a>
+                            <a class="np-release" href="#">
+                                <span class="np-release-title">Hiring Engineers Who Care</span>
+                                <span class="np-release-sub">A peek inside the team culture and what we look for.</span>
+                            </a>
+                            <a class="np-release" href="#">
+                                <span class="np-release-title">Partner Program: 2026 Roadmap</span>
+                                <span class="np-release-sub">New tiers, joint go-to-market, and certification.</span>
+                            </a>
+                            <a class="np-view-all" href="#">
+                                View All Blogs
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                            </a>
+                        </aside>
+                    </div>
+                </li>
+
+            </ul>
+        </nav>
+
+        <div class="nav-actions">
+            <a href="#" class="btn-demo">Request a Demo</a>
+            <a href="#" class="btn-start btn-primary btn-primary--sm">Start for Free</a>
+        </div>
+    </header>
+
+</div>
+
+<!-- ═══════════ HERO — Lumenore Ask Me (product-specific design on common dark canvas) ═══════════ -->
+<section class="hero-section">
+    <div class="hero-arc"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-grain"></div>
+    <div class="container">
+        <div class="hero-content reveal">
+            <span class="hero-eyebrow">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.9 5.2L19 9l-5.1 1.8L12 16l-1.9-5.2L5 9l5.1-1.8L12 2z"/></svg>
+                Lumenore Ask Me
+            </span>
+            <h1>
+                Instant Insights with Conversational Analytics<br>
+                for everyone powered by <span class="ai-agents-gradient">Agentic Assistants</span>
+            </h1>
+            <p class="hero-sub">
+                Get instant insights and eliminate reporting delays with Lumenore Ask Me — an AI-powered
+                analytics assistant that understands your questions and delivers actionable insights in real time.
+            </p>
+        </div>
+
+        <div class="hero-visual-wrap reveal">
+            <div class="hero-visual-glow" aria-hidden="true"></div>
+            <div class="hero-visual">
+                <img src="assets/images/GIf/Askme_Gif 1.gif" alt="Lumenore Ask Me conversational analytics dashboard" loading="lazy">
+            </div>
+        </div>
+    </div>
+</section>
+
+</div>
+<!-- ═══════════ /HERO STAGE ═══════════ -->
+
+<!-- ═══════════ TRUSTED LOGOS (common with homepage.html) ═══════════ -->
+<section class="trusted-section">
+    <div class="container">
+        <h3 class="reveal-block">Trusted by <span class="ah-accent">100+ Teams</span> Across Global Enterprises</h3>
+
+        <div class="logo-flip-row reveal-block" style="--reveal-delay:.22s" id="logoFlipGrid"></div>
+    </div>
+</section>
+
+<!-- ═══════════ YOUR VERY OWN CONVERSATIONAL AI AGENT (dark glass cards, 3-col) ═══════════ -->
+<section class="section-aiagent">
+    <div class="container">
+        <span class="ai-eyebrow reveal"><span class="ae-dot"></span> Conversational AI Agent</span>
+        <h2 class="reveal">Your Very Own <span class="ah-accent">Conversational AI Agent</span></h2>
+        <p class="section-sub reveal">Guided by you, Lumenore Ask Me goes beyond simple Q&amp;A to understand intent, perform multi-step analysis, and deliver complete insights — in minutes, not hours.</p>
+
+        <div class="aiagent-grid reveal reveal-group">
+            <div class="aiagent-item">
+                <span class="ai-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+                </span>
+                <h5>Avoid Last-Minute Insights Hassle</h5>
+                <p>Eliminate delays and dependency on analysts with AI. Let Lumenore Ask Me meet your urgent data needs.</p>
+            </div>
+            <div class="aiagent-item">
+                <span class="ai-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                </span>
+                <h5>Ask Follow-Up Questions</h5>
+                <p>Explore deeper with contextual conversations — Ask Me retains context across queries for more connected and meaningful analysis.</p>
+            </div>
+            <div class="aiagent-item">
+                <span class="ai-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                </span>
+                <h5>Full Flexibility When Analysing</h5>
+                <p>Switch across datasets and schemas mid-conversation to perform flexible, dynamic, and comprehensive analysis.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════ JUST ASK AND GET ANSWERS — stepper showcase ═══════════ -->
+<section class="section-askcards">
+    <div class="container">
+
+        <!-- Centred section header -->
+        <div class="ja-intro reveal">
+            <span class="ja-eyebrow">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                LUMENORE ASK ME · CAPABILITIES
+            </span>
+            <h2 class="ja-heading">Just ask. Get answers with <span class="ja-accent">Lumenore Ask Me</span></h2>
+        </div>
+
+        <div class="ja-wrap">
+
+            <!-- ── Left: stepper only ── -->
+            <div class="ja-col-left">
+
+                <div class="ja-stepper reveal" id="jaStepperNav">
+                    <div class="ja-line-track"><div class="ja-line-fill" id="jaLineFill"></div></div>
+
+                    <button class="ja-step is-active" data-step="0" aria-label="MCP-Powered Conversational Analytics">
+                        <span class="ja-dot"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></span>
+                        <span class="ja-step-text">MCP-Powered Conversational Analytics</span>
+                    </button>
+                    <button class="ja-step" data-step="1" aria-label="Ask Using Natural Language Querying">
+                        <span class="ja-dot"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
+                        <span class="ja-step-text">Ask Using Natural Language Querying</span>
+                    </button>
+                    <button class="ja-step" data-step="2" aria-label="Get Narrative Insights and Recommendations">
+                        <span class="ja-dot"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></span>
+                        <span class="ja-step-text">Get Narrative Insights and Recommendations</span>
+                    </button>
+                    <button class="ja-step" data-step="3" aria-label="DIY Analytics in Every Way">
+                        <span class="ja-dot"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg></span>
+                        <span class="ja-step-text">DIY Analytics in Every Way</span>
+                    </button>
+                    <button class="ja-step" data-step="4" aria-label="Force of AI Agents for Every Business Need">
+                        <span class="ja-dot"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg></span>
+                        <span class="ja-step-text">Force of AI Agents for Every Business Need</span>
+                    </button>
+                    <button class="ja-step" data-step="5" aria-label="Conversational RCA with AI Agent">
+                        <span class="ja-dot"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span>
+                        <span class="ja-step-text">Conversational RCA with AI Agent</span>
+                    </button>
+                    <button class="ja-step" data-step="6" aria-label="Perform Data Science-Driven Analysis">
+                        <span class="ja-dot"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></span>
+                        <span class="ja-step-text">Perform Data Science-Driven Analysis</span>
+                    </button>
+                    <button class="ja-step" data-step="7" aria-label="Unstructured Data Analysis">
+                        <span class="ja-dot"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></span>
+                        <span class="ja-step-text">Unstructured Data Analysis</span>
+                    </button>
+                    <button class="ja-step" data-step="8" aria-label="Bring Your Own LLM">
+                        <span class="ja-dot"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg></span>
+                        <span class="ja-step-text">Bring Your Own LLM</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- ── Right: content panels ── -->
+            <div class="ja-col-right" id="jaPanels">
+
+                <!-- Panel 0: MCP -->
+                <div class="ja-panel is-active" data-panel="0">
+                    <div class="ja-panel-header">
+                        <div class="ja-panel-meta">
+                            <div class="ja-panel-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+                            <span class="ja-panel-counter">01 · 9 CAPABILITIES</span>
+                        </div>
+                        <a href="#" class="ja-demo-btn"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg>Watch demo</a>
+                    </div>
+                    <div class="ja-panel-content">
+                        <h3 class="ja-panel-title">MCP-Powered Conversational Analytics</h3>
+                        <p class="ja-panel-desc">Go beyond one-query-one-response with an intelligent analytics experience that enables dynamic query execution and context-aware insights—delivering complete, actionable answers in a single interaction.</p>
+                    </div>
+                    <div class="ja-panel-visual">
+                        <img class="ja-vis-main" src="https://www.figma.com/api/mcp/asset/64ca875f-9cd8-4da1-bb8a-0bfab289aa2a" alt="MCP-Powered Conversational Analytics dashboard">
+                        <img class="ja-vis-float ja-vis-float--portrait" src="https://www.figma.com/api/mcp/asset/65e94989-4dd6-472e-8c4f-1d930dd87a58" alt="">
+                    </div>
+                </div>
+
+                <!-- Panel 1: NLQ -->
+                <div class="ja-panel" data-panel="1">
+                    <div class="ja-panel-header">
+                        <div class="ja-panel-meta">
+                            <div class="ja-panel-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+                            <span class="ja-panel-counter">02 · 9 CAPABILITIES</span>
+                        </div>
+                        <a href="#" class="ja-demo-btn"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg>Watch demo</a>
+                    </div>
+                    <div class="ja-panel-content">
+                        <h3 class="ja-panel-title">Ask Using Natural Language Querying</h3>
+                        <p class="ja-panel-desc">Ask questions in simple language and get answers powered by AI analytics that understands intent, context, and business logic—not just keywords.</p>
+                    </div>
+                    <div class="ja-panel-visual ja-panel-visual--nlq">
+                        <img class="ja-vis-nlq-phone" src="https://www.figma.com/api/mcp/asset/de3e03d3-2607-458a-92b1-ebea6df8cdcd" alt="Person using mobile analytics">
+                        <img class="ja-vis-nlq-chart" src="https://www.figma.com/api/mcp/asset/430f83aa-0847-4c7b-8530-ae6943ac0b6c" alt="Sales by product category chart">
+                    </div>
+                </div>
+
+                <!-- Panel 2: Insights -->
+                <div class="ja-panel" data-panel="2">
+                    <div class="ja-panel-header">
+                        <div class="ja-panel-meta">
+                            <div class="ja-panel-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></div>
+                            <span class="ja-panel-counter">03 · 9 CAPABILITIES</span>
+                        </div>
+                        <a href="#" class="ja-demo-btn"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg>Watch demo</a>
+                    </div>
+                    <div class="ja-panel-content">
+                        <h3 class="ja-panel-title">Get Narrative Insights and Recommendations</h3>
+                        <p class="ja-panel-desc">Receive rich, adaptive responses including charts, summaries, and AI-generated recommendations—helping you understand and act faster.</p>
+                    </div>
+                    <div class="ja-panel-visual ja-panel-visual--triple">
+                        <img class="ja-vis-main" src="https://www.figma.com/api/mcp/asset/d7772b9b-48d9-44e7-97dc-05e6e3000f51" alt="Sales and profit analysis by channel">
+                        <img class="ja-vis-float" src="https://www.figma.com/api/mcp/asset/bef42989-7ebf-43e6-8058-4892ba86d7ce" alt="Insights card">
+                        <img class="ja-vis-float2" src="https://www.figma.com/api/mcp/asset/345efdbd-8fc0-41c0-a4a3-07315c825485" alt="Recommendations card">
+                    </div>
+                </div>
+
+                <!-- Panel 3: DIY -->
+                <div class="ja-panel" data-panel="3">
+                    <div class="ja-panel-header">
+                        <div class="ja-panel-meta">
+                            <div class="ja-panel-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg></div>
+                            <span class="ja-panel-counter">04 · 9 CAPABILITIES</span>
+                        </div>
+                        <a href="#" class="ja-demo-btn"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg>Watch demo</a>
+                    </div>
+                    <div class="ja-panel-content">
+                        <h3 class="ja-panel-title">DIY Analytics in Every Way</h3>
+                        <p class="ja-panel-desc">Empower every business user with self-service analytics to independently explore, analyze, and act on data without technical expertise.</p>
+                    </div>
+                    <div class="ja-panel-visual ja-panel-visual--multi">
+                        <img src="https://www.figma.com/api/mcp/asset/77364b9e-fe57-4978-9979-bc3629c9de16" alt="Chart 1" class="ja-vis-multi ja-vis-multi--tl">
+                        <img src="https://www.figma.com/api/mcp/asset/f4c99315-650a-4d67-965b-36349c154070" alt="Chart 2" class="ja-vis-multi ja-vis-multi--bl">
+                        <img src="https://www.figma.com/api/mcp/asset/c30dd864-dd2a-4b7a-ac56-afc9c7eae7f7" alt="Query 1" class="ja-vis-multi ja-vis-multi--tr">
+                        <img src="https://www.figma.com/api/mcp/asset/e2a4e26e-bd0f-4740-9daf-c09d594ee82f" alt="Query 2" class="ja-vis-multi ja-vis-multi--br">
+                    </div>
+                </div>
+
+                <!-- Panel 4: AI Agents -->
+                <div class="ja-panel" data-panel="4">
+                    <div class="ja-panel-header">
+                        <div class="ja-panel-meta">
+                            <div class="ja-panel-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg></div>
+                            <span class="ja-panel-counter">05 · 9 CAPABILITIES</span>
+                        </div>
+                        <a href="#" class="ja-demo-btn"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg>Watch demo</a>
+                    </div>
+                    <div class="ja-panel-content">
+                        <h3 class="ja-panel-title">Force of AI Agents for Every Business Need</h3>
+                        <p class="ja-panel-desc">Leverage a system of intelligent AI agents, orchestrated to handle everything from querying to advanced analytics and visualization.</p>
+                    </div>
+                    <div class="ja-panel-visual ja-panel-visual--agents">
+                        <img src="https://www.figma.com/api/mcp/asset/525f7124-d1e3-48a9-86fc-50f8753773b3" alt="Data Science Agent" class="ja-vis-multi" style="left:4%;top:22%;width:32%;">
+                        <img src="https://www.figma.com/api/mcp/asset/6daa72cf-6563-47a7-86f3-f18a2c9ae7f0" alt="Master Agent" class="ja-vis-multi" style="left:34%;top:5%;width:32%;">
+                        <img src="https://www.figma.com/api/mcp/asset/c32b957e-68c7-41a8-a1ed-7c2d0ddb6781" alt="NLQ Agent" class="ja-vis-multi" style="right:4%;top:38%;width:32%;">
+                        <img src="https://www.figma.com/api/mcp/asset/2be40e68-4811-4a1e-81db-aaf24b634cf4" alt="RCA Agent" class="ja-vis-multi" style="left:4%;bottom:16%;width:32%;">
+                        <img src="https://www.figma.com/api/mcp/asset/7a5deac3-ef40-4505-a48a-fa36b7096ac9" alt="Visualisation Agent" class="ja-vis-multi" style="left:34%;bottom:6%;width:32%;">
+                    </div>
+                </div>
+
+                <!-- Panel 5: RCA -->
+                <div class="ja-panel" data-panel="5">
+                    <div class="ja-panel-header">
+                        <div class="ja-panel-meta">
+                            <div class="ja-panel-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+                            <span class="ja-panel-counter">06 · 9 CAPABILITIES</span>
+                        </div>
+                        <a href="#" class="ja-demo-btn"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg>Watch demo</a>
+                    </div>
+                    <div class="ja-panel-content">
+                        <h3 class="ja-panel-title">Conversational RCA with AI Agent</h3>
+                        <p class="ja-panel-desc">Go beyond "what" and uncover "why" with AI-driven root cause analysis that identifies drivers, patterns, and contributing factors.</p>
+                    </div>
+                    <div class="ja-panel-visual ja-panel-visual--rca">
+                        <img class="ja-vis-rca-top" src="https://www.figma.com/api/mcp/asset/71e0f0ad-0ada-43df-8651-6f0bd6013a0c" alt="RCA analysis result">
+                        <img class="ja-vis-rca-q1" src="https://www.figma.com/api/mcp/asset/45ec47fb-cfd9-43cc-8623-1521a1dffc1b" alt="Query 1">
+                        <img class="ja-vis-rca-q2" src="https://www.figma.com/api/mcp/asset/434fc1f9-f3fe-4788-a863-13e7a6fd8b95" alt="Query 2">
+                        <img class="ja-vis-rca-bot" src="https://www.figma.com/api/mcp/asset/602504ea-7f45-4367-9193-e8a686e3ebbe" alt="RCA chart breakdown">
+                    </div>
+                </div>
+
+                <!-- Panel 6: Data Science -->
+                <div class="ja-panel" data-panel="6">
+                    <div class="ja-panel-header">
+                        <div class="ja-panel-meta">
+                            <div class="ja-panel-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
+                            <span class="ja-panel-counter">07 · 9 CAPABILITIES</span>
+                        </div>
+                        <a href="#" class="ja-demo-btn"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg>Watch demo</a>
+                    </div>
+                    <div class="ja-panel-content">
+                        <h3 class="ja-panel-title">Perform Data Science-Driven Analysis</h3>
+                        <p class="ja-panel-desc">Run advanced analytics like forecasting, trend analysis, outlier detection, and more—powered by AI agents that automatically apply the right models.</p>
+                    </div>
+                    <div class="ja-panel-visual">
+                        <img class="ja-vis-main" src="https://www.figma.com/api/mcp/asset/a4da1ed0-d07a-4004-9256-1a417a961d13" alt="Data science forecasting screenshot">
+                        <img class="ja-vis-float" src="https://www.figma.com/api/mcp/asset/53c299aa-553c-4eac-8def-29055b4be5e0" alt="Outlier detection chart">
+                    </div>
+                </div>
+
+                <!-- Panel 7: Unstructured -->
+                <div class="ja-panel" data-panel="7">
+                    <div class="ja-panel-header">
+                        <div class="ja-panel-meta">
+                            <div class="ja-panel-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></div>
+                            <span class="ja-panel-counter">08 · 9 CAPABILITIES</span>
+                        </div>
+                        <a href="#" class="ja-demo-btn"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg>Watch demo</a>
+                    </div>
+                    <div class="ja-panel-content">
+                        <h3 class="ja-panel-title">Unstructured Data Analysis</h3>
+                        <p class="ja-panel-desc">Analyze documents, images, audio, and video using Agentic RAG with multimodal intelligence, enabling accurate, context-aware insights with reduced hallucinations.</p>
+                    </div>
+                    <div class="ja-panel-visual">
+                        <img class="ja-vis-main" src="https://www.figma.com/api/mcp/asset/b1c6a54a-0ca6-4cd3-8ba1-507821df7eee" alt="Unstructured data query result">
+                        <img class="ja-vis-float" src="https://www.figma.com/api/mcp/asset/fb603d40-e4b3-45dc-90b2-4b632be0b63d" alt="Follow-up analysis">
+                    </div>
+                </div>
+
+                <!-- Panel 8: BYOLLM -->
+                <div class="ja-panel" data-panel="8">
+                    <div class="ja-panel-header">
+                        <div class="ja-panel-meta">
+                            <div class="ja-panel-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg></div>
+                            <span class="ja-panel-counter">09 · 9 CAPABILITIES</span>
+                        </div>
+                        <a href="#" class="ja-demo-btn"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg>Watch demo</a>
+                    </div>
+                    <div class="ja-panel-content">
+                        <h3 class="ja-panel-title">Bring Your Own LLM</h3>
+                        <p class="ja-panel-desc">Integrate your preferred LLM while maintaining full control, governance, and flexibility across enterprise AI workflows.</p>
+                    </div>
+                    <div class="ja-panel-visual">
+                        <img class="ja-vis-main" src="https://www.figma.com/api/mcp/asset/66a03323-8bf0-4ac2-99fe-a1d06b7d0fde" alt="LLM configuration screenshot">
+                        <img class="ja-vis-float ja-vis-float--portrait" src="https://www.figma.com/api/mcp/asset/4eff66b9-0a73-473a-8ead-5c886255a79d" alt="LLM logos">
+                    </div>
+                </div>
+
+            </div><!-- /ja-col-right -->
+        </div><!-- /ja-wrap -->
+    </div>
+</section>
+
+
+<!-- ═══════════ RESOURCES CURATED FOR YOU — static 3-card grid, story-card style
+              Content + images from Figma node 528:22616. ═══════════ -->
+<section class="section-resources">
+    <div class="container">
+        <h2 class="reveal">Resources <span class="ah-accent">Curated for You</span></h2>
+        <div class="resources-grid reveal reveal-group">
+            <a href="#" class="story-card">
+                <div class="story-image">
+                    <img src="assets/images/askme-resources/data-speak.jpg" alt="Data Speak — Leveraging Conversational Intelligence in a Voice-driven World" loading="lazy">
+                </div>
+                <div class="story-body">
+                    <p class="story-eyebrow">
+                        <span class="se-tag">Lumenore</span>
+                        <span class="se-sep" aria-hidden="true"></span>
+                        <span class="se-cat">Business Intelligence &amp; Data Analytics</span>
+                    </p>
+                    <p class="story-title">Data Speak: Leveraging Conversational Intelligence in a Voice-driven World</p>
+                </div>
+            </a>
+
+            <a href="#" class="story-card">
+                <div class="story-image">
+                    <img src="assets/images/askme-resources/self-service-analytics.jpg" alt="Embrace Self-Service Analytics — 3 Shifts in the Modern Data Environment" loading="lazy">
+                </div>
+                <div class="story-body">
+                    <p class="story-eyebrow">
+                        <span class="se-tag">Lumenore</span>
+                        <span class="se-sep" aria-hidden="true"></span>
+                        <span class="se-cat">Trends</span>
+                    </p>
+                    <p class="story-title">Embrace Self-Service Analytics — 3 Shifts in the Modern Data Environment</p>
+                </div>
+            </a>
+
+            <a href="#" class="story-card">
+                <div class="story-image">
+                    <img src="assets/images/askme-resources/nlp-in-bi.jpg" alt="Unleashing the Potential of Natural Language Processing in BI" loading="lazy">
+                </div>
+                <div class="story-body">
+                    <p class="story-eyebrow">
+                        <span class="se-tag">Lumenore</span>
+                        <span class="se-sep" aria-hidden="true"></span>
+                        <span class="se-cat">Trends</span>
+                    </p>
+                    <p class="story-title">Unleashing the Potential of Natural Language Processing in BI</p>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════ HAVE A LOOK AT OUR OTHER PRODUCTS — horizontal comparison ═══════════ -->
+<section class="section-products-other">
+    <div class="container">
+
+        <div class="op-intro reveal">
+            <h2>Have a Look at Our <span class="ah-accent">Other Products</span></h2>
+            <p>Most teams pay 5 vendors to pass data between each other. Lumenore replaces three of them — in a single platform.</p>
+        </div>
+
+        <div class="op-cards">
+
+            <!-- Lumenore Insights -->
+            <div class="op-card op-card--insights reveal">
+                <div class="op-visual">
+                    <img src="assets/images/products/LUMENORE INSIGHTS.svg" alt="Lumenore Insights — Self-Service Analytics" class="op-card-img" loading="lazy">
+                </div>
+                <div class="op-body">
+                    <div class="op-body-top">
+                        <span class="op-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="10" width="4" height="11"/><rect x="10" y="3" width="4" height="18"/><rect x="17" y="7" width="4" height="14"/></svg>
+                        </span>
+                        <span class="op-pill">Lumenore Insights</span>
+                    </div>
+                    <h3>Self-Service Analytics</h3>
+                    <p>Go beyond static reporting. Democratize data with self-service, AI-powered dashboards that empower every employee to make data-driven decisions instantly.</p>
+                    <ul class="op-feats">
+                        <li>AI-powered dashboards with drag-and-drop builder</li>
+                        <li>100+ chart types and data storytelling tools</li>
+                        <li>Real-time KPI tracking and storyboards</li>
+                    </ul>
+                    <a href="lumenore-insights.html" class="btn-primary">Explore Insights <span class="pd-cta-arrow" aria-hidden="true">&rarr;</span></a>
+                </div>
+            </div>
+
+            <!-- Lumenore Data Magnet -->
+            <div class="op-card op-card--magnet reveal">
+                <div class="op-visual">
+                    <img src="assets/images/products/Lumenore Data Magnet.svg" alt="Lumenore Data Magnet — Enterprise ETL" class="op-card-img" loading="lazy">
+                </div>
+                <div class="op-body">
+                    <div class="op-body-top">
+                        <span class="op-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v6c0 1.7 4 3 9 3s9-1.3 9-3V5M3 11v6c0 1.7 4 3 9 3s9-1.3 9-3v-6"/></svg>
+                        </span>
+                        <span class="op-pill">Lumenore Data Magnet</span>
+                    </div>
+                    <h3>Enterprise ETL</h3>
+                    <p>The foundation of your data strategy. Connect 50+ enterprise sources with low-code ETL and accelerate high-volume transfers to your Lakehouse with secure automation.</p>
+                    <ul class="op-feats">
+                        <li>50+ enterprise data connectors, no code required</li>
+                        <li>Automated pipeline scheduling and monitoring</li>
+                        <li>Unified data stream into your Lakehouse</li>
+                    </ul>
+                    <a href="lumenore-data-magnet.html" class="btn-primary">Explore Data Magnet <span class="pd-cta-arrow" aria-hidden="true">&rarr;</span></a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- ===== PAGE FINALE (gradient: violet → navy) ===== -->
+<div class="page-finale">
+
+<!-- ===== TRUST + BEFORE YOU DECIDE + CTA ===== -->
+<section class="section-trust">
+    <div class="container">
+        <div class="trust-row">
+            <h2 class="reveal-left">Trusted Standards for<br>Complete Data Security</h2>
+            <div class="trust-badges reveal-right" style="--reveal-delay:.18s">
+                <img src="assets/images/homeV2o/Compliance_HIPAA.svg" alt="HIPAA Compliant" loading="lazy">
+                <img src="assets/images/homeV2o/Compliance_GDPR.svg" alt="GDPR Ready" loading="lazy">
+                <img src="assets/images/homeV2o/Compliance_AICPA_SOC2.svg" alt="AICPA SOC 2" loading="lazy">
+            </div>
+        </div>
+
+        <div class="before-decide">
+            <div class="bd-intro reveal-block">
+                <h3>Before you decide</h3>
+                <p class="lead">Everything your team, IT, and procurement need to move forward with confidence.</p>
+            </div>
+
+            <div class="bd-faq reveal-block" id="bdFaq" style="--reveal-delay:.22s">
+                <div class="faq-item is-open">
+                    <button type="button" class="faq-q">
+                        <span class="faq-num">01</span>
+                        <span class="faq-text">What is Lumenore and how does it differ from other business intelligence tools?</span>
+                        <span class="faq-toggle" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Lumenore is an AI-powered business intelligence and analytics platform that combines data integration, automated insights, conversational analytics, and predictive intelligence. Unlike traditional BI tools, Lumenore offers natural language query, AI agents, and augmented analytics so users get insights instantly — no technical expertise required.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button type="button" class="faq-q">
+                        <span class="faq-num">02</span>
+                        <span class="faq-text">Which industries can benefit from Lumenore's analytics solutions?</span>
+                        <span class="faq-toggle" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Lumenore supports data-driven transformation across industries including healthcare, manufacturing, contact centers, retail, and HR. Its versatility makes it ideal for any enterprise aiming to become analytics-driven.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button type="button" class="faq-q">
+                        <span class="faq-num">03</span>
+                        <span class="faq-text">Can Lumenore integrate data from multiple sources and ETL tools?</span>
+                        <span class="faq-toggle" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes. Lumenore integrates with 100+ data sources including databases, cloud apps, CRMs, and ERPs. It works smoothly with ETL tools and performs built-in data preparation, letting you unify and transform data without complex engineering.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button type="button" class="faq-q">
+                        <span class="faq-num">04</span>
+                        <span class="faq-text">How does Lumenore support AI-powered data analytics?</span>
+                        <span class="faq-toggle" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Lumenore uses AI to automatically detect insights, predict future trends, and allow natural language queries so users can ask questions like "Why did sales drop last month?" and get instant, context-aware answers.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button type="button" class="faq-q">
+                        <span class="faq-num">05</span>
+                        <span class="faq-text">Do I need technical experience to use Lumenore's analytics features?</span>
+                        <span class="faq-toggle" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>No technical experience is required. Lumenore is a no-code, self-service analytics platform that lets business users create dashboards, run reports, and ask questions using natural language. All data models, workflows, and insights are fully guided and automated.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer">
+    <div class="container">
+
+        <!-- Top row: brand identity (left) + CTA panel (right) -->
+        <div class="footer-top">
+            <div class="brand-col footer-col reveal-left">
+                <div class="brand-logo">
+                    <img src="assets/images/homeV2o/Lumenore logo.svg" alt="Lumenore" class="brand-logo-img">
+                    <img src="assets/images/homeV2o/GPTW.svg" alt="Great Place to Work — Certified" class="gptw-badge">
+                </div>
+
+                <div class="ask-ai-box">
+                    <p class="ask-ai-label">Ask AI for a summary about Lumenore</p>
+                    <div class="ask-ai-icons">
+                        <a href="#" aria-label="ChatGPT"><img src="assets/images/AI/openai.svg" alt="ChatGPT" width="24" height="24"></a>
+                        <a href="#" aria-label="Perplexity"><img src="assets/images/AI/perplexity-dark.svg" alt="Perplexity" width="24" height="24"></a>
+                        <a href="#" aria-label="Gemini"><img src="assets/images/AI/google-gemini-dark.svg" alt="Gemini" width="24" height="24"></a>
+                        <a href="#" aria-label="Claude"><img src="assets/images/AI/claude.svg" alt="Claude" width="24" height="24"></a>
+                        <a href="#" aria-label="Grok"><img src="assets/images/AI/grok.svg" alt="Grok" width="24" height="24"></a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="footer-cta reveal-right" style="--reveal-delay:.18s">
+                <span class="footer-cta-halo" aria-hidden="true"></span>
+                <div class="footer-cta-text">
+                    <span class="footer-cta-eyebrow">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l2 5 5 2-5 2-2 5-2-5-5-2 5-2z" fill="currentColor"/></svg>
+                        Talk to a human
+                    </span>
+                    <h3>Got more questions?</h3>
+                    <p>Our team is here to answer any questions or customize the perfect plan for you.</p>
+                </div>
+
+                <a href="contact.html" class="footer-cta-button btn-primary">
+                    Get in Touch
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                </a>
+            </div>
+        </div>
+
+        <!-- Nav link columns — 5 equal cols -->
+        <div class="footer-nav reveal-block" style="--reveal-delay:.28s">
+            <div class="footer-col">
+                <h4>Platform</h4>
+                <ul>
+                    <li><a href="why-us.html">Why Us</a></li>
+                    <li><a href="trust-and-security.html">Trust and Security</a></li>
+                    <li><a href="partners.html">Partners</a></li>
+                    <li><a href="professional-services.html">Professional Services</a></li>
+                    <li><a href="platform.html">Platform</a></li>
+                    <li><a href="release-notes.html">Latest Releases</a></li>
+                    <li><a href="watch-demo.html">Watch Demo</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Capabilities</h4>
+                <ul>
+                    <li><a href="data-connectors.html">Data Connectors</a></li>
+                    <li><a href="data-integration.html">Data Integration</a></li>
+                    <li><a href="data-lakehouse.html">Data Lakehouse</a></li>
+                    <li><a href="data-visualization.html">Data Visualization</a></li>
+                    <li><a href="data-universe.html">Data Universe</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="advanced-analytics.html">Advanced Analytics</a></li>
+                    <li><a href="embedded-analytics.html">Embedded Analytics</a></li>
+                    <li><a href="conversational-intelligence.html">Conversational Intelligence</a></li>
+                    <li><a href="decision-intelligence.html">Decision Intelligence</a></li>
+                    <li><a href="self-service-analytics.html">Self-Service Analytics</a></li>
+                    <li><a href="predictive-analytics.html">Predictive Analytics</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Product</h4>
+                <ul>
+                    <li><a href="lumenore-insights.html">Lumenore Insights</a></li>
+                    <li><a href="lumenore-ask-me.html">Lumenore Ask Me</a></li>
+                    <li><a href="lumenore-data-magnet.html">Lumenore Data Magnet</a></li>
+                </ul>
+
+                <h4 class="col-spaced">Pricing</h4>
+                <ul>
+                    <li><a href="pricing-insights.html">Lumenore Insights Pricing</a></li>
+                </ul>
+
+                <h4 class="col-spaced">Compare</h4>
+                <ul>
+                    <li><a href="tableau-alternative.html">Tableau Alternative</a></li>
+                    <li><a href="thoughtspot-alternative.html">ThoughtSpot Alternative</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Solutions</h4>
+                <ul>
+                    <li><a href="solutions-by-industry.html">By Industry</a></li>
+                    <li><a href="solutions-by-department.html">By Department</a></li>
+                </ul>
+
+                <h4 class="col-spaced">Company</h4>
+                <ul>
+                    <li><a href="about-us.html">About Us</a></li>
+                    <li><a href="career.html">Career</a></li>
+                    <li><a href="newsroom.html">Newsroom</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="contact-sales.html">Contact Sales</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="request-a-demo.html">Request Demo</a></li>
+                    <li><a href="community-support.html">Community Support</a></li>
+                    <li><a href="news-and-media.html">News &amp; Media</a></li>
+                    <li><a href="ebooks-whitepapers.html">Ebooks &amp; Whitepapers</a></li>
+                    <li><a href="success-stories.html">Success Stories</a></li>
+                    <li><a href="use-cases.html">Use Cases</a></li>
+                    <li><a href="blog.html">Blogs</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="knowledge-base.html">Knowledge Base</a></li>
+                    <li><a href="certifications.html">Certifications</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p>© 2025 Lumenore Inc. All rights reserved.</p>
+            <div class="copyright-social">
+                <a href="#" aria-label="X / Twitter"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+                <a href="#" aria-label="LinkedIn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452z"/></svg></a>
+                <a href="#" aria-label="YouTube"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+                <a href="#" aria-label="Instagram"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+            </div>
+            <div class="legal-links">
+                <a href="privacy.html">Privacy</a>
+                <a href="terms.html">Terms of Use</a>
+                <a href="cookies.html">Cookies Settings</a>
+                <a href="license.html">License Agreement</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</div>
+<!-- ===== /PAGE FINALE ===== -->
+
+<!-- ═══════════ SCRIPTS ═══════════ -->
+
+<script>
+    /* Just Ask stepper — auto-advances every 4 s; click resets the timer; pauses on hover */
+    (function () {
+        const steps   = document.querySelectorAll('.ja-step');
+        const panels  = document.querySelectorAll('.ja-panel');
+        const fill    = document.getElementById('jaLineFill');
+        const section = document.querySelector('.section-askcards');
+        const total   = steps.length;
+        const DELAY   = 4000;
+        var current   = 0;
+        var timer     = null;
+
+        function activate(idx) {
+            current = idx;
+            steps.forEach(function (s, i)  { s.classList.toggle('is-active', i === idx); });
+            panels.forEach(function (p, i) { p.classList.toggle('is-active', i === idx); });
+            if (fill) {
+                var pct = ((idx + 0.5) / total) * 100;
+                fill.style.height = pct.toFixed(1) + '%';
+            }
+        }
+
+        function next() {
+            activate((current + 1) % total);
+        }
+
+        function startTimer() {
+            clearInterval(timer);
+            timer = setInterval(next, DELAY);
+        }
+
+        steps.forEach(function (step, idx) {
+            step.addEventListener('click', function () {
+                activate(idx);
+                startTimer();   /* reset auto-advance on manual click */
+            });
+        });
+
+        /* pause while the user hovers over the section */
+        if (section) {
+            section.addEventListener('mouseenter', function () { clearInterval(timer); });
+            section.addEventListener('mouseleave', function () { startTimer(); });
+        }
+
+        activate(0);
+        startTimer();
+    })();
+</script>
+
+<script>
+    /* Features marquee — true infinite scroll with prev/next buttons */
+    (function initFeaturesMarquee(){
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        const tracks = document.querySelectorAll('.features-marquee .features-track');
+        if (!tracks.length) return;
+
+        tracks.forEach(track => {
+            const dir = track.dataset.marqueeDir === 'ltr' ? 1 : -1;
+            const baseSpeed = 1.1;
+            let offset = 0;
+            let paused = false;
+
+            const gap = () => parseFloat(getComputedStyle(track).gap) || 24;
+            const cardWidth = () => {
+                const c = track.firstElementChild;
+                return c ? c.offsetWidth + gap() : 0;
+            };
+
+            function tick(){
+                if (!paused){
+                    const cw = cardWidth();
+                    if (cw > 0){
+                        offset += dir * baseSpeed * -1;
+                        if (dir < 0){
+                            while (-offset >= cw){ track.appendChild(track.firstElementChild); offset += cw; }
+                        } else {
+                            while (offset >= cw){ track.insertBefore(track.lastElementChild, track.firstElementChild); offset -= cw; }
+                        }
+                    }
+                    track.style.transform = `translate3d(${offset.toFixed(2)}px, 0, 0)`;
+                }
+                requestAnimationFrame(tick);
+            }
+
+            track.addEventListener('mouseenter', () => { paused = true;  });
+            track.addEventListener('mouseleave', () => { paused = false; });
+            track.addEventListener('focusin',    () => { paused = true;  });
+            track.addEventListener('focusout',   () => { paused = false; });
+
+            let stepRaf = null;
+            function stepBy(delta) {
+                const cw = cardWidth();
+                if (!cw) return;
+                paused = true;
+                let start = offset, target = offset + delta;
+                const duration = 380, t0 = performance.now();
+                if (stepRaf) cancelAnimationFrame(stepRaf);
+                function animate(now) {
+                    const p = Math.min((now - t0) / duration, 1);
+                    const e = p < 0.5 ? 2*p*p : -1+(4-2*p)*p;
+                    offset = start + (target - start) * e;
+                    if (dir < 0) {
+                        while (-offset >= cw){ track.appendChild(track.firstElementChild); offset += cw; start += cw; target += cw; }
+                        while (offset > 0)   { track.insertBefore(track.lastElementChild, track.firstElementChild); offset -= cw; start -= cw; target -= cw; }
+                    } else {
+                        while (offset >= cw) { track.insertBefore(track.lastElementChild, track.firstElementChild); offset -= cw; start -= cw; target -= cw; }
+                        while (-offset >= cw){ track.appendChild(track.firstElementChild); offset += cw; start += cw; target += cw; }
+                    }
+                    track.style.transform = `translate3d(${offset.toFixed(2)}px, 0, 0)`;
+                    if (p < 1) { stepRaf = requestAnimationFrame(animate); } else { paused = false; }
+                }
+                stepRaf = requestAnimationFrame(animate);
+            }
+
+            const prevBtn = document.getElementById('featuresPrev');
+            const nextBtn = document.getElementById('featuresNext');
+            if (prevBtn) prevBtn.addEventListener('click', () => stepBy( cardWidth()));
+            if (nextBtn) nextBtn.addEventListener('click', () => stepBy(-cardWidth()));
+
+            requestAnimationFrame(tick);
+        });
+    })();
+</script>
+
+<script>
+    /* FAQ accordion */
+    (function () {
+        const faq = document.getElementById('bdFaq');
+        if (!faq) return;
+        faq.querySelectorAll('.faq-q').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const item = btn.closest('.faq-item');
+                const isOpen = item.classList.contains('is-open');
+                faq.querySelectorAll('.faq-item').forEach(i => i.classList.remove('is-open'));
+                if (!isOpen) item.classList.add('is-open');
+            });
+        });
+    })();
+</script>
+
+<script>
+    /* Hero orbs — subtle scroll-driven floating parallax (matches home.html) */
+    (function () {
+        const orbs = document.querySelector('[data-hero-orbs]');
+        if (!orbs) return;
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        let ticking = false;
+        function update() {
+            const y = window.scrollY || window.pageYOffset || 0;
+            orbs.style.transform = 'translate3d(0,' + (y * 0.18).toFixed(1) + 'px,0)';
+            ticking = false;
+        }
+        window.addEventListener('scroll', function () {
+            if (!ticking) { requestAnimationFrame(update); ticking = true; }
+        }, { passive: true });
+        update();
+    })();
+</script>
+
+<script>
+    /* Scroll-reveal — fade/rise sections & cards into view */
+    (function () {
+        const els = document.querySelectorAll('.reveal');
+        if (!els.length) return;
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            els.forEach(el => el.classList.add('is-visible'));
+            return;
+        }
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); }
+            });
+        }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+        els.forEach(el => io.observe(el));
+    })();
+</script>
+
+<script>
+    /* Custom cursor — Linear-style magnetic dot + trailing ring (verbatim from home.html).
+       Two elements share one parent that gets transform-translated to the exact cursor
+       position every frame. The dot snaps to target. The ring lerps with its own
+       current/target track so it trails the dot with a buttery follow.
+
+       The hover state (`.is-active`) is added when the cursor is over any interactive
+       element (anchors, buttons, role=tab, custom CTAs, etc.) — the ring then expands
+       + tints violet to telegraph that the element is clickable. mousedown adds
+       `.is-pressed` for tactile shrink on click. Text inputs add `.is-hidden` so the
+       native I-beam takes over cleanly.
+
+       Performance:
+        • Both layers ride one rAF loop
+        • passive mousemove keeps scroll fluid
+        • Self-suspends when target is reached
+        • Skipped on touch + prefers-reduced-motion */
+    (function () {
+        const cursor = document.getElementById('customCursor');
+        if (!cursor) return;
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { cursor.remove(); return; }
+        if (window.matchMedia('(hover: none)').matches) { cursor.remove(); return; }
+
+        const dot  = cursor.querySelector('.cursor__dot');
+        const ring = cursor.querySelector('.cursor__ring');
+
+        /* Dot tracks the cursor exactly; ring lerps toward the same target */
+        let dotX = 0, dotY = 0;
+        let ringX = 0, ringY = 0;
+        const RING_EASE = 0.20;   /* trail length on the ring */
+
+        let raf = null;
+        let firstMove = false;
+
+        /* Selector list for "this is interactive — grow the ring" */
+        const INTERACTIVE_SEL = [
+            'a', 'button', 'label', 'select', 'summary',
+            '[role="button"]', '[role="tab"]', '[role="menuitem"]', '[role="link"]',
+            '.btn-primary', '.psb', '.ps-pill', '.px-tab', '.product-tab',
+            '.testimonial-tab', '.hero-search-tag', '.story-card',
+            '.feature-card', '.psb-arrow', '.followup', '.ex-followup',
+            '.aiagent-item', '.other-card', '.rc-card', '.nav-arrow'
+        ].join(',');
+
+        /* Inputs/textareas — hide the custom cursor and let native I-beam show */
+        const TEXT_SEL = 'input:not([type="button"]):not([type="submit"]):not([type="reset"]):not([type="checkbox"]):not([type="radio"]), textarea, [contenteditable="true"]';
+
+        function frame() {
+            ringX += (dotX - ringX) * RING_EASE;
+            ringY += (dotY - ringY) * RING_EASE;
+            cursor.style.transform = 'translate3d(' + dotX + 'px,' + dotY + 'px,0)';
+            ring.style.transform   = 'translate3d(' + (ringX - dotX) + 'px,' + (ringY - dotY) + 'px,0)';
+
+            if (Math.abs(dotX - ringX) > 0.3 || Math.abs(dotY - ringY) > 0.3) {
+                raf = requestAnimationFrame(frame);
+            } else {
+                ringX = dotX; ringY = dotY;
+                ring.style.transform = 'translate3d(0,0,0)';
+                raf = null;
+            }
+        }
+
+        function onMove(e) {
+            dotX = e.clientX;
+            dotY = e.clientY;
+            if (!firstMove) {
+                firstMove = true;
+                ringX = dotX; ringY = dotY;
+                cursor.style.transform = 'translate3d(' + dotX + 'px,' + dotY + 'px,0)';
+                cursor.classList.add('is-visible');
+            }
+            if (raf === null) raf = requestAnimationFrame(frame);
+        }
+
+        function onOver(e) {
+            if (e.target.closest(TEXT_SEL)) {
+                cursor.classList.add('is-hidden');
+                cursor.classList.remove('is-active');
+                return;
+            }
+            cursor.classList.remove('is-hidden');
+            if (e.target.closest(INTERACTIVE_SEL)) {
+                cursor.classList.add('is-active');
+            }
+        }
+        function onOut(e) {
+            if (!e.relatedTarget || !e.relatedTarget.closest || !e.relatedTarget.closest(INTERACTIVE_SEL)) {
+                cursor.classList.remove('is-active');
+            }
+        }
+
+        document.addEventListener('mousemove', onMove, { passive: true });
+        document.addEventListener('mouseover', onOver);
+        document.addEventListener('mouseout', onOut);
+        document.addEventListener('mousedown', () => cursor.classList.add('is-pressed'));
+        document.addEventListener('mouseup',   () => cursor.classList.remove('is-pressed'));
+        document.addEventListener('mouseleave', () => cursor.classList.remove('is-visible'));
+        document.addEventListener('mouseenter', () => { if (firstMove) cursor.classList.add('is-visible'); });
+    })();
+</script>
+
+
+<script>
+    /* Platform mega-menu — two Col 2 modes driven by Col 1 hover.
+         · Default + capability hover → static grid of all 12 capabilities;
+           the hovered capability gets highlighted to link the columns.
+         · Product hover → product-detail pane shows title, tagline,
+           description, and 3 CTAs (Start Free / Learn More / Pricing). */
+    (function () {
+        const mega         = document.getElementById('platformMega');
+        const detail       = document.getElementById('platformDetail');
+        const productPane  = document.getElementById('platformProductPane');
+        const productTitle = document.getElementById('npProductTitle');
+        const productTag   = document.getElementById('npProductTagline');
+        const productDesc  = document.getElementById('npProductDesc');
+        const ctaStart     = document.getElementById('npProductStart');
+        const ctaLearn     = document.getElementById('npProductLearn');
+        const ctaPricing   = document.getElementById('npProductPricing');
+        const gridTitle    = document.getElementById('platformGridTitle');
+        const grid         = document.getElementById('platformGrid');
+        const navList      = document.querySelectorAll('#platformMega [data-platform-item]');
+        const cards        = document.querySelectorAll('#platformMega [data-platform-card]');
+        if (!mega || !detail) return;
+
+        /* Product copy keyed by data-platform-item */
+        const products = {
+            insights: {
+                tagline: 'Self-Service Analytics',
+                title:   'Lumenore Insights',
+                desc:    'Democratize data with self-service, AI-powered dashboards that empower every employee to make data-driven decisions and maximize ROI instantly.',
+                start: '#', learn: '#', pricing: '#'
+            },
+            askme: {
+                tagline: 'Conversational Analytics',
+                title:   'Lumenore Ask Me',
+                desc:    'Query enterprise data and documents in natural language. Get instant, governed insights enhanced by Agentic RAG and seamless MCP integrations.',
+                start: 'lumenore-ask-me.html', learn: 'lumenore-ask-me.html', pricing: '#'
+            },
+            datamagnet: {
+                tagline: 'Enterprise ETL',
+                title:   'Lumenore Data Magnet',
+                desc:    'Connect 50+ enterprise sources with low-code ETL. Accelerate high-volume transfers to your Lakehouse with secure, cost-effective automation.',
+                start: '#', learn: '#', pricing: '#'
+            }
+        };
+
+        function hideAll() {
+            productPane.hidden = true;
+            if (gridTitle) gridTitle.hidden = true;
+            if (grid)      grid.hidden      = true;
+        }
+        function showProduct(key) {
+            const d = products[key];
+            if (!d) return;
+            productTag.textContent   = d.tagline;
+            productTitle.textContent = d.title;
+            productDesc.textContent  = d.desc;
+            ctaStart.setAttribute('href',   d.start);
+            ctaLearn.setAttribute('href',   d.learn);
+            ctaPricing.setAttribute('href', d.pricing);
+            productPane.hidden = false;
+            if (gridTitle) gridTitle.hidden = true;
+            if (grid)      grid.hidden      = true;
+        }
+        function showGrid() {
+            productPane.hidden = true;
+            if (gridTitle) gridTitle.hidden = false;
+            if (grid)      grid.hidden      = false;
+        }
+        function highlight(key) {
+            navList.forEach(n => n.classList.toggle('is-active', n.dataset.platformItem === key));
+            cards.forEach(c   => c.classList.toggle('is-active', c.dataset.platformCard === key));
+        }
+        function clearHighlight() {
+            navList.forEach(n => n.classList.remove('is-active'));
+            cards.forEach(c   => c.classList.remove('is-active'));
+        }
+
+        navList.forEach(n => {
+            const trigger = () => {
+                const key  = n.dataset.platformItem;
+                const type = n.dataset.platformType;
+                highlight(key);
+                if (type === 'product') showProduct(key);
+                else                    showGrid();
+            };
+            n.addEventListener('mouseenter', trigger);
+            n.addEventListener('focus',      trigger);
+        });
+        cards.forEach(c => {
+            const trigger = () => { showGrid(); highlight(c.dataset.platformCard); };
+            c.addEventListener('mouseenter', trigger);
+            c.addEventListener('focus',      trigger);
+        });
+
+        const navItem = mega.closest('.nav-item');
+        function openDefault(){
+            highlight('insights');
+            showProduct('insights');
+        }
+        if (navItem){
+            navItem.addEventListener('mouseenter', openDefault);
+            navItem.addEventListener('focusin',    openDefault);
+        }
+        if (navItem){
+            navItem.addEventListener('mouseleave', () => { clearHighlight(); hideAll(); });
+        }
+        mega.addEventListener('mouseleave', () => { });
+    })();
+
+    /* Solutions mega */
+    (function () {
+        const mega = document.getElementById('solutionMega');
+        if (!mega) return;
+        const navList     = mega.querySelectorAll('[data-solution-item]');
+        const industryTtl = document.getElementById('solIndustryTitle');
+        const industryGrid= document.getElementById('solIndustryGrid');
+        const deptTtl     = document.getElementById('solDepartmentTitle');
+        const deptGrid    = document.getElementById('solDepartmentGrid');
+        function hideAll(){
+            industryTtl.hidden  = true;
+            industryGrid.hidden = true;
+            deptTtl.hidden      = true;
+            deptGrid.hidden     = true;
+        }
+        function showIndustry(){
+            industryTtl.hidden  = false;
+            industryGrid.hidden = false;
+            deptTtl.hidden      = true;
+            deptGrid.hidden     = true;
+        }
+        function showDepartment(){
+            industryTtl.hidden  = true;
+            industryGrid.hidden = true;
+            deptTtl.hidden      = false;
+            deptGrid.hidden     = false;
+        }
+        function highlight(key){
+            navList.forEach(n => n.classList.toggle('is-active', n.dataset.solutionItem === key));
+        }
+        function clearHighlight(){
+            navList.forEach(n => n.classList.remove('is-active'));
+        }
+        navList.forEach(n => {
+            const trigger = () => {
+                const key = n.dataset.solutionItem;
+                highlight(key);
+                if (key === 'department') showDepartment();
+                else                       showIndustry();
+            };
+            n.addEventListener('mouseenter', trigger);
+            n.addEventListener('focus',      trigger);
+        });
+        const navItem = mega.closest('.nav-item');
+        function openDefault(){ highlight('industry'); showIndustry(); }
+        if (navItem){
+            navItem.addEventListener('mouseenter', openDefault);
+            navItem.addEventListener('focusin',    openDefault);
+            navItem.addEventListener('mouseleave', () => { clearHighlight(); hideAll(); });
+        }
+    })();
+
+    /* Company mega */
+    (function () {
+        const mega = document.getElementById('companyMega');
+        if (!mega) return;
+        const navList = mega.querySelectorAll('[data-company-item]');
+        const allTtl  = document.getElementById('coAllTitle');
+        const allGrid = document.getElementById('coAllGrid');
+        function hideAll(){
+            if (allTtl)  allTtl.hidden  = true;
+            if (allGrid) allGrid.hidden = true;
+        }
+        function showAll(){
+            if (allTtl)  allTtl.hidden  = false;
+            if (allGrid) allGrid.hidden = false;
+        }
+        function highlight(){
+            navList.forEach(n => n.classList.add('is-active'));
+        }
+        function clearHighlight(){
+            navList.forEach(n => n.classList.remove('is-active'));
+        }
+        navList.forEach(n => {
+            const trigger = () => { highlight(); showAll(); };
+            n.addEventListener('mouseenter', trigger);
+            n.addEventListener('focus',      trigger);
+        });
+        const navItem = mega.closest('.nav-item');
+        function openDefault(){ highlight(); showAll(); }
+        if (navItem){
+            navItem.addEventListener('mouseenter', openDefault);
+            navItem.addEventListener('focusin',    openDefault);
+            navItem.addEventListener('mouseleave', () => { clearHighlight(); hideAll(); });
+        }
+    })();
+
+    /* Hover-gap bridge — keeps mega menus open while cursor crosses
+       the gap between the nav trigger and the dropdown panel */
+    (function () {
+        document.querySelectorAll('.nav-item.has-dropdown').forEach(function (item) {
+            const mega = item.querySelector('.nav-mega');
+            if (!mega) return;
+            let closeTimer = null;
+            function open() { clearTimeout(closeTimer); item.classList.add('is-open'); }
+            function scheduleClose() { closeTimer = setTimeout(function () { item.classList.remove('is-open'); }, 200); }
+            item.addEventListener('mouseenter', open);
+            item.addEventListener('mouseleave', scheduleClose);
+            mega.addEventListener('mouseenter', open);
+            mega.addEventListener('mouseleave', scheduleClose);
+        });
+    })();
+
+    /* ── Scroll-reveal observer ──────────────────────────────────────── */
+    (function () {
+        var blocks = document.querySelectorAll('.reveal-block, .reveal-left, .reveal-right');
+        if (!('IntersectionObserver' in window)) {
+            blocks.forEach(function (el) { el.classList.add('is-visible'); });
+            return;
+        }
+        var obs = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+                if (e.isIntersecting) {
+                    e.target.classList.add('is-visible');
+                    obs.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -48px 0px' });
+        blocks.forEach(function (el) { obs.observe(el); });
+    })();
+
+</script>
+
+
+<script>
+    /* Features — bottom-to-top entry animation + prev/next carousel */
+    (function () {
+        'use strict';
+        var section = document.getElementById('fc-section');
+        var track   = document.getElementById('fcTrack');
+        var slots   = Array.from(document.querySelectorAll('#fcTrack .fc-slot'));
+        var btnPrev = document.getElementById('fcPrev');
+        var btnNext = document.getElementById('fcNext');
+        if (!section || !track || !slots.length) return;
+
+        var VISIBLE  = 5;               /* cards shown without scrolling */
+        var maxStep  = Math.max(0, slots.length - VISIBLE);
+        var step     = 0;
+        var animated = false;
+
+        /* ── Entry animation: each card rises from below into its stagger position ── */
+        function animateIn() {
+            if (animated) return;
+            animated = true;
+            slots.forEach(function (slot, i) {
+                setTimeout(function () { slot.classList.add('is-in'); }, i * 80);
+            });
+        }
+
+        /* Trigger when section is 15% in view */
+        if ('IntersectionObserver' in window) {
+            var io = new IntersectionObserver(function (entries) {
+                if (entries[0].isIntersecting) { animateIn(); io.disconnect(); }
+            }, { threshold: 0.15 });
+            io.observe(section);
+        } else {
+            /* Fallback: animate immediately */
+            animateIn();
+        }
+
+        /* ── Carousel navigation ── */
+        function slotWidth() {
+            return slots[0].getBoundingClientRect().width + 20; /* width + gap */
+        }
+
+        function goTo(n) {
+            step = Math.max(0, Math.min(maxStep, n));
+            track.style.transform = 'translateX(' + (-step * slotWidth()) + 'px)';
+            btnPrev.disabled = step === 0;
+            btnNext.disabled = step >= maxStep;
+        }
+
+        btnPrev.addEventListener('click', function () { goTo(step - 1); });
+        btnNext.addEventListener('click', function () { goTo(step + 1); });
+
+        /* Recalculate offset on resize so positions stay correct */
+        var resizeRaf = null;
+        window.addEventListener('resize', function () {
+            if (resizeRaf) return;
+            resizeRaf = requestAnimationFrame(function () { resizeRaf = null; goTo(step); });
+        }, { passive: true });
+    })();
+</script>
+
+
+
+<script>
+/* ── Trusted logos — staggered flip animation ── */
+(function () {
+    var grid = document.getElementById('logoFlipGrid');
+    if (!grid) return;
+
+    var logos = [
+        { src: 'assets/images/homeV2o/Logo section/birlasoft.png',         alt: 'Birlasoft' },
+        { src: 'assets/images/homeV2o/Logo section/ducont.png',            alt: 'Ducont' },
+        { src: 'assets/images/homeV2o/Logo section/ford-credit.png',       alt: 'Ford Credit' },
+        { src: 'assets/images/homeV2o/Logo section/nhm.png',               alt: 'National Health Mission' },
+        { src: 'assets/images/homeV2o/Logo section/rainforest-alliance.png', alt: 'Rainforest Alliance' },
+        { src: 'assets/images/homeV2o/Logo section/shortlist.png',         alt: 'Shortlist' },
+        { src: 'assets/images/homeV2o/Logo section/bayer.png',             alt: 'Bayer' },
+        { src: 'assets/images/homeV2o/Logo section/siriusxm.png',          alt: 'SiriusXM' },
+        { src: 'assets/images/homeV2o/Logo section/thk.png',               alt: 'THK' },
+        { src: 'assets/images/homeV2o/Logo section/seed.png',              alt: 'SEED Advertising' },
+        { src: 'assets/images/homeV2o/Logo section/briminc.png',           alt: 'Briminc' },
+        { src: 'assets/images/homeV2o/Logo section/trident.png',           alt: 'Trident Group' },
+        { src: 'assets/images/homeV2o/Logo section/dwihn.png',             alt: 'DWIHN' },
+        { src: 'assets/images/homeV2o/Logo section/jcci.png',              alt: 'JCCI' },
+        { src: 'assets/images/homeV2o/Logo section/ajman.png',             alt: 'Ajman' },
+        { src: 'assets/images/homeV2o/Logo section/esports.png',           alt: 'eSports' }
+    ];
+
+    /* Fisher-Yates shuffle */
+    function shuffle(arr) {
+        var a = arr.slice(), i = a.length, j, t;
+        while (i--) { j = Math.floor(Math.random() * (i + 1)); t = a[i]; a[i] = a[j]; a[j] = t; }
+        return a;
+    }
+
+    /*
+     * Split 16 shuffled logos into 8 disjoint pairs — card i owns
+     * logos[i] (front) and logos[i+8] (back).  Since pairs never overlap,
+     * the same logo can never appear on two cards at the same time.
+     */
+    var SLOTS   = 8;
+    var FLIP_MS = 900; /* matches CSS transition */
+    var paired  = shuffle(logos); /* 16 unique logos */
+
+    function makeImg(logo) {
+        var img = document.createElement('img');
+        img.src = logo.src; img.alt = logo.alt; img.loading = 'lazy';
+        return img;
+    }
+
+    var cards = [];
+
+    for (var i = 0; i < SLOTS; i++) {
+        var logoA = paired[i];        /* front face */
+        var logoB = paired[i + SLOTS]; /* back face  */
+
+        var card  = document.createElement('div');  card.className  = 'lf-card';
+        var inner = document.createElement('div');  inner.className = 'lf-inner';
+        var front = document.createElement('div');  front.className = 'lf-face lf-front';
+        var back  = document.createElement('div');  back.className  = 'lf-face lf-back';
+
+        front.appendChild(makeImg(logoA));
+        back.appendChild(makeImg(logoB));
+        inner.appendChild(front); inner.appendChild(back);
+        card.appendChild(inner);
+        grid.appendChild(card);
+
+        cards.push({ card: card, flipped: false });
+    }
+
+    /* Each card simply toggles between its two assigned logos */
+    function scheduleFlip(cardObj, delay) {
+        setTimeout(function () {
+            cardObj.flipped = !cardObj.flipped;
+            cardObj.card.classList.toggle('is-flipped', cardObj.flipped);
+            /* display time: 4 – 8 s before next flip */
+            scheduleFlip(cardObj, FLIP_MS + 4000 + Math.random() * 4000);
+        }, delay);
+    }
+
+    /* Spread first flips across 0 – 6 s so cards never all flip together */
+    cards.forEach(function (c) {
+        scheduleFlip(c, Math.random() * 6000);
+    });
+})();
+</script>
+
+</body>
+</html>

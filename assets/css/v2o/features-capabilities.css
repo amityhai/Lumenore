@@ -1,0 +1,395 @@
+/* ════════════════════════════════════════════════════════
+   FEATURES & CAPABILITIES — standalone section
+   File: assets/css/v2o/features-capabilities.css
+   ════════════════════════════════════════════════════════ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body.fc-preview {
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #051A3C;
+}
+
+/* ── Section (gradient background — exact from Figma node 1266:24573) ── */
+.fc-section {
+    background: linear-gradient(180deg,
+        #051a3c  0%,
+        #1a1e52  14.24%,
+        #32216e  29.65%,
+        #55298e  45.91%,
+        #3d48ab  60.37%,
+        #2863c5  74.52%,
+        #5886d0  88.01%,
+        #9fbae4  100%
+    );
+    padding: 112px 0 80px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.fc-container {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 0 48px;
+}
+
+/* ══════════════════════════
+   HEADER
+══════════════════════════ */
+.fc-header {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 60px;
+}
+
+.fc-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    color: #67d3ff;
+    border: 1px solid rgba(255,255,255,0.14);
+    padding: 7px 16px;
+    border-radius: 50px;
+    margin: 0 0 24px;
+    background: rgba(255,255,255,0.06);
+    -webkit-backdrop-filter: blur(6px);
+            backdrop-filter: blur(6px);
+}
+
+.fc-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #12b6f8 0%, #7747b6 100%);
+    flex: 0 0 6px;
+}
+
+.fc-heading {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 44px;
+    line-height: 54px;
+    color: #fcfcfc;
+    letter-spacing: -0.6px;
+    margin: 0 0 16px;
+}
+
+.fc-accent { font-style: italic; color: #fcfcfc; }
+
+.fc-sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 28px;
+    color: rgba(255,255,255,0.82);
+}
+
+/* ══════════════════════════
+   SLIDES
+══════════════════════════ */
+.fc-slider-wrap { position: relative; }
+.fc-slide { display: none; }
+.fc-slide.is-active { display: block; }
+
+/* ══════════════════════════
+   GRID
+══════════════════════════ */
+.fc-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 20px;
+}
+
+/* ══════════════════════════
+   COLUMN — dark translucent backing so white text reads on the pale-blue gradient bottom
+══════════════════════════ */
+.fc-col {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    cursor: pointer;
+    border-radius: 10px 10px 8px 8px;
+}
+
+.fc-col-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Per-column top indicator line */
+.fc-col::before {
+    content: '';
+    display: block;
+    height: 2px;
+    flex: 0 0 2px;
+    background-image: repeating-linear-gradient(
+        to right,
+        rgba(255,255,255,0.28) 0, rgba(255,255,255,0.28) 3px,
+        transparent 3px, transparent 9px
+    );
+    transition: background-image 0.4s, background-color 0.4s;
+}
+
+.fc-col.is-active::before {
+    background-image: none;
+    background-color: #2563eb;
+}
+
+@keyframes fcLineSweep {
+    from { transform: scaleX(0); }
+    to   { transform: scaleX(1); }
+}
+
+.fc-col:hover::before {
+    background-image: none;
+    background-color: #1CA9C9;
+    transform-origin: left center;
+    animation: fcLineSweep 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* ── Top row: icon · name · arrow ── */
+.fc-col-top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 24px 28px 0 28px;
+}
+
+.fc-col:first-child .fc-col-top { padding-left: 0; }
+.fc-col:last-child  .fc-col-top { padding-right: 0; }
+
+/* Icon box */
+.fc-col-icon {
+    width: 40px;
+    height: 40px;
+    flex: 0 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    border: 1px solid rgba(255,255,255,0.28);
+    border-radius: 5px;
+    background: rgba(255,255,255,0.12);
+    transition: border-color 0.4s, background 0.4s;
+}
+
+.fc-col-icon svg { width: 20px; height: 20px; }
+
+.fc-col.is-active .fc-col-icon {
+    border-color: rgba(255,255,255,0.45);
+    background: rgba(255,255,255,0.14);
+}
+
+/* Column name */
+.fc-col-name {
+    font-family: 'Inter', sans-serif;
+    font-size: 14.5px;
+    font-weight: 500;
+    color: #ffffff;
+    flex: 1;
+    line-height: 1.35;
+}
+
+/* Arrow button */
+.fc-col-arrow {
+    width: 32px;
+    height: 32px;
+    flex: 0 0 32px;
+    border-radius: 6px;
+    border: 1px solid rgba(255,255,255,0.16);
+    background: rgba(255,255,255,0.07);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: rgba(255,255,255,0.45);
+    transition: background 0.35s, border-color 0.35s, color 0.35s;
+    padding: 0;
+}
+
+.fc-col-arrow svg { width: 14px; height: 14px; }
+
+.fc-col.is-active .fc-col-arrow,
+.fc-col-arrow:hover {
+    background: #2563eb;
+    border-color: #2563eb;
+    color: #fff;
+}
+
+/* Description */
+.fc-col-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    line-height: 21px;
+    color: rgba(255,255,255,0.85);
+    padding: 16px 28px 28px 28px;
+    flex: 0 0 auto;
+}
+
+.fc-col:first-child .fc-col-desc { padding-left: 0; }
+.fc-col:last-child  .fc-col-desc { padding-right: 0; }
+
+/* ══════════════════════════
+   VISUAL CARD (dark glassmorphism)
+══════════════════════════ */
+.fc-visual {
+    flex: 0 0 260px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(28,169,201,0.35);
+    border-radius: 0 0 8px 8px;
+}
+
+/* ─── Scan line ─── */
+.fc-visual::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(to right,
+        transparent 0%,
+        rgba(37,99,235,0.55) 25%,
+        rgba(37,99,235,0.85) 50%,
+        rgba(37,99,235,0.55) 75%,
+        transparent 100%
+    );
+    pointer-events: none;
+    z-index: 2;
+    transition: opacity 0.5s;
+}
+
+.fc-col:not(.is-active) .fc-visual::after {
+    top: 26%;
+    opacity: 0.35;
+}
+
+.fc-col.is-active .fc-visual::after {
+    top: 26%;
+    opacity: 1;
+    animation: fcScanPulse 2.4s ease-in-out infinite;
+}
+
+@keyframes fcScanPulse {
+    0%, 100% { opacity: 0.75; box-shadow: 0 0 5px 1px rgba(37,99,235,0.20); }
+    50%       { opacity: 1;    box-shadow: 0 0 14px 4px rgba(37,99,235,0.45); }
+}
+
+/* ─── SVG inner: floats gently when active ─── */
+.fc-vis-inner {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fc-col.is-active .fc-vis-inner {
+    animation: fcVisFloat 3s ease-in-out infinite;
+}
+
+@keyframes fcVisFloat {
+    0%, 100% { transform: translateY(-6px); }
+    50%       { transform: translateY(-14px); }
+}
+
+.fc-vis-svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    transition: filter 0.35s ease;
+}
+
+.fc-col:hover .fc-vis-svg {
+    filter: brightness(0) invert(1);
+}
+
+/* ══════════════════════════
+   SLIDE NAVIGATION — bottom center (round buttons, prev dimmed / next violet)
+══════════════════════════ */
+.fc-slide-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 32px;
+}
+
+.fc-snav-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 24px;
+    border: 1px solid rgba(255,255,255,0.35);
+    background: rgba(255,255,255,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: rgba(255,255,255,0.90);
+    transition: background 0.2s, opacity 0.2s;
+    padding: 0;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+}
+
+.fc-snav-btn svg { width: 20px; height: 20px; }
+
+/* Prev: dimmed */
+#fcPrev { opacity: 0.35; }
+#fcPrev:not(:disabled):hover { opacity: 0.70; }
+
+/* Next: violet filled */
+#fcNext {
+    background: #55298e;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.30);
+}
+#fcNext:not(:disabled):hover { background: #6b35b0; }
+
+.fc-snav-btn:disabled {
+    opacity: 0.20;
+    cursor: default;
+}
+
+.fc-snav-count {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: rgba(255,255,255,0.55);
+    letter-spacing: 0.5px;
+    min-width: 28px;
+    text-align: center;
+}
+
+/* ══════════════════════════
+   RESPONSIVE
+══════════════════════════ */
+@media (max-width: 1100px) {
+    .fc-container { padding: 0 32px; }
+    .fc-heading { font-size: 38px; line-height: 48px; }
+    .fc-col-top { padding: 20px 18px 0 18px; }
+    .fc-col-desc { padding: 14px 18px 22px 18px; }
+    .fc-col:first-child .fc-col-top,
+    .fc-col:first-child .fc-col-desc { padding-left: 0; }
+    .fc-col:last-child .fc-col-top,
+    .fc-col:last-child .fc-col-desc { padding-right: 0; }
+}
+
+@media (max-width: 860px) {
+    .fc-grid { grid-template-columns: repeat(2, 1fr); column-gap: 16px; row-gap: 20px; }
+    .fc-section { padding: 80px 0 60px; }
+    .fc-heading { font-size: 32px; line-height: 42px; }
+    .fc-header { margin-bottom: 48px; }
+}
+
+@media (max-width: 560px) {
+    .fc-grid { grid-template-columns: 1fr; column-gap: 0; row-gap: 16px; }
+    .fc-container { padding: 0 20px; }
+    .fc-heading { font-size: 28px; line-height: 38px; }
+    .fc-section { padding: 64px 0 48px; }
+}

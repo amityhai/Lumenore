@@ -1,0 +1,3145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Lumenore — Enterprise BI and Analytics Platform Powered By AI Agents</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600;700&family=Material+Symbols+Rounded&display=swap" rel="stylesheet">
+    <link href="assets/css/v2o/index.css?v=3" rel="stylesheet">
+    <link href="assets/css/v2o/home.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
+    <script src="assets/images/Json/Askme-animation-1-.js" async></script>
+    <script src="assets/images/Json/Dashboard-Animation-1.js" async></script>
+    <script src="assets/images/Json/Data-Magnet_Animation-1.js" async></script>
+
+
+</head>
+<body>
+
+<!-- ===== CUSTOM CURSOR — magnetic dot + trailing ring ===== -->
+<div class="cursor" id="customCursor" aria-hidden="true">
+    <span class="cursor__ring"></span>
+    <span class="cursor__dot"></span>
+</div>
+
+<!-- ===== SITE TOP — Hello bar + Nav ===== -->
+<!-- ===== HERO STAGE (nav + hero share one premium canvas) ===== -->
+<div class="hero-stage">
+
+    <!-- low-opacity tech grid overlay (spans nav → hero) -->
+    <div class="hero-grid" aria-hidden="true"></div>
+
+    <!-- soft glowing gradient orbs toward the bottom (parallax on scroll) -->
+    <div class="hero-orbs" aria-hidden="true" data-hero-orbs>
+        <span class="hero-orb orb-violet"></span>
+        <span class="hero-orb orb-cyan"></span>
+        <span class="hero-orb orb-blue"></span>
+    </div>
+
+    <!-- small floating glowing particles (span nav → hero) -->
+    <div class="hero-particles" aria-hidden="true">
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+    </div>
+
+<div class="site-top">
+
+    <!-- Hello bar (announcement) -->
+    <div class="hello-bar">
+        <div class="hello-left">
+            <span class="hello-badge">Webinar</span>
+            <div class="hello-msg-group">
+                <span class="hello-message">We are Heading to AAHOACON 2026</span>
+                <a href="#" class="hello-cta">
+                    Register Now
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                </a>
+            </div>
+        </div>
+        <a href="#" class="hello-consult">Free Consultation</a>
+        <a href="#" class="hello-login">Log in</a>
+    </div>
+
+    <!-- Main nav bar -->
+    <header class="site-header headerTop is-scrolled">
+        <a href="#" class="brand-mark" aria-label="Lumenore home">
+            <img src="assets/images/homeV2o/Lumenore logo.svg" alt="Lumenore" class="nav-logo-img">
+        </a>
+
+        <nav>
+            <ul class="nav-links">
+                <!-- PLATFORM — 3-column mega menu: Products + Capabilities | grid/detail | releases -->
+                <li class="nav-item has-dropdown nav-item--platform" data-mega-id="platformMega">
+                    <a href="#" class="nav-trigger">Platform
+                        <svg class="caret" viewBox="0 0 8 4" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 0l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                    <div class="nav-mega nav-mega--platform" role="menu" id="platformMega">
+
+                        <!-- COL 1 — Just 3 products + a single Capabilities entry.
+                             Hovering a product shows its detail pane in Col 2;
+                             hovering Capabilities shows the 12-card grid. -->
+                        <div class="np-nav">
+                            <div class="np-nav-section">
+                                <h6 class="np-nav-title">Products</h6>
+                                <ul class="np-nav-list">
+                                    <li><a href="#"                    data-platform-item="insights"   data-platform-type="product">Lumenore Insights</a></li>
+                                    <li><a href="lumenore-ask-me.html" data-platform-item="askme"      data-platform-type="product">Lumenore Ask Me</a></li>
+                                    <li><a href="#"                    data-platform-item="datamagnet" data-platform-type="product">Lumenore Data Magnet</a></li>
+                                </ul>
+                            </div>
+                            <div class="np-nav-section">
+                                <ul class="np-nav-list">
+                                    <li><a href="#" data-platform-item="all-capabilities" data-platform-type="capability" class="np-cap-link">
+                                        <span>Capabilities</span>
+                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                                    </a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- COL 2 — Two views:
+                             · Default + capability hover → grid of all 12 capabilities
+                             · Product hover → product-detail pane (title + desc + CTAs)
+                             JS toggles `.np-detail.is-product-view` to swap them. -->
+                        <div class="np-detail" id="platformDetail">
+
+                            <!-- Product-detail pane (hidden by default).
+                                 Learn More is an inline text link tucked
+                                 directly under the description so it reads
+                                 as "read more about this" rather than a
+                                 competing primary action — Start Free and
+                                 Pricing are the two CTAs at the bottom. -->
+                            <div class="np-product-pane" id="platformProductPane" hidden>
+                                <span class="np-pane-kind"><span class="np-kind-dot"></span>Product</span>
+                                <p class="np-pane-tagline" id="npProductTagline">Self-Service Analytics</p>
+                                <h4 class="np-pane-title" id="npProductTitle">Lumenore Insights</h4>
+                                <p class="np-pane-desc"  id="npProductDesc">Democratize data with self-service, AI-powered dashboards that empower every employee to make data-driven decisions and maximize ROI instantly.</p>
+                                <a class="np-learn-more" id="npProductLearn" href="#">
+                                    Learn more
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                                </a>
+                                <div class="np-pane-actions">
+                                    <a class="np-cta np-cta--primary"   id="npProductStart"   href="#">Start Free</a>
+                                    <a class="np-cta np-cta--secondary" id="npProductPricing" href="#">Pricing</a>
+                                </div>
+                            </div>
+
+                            <!-- Capability grid — hidden by default. Only shown
+                                 when the "Capabilities" link in Col 1 is hovered. -->
+                            <h6 class="np-nav-title np-grid-title" id="platformGridTitle" hidden>All Capabilities</h6>
+                            <div class="np-grid" id="platformGrid" hidden>
+                                <a href="#" class="np-grid-card" data-platform-card="connectors">
+                                    <svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12h6M3 7h4M3 17h4M17 7h4M17 17h4"/><circle cx="12" cy="12" r="3"/><circle cx="5" cy="7" r="1.5"/><circle cx="5" cy="17" r="1.5"/><circle cx="19" cy="7" r="1.5"/><circle cx="19" cy="17" r="1.5"/></svg>
+                                    <span>Data Connectors</span>
+                                </a>
+                                <a href="#" class="np-grid-card" data-platform-card="integration">
+                                    <svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4v6a3 3 0 0 0 3 3h4a3 3 0 0 1 3 3v4"/><circle cx="7" cy="3" r="1.5"/><circle cx="17" cy="21" r="1.5"/></svg>
+                                    <span>Data Integration</span>
+                                </a>
+                                <a href="#" class="np-grid-card" data-platform-card="lakehouse">
+                                    <svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v6a9 3 0 0 0 18 0V5M3 11v6a9 3 0 0 0 18 0v-6"/></svg>
+                                    <span>Data Lakehouse</span>
+                                </a>
+                                <a href="#" class="np-grid-card" data-platform-card="visualization">
+                                    <svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V10M10 21V6M15 21V13M20 21V8"/></svg>
+                                    <span>Data Visualization</span>
+                                </a>
+                                <a href="#" class="np-grid-card" data-platform-card="universe">
+                                    <svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="9" ry="3.5"/><path d="M3 12h18"/></svg>
+                                    <span>Data Universe</span>
+                                </a>
+                                <a href="#" class="np-grid-card" data-platform-card="dashboard">
+                                    <svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="5" rx="1.5"/><rect x="13" y="10" width="8" height="11" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/></svg>
+                                    <span>Dashboard</span>
+                                </a>
+                                <a href="#" class="np-grid-card" data-platform-card="advanced">
+                                    <svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18l4-6 4 3 6-9 4 5"/></svg>
+                                    <span>Advanced Analytics</span>
+                                </a>
+                                <a href="#" class="np-grid-card" data-platform-card="embedded">
+                                    <svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M9 10l-2 2 2 2M15 10l2 2-2 2"/></svg>
+                                    <span>Embedded Analytics</span>
+                                </a>
+                                <a href="#" class="np-grid-card" data-platform-card="conversational">
+                                    <svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                                    <span>Conversational Intelligence</span>
+                                </a>
+                                <a href="#" class="np-grid-card" data-platform-card="decision">
+                                    <svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/><circle cx="12" cy="12" r="4"/></svg>
+                                    <span>Decision Intelligence</span>
+                                </a>
+                                <a href="#" class="np-grid-card" data-platform-card="selfservice">
+                                    <svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
+                                    <span>Self-Service Analytics</span>
+                                </a>
+                                <a href="#" class="np-grid-card" data-platform-card="predictive">
+                                    <svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12c0-5 4-9 9-9s9 4 9 9"/><path d="M12 7v5l3 2"/><circle cx="12" cy="12" r="9" stroke-dasharray="2 3"/></svg>
+                                    <span>Predictive Analytics</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- COL 3 — Recent Releases sidebar -->
+                        <aside class="np-releases">
+                            <h6 class="np-nav-title">Recent Releases</h6>
+                            <a class="np-release" href="#">
+                                <span class="np-release-tag">New</span>
+                                <span class="np-release-title">Ask Me Agentic RAG Upgrade</span>
+                                <span class="np-release-sub">Self-correction &amp; multimodal support — surfaces governed answers from documents, images, and tables.</span>
+                            </a>
+                            <a class="np-release" href="#">
+                                <span class="np-release-title">Local LLM Integration</span>
+                                <span class="np-release-sub">Keep sensitive data in-house with on-prem inference.</span>
+                            </a>
+                            <a class="np-release" href="#">
+                                <span class="np-release-title">Visual Pipeline Builder</span>
+                                <span class="np-release-sub">Low-code ETL flows in a drag-and-drop canvas.</span>
+                            </a>
+                            <a class="np-view-all" href="#">
+                                View All Releases
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                            </a>
+                        </aside>
+                    </div>
+                </li>
+
+                <!-- SOLUTIONS — 3-column mega: 2 nav entries | grid | recent blogs -->
+                <li class="nav-item has-dropdown nav-item--solutions" data-mega-id="solutionMega">
+                    <a href="#" class="nav-trigger">Solutions
+                        <svg class="caret" viewBox="0 0 8 4" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 0l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                    <div class="nav-mega nav-mega--platform nav-mega--solutions" role="menu" id="solutionMega">
+
+                        <!-- COL 1 — Just two categories -->
+                        <div class="np-nav">
+                            <ul class="np-nav-list">
+                                <li><a href="#" data-solution-item="industry"   class="np-cap-link">
+                                    <span>By Industry</span>
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                                </a></li>
+                                <li><a href="#" data-solution-item="department" class="np-cap-link">
+                                    <span>By Department</span>
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                                </a></li>
+                            </ul>
+                        </div>
+
+                        <!-- COL 2 — Industry grid OR Department grid (swapped by JS) -->
+                        <div class="np-detail" id="solutionDetail">
+
+                            <!-- BY INDUSTRY (hidden until hovered) -->
+                            <h6 class="np-nav-title np-grid-title" id="solIndustryTitle" hidden>By Industry</h6>
+                            <div class="np-grid" id="solIndustryGrid" hidden>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v16M4 12h16"/></svg><span>Healthcare</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6h15l-1.5 9H7.5L6 6zM6 6L5 3H2M9 21a1 1 0 1 0 0-2 1 1 0 0 0 0 2zM18 21a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/></svg><span>Retail</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0M1.42 9a16 16 0 0 1 21.16 0M8.53 16.11a6 6 0 0 1 6.95 0M12 20h.01"/></svg><span>Telecom</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 18 0v6a2 2 0 0 1-2 2h-1v-6h3M3 18v-6h3v6H5a2 2 0 0 1-2-2z"/></svg><span>Contact Care</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12l9-8 9 8M5 10v10h14V10"/></svg><span>Real Estate</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg><span>Insurance</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l5-3v4l5-3v4l8-3v17z"/></svg><span>Manufacturing</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="18" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.6a2 2 0 0 0 2-1.6L23 6H6"/></svg><span>E-Commerce</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M9 6c0-1.5 1-3 3-3s3 1.5 3 3-1 3-3 3"/><path d="M7 21h10"/></svg><span>Oil &amp; Gas</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V8l7-4 7 4v13M9 21v-7h6v7"/></svg><span>Government &amp; Public</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg><span>Education</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3"/></svg><span>Technology</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span>Financial Services</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h2l2-5h6l2 5h2a1 1 0 0 0 1-1v-4l-2-2H6L4 12v4a1 1 0 0 0 1 1z"/><circle cx="7.5" cy="17.5" r="1.5"/><circle cx="16.5" cy="17.5" r="1.5"/></svg><span>Automobile</span></a>
+                            </div>
+
+                            <!-- BY DEPARTMENT (hidden until hovered) -->
+                            <h6 class="np-nav-title np-grid-title" id="solDepartmentTitle" hidden>By Department</h6>
+                            <div class="np-grid" id="solDepartmentGrid" hidden>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span>Finance</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18l6-6 4 4 8-8"/><path d="M17 8h4v4"/></svg><span>Sales</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l18-8v18z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg><span>Marketing</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg><span>Human Resources</span></a>
+                            </div>
+
+                        </div>
+
+                        <!-- COL 3 — Recent Blogs sidebar -->
+                        <aside class="np-releases">
+                            <h6 class="np-nav-title">Recent Blogs</h6>
+                            <a class="np-release" href="#">
+                                <span class="np-release-tag">Featured</span>
+                                <span class="np-release-title">How AI-Powered Analytics is Reshaping Healthcare</span>
+                                <span class="np-release-sub">Real-world results from teams using Lumenore to cut reporting cycles in half.</span>
+                            </a>
+                            <a class="np-release" href="#">
+                                <span class="np-release-title">5 Ways Sales Teams Use Self-Service BI</span>
+                                <span class="np-release-sub">Faster pipeline insights without filing IT tickets.</span>
+                            </a>
+                            <a class="np-release" href="#">
+                                <span class="np-release-title">Manufacturing Forecasting at Scale</span>
+                                <span class="np-release-sub">Connect 50+ sources with low-code ETL.</span>
+                            </a>
+                            <a class="np-view-all" href="#">
+                                View All Blogs
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                            </a>
+                        </aside>
+                    </div>
+                </li>
+
+                <!-- PRICING -->
+                <li class="nav-item">
+                    <a href="#" class="nav-trigger">Pricing</a>
+                </li>
+
+                <!-- RESOURCES — 2-col: all text links | Recent Blogs sidebar -->
+                <li class="nav-item has-dropdown nav-item--resources" data-mega-id="resourcesMega">
+                    <a href="#" class="nav-trigger">Resources
+                        <svg class="caret" viewBox="0 0 8 4" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 0l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                    <div class="nav-mega nav-mega--resources" role="menu" id="resourcesMega">
+
+                        <!-- COL 1 — All resource link groups -->
+                        <div class="np-nav np-nav--wide">
+                            <div class="np-nav-section">
+                                <h6 class="np-nav-title">Watch</h6>
+                                <ul class="np-nav-list">
+                                    <li><a href="#">Demo</a></li>
+                                    <li><a href="#">Webinars &amp; Events</a></li>
+                                    <li><a href="#">Training</a></li>
+                                </ul>
+                            </div>
+                            <div class="np-nav-section">
+                                <h6 class="np-nav-title">Read</h6>
+                                <ul class="np-nav-list">
+                                    <li><a href="#">Blogs</a></li>
+                                    <li><a href="#">Use Cases</a></li>
+                                    <li><a href="#">eBooks &amp; Whitepapers</a></li>
+                                    <li><a href="#">News &amp; Media</a></li>
+                                    <li><a href="#">Success Stories</a></li>
+                                </ul>
+                            </div>
+                            <div class="np-nav-section">
+                                <h6 class="np-nav-title">Learn</h6>
+                                <ul class="np-nav-list">
+                                    <li><a href="#">Certification</a></li>
+                                    <li><a href="#">Support Portal</a></li>
+                                    <li><a href="#">Knowledge Base</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- COL 2 — Recent Blogs sidebar -->
+                        <aside class="np-releases">
+                            <h6 class="np-nav-title">Recent Blogs</h6>
+                            <a class="np-release" href="#">
+                                <span class="np-release-tag">Featured</span>
+                                <span class="np-release-title">Agentic RAG: Beyond Simple Retrieval</span>
+                                <span class="np-release-sub">How self-correcting AI workflows are changing how teams query their data.</span>
+                            </a>
+                            <a class="np-release" href="#">
+                                <span class="np-release-title">A Practical Guide to Self-Service BI</span>
+                                <span class="np-release-sub">Patterns that scale beyond the analytics team.</span>
+                            </a>
+                            <a class="np-release" href="#">
+                                <span class="np-release-title">Reading Forecasts You Can Trust</span>
+                                <span class="np-release-sub">Confidence intervals, explainability, and outcome tracking.</span>
+                            </a>
+                            <a class="np-view-all" href="#">
+                                View All Blogs
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                            </a>
+                        </aside>
+                    </div>
+                </li>
+
+                <!-- COMPANY — 3-col mega: single nav entry | full item grid | recent blogs -->
+                <li class="nav-item has-dropdown nav-item--company" data-mega-id="companyMega">
+                    <a href="#" class="nav-trigger">Company
+                        <svg class="caret" viewBox="0 0 8 4" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 0l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                    <div class="nav-mega nav-mega--platform nav-mega--company" role="menu" id="companyMega">
+
+                        <!-- COL 1 — Single Company entry, mirrors Platform's Capabilities link -->
+                        <div class="np-nav">
+                            <ul class="np-nav-list">
+                                <li><a href="#" data-company-item="all" class="np-cap-link">
+                                    <span>Company</span>
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                                </a></li>
+                            </ul>
+                        </div>
+
+                        <!-- COL 2 — All 7 items in one grid (no filter splits) -->
+                        <div class="np-detail" id="companyDetail">
+                            <h6 class="np-nav-title np-grid-title" id="coAllTitle" hidden>Company</h6>
+                            <div class="np-grid" id="coAllGrid" hidden>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 7 7 .8-5.3 4.8 1.7 7.4-7.4-4-7.4 4 1.7-7.4L0 9.8 7 9z"/></svg><span>Lumenore Difference</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 11l-3 3-1.5-1.5"/></svg><span>Partners</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg><span>Professional Services</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4M8 23h8"/></svg><span>Latest Releases</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg><span>Careers</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span>Contact Us</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18l6-6 4 4 8-8"/><path d="M17 8h4v4"/></svg><span>Contact Sales</span></a>
+                            </div>
+                        </div>
+
+                        <!-- COL 3 — Recent Blogs sidebar -->
+                        <aside class="np-releases">
+                            <h6 class="np-nav-title">Recent Blogs</h6>
+                            <a class="np-release" href="#">
+                                <span class="np-release-tag">Story</span>
+                                <span class="np-release-title">Inside Lumenore: How We Build for Enterprise</span>
+                                <span class="np-release-sub">The product principles behind self-correcting AI workflows.</span>
+                            </a>
+                            <a class="np-release" href="#">
+                                <span class="np-release-title">Hiring Engineers Who Care</span>
+                                <span class="np-release-sub">A peek inside the team culture and what we look for.</span>
+                            </a>
+                            <a class="np-release" href="#">
+                                <span class="np-release-title">Partner Program: 2026 Roadmap</span>
+                                <span class="np-release-sub">New tiers, joint go-to-market, and certification.</span>
+                            </a>
+                            <a class="np-view-all" href="#">
+                                View All Blogs
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                            </a>
+                        </aside>
+                    </div>
+                </li>
+
+            </ul>
+        </nav>
+
+        <div class="nav-actions">
+            <a href="#" class="btn-demo">Request a Demo</a>
+            <a href="#" class="btn-start btn-primary btn-primary--sm">Start for Free</a>
+        </div>
+    </header>
+
+</div>
+
+<!-- ===== HERO SECTION ===== -->
+<section class="hero-section">
+    <div class="hero-arc"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-grain"></div>
+
+    <div class="container">
+        <div class="hero-content">
+            <h1>Agentic Analytics Platform for Enterprise</h1>
+            <p class="hero-sub">Modern analytics platform that automates insight discovery, investigates anomalies, and delivers decision-ready intelligence.</p>
+
+            <button type="button" class="explore-btn btn-primary">
+                Click to explore
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </button>
+
+            <div class="hero-search-wrap" id="heroSearchWrap">
+                <div class="hero-browser-wrap">
+                    <!-- Ambient glow behind the browser -->
+                    <div class="hero-browser-glow" aria-hidden="true"></div>
+
+                    <div class="hero-browser">
+                        <!-- Browser chrome bar -->
+                        <div class="hero-browser-bar">
+                            <div class="hb-dots" aria-hidden="true">
+                                <span class="hb-dot hb-dot--red"></span>
+                                <span class="hb-dot hb-dot--yellow"></span>
+                                <span class="hb-dot hb-dot--green"></span>
+                            </div>
+                            <div class="hb-url">
+                                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                                app.lumenore.com
+                            </div>
+                            <div class="hb-spacer" aria-hidden="true"></div>
+                        </div>
+
+                        <!-- Video screen -->
+                        <div class="hero-browser-screen">
+                            <video
+                                class="hero-banner-video"
+                                src="assets/images/Hero-Gif/Banner - 2 Ask Me.mp4"
+                                autoplay
+                                loop
+                                muted
+                                playsinline
+                                aria-hidden="true">
+                            </video>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+</div>
+<!-- ===== /HERO STAGE ===== -->
+
+<!-- ===== TRUSTED LOGOS ===== -->
+<section class="trusted-section">
+    <div class="container">
+        <h3 class="reveal-block">Trusted by <span class="ah-accent">100+ Teams</span> Across Global Enterprises</h3>
+
+        <div class="logo-flip-row reveal-block" style="--reveal-delay:.22s" id="logoFlipGrid"></div>
+    </div>
+</section>
+
+<!-- ===== PRODUCT SUITE (Figma 994:29832) ===== -->
+<section class="section-products" id="productSection">
+
+  <!-- Sticky pin: heading + tabs + stage all stay fixed while the track scrolls -->
+  <div class="products-sticky">
+    <div class="container">
+        <!-- Section intro — sticky with the rest of the panel -->
+        <div class="products-intro" id="productsIntro">
+            <span class="personas-eyebrow reveal-block">
+                <span class="pe-dot" aria-hidden="true"></span>
+                CORE MODULES
+            </span>
+            <h2 class="products-title reveal-block" style="--reveal-delay:.18s">Lumenore&rsquo;s Suite of Products for Every Data Challenge</h2>
+            <p class="products-subtitle reveal-block" style="--reveal-delay:.36s">Most teams pay 5 vendors to pass data between each other.<br>Lumenore replaces three of them &mdash; in a single platform.</p>
+        </div>
+
+        <!-- Header row: product name (left) + progress steps (right) -->
+        <div class="products-head reveal-block" style="--reveal-delay:.44s">
+            <h2 class="pd-name" id="pdPill"><span class="pd-num">01</span><span class="pd-sep" aria-hidden="true">&middot;</span>Lumenore Ask Me</h2>
+            <div class="pd-prog" id="productTabs" role="tablist" aria-label="Product suite">
+                <div class="pd-prog-track" aria-hidden="true">
+                    <div class="pd-prog-fill" id="pdProgFill"></div>
+                </div>
+                <div class="pd-prog-steps">
+                    <button type="button" class="product-tab is-active" data-product="askme" role="tab" aria-selected="true">
+                        <span class="pt-num">01</span>
+                        <span class="pt-name">Ask Me</span>
+                    </button>
+                    <button type="button" class="product-tab" data-product="insights" role="tab" aria-selected="false">
+                        <span class="pt-num">02</span>
+                        <span class="pt-name">Insights</span>
+                    </button>
+                    <button type="button" class="product-tab" data-product="datamagnet" role="tab" aria-selected="false">
+                        <span class="pt-num">03</span>
+                        <span class="pt-name">Data Magnet</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Two-column stage: detail (left) + product visual (right) -->
+        <div class="product-stage">
+
+            <!-- Active product detail (left column) -->
+            <div class="product-detail reveal-left" id="productDetail" style="--reveal-delay:.54s">
+                <h3 class="pd-tagline" id="pdTitle">Conversational Analytics</h3>
+                <p id="pdDesc"><span data-contrast="auto" xml:lang="EN-US" lang="EN-US">AI agents with context awareness and expertise that understand not just your question but also your business goal. Ask Me connects to your business data and, in response to your inquiries, brings external market intelligence to independently look into anomalies, identify underlying causes, and deliver governed insights that provide each team with the whole picture.</span><span data-ccp-props="{}"> </span></p>
+                <div class="pd-chips" id="pdChips">
+                    <span class="pd-chip">Semantic Search</span>
+                    <span class="pd-chip">Contextual Intelligence</span>
+                    <span class="pd-chip">Natural Language Querying</span>
+                </div>
+                <figure class="pd-quote" id="pdQuote">
+                    <blockquote id="pdQuoteText">"Reporting cycle: 3 weeks &rarr; 4 days."</blockquote>
+                    <figcaption id="pdQuoteCite">Enterprise analytics team &middot; faster self-serve reporting</figcaption>
+                </figure>
+                <a href="lumenore-ask-me.html" class="pd-cta btn-primary" id="pdCta">Explore Ask Me <span class="pd-cta-arrow" aria-hidden="true">&rarr;</span></a>
+          </div>
+
+            <!-- Product visual (right column) -->
+            <div class="product-visual reveal-right" style="--reveal-delay:.64s">
+                <span class="pv-orb pv-orb-a" aria-hidden="true"></span>
+                <span class="pv-orb pv-orb-b" aria-hidden="true"></span>
+                <div id="pdLottie"></div>
+            </div>
+
+        </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== FEATURES AND CAPABILITIES — horizontal scroll (Figma 994:29843) ===== -->
+<section class="section-features">
+    <div class="container">
+        <div class="features-intro">
+            <p class="features-eyebrow reveal-block"><span class="fe-dot"></span>Features &amp; Capabilities</p>
+            <h2 class="reveal-block" style="--reveal-delay:.18s">Everything you need to <em class="fh-accent">10x your business impact</em></h2>
+            <p class="section-sub reveal-block" style="--reveal-delay:.32s">A complete data + AI platform built for analysts, leaders, and self-serve teams alike.</p>
+        </div>
+
+        <div class="features-marquee" id="featuresMarquee">
+            <!-- Single track — all 12 feature cards, scrolling RIGHT → LEFT. -->
+            <div class="features-track" id="featuresTrack" data-marquee-dir="rtl">
+                <div class="feature-card">
+                    <span class="fc-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v6c0 1.7 4 3 9 3s9-1.3 9-3V5M3 11v6c0 1.7 4 3 9 3s9-1.3 9-3v-6"/></svg>
+                    </span>
+                    <h5>Data Integration</h5>
+                    <p>Connect and bring data from varied sources using in-built ETL tool and multiple data source connectors.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="fc-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                    </span>
+                    <h5>Data Quality and Validation</h5>
+                    <p>Monitor and correct inconsistencies, duplicates, and errors in datasets.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="fc-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                    </span>
+                    <h5>Data Lakehouse</h5>
+                    <p>Create a single source of truth with our highly scalable and secure data lakehouse.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="fc-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="10" width="4" height="11"/><rect x="10" y="3" width="4" height="18"/><rect x="17" y="7" width="4" height="14"/></svg>
+                    </span>
+                    <h5>Data Visualization</h5>
+                    <p>Create interactive dashboards and storyboards using 100+ charts and graphs.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="fc-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><polyline points="14 7 21 7 21 14"/></svg>
+                    </span>
+                    <h5>Predictive Analytics</h5>
+                    <p>Use historical and real-time data to forecast future trends, risks, and opportunities.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="fc-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+                    </span>
+                    <h5>Embedded Analytics</h5>
+                    <p>Bring dashboards and insights directly into business applications.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="fc-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                    </span>
+                    <h5>AI Agents</h5>
+                    <p>Get a force of AI Agents for assistance in root cause analysis, visualization, predictions, and more.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="fc-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                    </span>
+                    <h5>Conversational Analytics</h5>
+                    <p>Ask your data any question in natural language (NLQ) and get actionable insights with context-aware AI.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="fc-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+                    </span>
+                    <h5>Real-Time Data Sync</h5>
+                    <p>Connect and bring data from varied sources using in-built ETL tool and multiple data source connectors.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="fc-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>
+                    </span>
+                    <h5>RAG-Based Analysis</h5>
+                    <p>Analyze unstructured data like PDFs, reports, and word docs.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="fc-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6v6H9z"/></svg>
+                    </span>
+                    <h5>Local LLM Integration</h5>
+                    <p>Keep sensitive data in-house while enabling natural language querying and analysis.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="fc-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><circle cx="12" cy="18" r="3"/><path d="M6 9v3a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V9M12 14v1"/></svg>
+                    </span>
+                    <h5>Low-Code Data Pipeline Builder</h5>
+                    <p>Simplified ETL with a visual interface for building and managing data flows.</p>
+                </div>
+            </div><!-- /features-track -->
+        </div><!-- /features-marquee -->
+
+        <div class="features-nav" aria-label="Features navigation">
+            <button type="button" class="fn-btn fn-prev" id="featuresPrev" aria-label="Previous features">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <button type="button" class="fn-btn fn-next" id="featuresNext" aria-label="Next features">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+        </div>
+    </div>
+</section>
+
+
+<!-- ===== PERSONAS — BUILT FOR EVERY ROLE ===== -->
+<section class="section-personas" id="personaSection" data-active-persona="business">
+    <div class="personas-fade" aria-hidden="true"></div>
+    <div class="personas-fade-bottom" aria-hidden="true"></div>
+
+    <div class="container">
+        <div class="personas-intro">
+            <span class="personas-eyebrow reveal-block">
+                <span class="pe-dot" aria-hidden="true"></span>
+                INTELLIGENCE FOR EVERY TEAM
+            </span>
+            <h2 class="reveal-block" style="--reveal-delay:.18s">Built for Every Role in the <span class="ph-accent">Data-to-Decision Journey</span></h2>
+            <p class="section-sub reveal-block" style="--reveal-delay:.32s">From business users to data teams, Lumenore helps organizations reduce complexity, accelerate decisions, and turn data into meaningful business outcomes.</p>
+        </div>
+
+        <div class="persona-explorer">
+
+            <!-- LEFT: persona selector (top) + active-persona content -->
+            <div class="pex-content reveal-left" style="--reveal-delay:.22s">
+                <div class="pex-selector" id="personaTabs" role="tablist" aria-label="Roles">
+                    <button type="button" class="px-tab is-active" data-persona="business"  role="tab" aria-selected="true"  tabindex="0">Leader</button>
+                    <button type="button" class="px-tab"           data-persona="scientist" role="tab" aria-selected="false" tabindex="-1">Scientist</button>
+                    <button type="button" class="px-tab"           data-persona="engineer"  role="tab" aria-selected="false" tabindex="-1">Data Engineer</button>
+                    <button type="button" class="px-tab"           data-persona="analyst"   role="tab" aria-selected="false" tabindex="-1">Analyst</button>
+                </div>
+
+                <div class="pex-text">
+                    <span class="pex-role-label" id="personaRoleLabel">Data Analysts</span>
+                    <h3 id="personaHeading">
+                        <span class="pquote">"</span><span id="personaHeadingText">Turn questions into insights without waiting on anyone.</span><span class="pquote">"</span>
+                    </h3>
+                    <p id="personaDesc">Equip analysts and business users with self-service analytics that are simple to use and quick to deploy. With Lumenore's intuitive tools, exploring data, uncovering insights, and sharing results becomes effortless.</p>
+                    <div class="persona-chips" id="personaChips">
+                        <span class="chip"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg>Natural language queries</span>
+                        <span class="chip"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg>100+ chart types</span>
+                        <span class="chip"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg>Self-serve exploration</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT: animated scene stage -->
+            <div class="pex-stage reveal-right" style="--reveal-delay:.36s">
+                <!-- ── Analyst scene ─────────────────────────────────── -->
+                <div class="persona-scene" data-scene="analyst" aria-hidden="true">
+                    <span class="scene-glow scene-glow-a" data-parallax="-0.14"></span>
+                    <span class="scene-glow scene-glow-b" data-parallax="0.08"></span>
+                    <div class="scene-card sc-1 sc-trend" data-parallax="-0.10">
+                        <div class="sc-hd">
+                            <span class="sc-eyebrow">Revenue trend</span>
+                            <span class="sc-pill">FY 2026</span>
+                        </div>
+                        <div class="sc-stat-row">
+                            <span class="sc-num">$4.2M</span>
+                            <span class="sc-delta sc-delta-up">
+                                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+                                +18.4%
+                            </span>
+                        </div>
+                        <svg class="sc-spark" viewBox="0 0 220 60" preserveAspectRatio="none">
+                            <defs>
+                                <linearGradient id="sparkFill" x1="0" y1="0" x2="0" y2="1">
+                                    <stop offset="0%"  stop-color="currentColor" stop-opacity=".22"/>
+                                    <stop offset="100%" stop-color="currentColor" stop-opacity="0"/>
+                                </linearGradient>
+                            </defs>
+                            <path d="M0,46 Q30,38 55,40 T110,28 T170,12 L220,6 L220,60 L0,60 Z" fill="url(#sparkFill)"/>
+                            <path class="draw-line" d="M0,46 Q30,38 55,40 T110,28 T170,12 L220,6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <div class="scene-card sc-2 sc-rows-card" data-parallax="0.06">
+                        <span class="sc-eyebrow">Top quarters</span>
+                        <ul class="sc-rows">
+                            <li><span class="sc-rl">Q4 2026</span><span class="sc-bar"><i style="width:92%"></i></span><span class="sc-rv">$1.4M</span></li>
+                            <li><span class="sc-rl">Q3 2026</span><span class="sc-bar"><i style="width:72%"></i></span><span class="sc-rv">$1.1M</span></li>
+                            <li><span class="sc-rl">Q2 2026</span><span class="sc-bar"><i style="width:58%"></i></span><span class="sc-rv">$0.9M</span></li>
+                        </ul>
+                    </div>
+                    <div class="scene-card sc-3 sc-insight" data-parallax="-0.04">
+                        <span class="sc-pulse"></span>
+                        <p class="sc-text">Q4 saw a <strong>+24% YoY</strong> uplift, led by enterprise-tier expansion.</p>
+                    </div>
+                </div>
+
+                <!-- ── Business Leader scene ─────────────────────────── -->
+                <div class="persona-scene is-on" data-scene="business" aria-hidden="false">
+                    <span class="scene-glow scene-glow-a" data-parallax="-0.14"></span>
+                    <span class="scene-glow scene-glow-b" data-parallax="0.08"></span>
+                    <div class="scene-card sc-1 sc-kpis" data-parallax="-0.10">
+                        <span class="sc-eyebrow">Executive pulse</span>
+                        <div class="sc-grid">
+                            <div class="sc-kpi"><span class="sc-num sc-num-sm">$4.2M</span><span class="sc-lbl">Revenue</span></div>
+                            <div class="sc-kpi"><span class="sc-num sc-num-sm">67</span><span class="sc-lbl">NPS</span></div>
+                            <div class="sc-kpi"><span class="sc-num sc-num-sm">92%</span><span class="sc-lbl">Retention</span></div>
+                            <div class="sc-kpi"><span class="sc-num sc-num-sm">+18%</span><span class="sc-lbl">Pipeline</span></div>
+                        </div>
+                    </div>
+                    <div class="scene-card sc-2 sc-goal" data-parallax="0.06">
+                        <div class="sc-hd"><span class="sc-eyebrow">Quarterly goal</span><span class="sc-meta-r">78%</span></div>
+                        <div class="sc-progress"><i style="width:78%"></i></div>
+                        <span class="sc-meta">$3.27M / $4.20M</span>
+                    </div>
+                    <div class="scene-card sc-3 sc-checks-card" data-parallax="-0.04">
+                        <span class="sc-eyebrow">This week's focus</span>
+                        <ul class="sc-checks">
+                            <li><span class="sc-check"></span>EMEA renewals review</li>
+                            <li><span class="sc-check"></span>Pricing model update</li>
+                            <li><span class="sc-check"></span>Board narrative draft</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- ── Data Scientist scene ──────────────────────────── -->
+                <div class="persona-scene" data-scene="scientist" aria-hidden="true">
+                    <span class="scene-glow scene-glow-a" data-parallax="-0.14"></span>
+                    <span class="scene-glow scene-glow-b" data-parallax="0.08"></span>
+                    <div class="scene-card sc-1 sc-pipeline" data-parallax="-0.10">
+                        <span class="sc-eyebrow">Model pipeline</span>
+                        <div class="sc-nodes">
+                            <div class="sc-node">Data</div>
+                            <div class="sc-node">Train</div>
+                            <div class="sc-node">Evaluate</div>
+                            <div class="sc-node sc-node-active">Deploy</div>
+                        </div>
+                    </div>
+                    <div class="scene-card sc-2 sc-rows-card" data-parallax="0.06">
+                        <span class="sc-eyebrow">Models</span>
+                        <ul class="sc-rows">
+                            <li><span class="sc-rl">churn_v3</span><span class="sc-badge sc-good">0.94</span></li>
+                            <li><span class="sc-rl">forecast_v2</span><span class="sc-badge sc-mid">0.88</span></li>
+                            <li><span class="sc-rl">propensity_v1</span><span class="sc-badge sc-good">0.91</span></li>
+                        </ul>
+                    </div>
+                    <div class="scene-card sc-3 sc-alert" data-parallax="-0.04">
+                        <span class="sc-pulse sc-pulse-warn"></span>
+                        <p class="sc-text"><strong>Drift detected</strong> in churn_v2 (2.3%). Retrain scheduled for Friday.</p>
+                    </div>
+                </div>
+
+                <!-- ── Engineer scene ────────────────────────────────── -->
+                <div class="persona-scene" data-scene="engineer" aria-hidden="true">
+                    <span class="scene-glow scene-glow-a" data-parallax="-0.14"></span>
+                    <span class="scene-glow scene-glow-b" data-parallax="0.08"></span>
+                    <div class="scene-card sc-1 sc-pipeline" data-parallax="-0.10">
+                        <span class="sc-eyebrow">ETL pipeline</span>
+                        <div class="sc-nodes">
+                            <div class="sc-node">Source</div>
+                            <div class="sc-node">Transform</div>
+                            <div class="sc-node sc-node-active">Lakehouse</div>
+                        </div>
+                    </div>
+                    <div class="scene-card sc-2 sc-rows-card" data-parallax="0.06">
+                        <span class="sc-eyebrow">Job health</span>
+                        <ul class="sc-rows">
+                            <li><span class="sc-rl">orders_etl</span><span class="sc-status sc-ok">ok</span></li>
+                            <li><span class="sc-rl">events_stream</span><span class="sc-status sc-ok">ok</span></li>
+                            <li><span class="sc-rl">crm_sync</span><span class="sc-status sc-warn">slow</span></li>
+                            <li><span class="sc-rl">audit_dq</span><span class="sc-status sc-ok">ok</span></li>
+                        </ul>
+                    </div>
+                    <div class="scene-card sc-3 sc-metric" data-parallax="-0.04">
+                        <span class="sc-eyebrow">Latency p95</span>
+                        <span class="sc-metric-num">47<small>ms</small></span>
+                        <span class="sc-metric-foot">Last hour · all pipelines</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ===== PRICING — Faithful to Figma content, fresh layout =====
+     Structure follows Figma component (994:29853 + variants):
+       • Heading (Fraunces)
+       • Big plan toggle (Freemium / Enterprise) with icons + captions
+       • Two-column showcase:
+           LEFT  = plan title, bold note, 5 clickable feature pills, CTA
+           RIGHT = white card with eyebrow, h4, 3 sub-bullets, violet stat,
+                   GIF — content cross-fades as bullets/plans change
+-->
+<section class="section-pricing" id="pricingSection" data-active-plan="freemium">
+    <div class="container">
+
+        <!-- INTRO ─────────────────────────────────────────────── -->
+        <div class="pricing-intro">
+            <span class="pricing-eyebrow reveal-block">
+                <span class="pe-dot" aria-hidden="true"></span>
+                Plans &amp; Pricing
+            </span>
+            <h2 class="reveal-block" style="--reveal-delay:.18s">Explore the Right Way <span class="ph-accent">to Get Started</span></h2>
+        </div>
+
+        <!-- ASYMMETRIC SPLIT GRID — left main panel + right column of 3 stacked
+             insight cards. The left panel contains a small Freemium/Enterprise
+             switcher at the top and capability cards driven by Figma data;
+             the right cards swap content as the active capability changes. -->
+        <div class="pricing-grid" id="pricingGrid">
+
+            <!-- LEFT — main pricing panel -->
+            <article class="pricing-main reveal-left" style="--reveal-delay:.28s">
+                <!-- Plan switcher — bigger, more prominent pills with caption -->
+                <div class="pm-switcher" id="pricingTabs" role="tablist" aria-label="Plans">
+                    <button type="button" class="pm-plan is-active" data-plan="freemium" role="tab" aria-selected="true" tabindex="0">
+                        <span class="pm-plan-icon" aria-hidden="true">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 22c1.25-1.25 2.5-2.5 3.5-4M22 2C12 4 4 8 5 18c10-1 14-9 17-16-3 0-7 1-10 2-2 .67-4 2-5 4-2 3-1 6 1 8 4 0 7-2 10-5 1-1 2-3 2-5z"/></svg>
+                        </span>
+                        <span class="pm-plan-label">
+                            <span class="pm-plan-name">Freemium</span>
+                            <span class="pm-plan-sub">For Individuals &amp; Small Teams</span>
+                        </span>
+                    </button>
+                    <button type="button" class="pm-plan" data-plan="enterprise" role="tab" aria-selected="false" tabindex="-1">
+                        <span class="pm-plan-icon" aria-hidden="true">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4"/></svg>
+                        </span>
+                        <span class="pm-plan-label">
+                            <span class="pm-plan-name">Enterprise</span>
+                            <span class="pm-plan-sub">For Organizations &amp; Scale</span>
+                        </span>
+                    </button>
+                </div>
+
+                <h3 class="pm-title" id="pmTitle">Start answering your data questions independently.</h3>
+                <p class="pm-sub" id="pmSub">No Credit Card, No Setup.</p>
+
+                <div class="pm-cards" id="pmCards" role="tablist" aria-label="Capabilities included">
+                    <!-- Cards rendered by JS — one per bullet in the active plan -->
+                </div>
+
+                <a href="pricing.html" class="pm-cta btn-primary">
+                    Compare Plans
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                </a>
+            </article>
+
+            <!-- RIGHT — GIF card on top, KPI below -->
+            <aside class="pricing-aside reveal-right" style="--reveal-delay:.4s">
+
+                <!-- GIF + checklist — top card -->
+                <article class="pa-card pa-card--value" id="paValueCard">
+                    <div class="pa-media" id="paMedia">
+                        <img id="paMediaImg" src="assets/images/homeV2o/pricing/Free1.gif" alt="Feature preview" loading="lazy">
+                    </div>
+                    <h4 class="pa-title" id="paValueTitle">Bring your data in. Keep it up to date</h4>
+                    <ul class="pa-checklist" id="paChecklist">
+                        <li><svg class="pa-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Connect files and databases without complex setup.</li>
+                        <li><svg class="pa-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Refresh data automatically on a daily schedule.</li>
+                        <li><svg class="pa-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Work with up-to-date numbers without manual effort.</li>
+                    </ul>
+                </article>
+
+                <!-- KPI — bottom card -->
+                <article class="pa-card pa-card--kpi">
+                    <span class="pa-kpi-eyebrow">Measured Impact</span>
+                    <p class="pa-kpi-stat"><span id="paKpiNum">60</span><span id="paKpiSfx">%</span></p>
+                    <p class="pa-kpi-cap" id="paKpiCap">Less time spent managing data updates.</p>
+                </article>
+
+            </aside>
+        </div>
+    </div>
+</section>
+
+
+<!-- ===== SUCCESS STORIES — carousel (Figma 994:29866) ===== -->
+<section class="section-success">
+    <div class="container">
+        <div class="success-intro">
+            <p class="success-eyebrow reveal-block"><span class="se-dot"></span>Success Stories</p>
+            <h2 class="reveal-block" style="--reveal-delay:.18s">Proven Track Record: <em class="sh-accent">Customer Wins</em></h2>
+            <p class="section-sub reveal-block" style="--reveal-delay:.32s">Real outcomes from teams that built their data engine on Lumenore — across healthcare, manufacturing, and agriculture.</p>
+        </div>
+
+        <div class="stories-carousel" id="storiesCarousel">
+            <button type="button" class="stories-arrow is-prev" id="storiesPrev" aria-label="Previous story">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            </button>
+
+            <div class="stories-viewport">
+                <div class="stories-track" id="storiesTrack">
+                    <a href="case-study-1.html" class="story-card">
+                        <div class="story-image">
+                            <img src="assets/images/Case-study/CasestudyThumbnail_DWIHN.jpg" alt="Behavioral Healthcare Provider case study" loading="lazy">
+                        </div>
+                        <div class="story-body">
+                            <p class="story-eyebrow"><span class="story-eyebrow-dot"></span>Healthcare</p>
+                            <p class="story-title">How a US-based Behavioral Healthcare Provider Reduced Recidivism with Lumenore</p>
+                            <span class="story-link">
+                                Read case study
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                            </span>
+                        </div>
+                    </a>
+
+                    <a href="case-study-2.html" class="story-card">
+                        <div class="story-image">
+                            <img src="assets/images/Case-study/CasestudyThumbnail_NHM.jpg" alt="Public health program case study" loading="lazy">
+                        </div>
+                        <div class="story-body">
+                            <p class="story-eyebrow"><span class="story-eyebrow-dot"></span>Healthcare</p>
+                            <p class="story-title">How a Public Health Service Program Reduced Maternal &amp; Infant Mortality Rates</p>
+                            <span class="story-link">
+                                Read case study
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                            </span>
+                        </div>
+                    </a>
+
+                    <a href="case-study-3.html" class="story-card">
+                        <div class="story-image">
+                            <img src="assets/images/Case-study/CasestudyThumbnail_PrimeHealth.jpg" alt="Healthcare scheduling case study" loading="lazy">
+                        </div>
+                        <div class="story-body">
+                            <p class="story-eyebrow"><span class="story-eyebrow-dot"></span>Healthcare</p>
+                            <p class="story-title">How a Global Healthcare Organization Optimized Their Scheduling and Staff Allocation</p>
+                            <span class="story-link">
+                                Read case study
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                            </span>
+                        </div>
+                    </a>
+
+                    <a href="case-study-4.html" class="story-card">
+                        <div class="story-image">
+                            <img src="assets/images/Case-study/CasestudyThumbnail_THK.jpg" alt="Manufacturing case study" loading="lazy">
+                        </div>
+                        <div class="story-body">
+                            <p class="story-eyebrow"><span class="story-eyebrow-dot"></span>Manufacturing</p>
+                            <p class="story-title">How THK Rhythm Automotive Optimized Production with Lumenore</p>
+                            <span class="story-link">
+                                Read case study
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                            </span>
+                        </div>
+                    </a>
+
+                    <a href="case-study-5.html" class="story-card">
+                        <div class="story-image">
+                            <img src="assets/images/Case-study/bayer.jpg" alt="Agriculture case study" loading="lazy">
+                        </div>
+                        <div class="story-body">
+                            <p class="story-eyebrow"><span class="story-eyebrow-dot"></span>Agriculture</p>
+                            <p class="story-title">Unifying Crop, Channel, and Campaign Data with AI-Powered Analytics</p>
+                            <span class="story-link">
+                                Read case study
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                            </span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <button type="button" class="stories-arrow is-next" id="storiesNext" aria-label="Next story">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+        </div>
+
+        <!-- "See all case studies" CTA — centered below the carousel (Figma 994:29867) -->
+        <div class="success-cta">
+            <a href="success-stories.html" class="btn-primary">
+                See all case studies
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ===== TESTIMONIALS — tabs + quote (Figma 994:29873) ===== -->
+<section class="section-testimonial">
+    <div class="container">
+        <div class="testimonial-intro">
+            <p class="testimonial-eyebrow reveal-block"><span class="te-dot"></span>Customer Voices</p>
+            <h2 class="reveal-block" style="--reveal-delay:.18s">Hear What Our <em class="th-accent">Customers</em> Have To Say</h2>
+            <p class="section-sub reveal-block" style="--reveal-delay:.32s">Direct from leaders shipping analytics with Lumenore — in their own words.</p>
+        </div>
+
+        <div class="testimonial-card reveal-block" id="testimonialCard" style="--reveal-delay:.28s">
+            <!-- 3 person tabs (Arvind active/left, matches Figma) -->
+            <div class="testimonial-tabs" id="testimonialTabs">
+                <button type="button" class="testimonial-tab is-active" data-slide="0">
+                    <span class="tt-name">Arvind Patkar</span>
+                    <span class="tt-role">Founder &amp; CEO</span>
+                    <span class="tt-company">ARAMSEC Company Limited</span>
+                </button>
+                <button type="button" class="testimonial-tab" data-slide="1">
+                    <span class="tt-name">Vicente Ciampa</span>
+                    <span class="tt-role">CEO</span>
+                    <span class="tt-company">Xonit.net</span>
+                </button>
+                <button type="button" class="testimonial-tab" data-slide="2">
+                    <span class="tt-name">Sara Mohammad Alblooshi</span>
+                    <span class="tt-role">Application Head</span>
+                    <span class="tt-company">Department of Digital Ajman</span>
+                </button>
+            </div>
+
+            <!-- Quote body -->
+            <div class="testimonial-body">
+                <div class="quote-mark" aria-hidden="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" fill="none">
+                        <path d="M22 12c-7.2 0-13 5.8-13 13 0 7.2 5.8 13 13 13 1.4 0 2.7-.2 4-.6-1.5 6.2-6 11.4-12.2 13.6L18 60c12-3 21-13.4 21-26V25c0-7.2-5.8-13-13-13h-4zm32 0c-7.2 0-13 5.8-13 13 0 7.2 5.8 13 13 13 1.4 0 2.7-.2 4-.6-1.5 6.2-6 11.4-12.2 13.6L50 60c12-3 21-13.4 21-26V25c0-7.2-5.8-13-13-13h-4z" fill="currentColor"/>
+                    </svg>
+                </div>
+                <div class="quote-content">
+                    <p class="quote-text" id="quoteText">Their innovative data analytics and business intelligence solutions have become integral to our operational efficiency and decision-making process. With Lumenore’s customized dashboards and predictive insights, we’ve gained a competitive edge, allowing us to make informed decisions faster and more accurately.
+
+This partnership has enhanced our ability to serve our clients effectively. We look forward to continued success together and highly recommend Lumenore for any organization seeking a reliable partner in business intelligence and digital transformation.</p>
+
+                    <div class="quote-meta">
+                        <div class="quote-stars">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15,9 22,9 16.5,13.5 18.5,21 12,17 5.5,21 7.5,13.5 2,9 9,9"/></svg>
+                            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15,9 22,9 16.5,13.5 18.5,21 12,17 5.5,21 7.5,13.5 2,9 9,9"/></svg>
+                            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15,9 22,9 16.5,13.5 18.5,21 12,17 5.5,21 7.5,13.5 2,9 9,9"/></svg>
+                            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15,9 22,9 16.5,13.5 18.5,21 12,17 5.5,21 7.5,13.5 2,9 9,9"/></svg>
+                            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15,9 22,9 16.5,13.5 18.5,21 12,17 5.5,21 7.5,13.5 2,9 9,9"/></svg>
+                        </div>
+                        <p class="quote-name" id="quoteName">Arvind Patkar</p>
+                        <p class="quote-role" id="quoteRole">Founder &amp; CEO</p>
+                        <p class="quote-company" id="quoteCompany">ARAMSEC Company Limited</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== PAGE FINALE (gradient: violet → navy) ===== -->
+<div class="page-finale">
+
+<!-- ===== TRUST + BEFORE YOU DECIDE + CTA ===== -->
+<section class="section-trust">
+    <div class="container">
+        <div class="trust-row">
+            <h2 class="reveal-left">Trusted Standards for<br>Complete Data Security</h2>
+            <div class="trust-badges reveal-right" style="--reveal-delay:.18s">
+                <img src="assets/images/homeV2o/Compliance_HIPAA.svg" alt="HIPAA Compliant" loading="lazy">
+                <img src="assets/images/homeV2o/Compliance_GDPR.svg" alt="GDPR Ready" loading="lazy">
+                <img src="assets/images/homeV2o/Compliance_AICPA_SOC2.svg" alt="AICPA SOC 2" loading="lazy">
+            </div>
+        </div>
+
+        <div class="before-decide">
+            <div class="bd-intro reveal-block">
+                <h3>Before you decide</h3>
+                <p class="lead">Everything your team, IT, and procurement need to move forward with confidence.</p>
+            </div>
+
+            <div class="bd-faq reveal-block" id="bdFaq" style="--reveal-delay:.22s">
+                <div class="faq-item is-open">
+                    <button type="button" class="faq-q">
+                        <span class="faq-num">01</span>
+                        <span class="faq-text">What is Lumenore and how does it differ from other business intelligence tools?</span>
+                        <span class="faq-toggle" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Lumenore is an AI-powered business intelligence and analytics platform that combines data integration, automated insights, conversational analytics, and predictive intelligence. Unlike traditional BI tools, Lumenore offers natural language query, AI agents, and augmented analytics so users get insights instantly — no technical expertise required.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button type="button" class="faq-q">
+                        <span class="faq-num">02</span>
+                        <span class="faq-text">Which industries can benefit from Lumenore’s analytics solutions?</span>
+                        <span class="faq-toggle" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Lumenore supports data-driven transformation across industries including healthcare, manufacturing, contact centers, retail, and HR. Its versatility makes it ideal for any enterprise aiming to become analytics-driven.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button type="button" class="faq-q">
+                        <span class="faq-num">03</span>
+                        <span class="faq-text">Can Lumenore integrate data from multiple sources and ETL tools?</span>
+                        <span class="faq-toggle" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes. Lumenore integrates with 100+ data sources including databases, cloud apps, CRMs, and ERPs. It works smoothly with ETL tools and performs built-in data preparation, letting you unify and transform data without complex engineering.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button type="button" class="faq-q">
+                        <span class="faq-num">04</span>
+                        <span class="faq-text">How does Lumenore support AI-powered data analytics?</span>
+                        <span class="faq-toggle" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Lumenore uses AI to automatically detect insights, predict future trends, and allow natural language queries so users can ask questions like “Why did sales drop last month?” and get instant, context-aware answers.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button type="button" class="faq-q">
+                        <span class="faq-num">05</span>
+                        <span class="faq-text">Do I need technical experience to use Lumenore’s analytics features?</span>
+                        <span class="faq-toggle" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>No technical experience is required. Lumenore is a no-code, self-service analytics platform that lets business users create dashboards, run reports, and ask questions using natural language. All data models, workflows, and insights are fully guided and automated.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer">
+    <div class="container">
+
+        <!-- Top row: brand identity (left) + CTA panel (right) -->
+        <div class="footer-top">
+            <div class="brand-col footer-col reveal-left">
+                <div class="brand-logo">
+                    <img src="assets/images/homeV2o/Lumenore logo.svg" alt="Lumenore" class="brand-logo-img">
+                    <img src="assets/images/homeV2o/GPTW.svg" alt="Great Place to Work — Certified" class="gptw-badge">
+                </div>
+
+                <div class="ask-ai-box">
+                    <p class="ask-ai-label">Ask AI for a summary about Lumenore</p>
+                    <div class="ask-ai-icons">
+                        <a href="#" aria-label="ChatGPT"><img src="assets/images/AI/openai.svg" alt="ChatGPT" width="24" height="24"></a>
+                        <a href="#" aria-label="Perplexity"><img src="assets/images/AI/perplexity-dark.svg" alt="Perplexity" width="24" height="24"></a>
+                        <a href="#" aria-label="Gemini"><img src="assets/images/AI/google-gemini-dark.svg" alt="Gemini" width="24" height="24"></a>
+                        <a href="#" aria-label="Claude"><img src="assets/images/AI/claude.svg" alt="Claude" width="24" height="24"></a>
+                        <a href="#" aria-label="Grok"><img src="assets/images/AI/grok.svg" alt="Grok" width="24" height="24"></a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="footer-cta reveal-right" style="--reveal-delay:.18s">
+                <span class="footer-cta-halo" aria-hidden="true"></span>
+                <div class="footer-cta-text">
+                    <span class="footer-cta-eyebrow">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l2 5 5 2-5 2-2 5-2-5-5-2 5-2z" fill="currentColor"/></svg>
+                        Talk to a human
+                    </span>
+                    <h3>Got more questions?</h3>
+                    <p>Our team is here to answer any questions or customize the perfect plan for you.</p>
+                </div>
+
+                <a href="contact.html" class="footer-cta-button btn-primary">
+                    Get in Touch
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                </a>
+            </div>
+        </div>
+
+        <!-- Nav link columns — 5 equal cols -->
+        <div class="footer-nav reveal-block" style="--reveal-delay:.28s">
+            <div class="footer-col">
+                <h4>Platform</h4>
+                <ul>
+                    <li><a href="why-us.html">Why Us</a></li>
+                    <li><a href="trust-and-security.html">Trust and Security</a></li>
+                    <li><a href="partners.html">Partners</a></li>
+                    <li><a href="professional-services.html">Professional Services</a></li>
+                    <li><a href="platform.html">Platform</a></li>
+                    <li><a href="release-notes.html">Latest Releases</a></li>
+                    <li><a href="watch-demo.html">Watch Demo</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Capabilities</h4>
+                <ul>
+                    <li><a href="data-connectors.html">Data Connectors</a></li>
+                    <li><a href="data-integration.html">Data Integration</a></li>
+                    <li><a href="data-lakehouse.html">Data Lakehouse</a></li>
+                    <li><a href="data-visualization.html">Data Visualization</a></li>
+                    <li><a href="data-universe.html">Data Universe</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="advanced-analytics.html">Advanced Analytics</a></li>
+                    <li><a href="embedded-analytics.html">Embedded Analytics</a></li>
+                    <li><a href="conversational-intelligence.html">Conversational Intelligence</a></li>
+                    <li><a href="decision-intelligence.html">Decision Intelligence</a></li>
+                    <li><a href="self-service-analytics.html">Self-Service Analytics</a></li>
+                    <li><a href="predictive-analytics.html">Predictive Analytics</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Product</h4>
+                <ul>
+                    <li><a href="lumenore-insights.html">Lumenore Insights</a></li>
+                    <li><a href="lumenore-ask-me.html">Lumenore Ask Me</a></li>
+                    <li><a href="lumenore-data-magnet.html">Lumenore Data Magnet</a></li>
+                </ul>
+
+                <h4 class="col-spaced">Pricing</h4>
+                <ul>
+                    <li><a href="pricing-insights.html">Lumenore Insights Pricing</a></li>
+                </ul>
+
+                <h4 class="col-spaced">Compare</h4>
+                <ul>
+                    <li><a href="tableau-alternative.html">Tableau Alternative</a></li>
+                    <li><a href="thoughtspot-alternative.html">ThoughtSpot Alternative</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Solutions</h4>
+                <ul>
+                    <li><a href="solutions-by-industry.html">By Industry</a></li>
+                    <li><a href="solutions-by-department.html">By Department</a></li>
+                </ul>
+
+                <h4 class="col-spaced">Company</h4>
+                <ul>
+                    <li><a href="about-us.html">About Us</a></li>
+                    <li><a href="career.html">Career</a></li>
+                    <li><a href="newsroom.html">Newsroom</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="contact-sales.html">Contact Sales</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="request-a-demo.html">Request Demo</a></li>
+                    <li><a href="community-support.html">Community Support</a></li>
+                    <li><a href="news-and-media.html">News &amp; Media</a></li>
+                    <li><a href="ebooks-whitepapers.html">Ebooks &amp; Whitepapers</a></li>
+                    <li><a href="success-stories.html">Success Stories</a></li>
+                    <li><a href="use-cases.html">Use Cases</a></li>
+                    <li><a href="blog.html">Blogs</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="knowledge-base.html">Knowledge Base</a></li>
+                    <li><a href="certifications.html">Certifications</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p>© 2025 Lumenore Inc. All rights reserved.</p>
+            <div class="copyright-social">
+                <a href="#" aria-label="X / Twitter"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+                <a href="#" aria-label="LinkedIn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452z"/></svg></a>
+                <a href="#" aria-label="YouTube"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+                <a href="#" aria-label="Instagram"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+            </div>
+            <div class="legal-links">
+                <a href="privacy.html">Privacy</a>
+                <a href="terms.html">Terms of Use</a>
+                <a href="cookies.html">Cookies Settings</a>
+                <a href="license.html">License Agreement</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</div>
+<!-- ===== /PAGE FINALE ===== -->
+
+<!-- ===== SCRIPTS ===== -->
+<script>
+    /* Product suite — Ask Me ↔ Lumenore Insights ↔ Lumenore Data Magnet */
+    const productData = {
+        askme: {
+            pill: 'Lumenore Ask Me',
+            title: 'Conversational Analytics',
+            desc: 'AI agents with context awareness and expertise that understand not just your question but also your business goal. Ask Me connects to your business data and, in response to your inquiries, brings external market intelligence to independently look into anomalies, identify underlying causes, and deliver governed insights that provide each team with the whole picture.',
+            chips: ['Semantic Search', 'Contextual Intelligence', 'Natural Language Querying'],
+            quote: '\u201cReporting cycle: 3 weeks \u2192 4 days.\u201d',
+            quoteCite: 'Enterprise analytics team \u00b7 faster self-serve reporting',
+            cta: 'Explore Ask Me',
+            ctaHref: 'lumenore-ask-me.html',
+            animation: 'lottieAskMe',
+            variant: ''
+        },
+        insights: {
+            pill: 'Lumenore Insights',
+            title: 'Autonomous Analytics Engine',
+            desc: 'An AI powered analytics engine that autonomously builds and updates dashboards, monitors KPIs, detects anomalies, and delivers critical insights to the right teams across channels, applications, and existing workflows.',
+            chips: ['AI Dashboards', 'Data Story Telling', 'Real-Time Apps'],
+            quote: '\u201c80% reduction in ad-hoc IT data requests.\u201d',
+            quoteCite: 'Ford Credit \u00b7 Financial Services \u00b7 5,000+ employees',
+            cta: 'Explore Insights',
+            ctaHref: '#',
+            animation: 'lottieDashboard',
+            variant: 'is-insights'
+        },
+        datamagnet: {
+            pill: 'Lumenore Data Magnet',
+            title: 'Autonomous Data Operations for AI-Native Analytics',
+            desc: 'An intelligent data foundation designed for AI-native analytics at scale that uses self-learning data pipelines, semantic context, and regulated data operations to automatically link, prepare, and orchestrate business data.',
+            chips: ['100+ Connectors', 'Auto Pipeline Automation', 'Unified Data Stream'],
+            quote: '\u201c2M events/day, Zero engineers babysitting it.\u201d',
+            quoteCite: 'SiriusXM \u00b7 Media and Entertainment \u00b7 real-time streaming',
+            cta: 'Explore Data Magnet',
+            ctaHref: '#',
+            animation: 'lottieDataMagnet',
+            variant: 'is-datamagnet'
+        }
+    };
+
+    const productOrder = ['askme', 'insights', 'datamagnet'];
+    const productTabs  = document.querySelectorAll('.product-tab');
+    const pdDetail     = document.getElementById('productDetail');
+    const pdVisual     = document.querySelector('.product-visual');
+    const pdPill       = document.getElementById('pdPill');
+    const pdTitle      = document.getElementById('pdTitle');
+    const pdDesc       = document.getElementById('pdDesc');
+    const pdChips      = document.getElementById('pdChips');
+    const pdQuote      = document.getElementById('pdQuote');
+    const pdQuoteText  = document.getElementById('pdQuoteText');
+    const pdQuoteCite  = document.getElementById('pdQuoteCite');
+    const pdCta        = document.getElementById('pdCta');
+    const pdLottieEl   = document.getElementById('pdLottie');
+    const pdDots       = document.querySelectorAll('.product-progress .pp-dot');
+    const pdProgFill   = document.getElementById('pdProgFill');
+
+    let currentProduct = 'askme';
+
+    /* \u2500\u2500 Lottie product animation \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */
+    let lottieAnim = null;
+    function loadLottie(varName) {
+        const data = window[varName];
+        if (!data) { setTimeout(() => loadLottie(varName), 100); return; }
+        if (lottieAnim) { lottieAnim.destroy(); lottieAnim = null; }
+        pdLottieEl.innerHTML = '';
+        lottieAnim = lottie.loadAnimation({
+            container: pdLottieEl,
+            renderer:  'svg',
+            loop:      true,
+            autoplay:  true,
+            animationData: data,
+            rendererSettings: { preserveAspectRatio: 'xMidYMid meet' }
+        });
+    }
+    loadLottie(productData.askme.animation);
+    if (pdProgFill) pdProgFill.style.width = (1 / 3 * 100) + '%';
+
+    function renderProduct(key) {
+        const d = productData[key];
+        if (!d) return;
+        currentProduct = key;
+        if (pdProgFill) {
+            const idx = productOrder.indexOf(key);
+            pdProgFill.style.width = ((idx + 1) / productOrder.length * 100) + '%';
+        }
+        pdDots.forEach(dot => dot.classList.toggle('is-active', dot.dataset.product === key));
+        productTabs.forEach(t => {
+            const on = t.dataset.product === key;
+            t.classList.toggle('is-active', on);
+            t.setAttribute('aria-selected', on ? 'true' : 'false');
+        });
+        pdDetail.classList.remove('is-insights', 'is-datamagnet');
+        pdVisual.classList.remove('is-insights', 'is-datamagnet');
+        if (d.variant) { pdDetail.classList.add(d.variant); pdVisual.classList.add(d.variant); }
+        const num = String(productOrder.indexOf(key) + 1).padStart(2, '0');
+        pdPill.innerHTML = `<span class="pd-num">${num}</span><span class="pd-sep" aria-hidden="true">&middot;</span>${d.pill}`;
+        pdTitle.textContent = d.title;
+        pdDesc.textContent  = d.desc;
+        pdChips.innerHTML   = d.chips.map(c => `<span class="pd-chip">${c}</span>`).join('');
+        if (d.quote) {
+            pdQuoteText.textContent = d.quote;
+            pdQuoteCite.textContent = d.quoteCite;
+            pdQuote.hidden = false;
+        } else {
+            pdQuote.hidden = true;
+        }
+        pdCta.innerHTML = d.cta + ' <span class="pd-cta-arrow" aria-hidden="true">&rarr;</span>';
+        if (d.ctaHref) pdCta.setAttribute('href', d.ctaHref);
+        loadLottie(d.animation);
+    }
+
+    /* Premium transition: outgoing content lifts + fades quickly, then the
+       incoming content settles in from below with a staggered ease (no blink). */
+    let switchT = null;
+    function activateProduct(key) {
+        if (key === currentProduct || !productData[key]) return;
+        pdDetail.classList.add('is-leaving');
+        pdVisual.classList.add('is-leaving');
+        pdHead.classList.add('is-leaving');
+        clearTimeout(switchT);
+        switchT = setTimeout(() => {
+            renderProduct(key);
+            pdDetail.classList.replace('is-leaving', 'is-entering');
+            pdVisual.classList.replace('is-leaving', 'is-entering');
+            pdHead.classList.replace('is-leaving', 'is-entering');
+            /* two frames: let the start state paint, then release to animate in */
+            requestAnimationFrame(() => requestAnimationFrame(() => {
+                pdDetail.classList.remove('is-entering');
+                pdVisual.classList.remove('is-entering');
+                pdHead.classList.remove('is-entering');
+            }));
+        }, 90);
+    }
+
+    const pdHead         = document.querySelector('.products-head');
+    const productSection = document.querySelector('.section-products');
+    const reduceMotion   = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const deskQuery      = window.matchMedia('(min-width: 992px)');
+
+    let cachedSectionTop = 0;
+    let cachedRange      = 0;
+    function cacheLayout() {
+        cachedSectionTop = window.scrollY + productSection.getBoundingClientRect().top;
+        cachedRange      = productSection.offsetHeight - window.innerHeight;
+    }
+    cacheLayout();
+
+    let ticking = false;
+    function updateByScroll() {
+        if (cachedRange <= 0) return;
+        let progress = (window.scrollY - cachedSectionTop) / cachedRange;
+        progress = Math.max(0, Math.min(0.999, progress));
+        const idx = Math.floor(progress * productOrder.length);
+        const key = productOrder[idx];
+        if (key !== currentProduct) activateProduct(key);
+    }
+    function onScroll() {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(() => { updateByScroll(); ticking = false; });
+    }
+
+    function scrollToProduct(key) {
+        const idx = productOrder.indexOf(key);
+        const seg = cachedRange / productOrder.length;
+        window.scrollTo({ top: cachedSectionTop + seg * idx + seg * 0.5, behavior: 'smooth' });
+    }
+
+    let rotateTimer = null;
+    function startAutoRotate() {
+        if (reduceMotion) return;
+        clearInterval(rotateTimer);
+        rotateTimer = setInterval(() => {
+            const next = productOrder[(productOrder.indexOf(currentProduct) + 1) % productOrder.length];
+            activateProduct(next);
+        }, 6000);
+    }
+    function stopAutoRotate() { clearInterval(rotateTimer); }
+
+    function setupMode() {
+        window.removeEventListener('scroll', onScroll);
+        stopAutoRotate();
+        if (deskQuery.matches) {
+            window.addEventListener('scroll', onScroll, { passive: true });
+            updateByScroll();
+        } else {
+            startAutoRotate();
+        }
+    }
+    productTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            if (deskQuery.matches) {
+                scrollToProduct(tab.dataset.product);
+            } else {
+                activateProduct(tab.dataset.product);
+                startAutoRotate();
+            }
+        });
+    });
+    deskQuery.addEventListener('change', setupMode);
+    window.addEventListener('resize', () => { cacheLayout(); if (deskQuery.matches) updateByScroll(); });
+    setupMode();
+</script>
+
+<script>
+    /* Product visual — mouse parallax on .product-visual. */
+    (function setupProductParallax(){
+        const visual = document.querySelector('.product-visual');
+        if (!visual) return;
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        let rect = null;
+        let mTicking = false;
+        let pendingX = 0, pendingY = 0;
+        const apply = () => {
+            visual.style.setProperty('--mx', pendingX.toFixed(3));
+            visual.style.setProperty('--my', pendingY.toFixed(3));
+            mTicking = false;
+        };
+        visual.addEventListener('mouseenter', () => { rect = visual.getBoundingClientRect(); });
+        visual.addEventListener('mousemove', (e) => {
+            if (!rect) rect = visual.getBoundingClientRect();
+            pendingX = (e.clientX - rect.left)  / rect.width  - 0.5;
+            pendingY = (e.clientY - rect.top)    / rect.height - 0.5;
+            if (!mTicking) { mTicking = true; requestAnimationFrame(apply); }
+        });
+        visual.addEventListener('mouseleave', () => {
+            pendingX = 0; pendingY = 0;
+            if (!mTicking) { mTicking = true; requestAnimationFrame(apply); }
+            rect = null;
+        });
+    })();
+</script>
+
+
+
+
+<script>
+    const personaData = {
+        analyst: {
+            pill: 'Data Analysts',
+            heading: 'Ask & Investigate',
+            desc: 'Get more than reports; get answers. With intelligence that helps you identify what matters most, you can investigate business questions, find hidden trends, and surface significant insights more quickly.',
+            chips: ['Natural language queries', '100+ chart types', 'Self-serve exploration'],
+            accent: '#0e48a5', accentSecondary: '#7747b6',
+            glowA: 'rgba(40, 99, 195, .55)', glowB: 'rgba(119, 71, 182, .40)', glowC: 'rgba(28, 169, 201, .25)',
+            soft: 'rgba(40, 99, 195, .08)', border: 'rgba(40, 99, 195, .22)'
+        },
+        business: {
+            pill: 'Business Leaders',
+            heading: 'Monitor & Decide',
+            desc: 'Stay ahead of business performance with critical insights, emerging opportunities, and potential risks surfaced automatically. Focus on making confident decisions while intelligent systems continuously monitor what matters most.',
+            chips: ['Real-time KPI tracking', 'Executive dashboards', 'Alerts & narratives'],
+            accent: '#7747b6', accentSecondary: '#0e48a5',
+            glowA: 'rgba(119, 71, 182, .55)', glowB: 'rgba(40, 99, 195, .40)', glowC: 'rgba(18, 182, 248, .25)',
+            soft: 'rgba(119, 71, 182, .09)', border: 'rgba(119, 71, 182, .25)'
+        },
+        scientist: {
+            pill: 'Data Scientist',
+            heading: 'Build & Innovate',
+            desc: 'Turn ideas into intelligent solutions faster. Work with trusted enterprise data that helps you spend less time preparing and more time building models, predictions, and AI-driven solutions.',
+            chips: ['AutoML pipelines', 'Advanced Analytics', 'Model monitoring'],
+            accent: '#1ca9c9', accentSecondary: '#0e48a5',
+            glowA: 'rgba(28, 169, 201, .55)', glowB: 'rgba(40, 99, 195, .40)', glowC: 'rgba(119, 71, 182, .25)',
+            soft: 'rgba(28, 169, 201, .09)', border: 'rgba(28, 169, 201, .28)'
+        },
+        engineer: {
+            pill: 'Data Engineers',
+            heading: 'Connect & Orchestrate',
+            desc: 'Eliminate pipeline management and manual data preparation. Automate data operations, link enterprise systems, and make sure dependable, trustworthy data is constantly available for analytics, artificial intelligence, and business decision-making.',
+            chips: ['Low-code ETL', 'Lakehouse storage', 'Schema observability'],
+            accent: '#12b6f8', accentSecondary: '#1ca9c9',
+            glowA: 'rgba(18, 182, 248, .55)', glowB: 'rgba(28, 169, 201, .40)', glowC: 'rgba(40, 99, 195, .25)',
+            soft: 'rgba(18, 182, 248, .09)', border: 'rgba(18, 182, 248, .28)'
+        }
+    };
+
+    const personaSection   = document.getElementById('personaSection');
+    const personaTabs      = document.querySelectorAll('.px-tab');
+    const personaScenes    = document.querySelectorAll('.persona-scene');
+    const personaRoleLabel = document.getElementById('personaRoleLabel');
+    const personaHeading   = document.getElementById('personaHeadingText');
+    const personaDesc      = document.getElementById('personaDesc');
+    const personaChips     = document.getElementById('personaChips');
+
+    function activatePersona(key) {
+        const d = personaData[key];
+        if (!d) return;
+        if (personaSection) {
+            personaSection.setAttribute('data-active-persona', key);
+            personaSection.style.setProperty('--pa-accent', d.accent);
+            personaSection.style.setProperty('--pa-accent-secondary', d.accentSecondary);
+            personaSection.style.setProperty('--pa-accent-glow-a', d.glowA);
+            personaSection.style.setProperty('--pa-accent-glow-b', d.glowB);
+            personaSection.style.setProperty('--pa-accent-glow-c', d.glowC);
+            personaSection.style.setProperty('--pa-accent-soft', d.soft);
+            personaSection.style.setProperty('--pa-accent-border', d.border);
+        }
+        personaTabs.forEach(t => {
+            const on = t.dataset.persona === key;
+            t.classList.toggle('is-active', on);
+            t.setAttribute('aria-selected', on ? 'true' : 'false');
+            t.setAttribute('tabindex', on ? '0' : '-1');
+        });
+        personaScenes.forEach(s => {
+            const on = s.dataset.scene === key;
+            s.classList.toggle('is-on', on);
+            s.setAttribute('aria-hidden', on ? 'false' : 'true');
+        });
+        if (personaRoleLabel) personaRoleLabel.textContent = d.pill;
+        if (personaHeading)   personaHeading.textContent   = d.heading;
+        if (personaDesc)      personaDesc.textContent      = d.desc;
+        if (personaChips)     personaChips.innerHTML = d.chips.map(c => `
+            <span class="chip">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg>
+                ${c}
+            </span>
+        `).join('');
+    }
+
+    personaTabs.forEach(tab => {
+        tab.addEventListener('click', () => activatePersona(tab.dataset.persona));
+        tab.addEventListener('keydown', e => {
+            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activatePersona(tab.dataset.persona); }
+        });
+    });
+
+    activatePersona('business');
+
+    (function setupPersonaParallax(){
+        const section = document.getElementById('personaSection');
+        if (!section) return;
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        const glows = section.querySelectorAll('.scene-glow[data-parallax]');
+        const stage = section.querySelector('.pex-stage');
+        let pTicking = false;
+        function update() {
+            const rect = section.getBoundingClientRect();
+            const wh   = window.innerHeight;
+            const denom = (wh / 2) + (rect.height / 2);
+            if (denom <= 0) return;
+            let progress = ((rect.top + rect.height / 2) - (wh / 2)) / denom;
+            if (progress > 1.3 || progress < -1.3) return;
+            glows.forEach(el => {
+                const amp = parseFloat(el.dataset.parallax || 0);
+                el.style.transform = `translate3d(0, ${(progress * 140 * amp).toFixed(2)}px, 0)`;
+            });
+        }
+        if (stage) {
+            let stageRect = null, mTicking = false, pendingX = 0, pendingY = 0;
+            const apply = () => { stage.style.setProperty('--mx', pendingX.toFixed(3)); stage.style.setProperty('--my', pendingY.toFixed(3)); mTicking = false; };
+            stage.addEventListener('mouseenter', () => { stageRect = stage.getBoundingClientRect(); });
+            stage.addEventListener('mousemove', (e) => {
+                if (!stageRect) stageRect = stage.getBoundingClientRect();
+                pendingX = (e.clientX - stageRect.left) / stageRect.width  - 0.5;
+                pendingY = (e.clientY - stageRect.top)  / stageRect.height - 0.5;
+                if (!mTicking) { mTicking = true; requestAnimationFrame(apply); }
+            });
+            stage.addEventListener('mouseleave', () => { pendingX = 0; pendingY = 0; if (!mTicking) { mTicking = true; requestAnimationFrame(apply); } stageRect = null; });
+        }
+        function onScroll() { if (pTicking) return; pTicking = true; requestAnimationFrame(() => { update(); pTicking = false; }); }
+        window.addEventListener('scroll', onScroll, { passive: true });
+        window.addEventListener('resize', onScroll);
+        update();
+    })();
+</script>
+
+<script>
+    /* Pricing comparison — Freemium ↔ Enterprise plan switch + bullet-driven
+       right-card swap. Content + media URLs pulled verbatim from Figma frame
+       401:16953 (5 Freemium variants + 7 Enterprise variants).
+         · Plan-pill click swaps the plan, renders that plan's bullets in the
+           left card and variant[activeBullet] in the right card
+         · Bullet click swaps the right card to that bullet's variant
+         · Active bullet is remembered per-plan
+       Media URLs are short-lived Figma asset URLs (~7d TTL) — replace with
+       locally-hosted images later if needed. */
+    (function () {
+        const pricingData = {
+            freemium: {
+                title: 'Start answering your data questions independently.',
+                note:  'No Credit Card, No Setup.',
+                bullets: [
+                    'Connect necessary data sources with simple daily refresh',
+                    'Analyze important, operational datasets',
+                    'Build basic dashboards quickly',
+                    'Use conversational analytics for light, ad-hoc querying',
+                    'Designed for individual, self-service analytics'
+                ],
+                variants: [
+                    {
+                        title:  'Bring your data in. Keep it up to date',
+                        subs:   ['Connect files and databases without complex setup.',
+                                 'Refresh data automatically on a daily schedule.',
+                                 'Work with up-to-date numbers without manual effort.'],
+                        statNum: '60', statSuffix: '%',
+                        statCap: 'Less time spent managing data updates.',
+                        media:   'assets/images/homeV2o/pricing/Free1.gif'
+                    },
+                    {
+                        title:  'Turn small datasets into clear insights',
+                        subs:   ['Analyze limited data volumes without performance overhead.',
+                                 'Explore trends and patterns quickly.',
+                                 'Focus on understanding the data, not managing scale.'],
+                        statNum: '65', statSuffix: '%',
+                        statCap: 'Faster insight generation from small datasets.',
+                        media:   'assets/images/homeV2o/pricing/Free-2.gif'
+                    },
+                    {
+                        title:  'Create dashboards without slowing down',
+                        subs:   ['Build simple dashboards in minutes.',
+                                 'Track key metrics and performance at a glance.',
+                                 'Adjust visuals easily as your needs evolve.'],
+                        statNum: '70', statSuffix: '%',
+                        statCap: 'Reduce time spent building dashboards.',
+                        media:   'assets/images/homeV2o/Dashboard (1).gif'
+                    },
+                    {
+                        title:  'Ask questions. Get answers instantly',
+                        subs:   ['Use natural language to query your data.',
+                                 'Get instant visual responses without writing queries.',
+                                 'Ideal for quick checks and exploratory questions.'],
+                        statNum: '75', statSuffix: '%',
+                        statCap: 'Faster answers to everyday data questions.',
+                        media:   'assets/images/homeV2o/pricing/Free-4.gif'
+                    },
+                    {
+                        title:  'Built for solo analysis and personal use',
+                        subs:   ['Single-user analytics focused on personal workflows.',
+                                 'Full control to explore and analyze data independently.',
+                                 'Move from question to insight at your own pace.'],
+                        statNum: '70', statSuffix: '%',
+                        statCap: 'Reduce analysis turnaround time.',
+                        media:   'assets/images/homeV2o/pricing/Free-5.gif'
+                    }
+                ]
+            },
+            enterprise: {
+                title: 'Scale analytics across your entire organization.',
+                note:  '',
+                bullets: [
+                    'Handle very large datasets at scale',
+                    'Enable multi-user and team collaboration',
+                    'Ensure enterprise-grade security and governance',
+                    'Analyze data in near real time',
+                    'Integrate across enterprise systems and data sources',
+                    'Use governed conversational analytics across teams',
+                    'Apply advanced and custom AI models'
+                ],
+                variants: [
+                    {
+                        title:  'Built to perform at enterprise data volumes',
+                        subs:   ['Analyze millions to billions of rows without performance drops.',
+                                 'Maintain fast query response even under heavy workloads.',
+                                 'Scale analytics as data grows across teams and systems.'],
+                        statNum: '80', statSuffix: '%',
+                        statCap: 'Faster insights from large datasets.',
+                        media:   'assets/images/homeV2o/pricing/enterprise-1.gif'
+                    },
+                    {
+                        title:  'Designed for teams and organizations',
+                        subs:   ['Multiple users can explore, analyze, and collaborate simultaneously.',
+                                 'Share dashboards, insights, and reports across departments.',
+                                 'Support organization-wide analytics adoption.'],
+                        statNum: '65', statSuffix: '%',
+                        statCap: 'Improvement in cross-team analytics alignment.',
+                        media:   'assets/images/homeV2o/pricing/enterprise-2.gif'
+                    },
+                    {
+                        title:  'Protect data with built-in governance controls',
+                        subs:   ['Role-based access and fine-grained data permissions.',
+                                 'Enforce security policies across users and teams.',
+                                 'Support compliance and audit requirements.'],
+                        statNum: '75', statSuffix: '%',
+                        statCap: 'Reduction in data access and compliance risks.',
+                        media:   'assets/images/homeV2o/pricing/enterprise-1.gif'
+                    },
+                    {
+                        title:  'Make decisions while data is still relevant',
+                        subs:   ['Ingest and analyze data with high-frequency updates.',
+                                 'Monitor operational metrics as they change.',
+                                 'Respond quickly to emerging trends and issues.'],
+                        statNum: '60', statSuffix: '%',
+                        statCap: 'Faster operational decision-making.',
+                        media:   'assets/images/homeV2o/pricing/enterprise-2.gif'
+                    },
+                    {
+                        title:  'Unify data from across the enterprise',
+                        subs:   ['Connect to SaaS platforms, APIs, databases, and custom systems.',
+                                 'Blend data across multiple sources seamlessly.',
+                                 'Reduce silos between operational and analytical data.'],
+                        statNum: '70', statSuffix: '%',
+                        statCap: 'Less time spent managing data integration.',
+                        media:   'assets/images/homeV2o/pricing/enterprise-1.gif'
+                    },
+                    {
+                        title:  'Enable conversational analytics with control',
+                        subs:   ['Allow teams to ask questions using natural language.',
+                                 'Ensure answers respect roles, permissions, and governance rules.',
+                                 'Maintain consistency and trust in AI-generated insights.'],
+                        statNum: '65', statSuffix: '%',
+                        statCap: 'Faster answers without compromising governance.',
+                        media:   'assets/images/homeV2o/pricing/enterprise-2.gif'
+                    },
+                    {
+                        title:  'Tailor AI to enterprise-specific needs',
+                        subs:   ['Use advanced analytics and custom AI models.',
+                                 'Apply domain-specific logic and business rules.',
+                                 'Support complex analytical and predictive use cases.'],
+                        statNum: '75', statSuffix: '%',
+                        statCap: 'Higher impact from AI-driven analytics.',
+                        media:   'assets/images/homeV2o/pricing/enterprise-1.gif'
+                    }
+                ]
+            }
+        };
+
+        const tabs        = document.querySelectorAll('#pricingTabs .pm-plan');
+        const pmTitle     = document.getElementById('pmTitle');
+        const pmSub       = document.getElementById('pmSub');
+        const pmCards     = document.getElementById('pmCards');
+        const paValueTitle= document.getElementById('paValueTitle');
+        const paChecklist = document.getElementById('paChecklist');
+        const paMediaImg  = document.getElementById('paMediaImg');
+        const paKpiNum    = document.getElementById('paKpiNum');
+        const paKpiSfx    = document.getElementById('paKpiSfx');
+        const paKpiCap    = document.getElementById('paKpiCap');
+        const pricingMain = document.querySelector('.pricing-main');
+        const pricingAside= document.querySelector('.pricing-aside');
+        const pricingSection = document.getElementById('pricingSection');
+        if (!tabs.length || !pmCards) return;
+
+
+
+        let currentPlan = 'freemium';
+        const activeCapByPlan = { freemium: 0, enterprise: 0 };
+
+        function renderCards(plan) {
+            const d = pricingData[plan];
+            const active = activeCapByPlan[plan];
+            pmCards.innerHTML = d.bullets.map((b, i) => {
+                const on = i === active;
+                return '<button type="button" class="pm-card' + (on ? ' is-active' : '') + '"'
+                    + ' data-cap="' + i + '" role="tab"'
+                    + ' aria-selected="' + on + '" tabindex="' + (on ? '0' : '-1') + '">'
+                    + '<span class="pm-card-title">' + b + '</span>'
+                    + '<svg class="pm-card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>'
+                    + '<span class="pm-card-progress" aria-hidden="true"></span>'
+                    + '</button>';
+            }).join('');
+            pmCards.querySelectorAll('.pm-card').forEach(card => {
+                card.addEventListener('click', () => setCapability(parseInt(card.dataset.cap, 10)));
+                card.addEventListener('keydown', e => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        setCapability(parseInt(card.dataset.cap, 10));
+                    }
+                });
+            });
+        }
+
+        let kpiRaf = null;
+        function countUp(el, from, to, duration) {
+            if (kpiRaf) cancelAnimationFrame(kpiRaf);
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                el.textContent = to; return;
+            }
+            const start = performance.now();
+            const range = to - from;
+            function step(now) {
+                const t = Math.min((now - start) / duration, 1);
+                const ease = 1 - Math.pow(1 - t, 3);
+                el.textContent = Math.round(from + range * ease);
+                if (t < 1) kpiRaf = requestAnimationFrame(step);
+            }
+            kpiRaf = requestAnimationFrame(step);
+        }
+
+        function renderInsights(plan, idx) {
+            const v = pricingData[plan].variants[idx];
+            if (!v) return;
+            paValueTitle.textContent = v.title;
+            paChecklist.innerHTML = v.subs.map(s => (
+                '<li><svg class="pa-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>' + s + '</li>'
+            )).join('');
+            const to = parseInt(v.statNum, 10);
+            countUp(paKpiNum, 10, to, 700);
+            paKpiSfx.textContent = v.statSuffix;
+            paKpiCap.textContent = v.statCap;
+            if (paMediaImg && v.media) {
+                paMediaImg.src = v.media;
+                paMediaImg.alt = v.title + ' preview';
+            }
+        }
+
+        function setCapability(idx) {
+            activeCapByPlan[currentPlan] = idx;
+            pmCards.querySelectorAll('.pm-card').forEach((c, i) => {
+                const on = i === idx;
+                c.classList.toggle('is-active', on);
+                c.setAttribute('aria-selected', on);
+                c.setAttribute('tabindex', on ? '0' : '-1');
+                if (on) {
+                    /* Restart the progress-bar CSS animation on the newly active card */
+                    const bar = c.querySelector('.pm-card-progress');
+                    if (bar) { bar.style.animation = 'none'; void bar.offsetWidth; bar.style.animation = ''; }
+                }
+            });
+            if (pricingAside) {
+                pricingAside.classList.add('is-swapping');
+                setTimeout(() => {
+                    renderInsights(currentPlan, idx);
+                    pricingAside.classList.remove('is-swapping');
+                }, 200);
+            } else {
+                renderInsights(currentPlan, idx);
+            }
+        }
+
+        function setPlan(plan) {
+            currentPlan = plan;
+            const d = pricingData[plan];
+            if (pricingSection) pricingSection.setAttribute('data-active-plan', plan);
+            tabs.forEach(t => {
+                const on = t.dataset.plan === plan;
+                t.classList.toggle('is-active', on);
+                t.setAttribute('aria-selected', on);
+                t.setAttribute('tabindex', on ? '0' : '-1');
+            });
+            if (pricingMain && pricingAside) {
+                pricingMain.classList.add('is-swapping');
+                pricingAside.classList.add('is-swapping');
+                setTimeout(() => {
+                    pmTitle.textContent = d.title;
+                    if (d.note && d.note.trim()) {
+                        pmSub.textContent = d.note;
+                        pmSub.style.display = '';
+                    } else {
+                        pmSub.style.display = 'none';
+                    }
+                    renderCards(plan);
+                    renderInsights(plan, activeCapByPlan[plan]);
+                    pricingMain.classList.remove('is-swapping');
+                    pricingAside.classList.remove('is-swapping');
+                    startAuto();
+                }, 200);
+            } else {
+                pmTitle.textContent = d.title;
+                pmSub.textContent = d.note;
+                renderCards(plan);
+                renderInsights(plan, activeCapByPlan[plan]);
+            }
+        }
+
+        tabs.forEach(t => {
+            t.addEventListener('click', () => setPlan(t.dataset.plan));
+            t.addEventListener('keydown', e => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    setPlan(t.dataset.plan);
+                }
+            });
+        });
+
+        /* ── Auto-scroll engine ─────────────────────────────────────────── */
+        const AUTO_MS = 4000;   /* ms each card stays active before advancing */
+        let autoTimer = null;
+        let autoPaused = false;
+
+        function startAuto() {
+            stopAuto();
+            if (autoPaused) return;
+            autoTimer = setTimeout(function () {
+                const bullets = pricingData[currentPlan].bullets;
+                const next = (activeCapByPlan[currentPlan] + 1) % bullets.length;
+                setCapability(next);
+                startAuto();
+            }, AUTO_MS);
+        }
+
+        function stopAuto() {
+            if (autoTimer) { clearTimeout(autoTimer); autoTimer = null; }
+        }
+
+        /* Pause on hover so user can read without the tab advancing */
+        if (pmCards) {
+            pmCards.addEventListener('mouseenter', function () { autoPaused = true;  stopAuto(); });
+            pmCards.addEventListener('mouseleave', function () { autoPaused = false; startAuto(); });
+        }
+
+        /* Also pause when the section scrolls out of view — resume when back */
+        if ('IntersectionObserver' in window && pricingSection) {
+            new IntersectionObserver(function (entries) {
+                if (entries[0].isIntersecting) { startAuto(); }
+                else { stopAuto(); }
+            }, { threshold: 0.25 }).observe(pricingSection);
+        }
+
+        /* Manual tab click: user took control — reset and restart from clicked card */
+        pmCards && pmCards.addEventListener('click', function () {
+            autoPaused = false;
+            startAuto();
+        });
+
+        renderCards('freemium');
+        renderInsights('freemium', 0);
+        startAuto();
+    })();
+
+
+    /* Mouse-parallax on pricing aside card + other interactive zones */
+    (function wireParallax(){
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        function attach(el){
+            if (!el) return;
+            let mx = 0, my = 0, pending = false;
+            const apply = () => {
+                pending = false;
+                el.style.setProperty('--mx', mx.toFixed(3));
+                el.style.setProperty('--my', my.toFixed(3));
+            };
+            el.addEventListener('mousemove', (e) => {
+                const r = el.getBoundingClientRect();
+                mx = (e.clientX - r.left) / r.width  - 0.5;
+                my = (e.clientY - r.top)  / r.height - 0.5;
+                if (!pending) { pending = true; requestAnimationFrame(apply); }
+            });
+            el.addEventListener('mouseleave', () => {
+                mx = 0; my = 0;
+                if (!pending) { pending = true; requestAnimationFrame(apply); }
+            });
+        }
+        attach(document.getElementById('paValueCard'));
+        attach(document.getElementById('storiesCarousel'));
+        attach(document.getElementById('testimonialCard'));
+        attach(document.getElementById('heroSearchWrap'));
+    })();
+
+    /* Stagger reveal for success-stories carousel */
+    (function wireStoriesReveal(){
+        const carousel = document.getElementById('storiesCarousel');
+        if (!carousel) return;
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+            carousel.classList.add('is-revealed');
+            return;
+        }
+        if (!('IntersectionObserver' in window)){
+            carousel.classList.add('is-revealed');
+            return;
+        }
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting){
+                    carousel.classList.add('is-revealed');
+                    io.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.18 });
+        io.observe(carousel);
+    })();
+</script>
+
+<script>
+    /* Testimonial — click a tab to swap quote text, name, role */
+    const testimonials = [
+        {
+            text: 'Their innovative data analytics and business intelligence solutions have become integral to our operational efficiency and decision-making process. With Lumenore’s customized dashboards and predictive insights, we’ve gained a competitive edge, allowing us to make informed decisions faster and more accurately.\n\nThis partnership has enhanced our ability to serve our clients effectively. We look forward to continued success together and highly recommend Lumenore for any organization seeking a reliable partner in business intelligence and digital transformation.',
+            name: 'Arvind Patkar',
+            role: 'Founder & CEO, ARAMSEC Company Limited'
+        },
+        {
+            text: 'Lumenore surpassed our expectations with its intuitive, no-code platform, democratizing data access across the organization. Our clients can now create interactive dashboards, explore real-time data, and uncover hidden trends more easily and without relying on IT.\n\nLumenore\’s commitment to customer success and exceptional support have been invaluable. Being part of the Lumenore partner ecosystem will provide Xonit Soluciones Tecnológicas with valuable collaboration and resources.',
+            name: 'Vicente Ciampa',
+            role: 'CEO, Xonit.net'
+        },
+        {
+            text: 'Lumenore\'s unified analytics platform replaced our manual reporting and helped us cut reporting cycles by 30%, with real-time data integration our business users actually trust.\n\nFeatures like customizable interactive reports and real-time data integration proved especially valuable, enabling us to reduce the time spent on reporting and empower business users to make informed decisions without technical bottlenecks.',
+            name: 'Sara Mohammad Alblooshi',
+            role: 'Application Head, Department of Digital Ajman'
+        }
+    ];
+
+    const tTabs    = document.querySelectorAll('.testimonial-tab');
+    const qText    = document.getElementById('quoteText');
+    const qName    = document.getElementById('quoteName');
+    const qRole    = document.getElementById('quoteRole');
+    const qCompany = document.getElementById('quoteCompany');
+    let tIndex = 0;
+    let tTimer;
+
+    const testimonialCard = document.getElementById('testimonialCard');
+    function showTestimonial(i) {
+        tIndex = i;
+        const t = testimonials[i];
+        /* Smooth fade-swap — add .is-swapping so .testimonial-body fades
+           out + lifts, swap content at the midpoint, then remove the
+           class so it fades back in with a polished cascade. */
+        if (testimonialCard) testimonialCard.classList.add('is-swapping');
+        setTimeout(() => {
+            qText.textContent = t.text;
+            qName.textContent = t.name;
+            const roleParts = t.role.split(', ');
+            qRole.textContent    = roleParts[0];
+            if (qCompany) qCompany.textContent = roleParts.slice(1).join(', ');
+            tTabs.forEach((tab, ti) => tab.classList.toggle('is-active', ti === i));
+            if (testimonialCard) testimonialCard.classList.remove('is-swapping');
+        }, testimonialCard ? 220 : 0);
+    }
+    tTabs.forEach(tab => tab.addEventListener('click', () => {
+        showTestimonial(parseInt(tab.dataset.slide, 10));
+    }));
+</script>
+
+<script>
+    /* Features marquee — true infinite scroll with NO clones.
+       Each track contains its 6 unique cards exactly once. On every
+       animation frame the track's translateX is nudged by a small
+       amount (direction-dependent). When the first/last card has
+       fully exited one edge, the JS moves that card to the opposite
+       end of the track AND compensates the translateX by one card-
+       width so the visual position is identical. The user sees a
+       continuous flow with no card ever repeating. Pause on hover/
+       focus is handled per row. */
+    (function initFeaturesMarquee(){
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        const tracks = document.querySelectorAll('.features-marquee .features-track');
+        if (!tracks.length) return;
+
+        tracks.forEach(track => {
+            const dir = track.dataset.marqueeDir === 'ltr' ? 1 : -1;   /* +1 = L→R, -1 = R→L */
+            const baseSpeed = 1.1;                                     /* px / frame @ 60fps */
+            let offset = 0;
+            let paused = false;
+
+            const gap = () => parseFloat(getComputedStyle(track).gap) || 24;
+            const cardWidth = () => {
+                const c = track.firstElementChild;
+                return c ? c.offsetWidth + gap() : 0;
+            };
+
+            function tick(){
+                if (!paused){
+                    offset += 0;
+                    const cw = cardWidth();
+                    if (cw > 0){
+                        if (dir < 0){
+                            /* R→L: track moves left. When offset has gone
+                               past -cw, the first card has fully exited
+                               left. Move it to the end + add cw back to
+                               offset so visuals stay identical. */
+                            while (-offset >= cw){
+                                track.appendChild(track.firstElementChild);
+                                offset += cw;
+                            }
+                        } else {
+                            /* L→R: track moves right. When offset has
+                               gone past +cw, take the last card and
+                               prepend it, then subtract cw from offset
+                               so the new leading card sits where the
+                               empty space on the left was. */
+                            while (offset >= cw){
+                                track.insertBefore(track.lastElementChild, track.firstElementChild);
+                                offset -= cw;
+                            }
+                        }
+                    }
+                    track.style.transform = `translate3d(${offset.toFixed(2)}px, 0, 0)`;
+                }
+                requestAnimationFrame(tick);
+            }
+
+            track.addEventListener('mouseenter', () => { paused = true;  });
+            track.addEventListener('mouseleave', () => { paused = false; });
+            track.addEventListener('focusin',    () => { paused = true;  });
+            track.addEventListener('focusout',   () => { paused = false; });
+
+            /* Seed the L→R track so the first frame doesn't show empty
+               space on the left — pre-shift the last card to the front
+               once so the track already overflows on both sides. */
+            if (dir === 1 && track.children.length){
+                track.insertBefore(track.lastElementChild, track.firstElementChild);
+                offset = -cardWidth();   /* will animate back toward 0 then wrap */
+                track.style.transform = `translate3d(${offset}px, 0, 0)`;
+            }
+
+            /* ── Prev / Next buttons ── */
+            let stepRaf = null;
+            function stepBy(delta) {
+                const cw = cardWidth();
+                if (!cw) return;
+                paused = true;
+                let start  = offset;
+                let target = offset + delta;
+                const duration = 380;
+                const t0       = performance.now();
+                if (stepRaf) cancelAnimationFrame(stepRaf);
+                function animate(now) {
+                    const p = Math.min((now - t0) / duration, 1);
+                    const e = p < 0.5 ? 2*p*p : -1+(4-2*p)*p;   /* ease-in-out quad */
+                    offset = start + (target - start) * e;
+                    /* keep DOM in sync — shift start+target by the same amount
+                       so the easing trajectory survives the reorder */
+                    if (dir < 0) {
+                        while (-offset >= cw){ track.appendChild(track.firstElementChild); offset += cw; start += cw; target += cw; }
+                        while (offset > 0)   { track.insertBefore(track.lastElementChild, track.firstElementChild); offset -= cw; start -= cw; target -= cw; }
+                    } else {
+                        while (offset >= cw) { track.insertBefore(track.lastElementChild, track.firstElementChild); offset -= cw; start -= cw; target -= cw; }
+                        while (-offset >= cw){ track.appendChild(track.firstElementChild); offset += cw; start += cw; target += cw; }
+                    }
+                    track.style.transform = `translate3d(${offset.toFixed(2)}px, 0, 0)`;
+                    if (p < 1) {
+                        stepRaf = requestAnimationFrame(animate);
+                    } else {
+                        paused = false;
+                    }
+                }
+                stepRaf = requestAnimationFrame(animate);
+            }
+
+            const prevBtn = document.getElementById('featuresPrev');
+            const nextBtn = document.getElementById('featuresNext');
+            if (prevBtn) prevBtn.addEventListener('click', () => stepBy( cardWidth()));
+            if (nextBtn) nextBtn.addEventListener('click', () => stepBy(-cardWidth()));
+
+            requestAnimationFrame(tick);
+        });
+    })();
+</script>
+
+<script>
+    /* Stories carousel — same pattern */
+    (function () {
+        const track = document.getElementById('storiesTrack');
+        const prev  = document.getElementById('storiesPrev');
+        const next  = document.getElementById('storiesNext');
+        if (!track || !prev || !next) return;
+        const cardWidth = 368 + 20;
+        let offset = 0;
+
+        function maxOffset() {
+            const viewportWidth = track.parentElement.clientWidth;
+            const trackWidth = track.scrollWidth;
+            return Math.max(0, trackWidth - viewportWidth);
+        }
+        function update() {
+            track.style.transform = `translateX(${-offset}px)`;
+        }
+        prev.addEventListener('click', () => {
+            offset = Math.max(0, offset - cardWidth);
+            update();
+        });
+        next.addEventListener('click', () => {
+            offset = Math.min(maxOffset(), offset + cardWidth);
+            update();
+        });
+        window.addEventListener('resize', () => {
+            offset = Math.min(offset, maxOffset());
+            update();
+        });
+    })();
+</script>
+
+<script>
+    /* Before-you-decide FAQ accordion */
+    (function () {
+        const faq = document.getElementById('bdFaq');
+        if (!faq) return;
+        faq.querySelectorAll('.faq-q').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const item = btn.closest('.faq-item');
+                const isOpen = item.classList.contains('is-open');
+                faq.querySelectorAll('.faq-item').forEach(i => i.classList.remove('is-open'));
+                if (!isOpen) item.classList.add('is-open');
+            });
+        });
+    })();
+</script>
+
+
+<script>
+    /* Hero orbs — scroll-driven parallax removed per request.
+       The orbs still keep their CSS keyframe idle float (see .hero-orb in
+       the inline <style> block), so they remain visible and animated, but
+       they no longer drift upward as the page scrolls. */
+</script>
+
+
+<!-- ===== EXPLORE OVERLAY (Ask Me demo) — opens when hero "Click to explore" is pressed ===== -->
+<div class="explore-overlay" id="exploreOverlay" aria-hidden="true" role="dialog" aria-label="Lumenore Ask Me demo">
+    <div class="explore-shell">
+        <!-- Sidebar -->
+        <aside class="ex-sidebar">
+            <div class="ex-sidebar-top">
+                <div class="ex-brand">
+                    <span class="ex-brand-mark">L</span>
+                    <span class="ex-brand-text">UMENORE</span>
+                </div>
+                <button class="ex-sidebar-collapse" aria-label="Collapse sidebar">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18"/></svg>
+                </button>
+            </div>
+            <nav class="ex-nav">
+                <button class="ex-nav-item is-active">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+                    New Analysis
+                </button>
+                <button class="ex-nav-item">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/></svg>
+                    Data Pool
+                </button>
+            </nav>
+        </aside>
+
+        <!-- Main pane -->
+        <div class="ex-main">
+            <!-- Top bar -->
+            <header class="ex-topbar">
+                <button type="button" class="ex-back" id="exploreClose">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                    Back to HomePage
+                </button>
+                <div class="ex-top-actions">
+                    <button type="button" class="ex-top-btn ex-signin">Sign in</button>
+                    <button type="button" class="ex-top-btn ex-signup btn-primary btn-primary--sm">Sign up for free</button>
+                </div>
+            </header>
+
+            <!-- Chat canvas -->
+            <main class="ex-canvas" id="exploreCanvas">
+                <div class="ex-stream" id="exploreStream">
+                    <!-- User initial query bubble -->
+                    <div class="ex-row ex-row--user" data-scene="1">
+                        <div class="ex-bubble ex-bubble--user">
+                            <div class="ex-source-chip">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/></svg>
+                                Product_Sale_Data
+                                <span class="ex-source-x">Spreadsheet</span>
+                            </div>
+                            <div class="ex-bubble-text">Why were sales low in Q4 2024 in Brazil?</div>
+                        </div>
+                    </div>
+
+                    <!-- Assistant: processing pill (will pulse, then morph to next blocks) -->
+                    <div class="ex-row ex-row--ai" data-scene="1">
+                        <div class="ex-process" id="exProcess">
+                            <span class="ex-spark">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 2l2 5 5 2-5 2-2 5-2-5-5-2 5-2z" fill="currentColor"/></svg>
+                            </span>
+                            <span class="ex-process-text">Processing data</span>
+                            <span class="ex-process-dots"><i></i><i></i><i></i></span>
+                            <svg class="ex-process-chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <!-- Composer -->
+            <div class="ex-composer">
+                <div class="ex-composer-row">
+                    <div class="ex-input-wrap">
+                        <span class="ex-input-text">Ask question here</span>
+                    </div>
+                </div>
+                <div class="ex-composer-actions">
+                    <button type="button" class="ex-comp-btn ex-comp-add" aria-label="Add">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+                    </button>
+                    <button type="button" class="ex-comp-pill">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/></svg>
+                        <span>Product_Data</span>
+                    </button>
+                    <button type="button" class="ex-comp-pill">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                        Tools
+                        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="ex-comp-spacer"></div>
+                    <button type="button" class="ex-comp-preview">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                        Preview data
+                    </button>
+                </div>
+                <p class="ex-comp-microcopy">Lumenore can make mistakes. Check important info. See <a href="#">Cookie Preferences</a></p>
+            </div>
+        </div>
+
+        <!-- Free-message-limit panel (scene 9) -->
+        <div class="ex-paywall" id="explorePaywall" aria-hidden="true">
+            <div class="ex-paywall-card">
+                <div class="ex-paywall-spark">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2l2 5 5 2-5 2-2 5-2-5-5-2 5-2z" fill="currentColor"/></svg>
+                </div>
+                <h3 class="ex-paywall-title">You've reached the free message limit</h3>
+                <p class="ex-paywall-sub">Sign up to continue analyzing your data and save your analysis history.</p>
+                <div class="ex-paywall-actions">
+                    <button type="button" class="ex-paywall-btn ex-paywall-btn--primary btn-primary btn-primary--sm" id="exploreOpenSignup">Sign up for Free</button>
+                    <button type="button" class="ex-paywall-btn">Log in</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sign in / Sign up modal (scene 10) -->
+        <div class="ex-modal" id="exploreSignupModal" aria-hidden="true">
+            <div class="ex-modal-card">
+                <button type="button" class="ex-modal-close" id="exploreCloseModal" aria-label="Close">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+                </button>
+                <div class="ex-modal-spark">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M12 2l2 5 5 2-5 2-2 5-2-5-5-2 5-2z" fill="url(#exModalGrad)"/><defs><linearGradient id="exModalGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7747B6"/><stop offset=".5" stop-color="#4075C9"/><stop offset="1" stop-color="#1CA9C9"/></linearGradient></defs></svg>
+                </div>
+                <h3 class="ex-modal-title">Sign in or Sign up</h3>
+                <p class="ex-modal-sub">Unlock Lumenore AI to start Analysis, generating presentations, AI Docs and many more</p>
+                <button type="button" class="ex-social-btn">
+                    <svg width="18" height="18" viewBox="0 0 24 24"><path fill="#4285F4" d="M22 12.2c0-.7-.1-1.4-.2-2H12v3.9h5.6c-.2 1.3-1 2.4-2.1 3.1v2.6h3.4c2-1.8 3.1-4.5 3.1-7.6z"/><path fill="#34A853" d="M12 22c2.8 0 5.2-.9 6.9-2.5l-3.4-2.6c-.9.6-2.2 1-3.5 1-2.7 0-5-1.8-5.8-4.3H2.7v2.7C4.4 19.7 8 22 12 22z"/><path fill="#FBBC05" d="M6.2 13.6c-.2-.6-.3-1.3-.3-2s.1-1.4.3-2V6.9H2.7C2 8.3 1.7 9.1 2 12s.7 3.7 1.7 5l3.5-2.4z"/><path fill="#EA4335" d="M12 5.9c1.5 0 2.9.5 3.9 1.5l2.9-2.9C16.9 2.7 14.7 2 12 2 8 2 4.4 4.3 2.7 7.1l3.5 2.7C7 7.7 9.3 5.9 12 5.9z"/></svg>
+                    Continue with Google
+                </button>
+                <button type="button" class="ex-social-btn">
+                    <svg width="18" height="18" viewBox="0 0 24 24"><rect width="24" height="24" rx="4" fill="#0A66C2"/><path fill="#fff" d="M7.2 9.6h2.6V18H7.2zM8.5 8.4c.8 0 1.5-.7 1.5-1.5S9.3 5.4 8.5 5.4 7 6.1 7 6.9s.7 1.5 1.5 1.5zM11.3 9.6h2.5v1.1h.1c.4-.6 1.2-1.3 2.5-1.3 2.7 0 3.2 1.8 3.2 4V18h-2.6v-3.6c0-.9 0-2-1.2-2s-1.4 1-1.4 2V18h-2.6z"/></svg>
+                    Continue with LinkedIn
+                </button>
+                <div class="ex-or"><span>or</span></div>
+                <button type="button" class="ex-more-options">More options</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ===== /EXPLORE OVERLAY ===== -->
+
+<script>
+    /* Click-to-explore demo overlay
+       Hooks the hero "Click to explore" button → opens a full-screen overlay that
+       simulates the Lumenore Ask Me workflow described in the Figma prototype
+       (file UwNoD3i1IN0dtK5sJStZBJ, node 801:13966 — 10-scene storyboard).
+
+       Scene cadence (rough — matches the Figma flow):
+         t=0     User query + Processing pill visible (built into markup)
+         t=1400  Executive Summary block fades in (replaces Processing label)
+         t=3000  Deep Dive: Category Profit Pressure
+         t=4800  Bar chart "Profit Margin by Category (%)" with Data Summary
+         t=7000  What's Causing Margin Loss + Recommended Actions + 3 follow-up chips
+         (user clicks a chip OR auto-advance after 4s)
+         t=user  Chip morphs into user bubble, second Processing pill
+         t=+1600 Distribution chart reveal
+         t=+3000 Paywall fades in over the canvas (blur)
+         t=+800  Signup modal opens
+
+       Honours prefers-reduced-motion (instant reveals, no auto-progress chart bars). */
+    (function () {
+        const overlay = document.getElementById('exploreOverlay');
+        const trigger = document.querySelector('.explore-btn');
+        const closeBtn = document.getElementById('exploreClose');
+        const stream = document.getElementById('exploreStream');
+        const paywall = document.getElementById('explorePaywall');
+        const signupModal = document.getElementById('exploreSignupModal');
+        const openSignup = document.getElementById('exploreOpenSignup');
+        const closeModal = document.getElementById('exploreCloseModal');
+        if (!overlay || !trigger) return;
+
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const timers = [];
+        function schedule(fn, ms) { timers.push(setTimeout(fn, reduceMotion ? 0 : ms)); }
+        function clearTimers() { timers.forEach(t => clearTimeout(t)); timers.length = 0; }
+
+        function execSummary() {
+            return `
+                <div class="ex-row ex-row--ai ex-reveal" data-scene="2">
+                  <div class="ex-card ex-card--text">
+                    <h4 class="ex-card-title">Executive Summary <span class="ex-card-meta">(Last 30 Days)</span></h4>
+                    <p class="ex-card-lead">Overall business performance is stable, but we are seeing:</p>
+                    <ul class="ex-bullets">
+                      <li><span class="ex-dot ex-dot--up"></span> Revenue <strong>+8.5%</strong></li>
+                      <li><span class="ex-dot ex-dot--down"></span> Profit Margin <strong>−3.2%</strong></li>
+                      <li><span class="ex-dot ex-dot--up"></span> Return Rate <strong>+4.6%</strong></li>
+                    </ul>
+                  </div>
+                </div>`;
+        }
+        function deepDive() {
+            return `
+                <div class="ex-row ex-row--ai ex-reveal" data-scene="3">
+                  <div class="ex-card ex-card--text">
+                    <h4 class="ex-card-title">Deep Dive: Category Profit Pressure</h4>
+                    <p class="ex-card-lead">I narrowed category-wise margin and found <em>Electronics</em> margin is critically low. This is not due to low sales — it's primarily driven by:</p>
+                    <ul class="ex-bullets ex-bullets--plain">
+                      <li>Higher COGS</li>
+                      <li>Increased returns</li>
+                      <li>Aggressive discounting</li>
+                    </ul>
+                  </div>
+                </div>`;
+        }
+        function chartBlock(id, title) {
+            const bars = [
+                { yr: '2020', h: 72, type: 'gain' },
+                { yr: '2021', h: 80, type: 'gain' },
+                { yr: '2022', h: 65, type: 'gain' },
+                { yr: '2023', h: 55, type: 'gain' },
+                { yr: '2024', h: 35, type: 'loss' }
+            ];
+            const barsHtml = bars.map(b =>
+                `<div class="ex-bar-col"><div class="ex-bar ex-bar--${b.type}" style="--ex-h:${b.h}%"><span class="ex-bar-lbl">${b.h}%</span></div><div class="ex-bar-x">${b.yr}</div></div>`
+            ).join('');
+            return `
+                <div class="ex-row ex-row--ai ex-reveal" data-scene="4" id="${id}">
+                  <div class="ex-card ex-card--chart">
+                    <div class="ex-chart-head">
+                      <h4 class="ex-card-title">${title}</h4>
+                      <div class="ex-chart-legend">
+                        <span><i class="ex-leg ex-leg--loss"></i>Loss</span>
+                        <span><i class="ex-leg ex-leg--gain"></i>Gain</span>
+                      </div>
+                    </div>
+                    <div class="ex-chart-wrap">
+                      <div class="ex-chart">
+                        <div class="ex-chart-y"><span>100%</span><span>75%</span><span>50%</span><span>25%</span><span>0%</span></div>
+                        <div class="ex-chart-bars">${barsHtml}</div>
+                      </div>
+                      <aside class="ex-data-summary">
+                        <h5>Data Summary</h5>
+                        <p class="ex-ds-meta">Total rows: <strong>3,894</strong> remaining (8 of null values)</p>
+                        <p class="ex-ds-group"><span class="ex-ds-tag">Calculated</span></p>
+                        <ul class="ex-ds-list">
+                          <li><span class="ex-ds-k">SUM(SALES)</span> <span class="ex-ds-v">→ Total Sales</span></li>
+                          <li><span class="ex-ds-k">SUM(PROFIT)</span> <span class="ex-ds-v">→ Total Profit</span></li>
+                          <li><span class="ex-ds-k">Absolute Profit Margin Percentage</span></li>
+                        </ul>
+                        <p class="ex-ds-group"><span class="ex-ds-tag">By each</span></p>
+                        <ul class="ex-ds-list">
+                          <li><span class="ex-ds-k">Sales by Category</span></li>
+                          <li><span class="ex-ds-k">Sub Category</span></li>
+                        </ul>
+                        <p class="ex-ds-group"><span class="ex-ds-tag">Filtered</span></p>
+                        <ul class="ex-ds-list">
+                          <li><span class="ex-ds-k">DATE</span> <span class="ex-ds-v">= 2023</span></li>
+                        </ul>
+                      </aside>
+                    </div>
+                    <p class="ex-card-interp"><strong>Interpretation</strong> — Electronics margin is pulling down the total margin even though it contributes strongly to revenue.</p>
+                  </div>
+                </div>`;
+        }
+        function actionsBlock() {
+            return `
+                <div class="ex-row ex-row--ai ex-reveal" data-scene="5">
+                  <div class="ex-card ex-card--text">
+                    <h4 class="ex-card-title">What's Causing Margin Loss?</h4>
+                    <p class="ex-card-lead">After drilling deeper, the top contributors are:</p>
+                    <ul class="ex-bullets ex-bullets--plain">
+                      <li>Higher returns in Electronics (+5.6% increase)</li>
+                      <li>Logistics cost spike in Tier-2 cities</li>
+                      <li>Discount-led inflated discount spend (5.5pp coupon not improving)</li>
+                    </ul>
+                    <p class="ex-card-note">Sales trend is mostly silent. Costs in that volume rise.</p>
+                    <h4 class="ex-card-title ex-card-title--mt">Recommended Actions <span class="ex-card-meta">(Next 7 Days)</span></h4>
+                    <div class="ex-action-group">
+                      <p class="ex-action-head"><span class="ex-check">✓</span> Immediate actions</p>
+                      <ul class="ex-bullets ex-bullets--plain">
+                        <li>Add quality check trigger for Electronics shipments</li>
+                        <li>Show return reason prompt (capture structured return data)</li>
+                        <li>Identify SKUs with highest return rates and discontinue temporarily</li>
+                      </ul>
+                    </div>
+                    <div class="ex-action-group">
+                      <p class="ex-action-head"><span class="ex-check">✓</span> Business optimization</p>
+                      <ul class="ex-bullets ex-bullets--plain">
+                        <li>Reduce discounts on low-margin products</li>
+                        <li>Bundle Electronics with Accessories (Improves AOV + margin)</li>
+                      </ul>
+                    </div>
+                    <p class="ex-card-lead ex-card-lead--mt">If you want, I can generate RCA mode output next with:</p>
+                    <ul class="ex-bullets ex-bullets--plain">
+                      <li>Exact SKU list</li>
+                      <li>Return reason distribution</li>
+                      <li>Impact analysis (margin loss estimate)</li>
+                    </ul>
+                    <div class="ex-followups" id="exFollowups">
+                      <button type="button" class="ex-followup" data-prompt="Exact SKU list">Exact SKU list</button>
+                      <button type="button" class="ex-followup" data-prompt="Return reason distribution">Return reason distribution</button>
+                      <button type="button" class="ex-followup" data-prompt="Impact analysis (margin loss estimate)">Impact analysis (margin loss estimate)</button>
+                    </div>
+                  </div>
+                </div>`;
+        }
+        function userFollowup(text) {
+            return `
+                <div class="ex-row ex-row--user ex-reveal" data-scene="6">
+                  <div class="ex-bubble ex-bubble--user ex-bubble--small">
+                    <div class="ex-bubble-text">${text}</div>
+                  </div>
+                </div>`;
+        }
+        function processingLine(text) {
+            return `
+                <div class="ex-row ex-row--ai ex-reveal" data-scene="7">
+                  <div class="ex-process ex-process--inline">
+                    <span class="ex-spark"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 2l2 5 5 2-5 2-2 5-2-5-5-2 5-2z" fill="currentColor"/></svg></span>
+                    <span class="ex-process-text">${text}</span>
+                  </div>
+                </div>`;
+        }
+
+        let sequenceRunning = false;
+        function runSequence() {
+            if (sequenceRunning) return;
+            sequenceRunning = true;
+            clearTimers();
+            schedule(() => { stream.insertAdjacentHTML('beforeend', execSummary()); hideProcessing(); scrollChat(); }, 1400);
+            schedule(() => { stream.insertAdjacentHTML('beforeend', deepDive()); scrollChat(); }, 3000);
+            schedule(() => { stream.insertAdjacentHTML('beforeend', chartBlock('exChart1', 'Profit Margin by Category (%)')); scrollChat(); }, 4800);
+            schedule(() => { stream.insertAdjacentHTML('beforeend', actionsBlock()); wireFollowups(); scrollChat(); }, 7000);
+            schedule(() => {
+                if (!stream.querySelector('[data-scene="6"]')) pickFollowup('Return reason distribution');
+            }, 12000);
+        }
+        function hideProcessing() {
+            const p = document.getElementById('exProcess');
+            if (p) p.style.display = 'none';
+        }
+        function scrollChat() {
+            const canvas = document.getElementById('exploreCanvas');
+            if (canvas) canvas.scrollTo({ top: canvas.scrollHeight, behavior: reduceMotion ? 'auto' : 'smooth' });
+        }
+        function wireFollowups() {
+            stream.querySelectorAll('.ex-followup').forEach(chip => {
+                chip.addEventListener('click', () => {
+                    pickFollowup(chip.dataset.prompt || chip.textContent.trim());
+                }, { once: true });
+            });
+        }
+        function pickFollowup(label) {
+            const grp = document.getElementById('exFollowups');
+            if (grp) grp.remove();
+            stream.insertAdjacentHTML('beforeend', userFollowup(label));
+            scrollChat();
+            schedule(() => { stream.insertAdjacentHTML('beforeend', processingLine(`Here is the ${label} based on last Quarter`)); scrollChat(); }, 700);
+            schedule(() => { stream.insertAdjacentHTML('beforeend', chartBlock('exChart2', 'Return reason distribution by SKU')); scrollChat(); }, 1800);
+            schedule(showPaywall, 4500);
+        }
+        function showPaywall() {
+            paywall.setAttribute('aria-hidden', 'false');
+            paywall.classList.add('is-open');
+            schedule(showSignup, 900);
+        }
+        function showSignup() {
+            signupModal.setAttribute('aria-hidden', 'false');
+            signupModal.classList.add('is-open');
+        }
+
+        function open() {
+            overlay.setAttribute('aria-hidden', 'false');
+            overlay.classList.add('is-open');
+            document.body.classList.add('explore-locked');
+            paywall.classList.remove('is-open');
+            paywall.setAttribute('aria-hidden', 'true');
+            signupModal.classList.remove('is-open');
+            signupModal.setAttribute('aria-hidden', 'true');
+            stream.querySelectorAll('[data-scene]').forEach(r => {
+                if (+r.dataset.scene > 1) r.remove();
+            });
+            const p = document.getElementById('exProcess');
+            if (p) p.style.display = '';
+            sequenceRunning = false;
+            requestAnimationFrame(runSequence);
+        }
+        function close() {
+            overlay.setAttribute('aria-hidden', 'true');
+            overlay.classList.remove('is-open');
+            document.body.classList.remove('explore-locked');
+            clearTimers();
+            sequenceRunning = false;
+        }
+
+        trigger.addEventListener('click', open);
+        closeBtn.addEventListener('click', close);
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape' && overlay.classList.contains('is-open')) close();
+        });
+        if (openSignup) openSignup.addEventListener('click', () => {
+            signupModal.setAttribute('aria-hidden', 'false');
+            signupModal.classList.add('is-open');
+        });
+        if (closeModal) closeModal.addEventListener('click', () => {
+            signupModal.classList.remove('is-open');
+            signupModal.setAttribute('aria-hidden', 'true');
+        });
+    })();
+</script>
+
+<script>
+    /* Custom cursor — Linear-style magnetic dot + trailing ring.
+       Two elements share one parent that gets transform-translated to
+       the exact cursor position every frame. The dot snaps to target.
+       The ring lerps with its own current/target track so it trails the
+       dot with a buttery follow.
+
+       The hover state (`.is-active`) is added when the cursor is over
+       any interactive element (anchors, buttons, role=tab, custom CTAs,
+       etc.) — the ring then expands + tints violet to telegraph that
+       the element is clickable. mousedown adds `.is-pressed` for tactile
+       shrink on click. Text inputs add `.is-hidden` so the native I-beam
+       takes over cleanly.
+
+       Performance:
+        • Both layers ride one rAF loop
+        • passive mousemove keeps scroll fluid
+        • Self-suspends when target is reached
+        • Skipped on touch + prefers-reduced-motion */
+    (function () {
+        const cursor = document.getElementById('customCursor');
+        if (!cursor) return;
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { cursor.remove(); return; }
+        if (window.matchMedia('(hover: none)').matches) { cursor.remove(); return; }
+
+        const dot  = cursor.querySelector('.cursor__dot');
+        const ring = cursor.querySelector('.cursor__ring');
+
+        /* Dot tracks the cursor exactly; ring lerps toward the same target */
+        let dotX = 0, dotY = 0;
+        let ringX = 0, ringY = 0;
+        const RING_EASE = 0.20;   /* trail length on the ring */
+
+        let raf = null;
+        let firstMove = false;
+
+        /* Selector list for "this is interactive — grow the ring":
+           we cover every common interactive surface on the page. */
+        const INTERACTIVE_SEL = [
+            'a', 'button', 'label', 'select', 'summary',
+            '[role="button"]', '[role="tab"]', '[role="menuitem"]', '[role="link"]',
+            '.btn-primary', '.psb', '.ps-pill', '.px-tab', '.product-tab',
+            '.testimonial-tab', '.hero-search-tag', '.story-card',
+            '.feature-card', '.psb-arrow', '.followup', '.ex-followup'
+        ].join(',');
+
+        /* Inputs/textareas — hide the custom cursor and let native I-beam show */
+        const TEXT_SEL = 'input:not([type="button"]):not([type="submit"]):not([type="reset"]):not([type="checkbox"]):not([type="radio"]), textarea, [contenteditable="true"]';
+
+        function frame() {
+            /* Ring trails — lerp toward target */
+            ringX += (dotX - ringX) * RING_EASE;
+            ringY += (dotY - ringY) * RING_EASE;
+            /* Dot is positioned via the parent — ring uses its own delta */
+            cursor.style.transform = 'translate3d(' + dotX + 'px,' + dotY + 'px,0)';
+            ring.style.transform   = 'translate3d(' + (ringX - dotX) + 'px,' + (ringY - dotY) + 'px,0)';
+
+            if (Math.abs(dotX - ringX) > 0.3 || Math.abs(dotY - ringY) > 0.3) {
+                raf = requestAnimationFrame(frame);
+            } else {
+                ringX = dotX; ringY = dotY;
+                ring.style.transform = 'translate3d(0,0,0)';
+                raf = null;
+            }
+        }
+
+        function onMove(e) {
+            dotX = e.clientX;
+            dotY = e.clientY;
+            if (!firstMove) {
+                firstMove = true;
+                ringX = dotX; ringY = dotY;
+                cursor.style.transform = 'translate3d(' + dotX + 'px,' + dotY + 'px,0)';
+                cursor.classList.add('is-visible');
+            }
+            if (raf === null) raf = requestAnimationFrame(frame);
+        }
+
+        function onOver(e) {
+            if (e.target.closest(TEXT_SEL)) {
+                cursor.classList.add('is-hidden');
+                cursor.classList.remove('is-active');
+                return;
+            }
+            cursor.classList.remove('is-hidden');
+            if (e.target.closest(INTERACTIVE_SEL)) {
+                cursor.classList.add('is-active');
+            }
+        }
+        function onOut(e) {
+            /* Only clear active when leaving an interactive element AND not
+               entering another one. Using relatedTarget guards against
+               flicker when moving between two adjacent interactive items. */
+            if (!e.relatedTarget || !e.relatedTarget.closest || !e.relatedTarget.closest(INTERACTIVE_SEL)) {
+                cursor.classList.remove('is-active');
+            }
+        }
+
+        document.addEventListener('mousemove', onMove, { passive: true });
+        document.addEventListener('mouseover', onOver);
+        document.addEventListener('mouseout', onOut);
+        document.addEventListener('mousedown', () => cursor.classList.add('is-pressed'));
+        document.addEventListener('mouseup',   () => cursor.classList.remove('is-pressed'));
+        document.addEventListener('mouseleave', () => cursor.classList.remove('is-visible'));
+        document.addEventListener('mouseenter', () => { if (firstMove) cursor.classList.add('is-visible'); });
+    })();
+</script>
+
+<script>
+    /* Platform mega-menu — two Col 2 modes driven by Col 1 hover.
+         · Default + capability hover → static grid of all 12 capabilities;
+           the hovered capability gets highlighted to link the columns.
+         · Product hover → product-detail pane shows title, tagline,
+           description, and 3 CTAs (Start Free / Learn More / Pricing). */
+    (function () {
+        const mega         = document.getElementById('platformMega');
+        const detail       = document.getElementById('platformDetail');
+        const productPane  = document.getElementById('platformProductPane');
+        const productTitle = document.getElementById('npProductTitle');
+        const productTag   = document.getElementById('npProductTagline');
+        const productDesc  = document.getElementById('npProductDesc');
+        const ctaStart     = document.getElementById('npProductStart');
+        const ctaLearn     = document.getElementById('npProductLearn');
+        const ctaPricing   = document.getElementById('npProductPricing');
+        const gridTitle    = document.getElementById('platformGridTitle');
+        const grid         = document.getElementById('platformGrid');
+        const navList      = document.querySelectorAll('#platformMega [data-platform-item]');
+        const cards        = document.querySelectorAll('#platformMega [data-platform-card]');
+        if (!mega || !detail) return;
+
+        /* Product copy keyed by data-platform-item */
+        const products = {
+            insights: {
+                tagline: 'Self-Service Analytics',
+                title:   'Lumenore Insights',
+                desc:    'Democratize data with self-service, AI-powered dashboards that empower every employee to make data-driven decisions and maximize ROI instantly.',
+                start: '#', learn: '#', pricing: '#'
+            },
+            askme: {
+                tagline: 'Conversational Analytics',
+                title:   'Lumenore Ask Me',
+                desc:    'Query enterprise data and documents in natural language. Get instant, governed insights enhanced by Agentic RAG and seamless MCP integrations.',
+                start: 'lumenore-ask-me.html', learn: 'lumenore-ask-me.html', pricing: '#'
+            },
+            datamagnet: {
+                tagline: 'Enterprise ETL',
+                title:   'Lumenore Data Magnet',
+                desc:    'Connect 50+ enterprise sources with low-code ETL. Accelerate high-volume transfers to your Lakehouse with secure, cost-effective automation.',
+                start: '#', learn: '#', pricing: '#'
+            }
+        };
+
+        function hideAll() {
+            productPane.hidden = true;
+            if (gridTitle) gridTitle.hidden = true;
+            if (grid)      grid.hidden      = true;
+        }
+        function showProduct(key) {
+            const d = products[key];
+            if (!d) return;
+            productTag.textContent   = d.tagline;
+            productTitle.textContent = d.title;
+            productDesc.textContent  = d.desc;
+            ctaStart.setAttribute('href',   d.start);
+            ctaLearn.setAttribute('href',   d.learn);
+            ctaPricing.setAttribute('href', d.pricing);
+            productPane.hidden = false;
+            if (gridTitle) gridTitle.hidden = true;
+            if (grid)      grid.hidden      = true;
+        }
+        function showGrid() {
+            productPane.hidden = true;
+            if (gridTitle) gridTitle.hidden = false;
+            if (grid)      grid.hidden      = false;
+        }
+        function highlight(key) {
+            navList.forEach(n => n.classList.toggle('is-active', n.dataset.platformItem === key));
+            cards.forEach(c   => c.classList.toggle('is-active', c.dataset.platformCard === key));
+        }
+        function clearHighlight() {
+            navList.forEach(n => n.classList.remove('is-active'));
+            cards.forEach(c   => c.classList.remove('is-active'));
+        }
+
+        navList.forEach(n => {
+            const trigger = () => {
+                const key  = n.dataset.platformItem;
+                const type = n.dataset.platformType;
+                highlight(key);
+                if (type === 'product') showProduct(key);
+                else                    showGrid();
+            };
+            n.addEventListener('mouseenter', trigger);
+            n.addEventListener('focus',      trigger);
+        });
+        cards.forEach(c => {
+            const trigger = () => { showGrid(); highlight(c.dataset.platformCard); };
+            c.addEventListener('mouseenter', trigger);
+            c.addEventListener('focus',      trigger);
+        });
+
+        const navItem = mega.closest('.nav-item');
+        function openDefault(){
+            highlight('insights');
+            showProduct('insights');
+        }
+        if (navItem){
+            navItem.addEventListener('mouseenter', openDefault);
+            navItem.addEventListener('focusin',    openDefault);
+        }
+        if (navItem){
+            navItem.addEventListener('mouseleave', () => { clearHighlight(); hideAll(); });
+        }
+        mega.addEventListener('mouseleave', () => { });
+    })();
+
+    /* Solutions mega */
+    (function () {
+        const mega = document.getElementById('solutionMega');
+        if (!mega) return;
+        const navList     = mega.querySelectorAll('[data-solution-item]');
+        const industryTtl = document.getElementById('solIndustryTitle');
+        const industryGrid= document.getElementById('solIndustryGrid');
+        const deptTtl     = document.getElementById('solDepartmentTitle');
+        const deptGrid    = document.getElementById('solDepartmentGrid');
+        function hideAll(){
+            industryTtl.hidden  = true;
+            industryGrid.hidden = true;
+            deptTtl.hidden      = true;
+            deptGrid.hidden     = true;
+        }
+        function showIndustry(){
+            industryTtl.hidden  = false;
+            industryGrid.hidden = false;
+            deptTtl.hidden      = true;
+            deptGrid.hidden     = true;
+        }
+        function showDepartment(){
+            industryTtl.hidden  = true;
+            industryGrid.hidden = true;
+            deptTtl.hidden      = false;
+            deptGrid.hidden     = false;
+        }
+        function highlight(key){
+            navList.forEach(n => n.classList.toggle('is-active', n.dataset.solutionItem === key));
+        }
+        function clearHighlight(){
+            navList.forEach(n => n.classList.remove('is-active'));
+        }
+        navList.forEach(n => {
+            const trigger = () => {
+                const key = n.dataset.solutionItem;
+                highlight(key);
+                if (key === 'department') showDepartment();
+                else                       showIndustry();
+            };
+            n.addEventListener('mouseenter', trigger);
+            n.addEventListener('focus',      trigger);
+        });
+        const navItem = mega.closest('.nav-item');
+        function openDefault(){ highlight('industry'); showIndustry(); }
+        if (navItem){
+            navItem.addEventListener('mouseenter', openDefault);
+            navItem.addEventListener('focusin',    openDefault);
+            navItem.addEventListener('mouseleave', () => { clearHighlight(); hideAll(); });
+        }
+    })();
+
+    /* Company mega */
+    (function () {
+        const mega = document.getElementById('companyMega');
+        if (!mega) return;
+        const navList = mega.querySelectorAll('[data-company-item]');
+        const allTtl  = document.getElementById('coAllTitle');
+        const allGrid = document.getElementById('coAllGrid');
+        function hideAll(){
+            if (allTtl)  allTtl.hidden  = true;
+            if (allGrid) allGrid.hidden = true;
+        }
+        function showAll(){
+            if (allTtl)  allTtl.hidden  = false;
+            if (allGrid) allGrid.hidden = false;
+        }
+        function highlight(){
+            navList.forEach(n => n.classList.add('is-active'));
+        }
+        function clearHighlight(){
+            navList.forEach(n => n.classList.remove('is-active'));
+        }
+        navList.forEach(n => {
+            const trigger = () => { highlight(); showAll(); };
+            n.addEventListener('mouseenter', trigger);
+            n.addEventListener('focus',      trigger);
+        });
+        const navItem = mega.closest('.nav-item');
+        function openDefault(){ highlight(); showAll(); }
+        if (navItem){
+            navItem.addEventListener('mouseenter', openDefault);
+            navItem.addEventListener('focusin',    openDefault);
+            navItem.addEventListener('mouseleave', () => { clearHighlight(); hideAll(); });
+        }
+    })();
+
+    /* Hover-gap bridge — keeps mega menus open while cursor crosses
+       the gap between the nav trigger and the dropdown panel */
+    (function () {
+        document.querySelectorAll('.nav-item.has-dropdown').forEach(function (item) {
+            const mega = item.querySelector('.nav-mega');
+            if (!mega) return;
+            let closeTimer = null;
+            function open() { clearTimeout(closeTimer); item.classList.add('is-open'); }
+            function scheduleClose() { closeTimer = setTimeout(function () { item.classList.remove('is-open'); }, 200); }
+            item.addEventListener('mouseenter', open);
+            item.addEventListener('mouseleave', scheduleClose);
+            mega.addEventListener('mouseenter', open);
+            mega.addEventListener('mouseleave', scheduleClose);
+        });
+    })();
+
+</script>
+
+<script>
+/* ── Trusted logos — staggered flip animation ── */
+(function () {
+    var grid = document.getElementById('logoFlipGrid');
+    if (!grid) return;
+
+    var logos = [
+        { src: 'assets/images/homeV2o/Logo section/Bayer_Cross_1_.svg',                            alt: 'Bayer' },
+        { src: 'assets/images/homeV2o/Logo section/logo-siriusxm-vector-logo 1.svg',                alt: 'SiriusXM' },
+        { src: 'assets/images/homeV2o/Logo section/national-rural-health-mission-logo-vector 1.svg', alt: 'National Rural Health Mission' },
+        { src: 'assets/images/homeV2o/Logo section/dwihn-logo 1.png',                               alt: 'DWIHN' },
+        { src: 'assets/images/homeV2o/Logo section/seed-advertising [Vectorized].svg',              alt: 'SEED Advertising' },
+        { src: 'assets/images/homeV2o/Logo section/L1 1.svg',                                       alt: 'Client logo' },
+        { src: 'assets/images/homeV2o/Logo section/Ducont.png',                                     alt: 'Ducont' },
+        { src: 'assets/images/homeV2o/Logo section/L3 1.svg',                                       alt: 'Client logo' },
+        { src: 'assets/images/homeV2o/Logo section/L4 1.svg',                                       alt: 'Client logo' },
+        { src: 'assets/images/homeV2o/Logo section/Group.svg',                                      alt: 'Client logo' },
+        { src: 'assets/images/homeV2o/Logo section/g2317.svg',                                      alt: 'Client logo' },
+        { src: 'assets/images/homeV2o/Logo section/Group 1699.svg',                                 alt: 'Client logo' },
+        { src: 'assets/images/homeV2o/Logo section/Group 48098351.svg',                             alt: 'Client logo' },
+        { src: 'assets/images/homeV2o/Logo section/Rectangle.svg',                                  alt: 'Client logo' },
+        { src: 'assets/images/homeV2o/Logo section/trident-group-vector-logo.svg',                  alt: 'Trident Group' },
+        { src: 'assets/images/homeV2o/Logo section/Vector.svg',                                     alt: 'Client logo' }
+    ];
+
+    function shuffle(arr) {
+        var a = arr.slice(), i = a.length, j, t;
+        while (i--) { j = Math.floor(Math.random() * (i + 1)); t = a[i]; a[i] = a[j]; a[j] = t; }
+        return a;
+    }
+
+    var SLOTS   = 8;
+    var FLIP_MS = 900;
+    var paired  = shuffle(logos);
+
+    function makeImg(logo) {
+        var img = document.createElement('img');
+        img.src = logo.src; img.alt = logo.alt; img.loading = 'lazy';
+        return img;
+    }
+
+    var cards = [];
+
+    for (var i = 0; i < SLOTS; i++) {
+        var logoA = paired[i];
+        var logoB = paired[i + SLOTS];
+
+        var card  = document.createElement('div');  card.className  = 'lf-card';
+        var inner = document.createElement('div');  inner.className = 'lf-inner';
+        var front = document.createElement('div');  front.className = 'lf-face lf-front';
+        var back  = document.createElement('div');  back.className  = 'lf-face lf-back';
+
+        front.appendChild(makeImg(logoA));
+        back.appendChild(makeImg(logoB));
+        inner.appendChild(front); inner.appendChild(back);
+        card.appendChild(inner);
+        grid.appendChild(card);
+
+        cards.push({ card: card, flipped: false });
+    }
+
+    function scheduleFlip(cardObj, delay) {
+        setTimeout(function () {
+            cardObj.flipped = !cardObj.flipped;
+            cardObj.card.classList.toggle('is-flipped', cardObj.flipped);
+            scheduleFlip(cardObj, FLIP_MS + 4000 + Math.random() * 4000);
+        }, delay);
+    }
+
+    cards.forEach(function (c) {
+        scheduleFlip(c, Math.random() * 6000);
+    });
+})();
+</script>
+
+<script>
+    /* ── Scroll-reveal observer ── */
+    (function () {
+        var blocks = document.querySelectorAll('.reveal-block, .reveal-left, .reveal-right');
+        if (!('IntersectionObserver' in window)) {
+            blocks.forEach(function (el) { el.classList.add('is-visible'); });
+            return;
+        }
+        var obs = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+                if (e.isIntersecting) {
+                    e.target.classList.add('is-visible');
+                    obs.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -48px 0px' });
+        blocks.forEach(function (el) { obs.observe(el); });
+    })();
+</script>
+
+</body>
+</html>

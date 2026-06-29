@@ -1,0 +1,733 @@
+        /* ══════════════════════════════════════════════════
+           HELLO BAR — vibrant redesign
+        ══════════════════════════════════════════════════ */
+        .hello-bar {
+            background:
+                linear-gradient(90deg,
+                    #040c24  0%,
+                    #160840  18%,
+                    #2d1272  36%,
+                    #1e3bab  54%,
+                    #0d2260  72%,
+                    #040c24  100%
+                ) !important;
+            border-bottom: 1px solid rgba(100, 150, 255, 0.22) !important;
+            position: relative !important;
+            overflow: hidden !important;
+        }
+
+        /* Slow shimmer sweep */
+        .hello-bar::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg,
+                transparent      0%,
+                rgba(119,71,182,0.10) 30%,
+                rgba(28,169,201,0.18) 50%,
+                rgba(119,71,182,0.10) 70%,
+                transparent      100%
+            );
+            animation: hbShimmer 5s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+        @keyframes hbShimmer {
+            0%   { transform: translateX(-60%); opacity: 0.5; }
+            50%  { opacity: 1; }
+            100% { transform: translateX(60%);  opacity: 0.5; }
+        }
+
+        /* All bar children above shimmer */
+        .hello-bar > * { position: relative; z-index: 1; }
+
+        /* Badge — gradient pill with live pulse dot */
+        .hello-bar .hello-badge {
+            background: linear-gradient(135deg, #7747b6 0%, #2863c5 60%, #1ca9c9 100%) !important;
+            color: #fff !important;
+            border-radius: 20px !important;
+            font-size: 11px !important;
+            font-weight: 700 !important;
+            letter-spacing: 0.8px !important;
+            text-transform: uppercase !important;
+            padding: 4px 12px 4px 10px !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 6px !important;
+        }
+        .hello-bar .hello-badge::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #fff;
+            flex-shrink: 0;
+            box-shadow: 0 0 0 0 rgba(255,255,255,0.7);
+            animation: hbPulse 1.8s ease-out infinite;
+        }
+        @keyframes hbPulse {
+            0%   { box-shadow: 0 0 0 0   rgba(255,255,255,0.7); }
+            70%  { box-shadow: 0 0 0 5px rgba(255,255,255,0);   }
+            100% { box-shadow: 0 0 0 0   rgba(255,255,255,0);   }
+        }
+
+        /* Message text */
+        .hello-bar .hello-message {
+            color: rgba(255,255,255,0.92) !important;
+            font-weight: 500 !important;
+        }
+
+        /* Register Now — plain text link */
+        .hello-bar .hello-cta {
+            background: none !important;
+            border: none !important;
+            border-radius: 0 !important;
+            padding: 0 !important;
+            color: #fff !important;
+            text-decoration: underline !important;
+            text-underline-offset: 2px !important;
+            font-weight: 600 !important;
+            font-size: 13px !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 6px !important;
+            box-shadow: none !important;
+            transition: color 0.2s !important;
+        }
+        .hello-bar .hello-cta:hover {
+            color: #12b6f8 !important;
+            box-shadow: none !important;
+        }
+        .hello-bar .hello-cta svg { width: 13px !important; height: 13px !important; }
+
+        /* Free Consultation — plain text link */
+        .hello-bar .hello-consult {
+            background: none !important;
+            border: none !important;
+            border-radius: 0 !important;
+            padding: 0 !important;
+            color: rgba(255,255,255,0.88) !important;
+            font-size: 13px !important;
+            transition: color 0.2s !important;
+        }
+        .hello-bar .hello-consult:hover {
+            color: #12b6f8 !important;
+        }
+
+        /* Log in */
+        .hello-bar .hello-login {
+            color: rgba(255,255,255,0.75) !important;
+            border-left-color: rgba(255,255,255,0.15) !important;
+            font-size: 13px !important;
+        }
+        .hello-bar .hello-login:hover { color: #12b6f8 !important; }
+
+        /* ══════════════════════════════════════════════════
+           FC VISUAL CARD — glass effect
+        ══════════════════════════════════════════════════ */
+        .fc-visual {
+            background: rgba(255, 255, 255, 0.07) !important;
+            -webkit-backdrop-filter: blur(14px) !important;
+                    backdrop-filter: blur(14px) !important;
+            border: 1px solid rgba(255, 255, 255, 0.14) !important;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.24) !important;
+        }
+
+        .fc-col.is-active .fc-visual {
+            background: rgba(255, 255, 255, 0.07) !important;
+            border-color: rgba(255, 255, 255, 0.14) !important;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.24) !important;
+        }
+
+        /* ── Persona section — contained, not edge-to-edge ── */
+        #personaSection > .container {
+            max-width: 1500px !important;
+            padding-left: 48px !important;
+            padding-right: 48px !important;
+        }
+        #personaSection {
+            overflow: hidden !important;
+        }
+
+
+        /* ── Pricing — remove borders from both sides ── */
+        .pa-card { border: none !important; }
+        .section-pricing .pricing-main {
+            border: none !important;
+            box-shadow: none !important;
+        }
+
+        /* ── Pricing — remove box from active/hover feature item ── */
+        .section-pricing .pm-card.is-active,
+        .section-pricing .pm-card:hover:not(.is-active) {
+            background: transparent !important;
+            box-shadow: none !important;
+        }
+
+        /* ── Pricing — highlight active item text ── */
+        .section-pricing .pm-card.is-active .pm-card-title {
+            background: linear-gradient(90deg, #2863c5 0%, #1ca9c9 100%) !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            background-clip: text !important;
+            font-weight: 600 !important;
+        }
+
+        /* ── Global font override: Fraunces → Space Grotesk everywhere ── */
+        h1, h2, h3, h4, h5, h6,
+        .brand-l, .brand-word,
+        .fc-heading,
+        .pd-tagline, .product-detail h3,
+        .sc-num, .sc-metric-num,
+        .section-pricing .section-sub,
+        .ps-title, .psr-title, .psr-stat-num,
+        .story-card .story-title,
+        .ask-ai-box .ask-ai-label,
+        .pm-title, .pa-title, .pa-kpi-stat {
+            font-family: 'Space Grotesk', sans-serif !important;
+            font-variation-settings: normal !important;
+        }
+        /* fc-accent is an <em> — remove default italic */
+        .fc-accent { font-style: normal !important; }
+
+        /* ── Hero stage — reduced height + bottom merge ── */
+        .hero-stage {
+            height: auto !important;
+            background:
+                radial-gradient(ellipse 70% 55% at 50% 0%,   rgba(8, 26, 72, 0.80) 0%, transparent 70%),
+                radial-gradient(ellipse 50% 45% at 15% 100%, rgba(5, 14, 42, 0.72) 0%, transparent 65%),
+                radial-gradient(ellipse 45% 40% at 85% 90%,  rgba(4, 10, 32, 0.76) 0%, transparent 60%),
+                linear-gradient(170deg, #04102E 0%, #030C1E 45%, #020A18 100%) !important;
+            position: relative !important;
+            overflow: hidden !important;
+        }
+
+        /* ── Hide hero card grid ── */
+        /* #bgCardsLayer visible — analytics cards restored */
+
+        /* ── Canvas layer ── */
+        #bgCanvas {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            display: block;
+        }
+
+        /* ── Cards layer ── */
+        .bg-cards-layer {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+        }
+
+        /* ── Individual card ── */
+        .bg-card {
+            position: absolute;
+            box-sizing: border-box;
+            border-radius: 14px;
+            background: radial-gradient(ellipse at center,
+                transparent 0%,
+                rgba(4, 14, 42, 0.65) 55%,
+                rgba(2, 8, 28, 0.92) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.13);
+            box-shadow:
+                inset 0 1px 0 rgba(255,255,255,0.07),
+                0 2px 12px rgba(0,0,0,0.28);
+            overflow: hidden;
+            cursor: pointer;
+            pointer-events: auto;
+            opacity: 0.13;
+            will-change: opacity;
+            transition:
+                border-color 0.38s ease,
+                box-shadow   0.38s ease;
+            z-index: 2;
+        }
+
+        /* Dark-edge vignette — transparent in centre, dark at edges */
+        .bg-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            background: radial-gradient(ellipse at 50% 50%,
+                transparent 18%,
+                rgba(3, 11, 28, 0.88) 74%);
+            opacity: 0;
+            transition: opacity 0.38s ease;
+            pointer-events: none;
+            z-index: 2;
+        }
+        .bg-card.bc-violet::before {
+            background: radial-gradient(ellipse at 50% 50%,
+                rgba(85, 41, 142, 0.06) 0%,
+                transparent 26%,
+                rgba(3, 11, 28, 0.88) 74%);
+        }
+        .bg-card.bc-cyan::before {
+            background: radial-gradient(ellipse at 50% 50%,
+                rgba(28, 169, 201, 0.06) 0%,
+                transparent 26%,
+                rgba(3, 11, 28, 0.88) 74%);
+        }
+        .bg-card:hover::before { opacity: 1; }
+
+        /* ── Hover: stroke glow only, no background fill ── */
+        .bg-card:hover {
+            z-index: 30 !important;
+        }
+        .bg-card.bc-cyan:hover {
+            border-color: rgba(28, 169, 201, 0.65) !important;
+            box-shadow:
+                0 0 14px rgba(28, 169, 201, 0.28),
+                0 0  2px rgba(28, 169, 201, 0.50),
+                inset 0 0 14px rgba(28, 169, 201, 0.06);
+        }
+        .bg-card.bc-violet:hover {
+            border-color: rgba(85, 41, 142, 0.65) !important;
+            box-shadow:
+                0 0 14px rgba(85, 41, 142, 0.32),
+                0 0  2px rgba(85, 41, 142, 0.55),
+                inset 0 0 14px rgba(85, 41, 142, 0.07);
+        }
+
+        /* ── SVG wrapper — sits below the vignette ── */
+        .bc-svg-wrap {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            height: 100%;
+            padding: 24px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .bc-svg-wrap svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        /* ── SVG animation keyframes ── */
+        @keyframes bNP { 0%,100%{opacity:.25} 50%{opacity:.82} }
+        @keyframes bLD { to{stroke-dashoffset:-24} }
+        @keyframes bSW { to{transform:rotate(360deg)} }
+        @keyframes bGP { 0%,100%{opacity:.28} 50%{opacity:.72} }
+
+        .bnp { animation: bNP 2.3s ease-in-out infinite; }
+        .bld { stroke-dasharray: 7 5; animation: bLD 3s linear infinite; }
+        .bsw { animation: bSW 7s linear infinite; }
+        .bgp { animation: bGP 2.1s ease-in-out infinite; }
+
+        /* ── Foreground layers ── */
+        .hero-grid,
+        .hero-orbs,
+        .hero-particles,
+        .site-top,
+        .hero-section {
+            position: relative;
+            z-index: 10;
+        }
+
+        .hero-orb { opacity: 0.30 !important; }
+
+        /* Sections need stacking context but NOT overflow:hidden
+           so beam canvases are positioned correctly              */
+        .section-products,
+        .section-personas,
+        .section-pricing,
+        .section-success,
+        .section-testimonial,
+        .section-trust { position: relative; }
+
+        /* Block body violet glow from bleeding through transparent product section bottom */
+        .section-products { background: #051A3C !important; }
+
+        /* Match testimonial background to success section (#fcfcfc vs #fff = visible seam) */
+        .section-testimonial {
+            background: linear-gradient(180deg, #fcfcfc 0%, #fcfcfc 78%, transparent 100%) !important;
+        }
+
+        /* ── Per-section beam canvas ── */
+        .page-beam-canvas {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            display: block;
+            pointer-events: none;
+            z-index: 0;
+        }
+        /* Content sits above beam canvas — z-index only, no position override */
+        .section-products  .container,
+        .section-features  .container,
+        .section-personas  .container,
+        .section-pricing   .container,
+        .section-success   .container,
+        .section-testimonial .container,
+        .section-trust     .container {
+            position: relative;
+            z-index: 1;
+        }
+        .page-finale > .section-trust,
+        .page-finale > footer { position: relative; z-index: 1; }
+
+
+
+        /* Slide nav sits above the fade */
+        .fc-slide-nav { position: relative; z-index: 1; }
+
+
+        /* ── fc-section: updated gradient + soft bottom dissolve ── */
+        .fc-section {
+            overflow: visible !important;
+            margin-top: -1px !important;
+            background: linear-gradient(180deg,
+                #051a3c  0%,
+                #1a1e52  22.24%,
+                #32216e  36.65%,
+                #55298e  60.91%,
+                #3d48ab  70.37%,
+                #2863c5  90%,
+                #5886d0  100%,
+                #9fbae4  100%
+            ) !important;
+        }
+        .fc-section::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 200px;
+            background: linear-gradient(to bottom,
+                transparent 0%,
+                rgba(159,186,228,1) 100%
+            );
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        /* ── Personas: close gap + carry blue gradient into heading ── */
+        #personaSection { margin-top: -1px !important; }
+        #personaSection .personas-fade-bottom { background: none !important; }
+        #personaSection .personas-fade {
+            height: 580px !important;
+            background: linear-gradient(180deg,
+                rgba(159,186,228,1)    0%,
+                rgba(155,182,226,0.88) 2%,
+                rgba(148,175,222,0.72) 5%,
+                rgba(138,166,218,0.52) 10%,
+                rgba(125,155,213,0.30) 20%,
+                rgba(110,142,208,0.12) 30%,
+                rgba( 95,130,203,0.03) 40%,
+                transparent            50%
+            ) !important;
+        }
+
+        /* ── Bottom fade — hero blends into trusted section ── */
+        .hero-stage::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 180px;
+            background: linear-gradient(to bottom, transparent 0%, #051A3C 100%);
+            pointer-events: none;
+            z-index: 3;
+        }
+
+        /* ── Trusted section — match top color for seamless merge ── */
+        .trusted-section {
+            background: #051A3C !important;
+            padding-top: 8px !important;
+            position: relative;
+        }
+        .trusted-section .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ── Trusted section accent ── */
+        .ah-accent {
+            background-image: linear-gradient(135deg, #7747b6 0%, #2863c3 50%, #1ca9c9 100%) !important;
+            -webkit-background-clip: text !important; background-clip: text !important;
+            -webkit-text-fill-color: transparent !important; color: transparent !important;
+        }
+
+        /* ── Hero container — full 1500px width ── */
+        .hero-section .container {
+            max-width: 1500px !important;
+            padding: 0 24px !important;
+        }
+
+        /* ── Hero stage — true vertical centering ── */
+        .hero-stage {
+            min-height: 88vh !important;
+            display: flex !important;
+            flex-direction: column !important;
+        }
+        .hero-stage .hero-section {
+            flex: 1 !important;
+            display: flex !important;
+            align-items: center !important;
+        }
+
+        /* ── Hero 2-column split layout ── */
+        .hero-split {
+            display: flex;
+            align-items: center;
+            gap: 80px;
+            padding: 60px 0;
+            width: 100%;
+        }
+        .hero-split__text {
+            flex: 0 0 48%;
+            max-width: 640px;
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+            text-align: left;
+        }
+        .hero-split__text h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 52px;
+            line-height: 62px;
+            color: #fcfcfc;
+            font-weight: 500;
+            letter-spacing: -1px;
+            margin: 0;
+        }
+        .hero-split__text .hero-sub {
+            color: rgba(252, 252, 252, 0.72);
+            font-size: 17px;
+            line-height: 27px;
+            font-weight: 400;
+            margin: 0 !important;
+            text-align: left;
+            max-width: 520px;
+        }
+        .hero-split__ctas {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-top: 12px;
+        }
+        .hero-split__ctas .explore-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            padding: 12px 26px;
+            cursor: pointer;
+            border: none;
+        }
+        .hero-split__visual {
+            flex: 1;
+            min-width: 0;
+            position: relative;
+            z-index: 5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        /* Dark backdrop behind browser — lifts GIF off the card grid */
+        .hero-split__visual::before {
+            content: '';
+            position: absolute;
+            inset: -60px -80px;
+            background: radial-gradient(ellipse at 55% 50%,
+                rgba(1, 5, 18, 0.88) 0%,
+                rgba(1, 5, 18, 0.60) 45%,
+                transparent 75%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        .hero-split__visual .hero-browser-wrap { position: relative; z-index: 1; }
+
+        /* Dark backdrop behind hero text — readability over card grid */
+        .hero-split__text {
+            position: relative;
+            z-index: 5;
+        }
+        .hero-split__text::before {
+            content: '';
+            position: absolute;
+            inset: -60px -40px -60px -80px;
+            background: radial-gradient(ellipse at 40% 50%,
+                rgba(1, 5, 18, 0.80) 0%,
+                rgba(1, 5, 18, 0.45) 50%,
+                transparent 75%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* ── Browser mockup — constrain height, fill with video ── */
+        .hero-split__visual .hero-browser {
+            max-height: 380px;
+            overflow: hidden;
+            box-shadow:
+                0 0 0 1px rgba(255,255,255,0.07),
+                0 24px 80px rgba(0,0,0,0.75),
+                0 8px 32px rgba(0,0,0,0.55) !important;
+        }
+        .hero-split__visual .hero-browser-screen {
+            max-height: 330px;
+            overflow: hidden;
+        }
+        .hero-split__visual .hero-banner-video {
+            width: 100%;
+            height: 330px;
+            object-fit: cover;
+            object-position: top center;
+        }
+
+        /* ── Hero text entrance animations ── */
+        /* ── Word stagger — fade + rise ── */
+        .hw-outer {
+            display: inline-block;
+            vertical-align: bottom;
+        }
+        .hw {
+            display: inline-block;
+            opacity: 0;
+            animation: heroWordIn 0.60s ease forwards;
+        }
+        @keyframes heroWordIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to   { opacity: 1; transform: translateY(0);    }
+        }
+
+        @keyframes heroFadeUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to   { opacity: 1; transform: translateY(0);    }
+        }
+        .hero-split__text .hero-sub {
+            opacity: 0;
+            animation: heroFadeUp 0.55s cubic-bezier(.22, .61, .36, 1) forwards;
+        }
+        .hero-split__ctas {
+            opacity: 0;
+            animation: heroFadeUp 0.55s cubic-bezier(.22, .61, .36, 1) forwards;
+        }
+        .hero-split__visual {
+            opacity: 0;
+            animation: heroFadeUp 0.60s cubic-bezier(.22, .61, .36, 1) forwards;
+        }
+
+
+        /* ── Testimonial: Figma two-column layout ── */
+        .ts-wrap {
+            display: flex;
+            gap: 64px;
+            align-items: center;
+            padding-top: 56px;
+        }
+        .ts-cards {
+            flex: 0 0 460px;
+            position: relative;
+            height: 415px;
+        }
+        .ts-pcard {
+            position: absolute;
+            width: 370px;
+            background: #fcfcfc;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.06);
+            padding: 18px 20px;
+            cursor: pointer;
+            border: none;
+            text-align: left;
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            transition: background 0.28s, box-shadow 0.28s, left 0.3s;
+            outline-offset: 2px;
+        }
+        .ts-pcard:nth-child(1) { top: 0; }
+        .ts-pcard:nth-child(2) { top: 152px; }
+        .ts-pcard:nth-child(3) { top: 304px; }
+        /* Default left:0 on all; active shifts right */
+        .ts-pcard { left: 0; }
+        .ts-pcard.is-active { left: 90px; }
+        .ts-pcard.is-active {
+            box-shadow: 0 12px 28px rgba(0,0,0,0.10);
+        }
+        .ts-pcard.is-active::before {
+            content: '';
+            position: absolute;
+            right: 0; left: auto; top: 0; bottom: 0;
+            width: 4px;
+            border-radius: 0 12px 12px 0;
+            background: linear-gradient(to bottom, #7747b6, #4075c9, #1ca9c9);
+        }
+        /* Per-person active themes */
+        .ts-pcard[data-ts="0"].is-active { background: #e7eef8; }
+        .ts-pcard[data-ts="1"].is-active { background: #e8f6fa; }
+        .ts-pcard[data-ts="2"].is-active { background: #f0ebf7; }
+        .ts-avatar {
+            width: 48px; height: 48px; border-radius: 50%;
+            flex-shrink: 0;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 14px; font-weight: 700; color: #fff;
+            font-family: 'Inter', sans-serif;
+        }
+        .ts-av0 { background: linear-gradient(135deg, #7347B6, #2863C3); }
+        .ts-av1 { background: linear-gradient(135deg, #1CA9C9, #1687a1); }
+        .ts-av2 { background: linear-gradient(135deg, #2863C3, #1CA9C9); }
+        .ts-pinfo { display: flex; flex-direction: column; gap: 4px; flex: 1; min-width: 0; }
+        .ts-pname {
+            font-size: 16px; font-weight: 700;
+            color: #242424; line-height: 1.3;
+        }
+        .ts-pcard[data-ts="0"].is-active .ts-pname { color: #0e48a5; }
+        .ts-pcard[data-ts="1"].is-active .ts-pname { color: #1687a1; }
+        .ts-pcard[data-ts="2"].is-active .ts-pname { color: #442172; }
+        .ts-prole { font-size: 13px; color: #505050; line-height: 1.4; }
+        .ts-qicon {
+            position: absolute; top: 14px; right: 16px;
+            width: 18px; height: 18px; color: #b0bec5;
+        }
+        .ts-panel {
+            flex: 1; position: relative;
+            display: flex; flex-direction: column;
+            justify-content: center;
+            gap: 32px;
+            padding: 48px 0 48px 48px;
+        }
+        .ts-dquote {
+            position: absolute; top: 12px; left: 0;
+            width: 220px; height: 165px;
+            color: #e8edf5; pointer-events: none;
+            z-index: 0; opacity: 0.7;
+        }
+        .ts-qtext {
+            font-size: 16px; line-height: 1.8;
+            color: #242424;
+            white-space: pre-line;
+            transition: opacity 0.22s, transform 0.22s;
+            margin: 0;
+            position: relative; z-index: 1;
+            padding-top: 16px;
+        }
+        .ts-qtext.is-swapping { opacity: 0; transform: translateY(6px); }
+        .ts-bottom {
+            display: flex; align-items: center;
+            justify-content: space-between;
+            position: relative; z-index: 1;
+        }
+        .ts-stars { display: flex; gap: 5px; color: #f5a623; }
+        .ts-stars svg { width: 18px; height: 18px; }
+        .ts-nav { display: flex; gap: 12px; }
+        .ts-nav-btn {
+            border: none; background: none; cursor: pointer;
+            padding: 0; line-height: 0; border-radius: 50%;
+            transition: transform 0.18s;
+        }
+        .ts-nav-btn svg { width: 48px; height: 48px; display: block; }
+        .ts-nav-btn:hover { transform: scale(1.08); }
