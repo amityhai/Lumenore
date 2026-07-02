@@ -35,24 +35,28 @@ python3 -m http.server 8000
 | `assets/css/` | Stylesheets (per-page under `v2o/`) |
 | `assets/images/` | Images, logos, GIFs, Lottie JSON |
 | `vercel.json` | Vercel static-deploy config |
-| `azure-pipelines.yml` | CI that deploys to Vercel on push to `main` |
 
-## Deployment
+## Remotes & deployment
 
-Pushing to `main` triggers **`azure-pipelines.yml`**, which deploys to Vercel via the
-Vercel CLI. See that file's header for the one-time secret setup
-(`VERCEL_TOKEN`, `VERCEL_ORG_ID`, `VERCEL_PROJECT_ID`).
+Two remotes are in play:
 
-Vercel config lives in `vercel.json` (static site, output = repo root).
+| Remote | Repo | Purpose |
+|--------|------|---------|
+| `azure` | Azure DevOps `Lumenore-marketing-2025` | Team source of truth / collaboration |
+| `amityhai` | GitHub `amityhai/Lumenore` | **Connected to Vercel** — pushing here deploys the site |
+| `all` | both of the above | Convenience: pushes to Azure **and** GitHub at once |
 
-## Working with the repo
+Vercel auto-deploys from the **GitHub** repo (Vercel has no Azure DevOps integration),
+so to publish a change you must land it on GitHub too. The `all` remote does both:
 
 ```bash
-git pull azure main      # get latest
+git pull azure main          # get latest team changes
 # ...make changes...
 git add -A && git commit -m "your message"
-git push azure main
+git push all main            # -> Azure (team) AND GitHub (triggers Vercel deploy)
 ```
+
+Vercel config lives in `vercel.json` (static site, output = repo root).
 
 Please branch for larger changes and open a Pull Request in Azure DevOps rather than
 pushing directly to `main`.
