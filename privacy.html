@@ -1,0 +1,1260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy — Lumenore</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Material+Symbols+Rounded&display=swap" rel="stylesheet">
+
+    <link href="./style.css" rel="stylesheet">
+    <style>
+        /* ── Privacy page ── */
+        body.inner-page {
+            background: var(--Royal-Blue-Blue-900, #051A3C);
+            color: var(--Base-White, #fcfcfc);
+        }
+
+        /* ── Hero ── */
+        .pp-hero {
+            position: relative;
+            overflow: hidden;
+            padding: 120px 0 100px;
+            text-align: center;
+        }
+        .pp-hero .hero-grid {
+            -webkit-mask-image: radial-gradient(ellipse 120% 100% at 50% 0%, #000 0%, rgba(0,0,0,.55) 55%, transparent 85%);
+                    mask-image: radial-gradient(ellipse 120% 100% at 50% 0%, #000 0%, rgba(0,0,0,.55) 55%, transparent 85%);
+        }
+        .pp-hero .hero-orbs { overflow: visible; }
+        .pp-hero .orb-violet { left: -4%; top: 5%; bottom: auto; width: 440px; height: 440px; }
+        .pp-hero .orb-cyan   { left: 50%; top: 15%; bottom: auto; transform: translateX(-50%); width: 560px; height: 440px; }
+        .pp-hero .orb-blue   { right: -4%; top: 5%; bottom: auto; width: 440px; height: 440px; }
+
+        .pp-hero__glow {
+            position: absolute; left: 50%; top: 50%;
+            transform: translate(-50%, -50%);
+            width: 760px; height: 340px;
+            background: radial-gradient(50% 50% at 50% 50%,
+                rgba(28,169,201,.25) 0%, rgba(40,99,195,.12) 55%, transparent 100%);
+            filter: blur(52px);
+            pointer-events: none; z-index: 2;
+        }
+        .pp-hero__inner {
+            position: relative; z-index: 4;
+            max-width: 700px; margin: 0 auto;
+            display: flex; flex-direction: column; align-items: center; gap: 20px;
+        }
+        .pp-hero__eyebrow {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 6px 16px;
+            border: 1px solid rgba(255,255,255,.14);
+            border-radius: 999px;
+            background: rgba(255,255,255,.04);
+            font-family: 'Inter', sans-serif;
+            font-size: 11px; font-weight: 600;
+            letter-spacing: .12em; text-transform: uppercase;
+            color: rgba(252,252,252,.55);
+        }
+        .pp-hero__eyebrow .het-dot {
+            width: 6px; height: 6px; border-radius: 50%;
+            background: var(--Turquoise-SkyBlue-500, #1ca9c9);
+            box-shadow: 0 0 8px rgba(28,169,201,.8);
+            flex-shrink: 0;
+        }
+        .pp-hero__title {
+            font-family: 'Fraunces', serif;
+            font-weight: 300;
+            font-size: clamp(40px, 5.5vw, 68px);
+            line-height: 1.1; letter-spacing: -.02em;
+            color: var(--Base-White, #fcfcfc);
+            margin: 0;
+        }
+        .pp-hero__meta {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            color: rgba(252,252,252,.45);
+            margin: 0;
+        }
+
+        /* ── Content layout ── */
+        .pp-content {
+            background: var(--blueGray-50, #F8FAFC);
+            padding: 80px 0 100px;
+        }
+        .pp-layout {
+            display: grid;
+            grid-template-columns: 220px 1fr;
+            gap: 56px;
+            align-items: start;
+        }
+
+        /* Sticky TOC sidebar */
+        .pp-toc {
+            position: sticky;
+            top: 96px;
+        }
+        .pp-toc__label {
+            font-family: 'Inter', sans-serif;
+            font-size: 11px; font-weight: 700;
+            letter-spacing: .12em; text-transform: uppercase;
+            color: var(--blueGray-400, #94A3B8);
+            margin-bottom: 16px;
+        }
+        .pp-toc__list {
+            list-style: none; margin: 0; padding: 0;
+            display: flex; flex-direction: column; gap: 2px;
+        }
+        .pp-toc__list a {
+            display: block;
+            font-family: 'Inter', sans-serif;
+            font-size: 13px; font-weight: 400; line-height: 1.5;
+            color: var(--blueGray-500, #64748B);
+            padding: 6px 10px;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: background .15s ease, color .15s ease;
+        }
+        .pp-toc__list a:hover,
+        .pp-toc__list a.is-active {
+            background: var(--Royal-Blue-Blue-50, #e7eef8);
+            color: var(--Royal-Blue-Blue-500, #0e48a5);
+        }
+        .pp-toc__divider {
+            height: 1px;
+            background: var(--blueGray-200, #E2E8F0);
+            margin: 12px 0;
+        }
+
+        /* Article body */
+        .pp-article {
+            max-width: 720px;
+        }
+        .pp-section {
+            margin-bottom: 56px;
+            scroll-margin-top: 96px;
+        }
+        .pp-section:last-child { margin-bottom: 0; }
+
+        .pp-section__title {
+            font-family: 'Inter', sans-serif;
+            font-size: 20px; font-weight: 700;
+            line-height: 1.3;
+            color: var(--Royal-Blue-Blue-900, #051A3C);
+            margin: 0 0 16px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid var(--blueGray-200, #E2E8F0);
+        }
+        .pp-article p {
+            font-family: 'Inter', sans-serif;
+            font-size: 15px; line-height: 26px;
+            color: var(--blueGray-600, #475569);
+            margin: 0 0 16px;
+        }
+        .pp-article p:last-child { margin-bottom: 0; }
+        .pp-article h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 15px; font-weight: 600;
+            color: var(--Royal-Blue-Blue-900, #051A3C);
+            margin: 24px 0 8px;
+        }
+        .pp-article ul,
+        .pp-article ol {
+            font-family: 'Inter', sans-serif;
+            font-size: 15px; line-height: 26px;
+            color: var(--blueGray-600, #475569);
+            padding-left: 22px;
+            margin: 0 0 16px;
+            display: flex; flex-direction: column; gap: 6px;
+        }
+        .pp-article a {
+            color: var(--Royal-Blue-Blue-400, #4075c9);
+            text-decoration: underline;
+            text-decoration-color: transparent;
+            transition: text-decoration-color .15s ease;
+        }
+        .pp-article a:hover { text-decoration-color: currentColor; }
+
+        /* Highlight callout box */
+        .pp-callout {
+            background: var(--Royal-Blue-Blue-50, #e7eef8);
+            border-left: 3px solid var(--Royal-Blue-Blue-400, #4075c9);
+            border-radius: 0 8px 8px 0;
+            padding: 16px 20px;
+            margin: 20px 0;
+        }
+        .pp-callout p {
+            font-size: 14px !important;
+            line-height: 22px !important;
+            color: var(--Royal-Blue-Blue-700, #0c3b87) !important;
+            margin: 0 !important;
+        }
+
+        /* Rights chip grid */
+        .pp-rights-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .pp-right-chip {
+            display: flex; align-items: flex-start; gap: 10px;
+            background: var(--Base-White, #fcfcfc);
+            border: 1px solid var(--blueGray-200, #E2E8F0);
+            border-radius: 10px;
+            padding: 14px 16px;
+        }
+        .pp-right-chip__icon {
+            width: 20px; height: 20px; flex-shrink: 0;
+            border-radius: 50%;
+            background: var(--Turquoise-SkyBlue-50, #e8f6fa);
+            color: var(--Turquoise-SkyBlue-500, #1ca9c9);
+            display: flex; align-items: center; justify-content: center;
+        }
+        .pp-right-chip__icon svg { width: 11px; height: 11px; }
+        .pp-right-chip__text {
+            font-family: 'Inter', sans-serif;
+            font-size: 13px; font-weight: 500; line-height: 1.4;
+            color: var(--cool-101828, #101828);
+        }
+
+        /* Contact card */
+        .pp-contact-card {
+            background: var(--Base-White, #fcfcfc);
+            border: 1px solid var(--blueGray-200, #E2E8F0);
+            border-radius: 12px;
+            padding: 24px 28px;
+            margin-top: 20px;
+        }
+        .pp-contact-card p {
+            font-size: 14px !important;
+            margin: 0 0 4px !important;
+        }
+        .pp-contact-card p strong {
+            color: var(--Royal-Blue-Blue-900, #051A3C);
+        }
+
+        /* Data table (CCPA categories, AI summary) */
+        .pp-table-wrap { overflow-x: auto; margin: 20px 0; }
+        .pp-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: 'Inter', sans-serif;
+            font-size: 13.5px;
+            line-height: 20px;
+        }
+        .pp-table th {
+            background: var(--Royal-Blue-Blue-50, #e7eef8);
+            color: var(--Royal-Blue-Blue-900, #051A3C);
+            font-weight: 600;
+            text-align: left;
+            padding: 11px 16px;
+            border: 1px solid var(--blueGray-200, #E2E8F0);
+        }
+        .pp-table td {
+            padding: 10px 16px;
+            border: 1px solid var(--blueGray-200, #E2E8F0);
+            color: var(--blueGray-600, #475569);
+            vertical-align: top;
+        }
+        .pp-table tr:nth-child(even) td { background: var(--blueGray-50, #F8FAFC); }
+        .pp-table td strong { color: var(--Royal-Blue-Blue-900, #051A3C); }
+
+        /* Category badge (Yes / No) */
+        .pp-badge {
+            display: inline-block;
+            font-size: 11px; font-weight: 700;
+            letter-spacing: .06em; text-transform: uppercase;
+            padding: 2px 8px; border-radius: 999px;
+        }
+        .pp-badge--yes { background: var(--Turquoise-SkyBlue-50, #e8f6fa); color: var(--Turquoise-SkyBlue-500, #1ca9c9); }
+        .pp-badge--no  { background: var(--blueGray-50, #F8FAFC);          color: var(--blueGray-400, #94A3B8); }
+
+        /* ── Responsive ── */
+        @media (max-width: 960px) {
+            .pp-layout { grid-template-columns: 1fr; }
+            .pp-toc { position: static; margin-bottom: 40px; }
+            .pp-toc__list { flex-direction: row; flex-wrap: wrap; gap: 4px; }
+            .pp-toc__list a { font-size: 12px; }
+        }
+        @media (max-width: 768px) {
+            .pp-hero { padding: 80px 0 72px; }
+            .pp-content { padding: 56px 0 72px; }
+        }
+    </style>
+</head>
+<body class="inner-page">
+
+<!-- Custom cursor -->
+<div class="cursor" id="customCursor" aria-hidden="true">
+    <span class="cursor__ring"></span>
+    <span class="cursor__dot"></span>
+</div>
+
+<!-- ===== SITE TOP ===== -->
+<div class="site-top">
+    <div class="hello-bar">
+        <div class="hello-left">
+            <span class="hello-badge">Webinar</span>
+            <div class="hello-msg-group">
+                <span class="hello-message">We are Heading to AAHOACON 2026</span>
+                <a href="#" class="hello-cta">Register Now
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                </a>
+            </div>
+        </div>
+        <a href="#" class="hello-consult">Free Consultation</a>
+        <a href="#" class="hello-login">Log in</a>
+    </div>
+
+    <header class="site-header headerTop is-scrolled">
+        <a href="./index.html" class="brand-mark" aria-label="Lumenore home">
+            <img src="./assets/images/homeV2o/Lumenore logo.svg" alt="Lumenore" class="nav-logo-img">
+        </a>
+        <nav>
+            <ul class="nav-links">
+                <li class="nav-item has-dropdown nav-item--platform" data-mega-id="platformMega">
+                    <a href="#" class="nav-trigger">Platform
+                        <svg class="caret" viewBox="0 0 8 4" fill="none"><path d="M0 0l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                    <div class="nav-mega nav-mega--platform" role="menu" id="platformMega">
+                        <div class="np-nav">
+                            <div class="np-nav-section">
+                                <h6 class="np-nav-title">Products</h6>
+                                <ul class="np-nav-list">
+                                    <li><a href="#" data-platform-item="insights" data-platform-type="product">Lumenore Insights</a></li>
+                                    <li><a href="../lumenore-ask-me.html" data-platform-item="askme" data-platform-type="product">Lumenore Ask Me</a></li>
+                                    <li><a href="#" data-platform-item="datamagnet" data-platform-type="product">Lumenore Data Magnet</a></li>
+                                </ul>
+                            </div>
+                            <div class="np-nav-section">
+                                <ul class="np-nav-list">
+                                    <li><a href="#" data-platform-item="all-capabilities" data-platform-type="capability" class="np-cap-link">
+                                        <span>Capabilities</span>
+                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                                    </a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="np-detail" id="platformDetail">
+                            <div class="np-product-pane" id="platformProductPane" hidden>
+                                <span class="np-pane-kind"><span class="np-kind-dot"></span>Product</span>
+                                <p class="np-pane-tagline" id="npProductTagline">Self-Service Analytics</p>
+                                <h4 class="np-pane-title" id="npProductTitle">Lumenore Insights</h4>
+                                <p class="np-pane-desc" id="npProductDesc">Democratize data with self-service, AI-powered dashboards.</p>
+                                <a class="np-learn-more" id="npProductLearn" href="#">Learn more <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+                                <div class="np-pane-actions">
+                                    <a class="np-cta np-cta--primary" id="npProductStart" href="#">Start Free</a>
+                                    <a class="np-cta np-cta--secondary" id="npProductPricing" href="#">Pricing</a>
+                                </div>
+                            </div>
+                            <h6 class="np-nav-title np-grid-title" id="platformGridTitle" hidden>All Capabilities</h6>
+                            <div class="np-grid" id="platformGrid" hidden>
+                                <a href="#" class="np-grid-card" data-platform-card="connectors"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12h6M3 7h4M3 17h4M17 7h4M17 17h4"/><circle cx="12" cy="12" r="3"/><circle cx="5" cy="7" r="1.5"/><circle cx="5" cy="17" r="1.5"/><circle cx="19" cy="7" r="1.5"/><circle cx="19" cy="17" r="1.5"/></svg><span>Data Connectors</span></a>
+                                <a href="#" class="np-grid-card" data-platform-card="integration"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4v6a3 3 0 0 0 3 3h4a3 3 0 0 1 3 3v4"/><circle cx="7" cy="3" r="1.5"/><circle cx="17" cy="21" r="1.5"/></svg><span>Data Integration</span></a>
+                                <a href="#" class="np-grid-card" data-platform-card="lakehouse"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v6a9 3 0 0 0 18 0V5M3 11v6a9 3 0 0 0 18 0v-6"/></svg><span>Data Lakehouse</span></a>
+                                <a href="#" class="np-grid-card" data-platform-card="visualization"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V10M10 21V6M15 21V13M20 21V8"/></svg><span>Data Visualization</span></a>
+                                <a href="#" class="np-grid-card" data-platform-card="universe"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="9" ry="3.5"/><path d="M3 12h18"/></svg><span>Data Universe</span></a>
+                                <a href="#" class="np-grid-card" data-platform-card="dashboard"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="5" rx="1.5"/><rect x="13" y="10" width="8" height="11" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/></svg><span>Dashboard</span></a>
+                                <a href="#" class="np-grid-card" data-platform-card="advanced"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18l4-6 4 3 6-9 4 5"/></svg><span>Advanced Analytics</span></a>
+                                <a href="#" class="np-grid-card" data-platform-card="embedded"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M9 10l-2 2 2 2M15 10l2 2-2 2"/></svg><span>Embedded Analytics</span></a>
+                                <a href="#" class="np-grid-card" data-platform-card="conversational"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg><span>Conversational Intelligence</span></a>
+                                <a href="#" class="np-grid-card" data-platform-card="decision"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/><circle cx="12" cy="12" r="4"/></svg><span>Decision Intelligence</span></a>
+                                <a href="#" class="np-grid-card" data-platform-card="selfservice"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg><span>Self-Service Analytics</span></a>
+                                <a href="#" class="np-grid-card" data-platform-card="predictive"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12c0-5 4-9 9-9s9 4 9 9"/><path d="M12 7v5l3 2"/><circle cx="12" cy="12" r="9" stroke-dasharray="2 3"/></svg><span>Predictive Analytics</span></a>
+                            </div>
+                        </div>
+                        <aside class="np-releases">
+                            <h6 class="np-nav-title">Recent Releases</h6>
+                            <a class="np-release" href="#"><span class="np-release-tag">New</span><span class="np-release-title">Ask Me Agentic RAG Upgrade</span><span class="np-release-sub">Self-correction &amp; multimodal support.</span></a>
+                            <a class="np-release" href="#"><span class="np-release-title">Local LLM Integration</span><span class="np-release-sub">Keep sensitive data in-house with on-prem inference.</span></a>
+                            <a class="np-release" href="#"><span class="np-release-title">Visual Pipeline Builder</span><span class="np-release-sub">Low-code ETL flows in a drag-and-drop canvas.</span></a>
+                            <a class="np-view-all" href="#">View All Releases <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+                        </aside>
+                    </div>
+                </li>
+
+                <li class="nav-item has-dropdown nav-item--solutions" data-mega-id="solutionMega">
+                    <a href="#" class="nav-trigger">Solutions
+                        <svg class="caret" viewBox="0 0 8 4" fill="none"><path d="M0 0l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                    <div class="nav-mega nav-mega--platform nav-mega--solutions" role="menu" id="solutionMega">
+                        <div class="np-nav">
+                            <ul class="np-nav-list">
+                                <li><a href="#" data-solution-item="industry" class="np-cap-link"><span>By Industry</span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></li>
+                                <li><a href="#" data-solution-item="department" class="np-cap-link"><span>By Department</span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></li>
+                            </ul>
+                        </div>
+                        <div class="np-detail" id="solutionDetail">
+                            <h6 class="np-nav-title np-grid-title" id="solIndustryTitle" hidden>By Industry</h6>
+                            <div class="np-grid" id="solIndustryGrid" hidden>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v16M4 12h16"/></svg><span>Healthcare</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6h15l-1.5 9H7.5L6 6zM6 6L5 3H2"/></svg><span>Retail</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0M1.42 9a16 16 0 0 1 21.16 0M8.53 16.11a6 6 0 0 1 6.95 0M12 20h.01"/></svg><span>Telecom</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12l9-8 9 8M5 10v10h14V10"/></svg><span>Real Estate</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg><span>Insurance</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span>Financial Services</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10l-10-5L2 10l10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg><span>Education</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/></svg><span>Technology</span></a>
+                            </div>
+                            <h6 class="np-nav-title np-grid-title" id="solDepartmentTitle" hidden>By Department</h6>
+                            <div class="np-grid" id="solDepartmentGrid" hidden>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span>Finance</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18l6-6 4 4 8-8"/></svg><span>Sales</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l18-8v18z"/></svg><span>Marketing</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg><span>Human Resources</span></a>
+                            </div>
+                        </div>
+                        <aside class="np-releases">
+                            <h6 class="np-nav-title">Recent Blogs</h6>
+                            <a class="np-release" href="#"><span class="np-release-tag">Featured</span><span class="np-release-title">How AI-Powered Analytics is Reshaping Healthcare</span><span class="np-release-sub">Real-world results from teams using Lumenore.</span></a>
+                            <a class="np-release" href="#"><span class="np-release-title">5 Ways Sales Teams Use Self-Service BI</span><span class="np-release-sub">Faster pipeline insights without filing IT tickets.</span></a>
+                            <a class="np-view-all" href="#">View All Blogs <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+                        </aside>
+                    </div>
+                </li>
+
+                <li class="nav-item"><a href="#" class="nav-trigger">Pricing</a></li>
+
+                <li class="nav-item has-dropdown nav-item--resources" data-mega-id="resourcesMega">
+                    <a href="#" class="nav-trigger">Resources
+                        <svg class="caret" viewBox="0 0 8 4" fill="none"><path d="M0 0l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                    <div class="nav-mega nav-mega--resources" role="menu" id="resourcesMega">
+                        <div class="np-nav np-nav--wide">
+                            <div class="np-nav-section">
+                                <h6 class="np-nav-title">Watch</h6>
+                                <ul class="np-nav-list">
+                                    <li><a href="#">Demo</a></li>
+                                    <li><a href="#">Webinars &amp; Events</a></li>
+                                    <li><a href="#">Training</a></li>
+                                </ul>
+                            </div>
+                            <div class="np-nav-section">
+                                <h6 class="np-nav-title">Read</h6>
+                                <ul class="np-nav-list">
+                                    <li><a href="#">Blogs</a></li>
+                                    <li><a href="#">Use Cases</a></li>
+                                    <li><a href="#">eBooks &amp; Whitepapers</a></li>
+                                    <li><a href="#">Success Stories</a></li>
+                                </ul>
+                            </div>
+                            <div class="np-nav-section">
+                                <h6 class="np-nav-title">Learn</h6>
+                                <ul class="np-nav-list">
+                                    <li><a href="#">Certification</a></li>
+                                    <li><a href="#">Support Portal</a></li>
+                                    <li><a href="#">Knowledge Base</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <aside class="np-releases">
+                            <h6 class="np-nav-title">Recent Blogs</h6>
+                            <a class="np-release" href="#"><span class="np-release-tag">Featured</span><span class="np-release-title">Agentic RAG: Beyond Simple Retrieval</span><span class="np-release-sub">How self-correcting AI workflows are changing data queries.</span></a>
+                            <a class="np-release" href="#"><span class="np-release-title">A Practical Guide to Self-Service BI</span><span class="np-release-sub">Patterns that scale beyond the analytics team.</span></a>
+                            <a class="np-view-all" href="#">View All Blogs <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+                        </aside>
+                    </div>
+                </li>
+
+                <li class="nav-item has-dropdown nav-item--company" data-mega-id="companyMega">
+                    <a href="#" class="nav-trigger">Company
+                        <svg class="caret" viewBox="0 0 8 4" fill="none"><path d="M0 0l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                    <div class="nav-mega nav-mega--platform nav-mega--company" role="menu" id="companyMega">
+                        <div class="np-nav">
+                            <ul class="np-nav-list">
+                                <li><a href="#" data-company-item="all" class="np-cap-link"><span>Company</span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></li>
+                            </ul>
+                        </div>
+                        <div class="np-detail" id="companyDetail">
+                            <h6 class="np-nav-title np-grid-title" id="coAllTitle" hidden>Company</h6>
+                            <div class="np-grid" id="coAllGrid" hidden>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 7 7 .8-5.3 4.8 1.7 7.4-7.4-4-7.4 4 1.7-7.4L0 9.8 7 9z"/></svg><span>Lumenore Difference</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 11l-3 3-1.5-1.5"/></svg><span>Partners</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg><span>Careers</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6z"/></svg><span>Contact Us</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18l6-6 4 4 8-8"/><path d="M17 8h4v4"/></svg><span>Contact Sales</span></a>
+                            </div>
+                        </div>
+                        <aside class="np-releases">
+                            <h6 class="np-nav-title">Recent Blogs</h6>
+                            <a class="np-release" href="#"><span class="np-release-tag">Story</span><span class="np-release-title">Inside Lumenore: How We Build for Enterprise</span><span class="np-release-sub">The product principles behind self-correcting AI workflows.</span></a>
+                            <a class="np-release" href="#"><span class="np-release-title">Partner Program: 2026 Roadmap</span><span class="np-release-sub">New tiers, joint go-to-market, and certification.</span></a>
+                            <a class="np-view-all" href="#">View All Blogs <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+                        </aside>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <div class="nav-actions">
+            <a href="#" class="btn-demo">Request a Demo</a>
+            <a href="#" class="btn-start btn-primary btn-primary--sm">Start for Free</a>
+        </div>
+    </header>
+</div>
+
+<!-- ===== PAGE CONTENT ===== -->
+<main>
+
+    <!-- HERO -->
+    <section class="pp-hero">
+        <div class="hero-grid" aria-hidden="true"></div>
+        <div class="hero-orbs" aria-hidden="true">
+            <div class="hero-orb orb-violet"></div>
+            <div class="hero-orb orb-cyan"></div>
+            <div class="hero-orb orb-blue"></div>
+        </div>
+        <div class="hero-particles" aria-hidden="true">
+            <span class="particle"></span><span class="particle"></span>
+            <span class="particle"></span><span class="particle"></span>
+            <span class="particle"></span><span class="particle"></span>
+            <span class="particle"></span><span class="particle"></span>
+        </div>
+        <div class="pp-hero__glow" aria-hidden="true"></div>
+        <div class="container">
+            <div class="pp-hero__inner">
+                <p class="pp-hero__eyebrow">
+                    <span class="het-dot"></span>Legal &amp; Trust
+                </p>
+                <h1 class="pp-hero__title">Privacy Statement</h1>
+                <p class="pp-hero__meta">Last modified: July 25, 2025</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTENT -->
+    <section class="pp-content">
+        <div class="container">
+            <div class="pp-layout">
+
+                <!-- TOC sidebar -->
+                <aside class="pp-toc" aria-label="Table of contents">
+                    <p class="pp-toc__label">On this page</p>
+                    <ul class="pp-toc__list">
+                        <li><a href="#summary">Summary of Key Points</a></li>
+                        <li><a href="#amendments">Policy Amendments (07/2025)</a></li>
+                        <div class="pp-toc__divider"></div>
+                        <li><a href="#information-collect">Information We Collect</a></li>
+                        <li><a href="#how-we-process">How We Process Your Info</a></li>
+                        <li><a href="#legal-bases">Legal Bases</a></li>
+                        <li><a href="#sharing">Sharing Your Information</a></li>
+                        <li><a href="#ai-security">AI &amp; Generative AI Security</a></li>
+                        <div class="pp-toc__divider"></div>
+                        <li><a href="#cookies">Cookies &amp; Tracking</a></li>
+                        <li><a href="#social-logins">Social Logins</a></li>
+                        <li><a href="#international">International Transfers</a></li>
+                        <li><a href="#retention">Data Retention</a></li>
+                        <li><a href="#security">Data Security</a></li>
+                        <li><a href="#minors">Minors</a></li>
+                        <div class="pp-toc__divider"></div>
+                        <li><a href="#privacy-rights">Your Privacy Rights</a></li>
+                        <li><a href="#do-not-track">Do Not Track</a></li>
+                        <li><a href="#california">California Residents (CCPA)</a></li>
+                        <li><a href="#updates">Policy Updates</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
+                        <li><a href="#infringement">Copyright Infringement</a></li>
+                        <li><a href="#review-delete">Review / Update / Delete</a></li>
+                    </ul>
+                </aside>
+
+                <!-- Article -->
+                <article class="pp-article">
+
+                    <!-- Privacy Notice intro -->
+                    <div class="pp-section" id="notice">
+                        <h2 class="pp-section__title">Privacy Notice</h2>
+                        <p>Lumenore is committed to protecting your privacy and compliance with all relevant legislation, including the General Data Protection Regulation (GDPR), where this applies to EU citizens, and CCPA where this applies to Californian citizens.</p>
+                        <p>This Privacy Policy ("Policy") describes how we collect, use, store, process, and share your information in relation to this website. This Policy covers our treatment of information that is gathered by this website, including personally identifiable information or personal data. This Policy does not apply to information collected by third-party websites, services, or personal data collected in the context of employment.</p>
+                        <div class="pp-callout">
+                            <p><strong>Questions or concerns?</strong> Reading this privacy notice will help you understand your privacy rights and choices. If you do not agree with our policies and practices, please do not use our Services. If you still have any questions or concerns, please contact us at <a href="mailto:support@lumenore.com">support@lumenore.com</a>.</p>
+                        </div>
+                    </div>
+
+                    <!-- Summary -->
+                    <div class="pp-section" id="summary">
+                        <h2 class="pp-section__title">Summary of Key Points</h2>
+                        <p><strong>What personal information do we process?</strong> When you visit, use, or navigate our Services, we may process personal information depending on how you interact with Lumenore and the Services, the choices you make, and the products and features you use.</p>
+                        <p><strong>Do we process any sensitive personal information?</strong> We do not process sensitive personal information.</p>
+                        <p><strong>Do you receive any information from third parties?</strong> We do not receive any information from third parties.</p>
+                        <p><strong>How do you process my information?</strong> We process your information to provide, improve, and administer our Services, communicate with you, for security and fraud prevention, and comply with the law. We may also process your information for other purposes with your consent. We process your information only when we have a valid legal reason to do so.</p>
+                        <p><strong>In what situations and with which parties do we share personal information?</strong> We may share information in specific situations and with specific third parties.</p>
+                        <p><strong>How do we keep your information safe?</strong> We have organizational and technical processes and procedures in place to protect your personal information. However, no electronic transmission over the internet or information storage technology can be guaranteed to be 100% secure.</p>
+                        <p><strong>What are your rights?</strong> Depending on where you are located geographically, the applicable privacy law may mean you have certain rights regarding your personal information.</p>
+                        <p><strong>How do I exercise my rights?</strong> The easiest way to exercise your rights is by filling out our data subject request form available at <a href="https://lumenore.com/contact" target="_blank" rel="noopener">lumenore.com/contact</a>, or by contacting us. We will consider and act upon any request in accordance with applicable data protection laws.</p>
+                    </div>
+
+                    <!-- Amendments -->
+                    <div class="pp-section" id="amendments">
+                        <h2 class="pp-section__title">Amendments in the Privacy Policy (Policy revision 07/2025)</h2>
+                        <p>Lumenore's association with Microsoft Azure and Open AI and Lumenore capabilities with AI inception makes it imperative for us to disclose the way such information is processed. These changes are listed under the following sections:</p>
+                        <ul>
+                            <li>When and With Whom Do We Share Your Personal Information?</li>
+                            <li>Security and Governance for Generative AI in Lumenore</li>
+                        </ul>
+                    </div>
+
+                    <!-- What information do we collect -->
+                    <div class="pp-section" id="information-collect">
+                        <h2 class="pp-section__title">What Information Do We Collect?</h2>
+                        <p>We collect personal information that you voluntarily provide to us when you register and/or subscribe to our Services, express an interest in obtaining information about us or our products and Services, when you participate in activities related to the Services, or otherwise when you contact us.</p>
+
+                        <h3>Personal Information Provided by You</h3>
+                        <p>The personal information that we collect depends on the context of your interactions with us and the Services, the choices you make, and the products and features you use. The personal information we collect may include the following:</p>
+                        <ul>
+                            <li>Names</li>
+                            <li>Email addresses</li>
+                        </ul>
+                        <p>We do not collect and/or process sensitive information.</p>
+
+                        <h3>Social Media Login Data</h3>
+                        <p>We may provide you with the option to register with us using your existing social media account details, like your Facebook, Twitter, or other social media account. If you choose to register in this way, we will collect the information described in the section "How Do We Handle Your Social Logins?" below.</p>
+                        <p>All personal information that you provide to us must be true, complete, and accurate, and you must notify us of any changes to such personal information.</p>
+                    </div>
+
+                    <!-- How do we process -->
+                    <div class="pp-section" id="how-we-process">
+                        <h2 class="pp-section__title">How Do We Process Your Information?</h2>
+                        <p>We process your information to provide, improve, and administer our Services, communicate with you, for security and fraud prevention, and comply with the law. We may also process your information for other purposes with your consent.</p>
+                        <p>We process your personal information for a variety of reasons, depending on how you interact with our services, including:</p>
+                        <ul>
+                            <li><strong>To facilitate account creation and authentication</strong> and otherwise manage user accounts. We may process your information so you can create and log in to your account, as well as keep your account in working order.</li>
+                            <li><strong>To deliver and facilitate the delivery of Services</strong> to the user. We may process your information to provide you with the requested service.</li>
+                            <li><strong>To respond to user inquiries/offer support</strong> to users. We may process your information to respond to your inquiries and solve any potential issues you might have with the requested service.</li>
+                            <li><strong>To request feedback.</strong> We may process your information when necessary to request feedback and to contact you about your use of our Services.</li>
+                            <li><strong>To send you marketing and promotional communications.</strong> We may process the personal information you send to us for our marketing purposes if this is in accordance with your marketing preferences. You can opt out of our marketing emails at any time.</li>
+                            <li><strong>To determine the effectiveness of our marketing and promotional campaigns.</strong> We may process your information to better understand how to provide marketing and promotional campaigns that are most relevant to you.</li>
+                            <li><strong>To save or protect an individual's vital interest.</strong> We may process your information when necessary to save or protect an individual's vital interest, such as to prevent harm.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Legal bases -->
+                    <div class="pp-section" id="legal-bases">
+                        <h2 class="pp-section__title">What Legal Bases Do We Rely On to Process Your Information?</h2>
+                        <p>We only process your personal information when we believe it is necessary and we have a valid legal reason (i.e., legal basis) to do so under applicable law, like with your consent, to comply with laws, to provide you with Services to enter or fulfil our contractual obligations, to protect your rights, or to fulfil our legitimate business interests.</p>
+
+                        <h3>If you are in the EU or UK</h3>
+                        <p>The General Data Protection Regulation (GDPR) and UK GDPR require us to explain the valid legal bases we rely on to process your personal information. We may rely on the following legal bases:</p>
+                        <ul>
+                            <li><strong>Consent.</strong> We may process your information if you have given us permission to use your personal information for a specific purpose. You can withdraw your consent at any time.</li>
+                            <li><strong>Performance of a Contract.</strong> We may process your personal information when we believe it is necessary to fulfil our contractual obligations to you, including providing our Services or at your request prior to entering into a contract with you.</li>
+                            <li><strong>Legitimate Interests.</strong> We may process your information when we believe it is reasonably necessary to achieve our legitimate business interests — such as sending information about special offers, supporting our marketing activities, or understanding how users use our products.</li>
+                            <li><strong>Legal Obligations.</strong> We may process your information where we believe it is necessary for compliance with our legal obligations, such as to cooperate with a law enforcement body or regulatory agency, or disclose your information as evidence in litigation.</li>
+                            <li><strong>Vital Interests.</strong> We may process your information where we believe it is necessary to protect your vital interests or the vital interests of a third party, such as situations involving potential threats to the safety of any person.</li>
+                        </ul>
+
+                        <h3>If you are located in Canada</h3>
+                        <p>We may process your information if you have given us specific permission (express consent) or where your permission can be inferred (implied consent). You can withdraw your consent at any time. In some exceptional cases, we may be legally permitted to process your information without your consent, including for fraud detection, business transactions, legal proceedings, or where the information is publicly available and specified by applicable regulations.</p>
+                    </div>
+
+                    <!-- Sharing -->
+                    <div class="pp-section" id="sharing">
+                        <h2 class="pp-section__title">When and With Whom Do We Share Your Personal Information?</h2>
+                        <p>Lumenore is committed to securely and responsibly generating actionable insights from your organizational data. Built on secure Microsoft Azure services, the platform ensures data privacy and compliance by using Microsoft Azure's Open AI models, rather than relying on OpenAI endpoints.</p>
+                        <p>We may need to share your personal information in the following situations:</p>
+
+                        <h3>Business Transfers</h3>
+                        <p>We may share or transfer your information in connection with, or during negotiations of, any merger, sale of company assets, financing, or acquisition of all or a portion of our business to another company.</p>
+                        <p>We do not share user personal information in any other specific situations or with any other third parties.</p>
+                    </div>
+
+                    <!-- AI Security -->
+                    <div class="pp-section" id="ai-security">
+                        <h2 class="pp-section__title">Security and Governance for Generative AI in Lumenore</h2>
+
+                        <h3>Lumenore's Association with Microsoft Azure's Open AI</h3>
+                        <p>It is important to note that Lumenore uses models from Microsoft Azure, which has a Business Associate Agreement (BAA) with Open AI. This agreement guarantees the same strong data privacy standards for these models. Additionally, Lumenore doesn't share any user personal information data with OpenAI by any means and respects user preferences and privacy.</p>
+
+                        <h3>Data Privacy Commitment</h3>
+                        <p>The Business Associate Agreement guarantees the same robust data privacy for Lumenore AI models as Azure, ensuring that business data shared for AI insights is protected and never reused.</p>
+
+                        <h3>Metadata-Only Processing</h3>
+                        <p>All Lumenore services — including Root Cause Analysis (RCA), Data science analytics, visualization processing, agent-based workflows, and natural language querying — only process metadata. No raw customer data is shared with external parties for these services.</p>
+
+                        <h3>Generative AI Insights – Secure Data Handling</h3>
+                        <p>The only scenario where user's business data leaves the Lumenore environment is when AI insights are generated using models integrated with Microsoft Azure's OpenAI. Data is shared securely and processed over encrypted channels:</p>
+                        <ul>
+                            <li>Users are prompted to provide additional consent before securely sharing their business data for AI insight processing. This consent can be withdrawn at any time when handling sensitive data and can be re-enabled for non-sensitive data directly from the same interface.</li>
+                            <li>A clear callout informs users: <em>"Business data shared for generating AI insights is protected by a secure AI layer with no use for training purposes."</em></li>
+                        </ul>
+
+                        <h3>User-Specific Policy Enforcement</h3>
+                        <p>Based on the Policy Engine Flow, each user has different policy classifications. These classifications — based on the type of content, data type, and usage — are checked by the <strong>Firewall Policy Engine:</strong></p>
+                        <ul>
+                            <li>If the content is compliant with the allowed policy, it is allowed and processed normally.</li>
+                            <li>If the content violates the user's policies, it is blocked, and the associated policy is enforced. Each action is taken according to the user's predefined policies, ensuring compliance with organizational data governance frameworks.</li>
+                        </ul>
+
+                        <h3>No Data Sharing for Other Services</h3>
+                        <p>All other product capabilities and analytics do not require any data to leave the secure Lumenore environment. No user business data is shared externally under these conditions.</p>
+
+                        <h3>Lumenore's BYOK Model</h3>
+                        <p>Lumenore allows users to bring their own key for all types of AI generated transactions/affairs. This means users manage their API keys, maintaining full control over their data in the OpenAI integration.</p>
+
+                        <h3>Lumenore LLM</h3>
+                        <p>Lumenore uses LLM models securely hosted within Azure environments. Data is not shared with public OpenAI endpoints for any purpose.</p>
+
+                        <h3>User Controls and Compliance</h3>
+                        <ul>
+                            <li><strong>Transparency and Consent</strong> — Users are notified when business data sharing may occur for AI insights and given the option to review and accept the terms for data usage.</li>
+                            <li><strong>Compliance</strong> — Lumenore meets all required privacy and security regulations, taking advantage of Microsoft Azure's certifications and compliance features.</li>
+                        </ul>
+
+                        <div class="pp-table-wrap">
+                            <table class="pp-table">
+                                <thead>
+                                    <tr>
+                                        <th>Service / Feature</th>
+                                        <th>Data Shared Externally?</th>
+                                        <th>Details</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>AI Agents</strong></td>
+                                        <td><span class="pp-badge pp-badge--no">No</span></td>
+                                        <td>Only metadata is processed.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Generative AI Insights</strong></td>
+                                        <td><span class="pp-badge pp-badge--yes">Yes (Securely)</span></td>
+                                        <td>User business data shared for AI insights generation, only with explicit user consent. No user personal information is shared.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>All Other Capabilities</strong></td>
+                                        <td><span class="pp-badge pp-badge--no">No</span></td>
+                                        <td>No customer business data leaves your organization's environment.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Cookies -->
+                    <div class="pp-section" id="cookies">
+                        <h2 class="pp-section__title">Do We Use Cookies and Other Tracking Technologies?</h2>
+
+                        <h3>What are cookies?</h3>
+                        <p>Cookies are small text files that are used to store small pieces of information. They are stored on your device when the website is loaded on your browser. These cookies help us make the website function properly, make it more secure, provide a better user experience, understand how the website performs, and analyze what works and where it needs improvement. For further information, visit <a href="https://allaboutcookies.org" target="_blank" rel="noopener">allaboutcookies.org</a>.</p>
+
+                        <h3>How do we use cookies?</h3>
+                        <p>Like most online services, our website uses first-party and third-party cookies for several purposes. First-party cookies are mostly necessary for the website to function the right way, and they do not collect any of your personally identifiable data. The third-party cookies used on our website are mainly for understanding how the website performs, how you interact with our website, keeping our services secure, providing relevant advertisements, and providing a better user experience.</p>
+
+                        <h3>Duration</h3>
+                        <ul>
+                            <li><strong>Session cookies</strong> — Temporary; expire once you close your browser (or once your session ends).</li>
+                            <li><strong>Persistent cookies</strong> — Remain on your hard drive until you erase them or your browser does, depending on the cookie's expiration date. According to the ePrivacy Directive, they should not last longer than 12 months.</li>
+                        </ul>
+
+                        <h3>Provenance</h3>
+                        <ul>
+                            <li><strong>First-party cookies</strong> — Put on your device directly by the website you are visiting.</li>
+                            <li><strong>Third-party cookies</strong> — Placed on your device by a third party like an advertiser or analytics system.</li>
+                        </ul>
+
+                        <h3>Purpose</h3>
+                        <ul>
+                            <li><strong>Strictly necessary cookies</strong> — Essential for you to browse the website and use its features, such as accessing secure areas of the site.</li>
+                            <li><strong>Preferences cookies</strong> — Allow a website to remember choices you have made in the past, like language or login preferences.</li>
+                            <li><strong>Statistics cookies</strong> — Collect information about how you use a website. All data is aggregated and anonymised.</li>
+                            <li><strong>Marketing cookies</strong> — Track your online activity to help advertisers deliver more relevant advertising. These are persistent and almost always third-party cookies.</li>
+                        </ul>
+
+                        <h3>Manage Cookie Preferences</h3>
+                        <p>You can change your cookie preferences at any time by clicking the Cookie Settings button on the <a href="https://lumenore.com/" target="_blank" rel="noopener">Lumenore homepage</a>. You can also manage cookies directly through your browser:</p>
+                        <ul>
+                            <li><a href="https://support.google.com/accounts/answer/32050" target="_blank" rel="noopener">Chrome</a></li>
+                            <li><a href="https://support.apple.com/en-in/guide/safari/sfri11471/mac" target="_blank" rel="noopener">Safari</a></li>
+                            <li><a href="https://support.mozilla.org/en-US/kb/clear-cookies-and-site-data-firefox" target="_blank" rel="noopener">Firefox</a></li>
+                            <li><a href="https://support.microsoft.com/en-us/topic/how-to-delete-cookie-files-in-internet-explorer-bca9446f-d873-78de-77ba-d42645fa52fc" target="_blank" rel="noopener">Internet Explorer</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Social logins -->
+                    <div class="pp-section" id="social-logins">
+                        <h2 class="pp-section__title">How Do We Handle Your Social Logins?</h2>
+                        <p>If you choose to register or log in to our services using a social media account, we may have access to certain information about you. Our services offer you the ability to register and log in using your third-party social media account details (like your Facebook or Twitter logins). Where you choose to do this, we will receive certain profile information about you from your social media provider — often including your name, email address, friends list, and profile picture, as well as other information you choose to make public.</p>
+                        <p>We will use the information we receive only for the purposes described in this privacy notice. Please note that we do not control, and are not responsible for, other uses of your personal information by your third-party social media provider. We recommend that you review their privacy notice to understand how they collect, use, and share your personal information.</p>
+                    </div>
+
+                    <!-- International -->
+                    <div class="pp-section" id="international">
+                        <h2 class="pp-section__title">Is Your Information Transferred Internationally?</h2>
+                        <p>We may transfer, store, and process your information in countries other than your own. Our servers are located in the United States. If you are accessing our Services from outside the United States, please be aware that your information may be transferred to, stored, and processed by us in our facilities and by those third parties with whom we may share your personal information, in the United States, India, and other countries.</p>
+                        <p>If you are a resident in the European Economic Area (EEA) or United Kingdom (UK), then these countries may not necessarily have data protection laws as comprehensive as those in your country. However, we will take all necessary measures to protect your personal information in accordance with this privacy notice and applicable law.</p>
+
+                        <h3>European Commission's Standard Contractual Clauses</h3>
+                        <p>We have implemented measures to protect your personal information, including by using the European Commission's Standard Contractual Clauses for transfers of personal information between our group companies and between us and our third-party providers. These clauses require all recipients to protect all personal information that they process originating from the EEA or UK in accordance with European data protection laws and regulations. Our Standard Contractual Clauses can be provided upon request.</p>
+                    </div>
+
+                    <!-- Retention -->
+                    <div class="pp-section" id="retention">
+                        <h2 class="pp-section__title">How Long Do We Keep Your Information?</h2>
+                        <p>We keep your information for as long as necessary to fulfil the purposes outlined in this privacy notice unless otherwise required by law. We will only keep your personal information for as long as it is necessary for the purposes set out in this privacy notice, unless a longer retention period is required or permitted by law (such as tax, accounting, or other legal requirements).</p>
+                        <p>When we have no ongoing legitimate business need to process your personal information, we will either delete or anonymize such information, or securely store your personal information and isolate it from any further processing until deletion is possible.</p>
+                    </div>
+
+                    <!-- Security -->
+                    <div class="pp-section" id="security">
+                        <h2 class="pp-section__title">How Do We Keep Your Information Safe?</h2>
+                        <p>We aim to protect your personal information through a system of organizational and technical security measures. We have implemented appropriate and reasonable technical and organizational security measures designed to protect the security of any personal information we process.</p>
+                        <p>However, despite our safeguards and efforts to secure your information, no electronic transmission over the Internet or information storage technology can be guaranteed to be 100% secure. Although we will do our best to protect your personal information, transmission of personal information to and from our Services is at your own risk. You should only access the Services within a secure environment.</p>
+                    </div>
+
+                    <!-- Minors -->
+                    <div class="pp-section" id="minors">
+                        <h2 class="pp-section__title">Do We Collect Information from Minors?</h2>
+                        <p>We do not knowingly collect data from or market to children under 18 years of age. By using the Services, you represent that you are at least 18 or that you are the parent or guardian of such a minor and consent to such minor dependent's use of the services.</p>
+                        <p>If we learn that personal information from users less than 18 years of age has been collected, we will deactivate the account and take reasonable measures to promptly delete such data from our records. If you become aware of any data we may have collected from children under the age of 18, please contact us at <a href="mailto:support@lumenore.com">support@lumenore.com</a>.</p>
+                    </div>
+
+                    <!-- Privacy rights -->
+                    <div class="pp-section" id="privacy-rights">
+                        <h2 class="pp-section__title">What Are Your Privacy Rights?</h2>
+                        <p>Lumenore would like to make sure you are fully aware of all your privacy rights. Every user is entitled to the following:</p>
+
+                        <div class="pp-rights-grid">
+                            <div class="pp-right-chip">
+                                <span class="pp-right-chip__icon"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                                <span class="pp-right-chip__text">The right to access — request copies of your personal data</span>
+                            </div>
+                            <div class="pp-right-chip">
+                                <span class="pp-right-chip__icon"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                                <span class="pp-right-chip__text">The right to rectification — correct inaccurate or incomplete data</span>
+                            </div>
+                            <div class="pp-right-chip">
+                                <span class="pp-right-chip__icon"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                                <span class="pp-right-chip__text">The right to erasure — request deletion of your personal data</span>
+                            </div>
+                            <div class="pp-right-chip">
+                                <span class="pp-right-chip__icon"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                                <span class="pp-right-chip__text">The right to restrict processing of your personal data</span>
+                            </div>
+                            <div class="pp-right-chip">
+                                <span class="pp-right-chip__icon"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                                <span class="pp-right-chip__text">The right to object to processing of your personal data</span>
+                            </div>
+                            <div class="pp-right-chip">
+                                <span class="pp-right-chip__icon"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                                <span class="pp-right-chip__text">The right to data portability — transfer your data to another organization</span>
+                            </div>
+                        </div>
+
+                        <p>In some regions (EEA, UK, Canada), you have certain rights under applicable data protection laws — including the right to request access, rectification, erasure, and data portability. You can make such a request by contacting us using the details in the "How Can You Contact Us?" section below.</p>
+                        <p>If you are located in the EEA or UK and believe we are unlawfully processing your personal information, you have the right to complain to your local data protection supervisory authority. Contact details: <a href="https://ec.europa.eu/justice/data-protection/bodies/authorities/index_en.htm" target="_blank" rel="noopener">ec.europa.eu</a>. For Switzerland: <a href="https://www.edoeb.admin.ch/" target="_blank" rel="noopener">edoeb.admin.ch</a>.</p>
+
+                        <h3>Withdrawing your consent</h3>
+                        <p>If we are relying on your consent to process your personal information, you have the right to withdraw your consent at any time by contacting us or updating your preferences. This will not affect the lawfulness of the processing before its withdrawal.</p>
+
+                        <h3>Opting out of marketing communications</h3>
+                        <p>You can unsubscribe from our marketing and promotional communications at any time by clicking the unsubscribe link in the emails we send, or by contacting us. You will then be removed from the marketing lists. However, we may still send you service-related messages that are necessary for the administration and use of your account.</p>
+
+                        <h3>Account Information</h3>
+                        <p>If you would at any time like to review or change the information in your account or terminate your account, you can log in to your account settings, or contact us using the contact information provided. Upon your request to terminate your account, we will deactivate or delete your account and information from our active databases. However, we may retain some information in our files to prevent fraud, troubleshoot problems, assist with any investigations, enforce our legal terms, and/or comply with applicable legal requirements.</p>
+                        <p>If you have questions or comments about your privacy rights, you may email us at <a href="mailto:support@lumenore.com">support@lumenore.com</a>.</p>
+                    </div>
+
+                    <!-- Do Not Track -->
+                    <div class="pp-section" id="do-not-track">
+                        <h2 class="pp-section__title">Controls for Do-Not-Track Features</h2>
+                        <p>Most web browsers and some mobile operating systems and mobile applications include a Do-Not-Track ("DNT") feature or setting you can activate to signal your privacy preference not to have data about your online browsing activities monitored and collected. At this stage, no uniform technology standard for recognizing and implementing DNT signals has been finalized.</p>
+                        <p>As such, we do not currently respond to DNT browser signals or any other mechanism that automatically communicates your choice not to be tracked online. If a standard for online tracking is adopted that we must follow in the future, we will inform you about that practice in a revised version of this privacy notice.</p>
+                    </div>
+
+                    <!-- California / CCPA -->
+                    <div class="pp-section" id="california">
+                        <h2 class="pp-section__title">Do California Residents Have Specific Privacy Rights?</h2>
+                        <p>Yes, if you are a resident of California, you are granted specific rights regarding access to your personal information. California Civil Code Section 1798.83 ("Shine The Light" law) permits our users who are California residents to request and obtain from us, once a year and free of charge, information about categories of personal information we disclosed to third parties for direct marketing purposes.</p>
+                        <p>If you are under 18 years of age, reside in California, and have a registered account with our Services, you have the right to request the removal of unwanted data that you publicly post on the Services. To request removal, please contact us with the email address associated with your account and a statement that you reside in California.</p>
+
+                        <h3>CCPA Privacy Notice — What Categories of Personal Information Do We Collect?</h3>
+                        <p>We have collected the following categories of personal information in the past twelve (12) months:</p>
+
+                        <div class="pp-table-wrap">
+                            <table class="pp-table">
+                                <thead>
+                                    <tr>
+                                        <th>Category</th>
+                                        <th>Examples</th>
+                                        <th>Collected</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>A: Identifiers</strong></td>
+                                        <td>Real name, alias, postal address, unique personal identifier, online identifier, IP address, email address, account name</td>
+                                        <td><span class="pp-badge pp-badge--yes">Yes</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>B: California Customer Records (Cal. Civ. Code § 1798.80(e))</strong></td>
+                                        <td>Name, signature, SSN, address, telephone number, passport number, driver's license, financial information, medical information</td>
+                                        <td><span class="pp-badge pp-badge--yes">Yes</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>C: Protected Classification Characteristics</strong></td>
+                                        <td>Age, race, colour, ancestry, national origin, citizenship, religion, marital status, medical condition, sex, sexual orientation, veteran status</td>
+                                        <td><span class="pp-badge pp-badge--no">No</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>D: Commercial Information</strong></td>
+                                        <td>Records and history of products or services purchased or considered</td>
+                                        <td><span class="pp-badge pp-badge--yes">Yes</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>E: Biometric Information</strong></td>
+                                        <td>Genetic, physiological, behavioral characteristics; fingerprints, faceprints, voiceprints, iris scans</td>
+                                        <td><span class="pp-badge pp-badge--no">No</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>F: Internet or Network Activity</strong></td>
+                                        <td>Interaction with our Service or advertisement</td>
+                                        <td><span class="pp-badge pp-badge--yes">Yes</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>G: Geolocation Data</strong></td>
+                                        <td>Approximate physical location</td>
+                                        <td><span class="pp-badge pp-badge--no">No</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>H: Sensory Data</strong></td>
+                                        <td>Audio, electronic, visual, thermal, olfactory, or similar information</td>
+                                        <td><span class="pp-badge pp-badge--no">No</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>I: Professional / Employment Information</strong></td>
+                                        <td>Current or past job history or performance evaluations</td>
+                                        <td><span class="pp-badge pp-badge--no">No</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>J: Non-public Education Information</strong></td>
+                                        <td>Education records maintained by an educational institution (grades, transcripts, class lists)</td>
+                                        <td><span class="pp-badge pp-badge--no">No</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>K: Inferences from Personal Information</strong></td>
+                                        <td>Profile reflecting preferences, characteristics, psychological trends, predispositions, behavior, abilities</td>
+                                        <td><span class="pp-badge pp-badge--no">No</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h3>Your Rights with Respect to Your Personal Data (CCPA)</h3>
+                        <ul>
+                            <li><strong>Right to request deletion</strong> — You can ask for the deletion of your personal information, subject to certain exceptions provided by law.</li>
+                            <li><strong>Right to be informed (Request to know)</strong> — You have a right to know whether we collect and use your personal information, the categories collected, the purposes for which it is used, and whether we sell it to third parties.</li>
+                            <li><strong>Right to Non-Discrimination</strong> — We will not discriminate against you if you exercise your privacy rights.</li>
+                        </ul>
+
+                        <h3>Verification Process</h3>
+                        <p>Upon receiving your request, we will need to verify your identity to determine whether you are the same person about whom we have the information in our system. We may ask you to provide information so that we can match it with the information you have previously provided us. We will only use the personal information provided in your request to verify your identity or authority to make the request.</p>
+                        <p>You can designate an authorized agent to make a request under the CCPA on your behalf. We may deny a request from an authorized agent that does not submit proof that they have been validly authorized to act on your behalf. To exercise these rights, contact us by email at <a href="mailto:support@lumenore.com">support@lumenore.com</a>.</p>
+
+                        <p><strong>Lumenore has not disclosed or sold any personal information to third parties for a business or commercial purpose in the preceding twelve (12) months. Lumenore will not sell personal information in the future belonging to website visitors, users, and other consumers.</strong></p>
+                    </div>
+
+                    <!-- Updates -->
+                    <div class="pp-section" id="updates">
+                        <h2 class="pp-section__title">Do We Make Updates to This Notice?</h2>
+                        <p>Yes, we will update this notice as necessary to stay compliant with relevant laws. We may update this privacy notice from time to time. The updated version will be indicated by an updated "Revised" date and will be effective as soon as it is accessible.</p>
+                        <p>If we make material changes to this privacy notice, we may notify you either by prominently posting a notice of such changes or by directly sending you a notification. We encourage you to review this privacy notice frequently to be informed of how we are protecting your information.</p>
+                    </div>
+
+                    <!-- Contact -->
+                    <div class="pp-section" id="contact">
+                        <h2 class="pp-section__title">How Can You Contact Us About This Notice?</h2>
+                        <p>If you have questions or comments about this notice, you may email us or write to us:</p>
+                        <div class="pp-contact-card">
+                            <p><strong>Lumenore, Inc.</strong></p>
+                            <p>Email: <a href="mailto:support@lumenore.com">support@lumenore.com</a></p>
+                            <p>999 Tech Row, Madison Heights, Michigan – 48071, USA</p>
+                        </div>
+                    </div>
+
+                    <!-- Infringement -->
+                    <div class="pp-section" id="infringement">
+                        <h2 class="pp-section__title">Notification of Claims of Infringement</h2>
+                        <p>If you believe that your work has been copied in a way that constitutes copyright infringement, or your intellectual property rights have been otherwise violated, please notify us at:</p>
+                        <div class="pp-contact-card">
+                            <p><strong>Lumenore, Inc.</strong></p>
+                            <p>Address: 999 Tech Row, Madison Heights, MI 48071, USA</p>
+                            <p>Email: <a href="mailto:dpo@lumenore.com">dpo@lumenore.com</a></p>
+                        </div>
+                        <p>Please provide the following information in your notification:</p>
+                        <ul>
+                            <li>Identify the material on the site that you claim is infringing in sufficient detail so that we can find it.</li>
+                            <li>A statement that you have a good faith belief that the disputed use is not authorized by the copyright owner, its agent, or the law.</li>
+                            <li>A statement, under penalty of perjury, that (a) the information you have provided is accurate, and (b) that you are the owner of the copyright interest involved or that you are authorized to act on behalf of that owner.</li>
+                            <li>Your address, telephone number, and email address.</li>
+                            <li>Your physical or electronic signature.</li>
+                        </ul>
+                        <p>We will remove the infringing content according to the procedures outlined in the Digital Millennium Copyright Act of 1998. Please note that pursuant to 17 U.S.C. 512(f), any misrepresentation of fact in a written notification will subject the complaining party to liability for damages, costs, and attorneys' fees.</p>
+                    </div>
+
+                    <!-- Review / Delete -->
+                    <div class="pp-section" id="review-delete">
+                        <h2 class="pp-section__title">How Can You Review, Update, or Delete the Data We Collect from You?</h2>
+                        <p>Based on the applicable laws of your country, you may have the right to request access to the personal information we collect from you, change that information, or delete it in some circumstances. To request to review, update, or delete your personal information, please visit <a href="https://lumenore.com/privacy-dsar/" target="_blank" rel="noopener">lumenore.com/privacy-dsar/</a>.</p>
+                        <p>After processing your data deletion request, data continues to be in our backups due to regulation and compliance. However, it will be completely deleted from backups after 30 days.</p>
+                    </div>
+
+                </article>
+            </div>
+        </div>
+    </section>
+
+</main>
+<!-- ===== /PAGE CONTENT ===== -->
+
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-top">
+            <div class="brand-col footer-col reveal-left">
+                <div class="brand-logo">
+                    <img src="./assets/images/homeV2o/Lumenore logo.svg" alt="Lumenore" class="brand-logo-img">
+                    <img src="./assets/images/homeV2o/GPTW.svg" alt="Great Place to Work — Certified" class="gptw-badge">
+                </div>
+                <div class="ask-ai-box">
+                    <p class="ask-ai-label">Ask AI for a summary about Lumenore</p>
+                    <div class="ask-ai-icons">
+                        <a href="#" aria-label="ChatGPT"><img src="./assets/images/AI/openai.svg" alt="ChatGPT" width="24" height="24"></a>
+                        <a href="#" aria-label="Perplexity"><img src="./assets/images/AI/perplexity-dark.svg" alt="Perplexity" width="24" height="24"></a>
+                        <a href="#" aria-label="Gemini"><img src="./assets/images/AI/google-gemini-dark.svg" alt="Gemini" width="24" height="24"></a>
+                        <a href="#" aria-label="Claude"><img src="./assets/images/AI/claude.svg" alt="Claude" width="24" height="24"></a>
+                        <a href="#" aria-label="Grok"><img src="./assets/images/AI/grok.svg" alt="Grok" width="24" height="24"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-cta reveal-right" style="--reveal-delay:.18s">
+                <span class="footer-cta-halo" aria-hidden="true"></span>
+                <div class="footer-cta-text">
+                    <span class="footer-cta-eyebrow">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l2 5 5 2-5 2-2 5-2-5-5-2 5-2z" fill="currentColor"/></svg>
+                        Talk to a human
+                    </span>
+                    <h3>Got more questions?</h3>
+                    <p>Our team is here to answer any questions or customize the perfect plan for you.</p>
+                </div>
+                <a href="contact.html" class="footer-cta-button btn-primary">
+                    Get in Touch
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                </a>
+            </div>
+        </div>
+
+        <div class="footer-nav reveal-block" style="--reveal-delay:.28s">
+            <div class="footer-col">
+                <h4>Platform</h4>
+                <ul>
+                    <li><a href="why-us.html">Why Us</a></li>
+                    <li><a href="trust-and-security.html">Trust and Security</a></li>
+                    <li><a href="partners.html">Partners</a></li>
+                    <li><a href="professional-services.html">Professional Services</a></li>
+                    <li><a href="platform.html">Platform</a></li>
+                    <li><a href="release-notes.html">Latest Releases</a></li>
+                    <li><a href="watch-demo.html">Watch Demo</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Capabilities</h4>
+                <ul>
+                    <li><a href="data-connectors.html">Data Connectors</a></li>
+                    <li><a href="data-integration.html">Data Integration</a></li>
+                    <li><a href="data-lakehouse.html">Data Lakehouse</a></li>
+                    <li><a href="data-visualization.html">Data Visualization</a></li>
+                    <li><a href="data-universe.html">Data Universe</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="advanced-analytics.html">Advanced Analytics</a></li>
+                    <li><a href="embedded-analytics.html">Embedded Analytics</a></li>
+                    <li><a href="conversational-intelligence.html">Conversational Intelligence</a></li>
+                    <li><a href="decision-intelligence.html">Decision Intelligence</a></li>
+                    <li><a href="self-service-analytics.html">Self-Service Analytics</a></li>
+                    <li><a href="predictive-analytics.html">Predictive Analytics</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Product</h4>
+                <ul>
+                    <li><a href="lumenore-insights.html">Lumenore Insights</a></li>
+                    <li><a href="../lumenore-ask-me.html">Lumenore Ask Me</a></li>
+                    <li><a href="lumenore-data-magnet.html">Lumenore Data Magnet</a></li>
+                </ul>
+                <h4 class="col-spaced">Pricing</h4>
+                <ul>
+                    <li><a href="pricing-insights.html">Lumenore Insights Pricing</a></li>
+                </ul>
+                <h4 class="col-spaced">Compare</h4>
+                <ul>
+                    <li><a href="tableau-alternative.html">Tableau Alternative</a></li>
+                    <li><a href="thoughtspot-alternative.html">ThoughtSpot Alternative</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Solutions</h4>
+                <ul>
+                    <li><a href="solutions-by-industry.html">By Industry</a></li>
+                    <li><a href="solutions-by-department.html">By Department</a></li>
+                </ul>
+                <h4 class="col-spaced">Company</h4>
+                <ul>
+                    <li><a href="about-us.html">About Us</a></li>
+                    <li><a href="career.html">Career</a></li>
+                    <li><a href="newsroom.html">Newsroom</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="contact-sales.html">Contact Sales</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="request-a-demo.html">Request Demo</a></li>
+                    <li><a href="community-support.html">Community Support</a></li>
+                    <li><a href="news-and-media.html">News &amp; Media</a></li>
+                    <li><a href="ebooks-whitepapers.html">Ebooks &amp; Whitepapers</a></li>
+                    <li><a href="success-stories.html">Success Stories</a></li>
+                    <li><a href="use-cases.html">Use Cases</a></li>
+                    <li><a href="blog.html">Blogs</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="knowledge-base.html">Knowledge Base</a></li>
+                    <li><a href="certifications.html">Certifications</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p>© 2025 Lumenore Inc. All rights reserved.</p>
+            <div class="copyright-social">
+                <a href="#" aria-label="X / Twitter"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+                <a href="#" aria-label="LinkedIn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452z"/></svg></a>
+                <a href="#" aria-label="YouTube"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+                <a href="#" aria-label="Instagram"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+            </div>
+            <div class="legal-links">
+                <a href="privacy.html" aria-current="page">Privacy</a>
+                <a href="terms.html">Terms of Use</a>
+                <a href="cookies.html">Cookies Settings</a>
+                <a href="license.html">License Agreement</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+/* Platform mega-menu */
+(function () {
+    var mega = document.getElementById('platformMega'), detail = document.getElementById('platformDetail');
+    var productPane = document.getElementById('platformProductPane'), productTitle = document.getElementById('npProductTitle');
+    var productTag = document.getElementById('npProductTagline'), productDesc = document.getElementById('npProductDesc');
+    var ctaStart = document.getElementById('npProductStart'), ctaLearn = document.getElementById('npProductLearn');
+    var ctaPricing = document.getElementById('npProductPricing'), gridTitle = document.getElementById('platformGridTitle');
+    var grid = document.getElementById('platformGrid');
+    var navList = document.querySelectorAll('#platformMega [data-platform-item]');
+    var cards = document.querySelectorAll('#platformMega [data-platform-card]');
+    if (!mega || !detail) return;
+    var products = {
+        insights:   { tagline: 'Self-Service Analytics',   title: 'Lumenore Insights',    desc: 'Democratize data with self-service, AI-powered dashboards that empower every employee to make data-driven decisions.',   start: '#', learn: '#', pricing: '#' },
+        askme:      { tagline: 'Conversational Analytics', title: 'Lumenore Ask Me',       desc: 'Query enterprise data in natural language. Get instant, governed insights enhanced by Agentic RAG.',                    start: '../lumenore-ask-me.html', learn: '../lumenore-ask-me.html', pricing: '#' },
+        datamagnet: { tagline: 'Enterprise ETL',            title: 'Lumenore Data Magnet', desc: 'Connect 50+ enterprise sources with low-code ETL. Accelerate high-volume transfers to your Lakehouse.',                start: '#', learn: '#', pricing: '#' }
+    };
+    function hideAll() { productPane.hidden = true; if (gridTitle) gridTitle.hidden = true; if (grid) grid.hidden = true; }
+    function showProduct(key) { var d = products[key]; if (!d) return; productTag.textContent = d.tagline; productTitle.textContent = d.title; productDesc.textContent = d.desc; ctaStart.setAttribute('href', d.start); if (ctaLearn) ctaLearn.setAttribute('href', d.learn); ctaPricing.setAttribute('href', d.pricing); productPane.hidden = false; if (gridTitle) gridTitle.hidden = true; if (grid) grid.hidden = true; }
+    function showGrid() { productPane.hidden = true; if (gridTitle) gridTitle.hidden = false; if (grid) grid.hidden = false; }
+    function highlight(key) { navList.forEach(function(n) { n.classList.toggle('is-active', n.dataset.platformItem === key); }); cards.forEach(function(c) { c.classList.toggle('is-active', c.dataset.platformCard === key); }); }
+    function clearHighlight() { navList.forEach(function(n) { n.classList.remove('is-active'); }); cards.forEach(function(c) { c.classList.remove('is-active'); }); }
+    navList.forEach(function(n) { var t = function() { var key = n.dataset.platformItem; highlight(key); if (n.dataset.platformType === 'product') showProduct(key); else showGrid(); }; n.addEventListener('mouseenter', t); n.addEventListener('focus', t); });
+    cards.forEach(function(c) { var t = function() { showGrid(); highlight(c.dataset.platformCard); }; c.addEventListener('mouseenter', t); c.addEventListener('focus', t); });
+    var navItem = mega.closest('.nav-item');
+    if (navItem) { navItem.addEventListener('mouseenter', function() { highlight('insights'); showProduct('insights'); }); navItem.addEventListener('focusin', function() { highlight('insights'); showProduct('insights'); }); navItem.addEventListener('mouseleave', function() { clearHighlight(); hideAll(); }); }
+})();
+
+/* Solutions mega-menu */
+(function () {
+    var mega = document.getElementById('solutionMega'); if (!mega) return;
+    var navList = mega.querySelectorAll('[data-solution-item]');
+    var industryTtl = document.getElementById('solIndustryTitle'), industryGrid = document.getElementById('solIndustryGrid');
+    var deptTtl = document.getElementById('solDepartmentTitle'), deptGrid = document.getElementById('solDepartmentGrid');
+    function hideAll() { industryTtl.hidden = true; industryGrid.hidden = true; deptTtl.hidden = true; deptGrid.hidden = true; }
+    function showIndustry() { industryTtl.hidden = false; industryGrid.hidden = false; deptTtl.hidden = true; deptGrid.hidden = true; }
+    function showDepartment() { industryTtl.hidden = true; industryGrid.hidden = true; deptTtl.hidden = false; deptGrid.hidden = false; }
+    function highlight(key) { navList.forEach(function(n) { n.classList.toggle('is-active', n.dataset.solutionItem === key); }); }
+    function clearHighlight() { navList.forEach(function(n) { n.classList.remove('is-active'); }); }
+    navList.forEach(function(n) { var t = function() { var key = n.dataset.solutionItem; highlight(key); if (key === 'department') showDepartment(); else showIndustry(); }; n.addEventListener('mouseenter', t); n.addEventListener('focus', t); });
+    var navItem = mega.closest('.nav-item');
+    if (navItem) { navItem.addEventListener('mouseenter', function() { highlight('industry'); showIndustry(); }); navItem.addEventListener('focusin', function() { highlight('industry'); showIndustry(); }); navItem.addEventListener('mouseleave', function() { clearHighlight(); hideAll(); }); }
+})();
+
+/* Company mega-menu */
+(function () {
+    var mega = document.getElementById('companyMega'); if (!mega) return;
+    var navList = mega.querySelectorAll('[data-company-item]');
+    var allTtl = document.getElementById('coAllTitle'), allGrid = document.getElementById('coAllGrid');
+    function hideAll() { if (allTtl) allTtl.hidden = true; if (allGrid) allGrid.hidden = true; }
+    function showAll() { if (allTtl) allTtl.hidden = false; if (allGrid) allGrid.hidden = false; }
+    function highlight() { navList.forEach(function(n) { n.classList.add('is-active'); }); }
+    function clearHighlight() { navList.forEach(function(n) { n.classList.remove('is-active'); }); }
+    navList.forEach(function(n) { n.addEventListener('mouseenter', function() { highlight(); showAll(); }); n.addEventListener('focus', function() { highlight(); showAll(); }); });
+    var navItem = mega.closest('.nav-item');
+    if (navItem) { navItem.addEventListener('mouseenter', function() { highlight(); showAll(); }); navItem.addEventListener('focusin', function() { highlight(); showAll(); }); navItem.addEventListener('mouseleave', function() { clearHighlight(); hideAll(); }); }
+})();
+
+/* Hover-gap bridge */
+(function () {
+    document.querySelectorAll('.nav-item.has-dropdown').forEach(function (item) {
+        var mega = item.querySelector('.nav-mega'); if (!mega) return;
+        var closeTimer = null;
+        function open() { clearTimeout(closeTimer); item.classList.add('is-open'); }
+        function scheduleClose() { closeTimer = setTimeout(function () { item.classList.remove('is-open'); }, 200); }
+        item.addEventListener('mouseenter', open); item.addEventListener('mouseleave', scheduleClose);
+        mega.addEventListener('mouseenter', open); mega.addEventListener('mouseleave', scheduleClose);
+    });
+})();
+
+/* Reveal animations */
+(function () {
+    var els = document.querySelectorAll('.reveal-block, .reveal-left, .reveal-right');
+    if (!els.length) return;
+    if (!('IntersectionObserver' in window)) { els.forEach(function(el) { el.classList.add('is-visible'); }); return; }
+    var obs = new IntersectionObserver(function(entries) { entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('is-visible'); obs.unobserve(e.target); } }); }, { threshold: 0.12 });
+    els.forEach(function(el) { obs.observe(el); });
+})();
+
+/* TOC active-link highlight on scroll */
+(function () {
+    var links = document.querySelectorAll('.pp-toc__list a');
+    if (!links.length) return;
+    var sections = Array.from(links).map(function(a) { return document.querySelector(a.getAttribute('href')); }).filter(Boolean);
+    var obs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+            if (e.isIntersecting) {
+                links.forEach(function(a) { a.classList.toggle('is-active', a.getAttribute('href') === '#' + e.target.id); });
+            }
+        });
+    }, { rootMargin: '-10% 0px -80% 0px' });
+    sections.forEach(function(s) { obs.observe(s); });
+})();
+
+/* Custom cursor */
+(function () {
+    var cursor = document.getElementById('customCursor'); if (!cursor) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { cursor.remove(); return; }
+    if (window.matchMedia('(hover: none)').matches) { cursor.remove(); return; }
+    var dot = cursor.querySelector('.cursor__dot'), ring = cursor.querySelector('.cursor__ring');
+    var dotX = 0, dotY = 0, ringX = 0, ringY = 0, RING_EASE = 0.20, raf = null, firstMove = false;
+    var INTERACTIVE_SEL = 'a, button, label, select, summary, [role="button"], [role="tab"], [role="menuitem"], [role="link"], .btn-primary';
+    var TEXT_SEL = 'input:not([type="button"]):not([type="submit"]):not([type="reset"]):not([type="checkbox"]):not([type="radio"]), textarea, [contenteditable="true"]';
+    function frame() { ringX += (dotX - ringX) * RING_EASE; ringY += (dotY - ringY) * RING_EASE; cursor.style.transform = 'translate3d(' + dotX + 'px,' + dotY + 'px,0)'; ring.style.transform = 'translate3d(' + (ringX - dotX) + 'px,' + (ringY - dotY) + 'px,0)'; if (Math.abs(dotX - ringX) > 0.3 || Math.abs(dotY - ringY) > 0.3) { raf = requestAnimationFrame(frame); } else { ringX = dotX; ringY = dotY; ring.style.transform = 'translate3d(0,0,0)'; raf = null; } }
+    function onMove(e) { dotX = e.clientX; dotY = e.clientY; if (!firstMove) { firstMove = true; ringX = dotX; ringY = dotY; cursor.style.transform = 'translate3d(' + dotX + 'px,' + dotY + 'px,0)'; cursor.classList.add('is-visible'); } if (raf === null) raf = requestAnimationFrame(frame); }
+    function onOver(e) { if (e.target.closest && e.target.closest(TEXT_SEL)) { cursor.classList.add('is-hidden'); cursor.classList.remove('is-active'); return; } cursor.classList.remove('is-hidden'); if (e.target.closest && e.target.closest(INTERACTIVE_SEL)) cursor.classList.add('is-active'); }
+    function onOut(e) { if (!e.relatedTarget || !e.relatedTarget.closest || !e.relatedTarget.closest(INTERACTIVE_SEL)) cursor.classList.remove('is-active'); }
+    document.addEventListener('mousemove', onMove, { passive: true });
+    document.addEventListener('mouseover', onOver);
+    document.addEventListener('mouseout', onOut);
+    document.addEventListener('mousedown', function() { cursor.classList.add('is-pressed'); });
+    document.addEventListener('mouseup', function() { cursor.classList.remove('is-pressed'); });
+    document.addEventListener('mouseleave', function() { cursor.classList.remove('is-visible'); });
+    document.addEventListener('mouseenter', function() { if (firstMove) cursor.classList.add('is-visible'); });
+})();
+</script>
+</body>
+</html>
