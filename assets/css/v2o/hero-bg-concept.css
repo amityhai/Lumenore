@@ -1579,6 +1579,13 @@
     height: auto;
     display: block;
 }
+#askMeLottie,
+#dataMagnetLottie,
+#insightsLottie {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    display: block;
+}
 .hero-bg-page .cm-orb {
     position: absolute;
     border-radius: 50%;

@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>End User License Agreement — Lumenore</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Material+Symbols+Rounded&display=swap" rel="stylesheet">
+    <link href="./style.css" rel="stylesheet">
+
+    <style>
+        /* ── EULA page ── */
+        body.inner-page {
+            background: var(--Royal-Blue-Blue-900, #051A3C);
+            color: var(--Base-White, #fcfcfc);
+        }
+
+        /* ── Hero ── */
+        .pp-hero {
+            position: relative;
+            overflow: hidden;
+            padding: 120px 0 100px;
+            text-align: center;
+        }
+        .pp-hero .hero-grid {
+            -webkit-mask-image: radial-gradient(ellipse 120% 100% at 50% 0%, #000 0%, rgba(0,0,0,.55) 55%, transparent 85%);
+                    mask-image: radial-gradient(ellipse 120% 100% at 50% 0%, #000 0%, rgba(0,0,0,.55) 55%, transparent 85%);
+        }
+        .pp-hero .hero-orbs { overflow: visible; }
+        .pp-hero .orb-violet { left: -4%; top: 5%; bottom: auto; width: 440px; height: 440px; }
+        .pp-hero .orb-cyan   { left: 50%; top: 15%; bottom: auto; transform: translateX(-50%); width: 560px; height: 440px; }
+        .pp-hero .orb-blue   { right: -4%; top: 5%; bottom: auto; width: 440px; height: 440px; }
+
+        .pp-hero__glow {
+            position: absolute; left: 50%; top: 50%;
+            transform: translate(-50%, -50%);
+            width: 760px; height: 340px;
+            background: radial-gradient(50% 50% at 50% 50%,
+                rgba(28,169,201,.25) 0%, rgba(40,99,195,.12) 55%, transparent 100%);
+            filter: blur(52px);
+            pointer-events: none; z-index: 2;
+        }
+        .pp-hero__inner {
+            position: relative; z-index: 4;
+            max-width: 700px; margin: 0 auto;
+            display: flex; flex-direction: column; align-items: center; gap: 20px;
+        }
+        .pp-hero__eyebrow {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 6px 16px;
+            border: 1px solid rgba(255,255,255,.14);
+            border-radius: 999px;
+            background: rgba(255,255,255,.04);
+            font-family: 'Inter', sans-serif;
+            font-size: 11px; font-weight: 600;
+            letter-spacing: .12em; text-transform: uppercase;
+            color: rgba(252,252,252,.55);
+        }
+        .pp-hero__eyebrow .het-dot {
+            width: 6px; height: 6px; border-radius: 50%;
+            background: var(--Turquoise-SkyBlue-500, #1ca9c9);
+            box-shadow: 0 0 8px rgba(28,169,201,.8);
+            flex-shrink: 0;
+        }
+        .pp-hero__title {
+            font-family: 'Fraunces', serif;
+            font-weight: 300;
+            font-size: clamp(40px, 5.5vw, 68px);
+            line-height: 1.1; letter-spacing: -.02em;
+            color: var(--Base-White, #fcfcfc);
+            margin: 0;
+        }
+        .pp-hero__subtitle {
+            font-family: 'Inter', sans-serif;
+            font-size: 16px; line-height: 26px;
+            color: rgba(252,252,252,.55);
+            max-width: 500px; margin: 0;
+        }
+        .pp-hero__meta {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            color: rgba(252,252,252,.45);
+            margin: 0;
+        }
+
+        /* ── Content layout ── */
+        .pp-content {
+            background: var(--blueGray-50, #F8FAFC);
+            padding: 80px 0 100px;
+        }
+        .pp-layout {
+            display: grid;
+            grid-template-columns: 230px 1fr;
+            gap: 56px;
+            align-items: start;
+        }
+
+        /* Sticky TOC */
+        .pp-toc {
+            position: sticky;
+            top: 96px;
+            max-height: calc(100vh - 120px);
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: var(--blueGray-200, #E2E8F0) transparent;
+        }
+        .pp-toc::-webkit-scrollbar { width: 4px; }
+        .pp-toc::-webkit-scrollbar-track { background: transparent; }
+        .pp-toc::-webkit-scrollbar-thumb { background: var(--blueGray-200, #E2E8F0); border-radius: 4px; }
+        .pp-toc__label {
+            font-family: 'Inter', sans-serif;
+            font-size: 11px; font-weight: 700;
+            letter-spacing: .12em; text-transform: uppercase;
+            color: var(--blueGray-400, #94A3B8);
+            margin-bottom: 16px;
+        }
+        .pp-toc__list {
+            list-style: none; margin: 0; padding: 0;
+            display: flex; flex-direction: column; gap: 2px;
+        }
+        .pp-toc__list a {
+            display: block;
+            font-family: 'Inter', sans-serif;
+            font-size: 12.5px; font-weight: 400; line-height: 1.5;
+            color: var(--blueGray-500, #64748B);
+            padding: 5px 10px;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: background .15s ease, color .15s ease;
+        }
+        .pp-toc__list a:hover,
+        .pp-toc__list a.is-active {
+            background: var(--Royal-Blue-Blue-50, #e7eef8);
+            color: var(--Royal-Blue-Blue-500, #0e48a5);
+        }
+        .pp-toc__divider {
+            height: 1px;
+            background: var(--blueGray-200, #E2E8F0);
+            margin: 8px 0;
+        }
+
+        /* Article */
+        .pp-article { max-width: 720px; }
+
+        .pp-section {
+            margin-bottom: 52px;
+            scroll-margin-top: 96px;
+        }
+        .pp-section:last-child { margin-bottom: 0; }
+
+        .pp-section__title {
+            font-family: 'Inter', sans-serif;
+            font-size: 20px; font-weight: 700; line-height: 1.3;
+            color: var(--Royal-Blue-Blue-900, #051A3C);
+            margin: 0 0 16px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid var(--blueGray-200, #E2E8F0);
+        }
+        .pp-article p {
+            font-family: 'Inter', sans-serif;
+            font-size: 15px; line-height: 26px;
+            color: var(--blueGray-600, #475569);
+            margin: 0 0 16px;
+        }
+        .pp-article p:last-child { margin-bottom: 0; }
+        .pp-article h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 15px; font-weight: 600;
+            color: var(--Royal-Blue-Blue-900, #051A3C);
+            margin: 24px 0 8px;
+        }
+        .pp-article h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 13.5px; font-weight: 600;
+            color: var(--blueGray-700, #334155);
+            margin: 20px 0 6px;
+        }
+        .pp-article ul, .pp-article ol {
+            font-family: 'Inter', sans-serif;
+            font-size: 15px; line-height: 26px;
+            color: var(--blueGray-600, #475569);
+            padding-left: 22px;
+            margin: 0 0 16px;
+            display: flex; flex-direction: column; gap: 6px;
+        }
+        .pp-article ol { list-style-type: lower-alpha; }
+        .pp-article a {
+            color: var(--Royal-Blue-Blue-400, #4075c9);
+            text-decoration: underline;
+            text-decoration-color: transparent;
+            transition: text-decoration-color .15s ease;
+        }
+        .pp-article a:hover { text-decoration-color: currentColor; }
+
+        /* Callout box */
+        .pp-callout {
+            background: var(--Royal-Blue-Blue-50, #e7eef8);
+            border-left: 3px solid var(--Royal-Blue-Blue-400, #4075c9);
+            border-radius: 0 8px 8px 0;
+            padding: 16px 20px;
+            margin: 0 0 40px;
+        }
+        .pp-callout p {
+            font-size: 14px !important;
+            line-height: 22px !important;
+            color: var(--Royal-Blue-Blue-700, #0c3b87) !important;
+            margin: 0 0 8px !important;
+        }
+        .pp-callout p:last-child { margin: 0 !important; }
+
+        /* Warning callout (all-caps legal) */
+        .pp-warning {
+            background: var(--Violet-Violet-50, #f0ebf7);
+            border-left: 3px solid var(--Violet-Violet-450, #7747b6);
+            border-radius: 0 8px 8px 0;
+            padding: 16px 20px;
+            margin: 16px 0;
+        }
+        .pp-warning p {
+            font-family: 'Inter', sans-serif;
+            font-size: 13px !important; line-height: 21px !important;
+            color: var(--Violet-Violet-500, #55298e) !important;
+            margin: 0 !important;
+        }
+
+        /* Contact card */
+        .pp-contact-card {
+            background: var(--Base-White, #fcfcfc);
+            border: 1px solid var(--blueGray-200, #E2E8F0);
+            border-radius: 12px;
+            padding: 24px 28px;
+            margin-top: 20px;
+        }
+        .pp-contact-card p {
+            font-size: 14px !important; margin: 0 0 4px !important;
+        }
+        .pp-contact-card p strong { color: var(--Royal-Blue-Blue-900, #051A3C); }
+
+        /* Section number badge */
+        .pp-section__num {
+            display: inline-block;
+            font-family: 'Inter', sans-serif;
+            font-size: 11px; font-weight: 700;
+            letter-spacing: .1em; text-transform: uppercase;
+            color: var(--Turquoise-SkyBlue-500, #1ca9c9);
+            margin-bottom: 6px;
+        }
+
+        /* Uptime formula box */
+        .pp-formula {
+            background: var(--blueGray-100, #F1F5F9);
+            border: 1px solid var(--blueGray-200, #E2E8F0);
+            border-radius: 8px;
+            padding: 14px 18px;
+            margin: 12px 0;
+            font-family: 'Space Grotesk', monospace;
+            font-size: 13px;
+            color: var(--Royal-Blue-Blue-700, #0c3b87);
+            line-height: 1.6;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 960px) {
+            .pp-layout { grid-template-columns: 1fr; }
+            .pp-toc { position: static; max-height: none; margin-bottom: 40px; }
+            .pp-toc__list { flex-direction: row; flex-wrap: wrap; gap: 4px; }
+            .pp-toc__list a { font-size: 12px; }
+        }
+        @media (max-width: 768px) {
+            .pp-hero { padding: 80px 0 72px; }
+            .pp-content { padding: 56px 0 72px; }
+        }
+    </style>
+</head>
+<body class="inner-page">
+
+<!-- Custom cursor -->
+<div class="cursor" id="customCursor" aria-hidden="true">
+    <span class="cursor__ring"></span>
+    <span class="cursor__dot"></span>
+</div>
+
+<!-- ===== SITE TOP ===== -->
+<div class="site-top">
+    <div class="hello-bar">
+        <div class="hello-left">
+            <span class="hello-badge">Webinar</span>
+            <div class="hello-msg-group">
+                <span class="hello-message">We are Heading to AAHOACON 2026</span>
+                <a href="#" class="hello-cta">Register Now
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                </a>
+            </div>
+        </div>
+        <a href="#" class="hello-consult">Free Consultation</a>
+        <a href="#" class="hello-login">Log in</a>
+    </div>
+
+    <header class="site-header headerTop is-scrolled">
+        <a href="./index.html" class="brand-mark" aria-label="Lumenore home">
+            <img src="./assets/images/homeV2o/Lumenore logo.svg" alt="Lumenore" class="nav-logo-img">
+        </a>
+        <nav>
+            <ul class="nav-links">
+                <li class="nav-item has-dropdown nav-item--platform" data-mega-id="platformMega">
+                    <a href="#" class="nav-trigger">Platform
+                        <svg class="caret" viewBox="0 0 8 4" fill="none"><path d="M0 0l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                    <div class="nav-mega nav-mega--platform" role="menu" id="platformMega">
+                        <div class="np-nav">
+                            <div class="np-nav-section">
+                                <h6 class="np-nav-title">Products</h6>
+                                <ul class="np-nav-list">
+                                    <li><a href="#" data-platform-item="insights" data-platform-type="product">Lumenore Insights</a></li>
+                                    <li><a href="../lumenore-ask-me.html" data-platform-item="askme" data-platform-type="product">Lumenore Ask Me</a></li>
+                                    <li><a href="#" data-platform-item="datamagnet" data-platform-type="product">Lumenore Data Magnet</a></li>
+                                </ul>
+                            </div>
+                            <div class="np-nav-section">
+                                <ul class="np-nav-list">
+                                    <li><a href="#" data-platform-item="all-capabilities" data-platform-type="capability" class="np-cap-link">
+                                        <span>Capabilities</span>
+                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                                    </a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="np-detail" id="platformDetail">
+                            <div class="np-product-pane" id="platformProductPane" hidden>
+                                <span class="np-pane-kind"><span class="np-kind-dot"></span>Product</span>
+                                <p class="np-pane-tagline" id="npProductTagline">Self-Service Analytics</p>
+                                <h4 class="np-pane-title" id="npProductTitle">Lumenore Insights</h4>
+                                <p class="np-pane-desc" id="npProductDesc">Democratize data with self-service, AI-powered dashboards.</p>
+                                <a class="np-learn-more" id="npProductLearn" href="#">Learn more <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+                                <div class="np-pane-actions">
+                                    <a class="np-cta np-cta--primary" id="npProductStart" href="#">Start Free</a>
+                                    <a class="np-cta np-cta--secondary" id="npProductPricing" href="#">Pricing</a>
+                                </div>
+                            </div>
+                            <h6 class="np-nav-title np-grid-title" id="platformGridTitle" hidden>All Capabilities</h6>
+                            <div class="np-grid" id="platformGrid" hidden>
+                                <a href="#" class="np-grid-card" data-platform-card="connectors"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12h6M3 7h4M3 17h4M17 7h4M17 17h4"/><circle cx="12" cy="12" r="3"/><circle cx="5" cy="7" r="1.5"/><circle cx="5" cy="17" r="1.5"/><circle cx="19" cy="7" r="1.5"/><circle cx="19" cy="17" r="1.5"/></svg><span>Data Connectors</span></a>
+                                <a href="#" class="np-grid-card" data-platform-card="integration"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4v6a3 3 0 0 0 3 3h4a3 3 0 0 1 3 3v4"/><circle cx="7" cy="3" r="1.5"/><circle cx="17" cy="21" r="1.5"/></svg><span>Data Integration</span></a>
+                                <a href="#" class="np-grid-card" data-platform-card="lakehouse"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v6a9 3 0 0 0 18 0V5M3 11v6a9 3 0 0 0 18 0v-6"/></svg><span>Data Lakehouse</span></a>
+                                <a href="#" class="np-grid-card" data-platform-card="visualization"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V10M10 21V6M15 21V13M20 21V8"/></svg><span>Data Visualization</span></a>
+                                <a href="#" class="np-grid-card" data-platform-card="universe"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="9" ry="3.5"/><path d="M3 12h18"/></svg><span>Data Universe</span></a>
+                                <a href="#" class="np-grid-card" data-platform-card="dashboard"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="5" rx="1.5"/><rect x="13" y="10" width="8" height="11" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/></svg><span>Dashboard</span></a>
+                                <a href="#" class="np-grid-card" data-platform-card="advanced"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18l4-6 4 3 6-9 4 5"/></svg><span>Advanced Analytics</span></a>
+                                <a href="#" class="np-grid-card" data-platform-card="embedded"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M9 10l-2 2 2 2M15 10l2 2-2 2"/></svg><span>Embedded Analytics</span></a>
+                                <a href="#" class="np-grid-card" data-platform-card="conversational"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg><span>Conversational Intelligence</span></a>
+                                <a href="#" class="np-grid-card" data-platform-card="decision"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/><circle cx="12" cy="12" r="4"/></svg><span>Decision Intelligence</span></a>
+                                <a href="#" class="np-grid-card" data-platform-card="selfservice"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg><span>Self-Service Analytics</span></a>
+                                <a href="#" class="np-grid-card" data-platform-card="predictive"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12c0-5 4-9 9-9s9 4 9 9"/><path d="M12 7v5l3 2"/><circle cx="12" cy="12" r="9" stroke-dasharray="2 3"/></svg><span>Predictive Analytics</span></a>
+                            </div>
+                        </div>
+                        <aside class="np-releases">
+                            <h6 class="np-nav-title">Recent Releases</h6>
+                            <a class="np-release" href="#"><span class="np-release-tag">New</span><span class="np-release-title">Ask Me Agentic RAG Upgrade</span><span class="np-release-sub">Self-correction &amp; multimodal support.</span></a>
+                            <a class="np-release" href="#"><span class="np-release-title">Local LLM Integration</span><span class="np-release-sub">Keep sensitive data in-house with on-prem inference.</span></a>
+                            <a class="np-release" href="#"><span class="np-release-title">Visual Pipeline Builder</span><span class="np-release-sub">Low-code ETL flows in a drag-and-drop canvas.</span></a>
+                            <a class="np-view-all" href="#">View All Releases <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+                        </aside>
+                    </div>
+                </li>
+
+                <li class="nav-item has-dropdown nav-item--solutions" data-mega-id="solutionMega">
+                    <a href="#" class="nav-trigger">Solutions
+                        <svg class="caret" viewBox="0 0 8 4" fill="none"><path d="M0 0l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                    <div class="nav-mega nav-mega--platform nav-mega--solutions" role="menu" id="solutionMega">
+                        <div class="np-nav">
+                            <ul class="np-nav-list">
+                                <li><a href="#" data-solution-item="industry" class="np-cap-link"><span>By Industry</span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></li>
+                                <li><a href="#" data-solution-item="department" class="np-cap-link"><span>By Department</span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></li>
+                            </ul>
+                        </div>
+                        <div class="np-detail" id="solutionDetail">
+                            <h6 class="np-nav-title np-grid-title" id="solIndustryTitle" hidden>By Industry</h6>
+                            <div class="np-grid" id="solIndustryGrid" hidden>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v16M4 12h16"/></svg><span>Healthcare</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6h15l-1.5 9H7.5L6 6zM6 6L5 3H2"/></svg><span>Retail</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12l9-8 9 8M5 10v10h14V10"/></svg><span>Real Estate</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg><span>Insurance</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span>Financial Services</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10l-10-5L2 10l10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg><span>Education</span></a>
+                            </div>
+                            <h6 class="np-nav-title np-grid-title" id="solDepartmentTitle" hidden>By Department</h6>
+                            <div class="np-grid" id="solDepartmentGrid" hidden>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span>Finance</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18l6-6 4 4 8-8"/></svg><span>Sales</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l18-8v18z"/></svg><span>Marketing</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg><span>Human Resources</span></a>
+                            </div>
+                        </div>
+                        <aside class="np-releases">
+                            <h6 class="np-nav-title">Recent Blogs</h6>
+                            <a class="np-release" href="#"><span class="np-release-tag">Featured</span><span class="np-release-title">How AI-Powered Analytics is Reshaping Healthcare</span><span class="np-release-sub">Real-world results from teams using Lumenore.</span></a>
+                            <a class="np-release" href="#"><span class="np-release-title">5 Ways Sales Teams Use Self-Service BI</span><span class="np-release-sub">Faster pipeline insights without filing IT tickets.</span></a>
+                            <a class="np-view-all" href="#">View All Blogs <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+                        </aside>
+                    </div>
+                </li>
+
+                <li class="nav-item"><a href="#" class="nav-trigger">Pricing</a></li>
+
+                <li class="nav-item has-dropdown nav-item--resources" data-mega-id="resourcesMega">
+                    <a href="#" class="nav-trigger">Resources
+                        <svg class="caret" viewBox="0 0 8 4" fill="none"><path d="M0 0l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                    <div class="nav-mega nav-mega--resources" role="menu" id="resourcesMega">
+                        <div class="np-nav np-nav--wide">
+                            <div class="np-nav-section">
+                                <h6 class="np-nav-title">Watch</h6>
+                                <ul class="np-nav-list">
+                                    <li><a href="#">Demo</a></li>
+                                    <li><a href="#">Webinars &amp; Events</a></li>
+                                    <li><a href="#">Training</a></li>
+                                </ul>
+                            </div>
+                            <div class="np-nav-section">
+                                <h6 class="np-nav-title">Read</h6>
+                                <ul class="np-nav-list">
+                                    <li><a href="#">Blogs</a></li>
+                                    <li><a href="#">Use Cases</a></li>
+                                    <li><a href="#">eBooks &amp; Whitepapers</a></li>
+                                    <li><a href="#">Success Stories</a></li>
+                                </ul>
+                            </div>
+                            <div class="np-nav-section">
+                                <h6 class="np-nav-title">Learn</h6>
+                                <ul class="np-nav-list">
+                                    <li><a href="#">Certification</a></li>
+                                    <li><a href="#">Support Portal</a></li>
+                                    <li><a href="#">Knowledge Base</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <aside class="np-releases">
+                            <h6 class="np-nav-title">Recent Blogs</h6>
+                            <a class="np-release" href="#"><span class="np-release-tag">Featured</span><span class="np-release-title">Agentic RAG: Beyond Simple Retrieval</span><span class="np-release-sub">How self-correcting AI workflows are changing data queries.</span></a>
+                            <a class="np-release" href="#"><span class="np-release-title">A Practical Guide to Self-Service BI</span><span class="np-release-sub">Patterns that scale beyond the analytics team.</span></a>
+                            <a class="np-view-all" href="#">View All Blogs <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+                        </aside>
+                    </div>
+                </li>
+
+                <li class="nav-item has-dropdown nav-item--company" data-mega-id="companyMega">
+                    <a href="#" class="nav-trigger">Company
+                        <svg class="caret" viewBox="0 0 8 4" fill="none"><path d="M0 0l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                    <div class="nav-mega nav-mega--platform nav-mega--company" role="menu" id="companyMega">
+                        <div class="np-nav">
+                            <ul class="np-nav-list">
+                                <li><a href="#" data-company-item="all" class="np-cap-link"><span>Company</span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></li>
+                            </ul>
+                        </div>
+                        <div class="np-detail" id="companyDetail">
+                            <h6 class="np-nav-title np-grid-title" id="coAllTitle" hidden>Company</h6>
+                            <div class="np-grid" id="coAllGrid" hidden>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 7 7 .8-5.3 4.8 1.7 7.4-7.4-4-7.4 4 1.7-7.4L0 9.8 7 9z"/></svg><span>Lumenore Difference</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 11l-3 3-1.5-1.5"/></svg><span>Partners</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg><span>Careers</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6z"/></svg><span>Contact Us</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18l6-6 4 4 8-8"/><path d="M17 8h4v4"/></svg><span>Contact Sales</span></a>
+                            </div>
+                        </div>
+                        <aside class="np-releases">
+                            <h6 class="np-nav-title">Recent Blogs</h6>
+                            <a class="np-release" href="#"><span class="np-release-tag">Story</span><span class="np-release-title">Inside Lumenore: How We Build for Enterprise</span><span class="np-release-sub">The product principles behind self-correcting AI workflows.</span></a>
+                            <a class="np-release" href="#"><span class="np-release-title">Partner Program: 2026 Roadmap</span><span class="np-release-sub">New tiers, joint go-to-market, and certification.</span></a>
+                            <a class="np-view-all" href="#">View All Blogs <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+                        </aside>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <div class="nav-actions">
+            <a href="#" class="btn-demo">Request a Demo</a>
+            <a href="#" class="btn-start btn-primary btn-primary--sm">Start for Free</a>
+        </div>
+    </header>
+</div>
+
+<!-- ===== PAGE CONTENT ===== -->
+<main>
+
+    <!-- HERO -->
+    <section class="pp-hero">
+        <div class="hero-grid" aria-hidden="true"></div>
+        <div class="hero-orbs" aria-hidden="true">
+            <div class="hero-orb orb-violet"></div>
+            <div class="hero-orb orb-cyan"></div>
+            <div class="hero-orb orb-blue"></div>
+        </div>
+        <div class="hero-particles" aria-hidden="true">
+            <span class="particle"></span><span class="particle"></span>
+            <span class="particle"></span><span class="particle"></span>
+            <span class="particle"></span><span class="particle"></span>
+            <span class="particle"></span><span class="particle"></span>
+        </div>
+        <div class="pp-hero__glow" aria-hidden="true"></div>
+        <div class="container">
+            <div class="pp-hero__inner">
+                <p class="pp-hero__eyebrow">
+                    <span class="het-dot"></span>Legal &amp; Trust
+                </p>
+                <h1 class="pp-hero__title">End User License Agreement</h1>
+                <p class="pp-hero__subtitle">Cloud Services Software License Agreement between Lumenore, Inc. and the Client.</p>
+                <p class="pp-hero__meta">Last modified: February 7, 2024</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTENT -->
+    <section class="pp-content">
+        <div class="container">
+            <div class="pp-layout">
+
+                <!-- TOC -->
+                <aside class="pp-toc" aria-label="Table of contents">
+                    <p class="pp-toc__label">Sections</p>
+                    <ul class="pp-toc__list">
+                        <li><a href="#preamble">Preamble</a></li>
+                        <div class="pp-toc__divider"></div>
+                        <li><a href="#license">1. License</a></li>
+                        <li><a href="#term-termination">2. Term &amp; Termination</a></li>
+                        <li><a href="#account-managers">3. Account Managers</a></li>
+                        <li><a href="#client-obligations">4. Client's Obligations</a></li>
+                        <li><a href="#third-party">5. Third Party Software</a></li>
+                        <li><a href="#taxes">6. Taxes</a></li>
+                        <li><a href="#service-levels">7. Service Levels</a></li>
+                        <li><a href="#refund-cancellation">8. Refund &amp; Cancellation</a></li>
+                        <div class="pp-toc__divider"></div>
+                        <li><a href="#no-liability-suppliers">9. No Liability of Suppliers</a></li>
+                        <li><a href="#limitation-damages">10. Limitation on Direct Damages</a></li>
+                        <li><a href="#indemnification">11. Indemnification</a></li>
+                        <li><a href="#waiver">12. Waiver</a></li>
+                        <li><a href="#non-solicitation">13. Non-Solicitation</a></li>
+                        <li><a href="#confidential">14. Confidential Information</a></li>
+                        <li><a href="#relationship">15. Relationship of Parties</a></li>
+                        <li><a href="#force-majeure">16. Force Majeure</a></li>
+                        <div class="pp-toc__divider"></div>
+                        <li><a href="#severability">17. Severability</a></li>
+                        <li><a href="#survival">18. Survival</a></li>
+                        <li><a href="#export">19. Export Restrictions</a></li>
+                        <li><a href="#attorneys-fees">20. Attorneys' Fees</a></li>
+                        <li><a href="#statute-limitations">21. Statute of Limitations</a></li>
+                        <li><a href="#governing-law">22. Governing Law</a></li>
+                        <li><a href="#compliance">23. Compliance with Laws</a></li>
+                        <li><a href="#media-releases">24. Media Releases</a></li>
+                        <li><a href="#assignment">25. Assignment</a></li>
+                        <li><a href="#notices">26. Notices</a></li>
+                        <li><a href="#modifications">27. Modifications</a></li>
+                        <li><a href="#entire-agreement">28. Entire Agreement</a></li>
+                    </ul>
+                </aside>
+
+                <!-- Article -->
+                <article class="pp-article">
+
+                    <!-- Preamble -->
+                    <div class="pp-section" id="preamble">
+                        <span class="pp-section__num">Preamble</span>
+                        <h2 class="pp-section__title">Agreement Overview</h2>
+                        <div class="pp-callout">
+                            <p>This Cloud Services Software License Agreement ("Agreement") is made between <strong>Lumenore, Inc.</strong> ("Lumenore") and you, or the entity you represent ("Client"), and is effective as of the date Client clicks an "I Accept" button or checkbox presented with these terms or by using the Software ("Effective Date"). By using the Software or signing a related Order Form, Client agrees to be bound by the terms of this Agreement.</p>
+                            <p>For the purposes of this Agreement, <em>Party</em> shall refer to Lumenore or Client, as the case might be; and <em>Parties</em> shall refer to both Lumenore and Client collectively.</p>
+                        </div>
+                        <p><strong>Whereas:</strong></p>
+                        <ul>
+                            <li>This Agreement replaces and supersedes any prior Trial License Agreement.</li>
+                            <li>Lumenore is in the business of offering Software as a Service capabilities by licensing Business Intelligence Product (the "Lumenore Product" or "Product") to customers for their use in providing business intelligence and analytics for its business operations.</li>
+                            <li>Client desires to license from Lumenore and Lumenore desires to license to Client the Product.</li>
+                        </ul>
+                        <p>NOW, THEREFORE, in consideration of the mutual covenants set forth herein, the Parties agree as follows.</p>
+                    </div>
+
+                    <!-- 1. License -->
+                    <div class="pp-section" id="license">
+                        <span class="pp-section__num">Section 01</span>
+                        <h2 class="pp-section__title">License</h2>
+
+                        <h3>1.1 Definitions</h3>
+                        <p><strong>"Software"</strong> includes all Lumenore and third party ("Supplier") software provided to Client, and includes any documentation which is packaged with the Software (the "Documentation"). The term "Software" also includes any updates of the Software provided to Client by Lumenore at Lumenore's option.</p>
+                        <p><strong>"User"</strong> shall mean the total number of individuals authorized under this Agreement to access the Software.</p>
+                        <p><strong>"Agreement"</strong> means collectively, this Cloud Services Software License Agreement, the Order Form, any applicable SOW, the SLA, and any other documents as are set forth on the Client's Order Form.</p>
+                        <p><strong>"Statement of Work"</strong> or "SOW" means the detailed description and/or specifications of the services as requested and authorized by Client.</p>
+
+                        <h3>1.2 License Grant</h3>
+                        <p>Subject to the terms of this Agreement, Lumenore grants to Client, and Client accepts, a non-exclusive and nontransferable license to use Software for the number of authorized users and on the Product set forth per the Agreement. In the event that Client wishes to increase the number of Users, Client shall provide Lumenore with written notice. Any such increases shall be subject to fees that shall be discussed mutually between Lumenore and Client.</p>
+                        <p>Client may use the Lumenore Product to perform services and to transmit deliverables (collectively, "Deliverables") for and to Client's Users. Lumenore disclaims any rights in Client's Deliverables. During the Term, the Client may reassign a User's license to another person within the Client's organization upon change of personnel or change in role of the authorized personnel as long as the number of Users for each relevant Term does not change.</p>
+
+                        <h3>1.3 Limitations on Use</h3>
+                        <p>Client shall not copy, rent, lease, sell, sublicense, allow access, assign, loan, time-share or otherwise transfer or distribute copies of the Software or Documentation to others, except as set forth in this Agreement. Only Client's employees and contractors who are performing work solely for the benefit of Client's operations may access and use the Software. Client shall not decompile, disassemble, or otherwise reverse engineer the Software. Client may not modify, adapt, create a derivative work, merge, or translate the Software or the Documentation without the prior written consent of Lumenore.</p>
+
+                        <h3>1.4 Intellectual Property Rights</h3>
+                        <p>For the purposes of this Agreement, the term <strong>Intellectual Property Right</strong> shall mean all proprietary and other rights in and to: (i) trademarks, service marks, brand names, certification marks, trade dress, assumed names, trade names and other indications of origin; (ii) patents, inventors certificates and invention disclosures; (iii) trade secrets and other confidential or non-public business information, including ideas, formulae, compositions, inventions, discoveries and improvements, know-how, manufacturing and production processes and techniques, and research and development information.</p>
+
+                        <h4>1.4.1 Lumenore Proprietary Rights</h4>
+                        <p>Lumenore shall have all right, title and interest, including worldwide ownership and copyright and patent rights, in and to the Lumenore Product, all underlying Software, Documentation and all copies made therefrom ("Lumenore Proprietary Rights"). Client acknowledges that the Lumenore Proprietary Rights are and shall remain the sole property of Lumenore. Each Party reserves all rights, title, and interest in and to any Intellectual Property Rights not expressly granted to the other Party under this Agreement.</p>
+
+                        <h4>1.4.2 Assignment of Intellectual Property</h4>
+                        <p>The Client acknowledges that it cannot assign, sub-license, rent, sell, distribute, republish, or download any of the Intellectual Property Rights residing within the Product.</p>
+
+                        <h4>1.4.3 Lumenore Trademarks</h4>
+                        <p>"Lumenore Trademarks" means all names, marks, brands, logos, designs, trade dress, slogans and other designations Lumenore uses in connection with its products and services. Client agrees to comply with the Lumenore Trademark and Logo Usage Requirements. Client may not remove or alter any Lumenore Trademarks, or co-brand Client's own products or material with Lumenore Trademarks, without Lumenore's prior written consent. Client agrees not to incorporate any Lumenore Trademarks into Client's trademarks, service marks, company names, Internet addresses, domain names, or any other similar designations.</p>
+                    </div>
+
+                    <!-- 2. Term and Termination -->
+                    <div class="pp-section" id="term-termination">
+                        <span class="pp-section__num">Section 02</span>
+                        <h2 class="pp-section__title">Term and Termination</h2>
+
+                        <h3>2.1 Term</h3>
+                        <p>The term of this Agreement will begin on the Effective Date and will end at midnight (Eastern Time) on the third anniversary of the Effective Date, unless earlier terminated or extended in accordance with the terms of this Agreement ("Term").</p>
+
+                        <h3>2.2 Termination</h3>
+                        <p>The termination shall be governed by the Lumenore Refund and Cancellation Policy. Termination of the Agreement for any reason under this Section will not affect (a) any liabilities or obligations of either party arising before such termination or out of the events causing such termination, or (b) any damages or other remedies to which a party may be entitled under the Agreement, at law or in equity arising from any breach.</p>
+                        <p>If the Agreement is terminated for any reason other than termination by Client for Lumenore's material breach, then Client will pay Lumenore: (a) charges for Services provided up through the effective date of such termination, and (b) all termination fees (if any).</p>
+
+                        <h3>2.3 Failure to Pay</h3>
+                        <p>Lumenore will have the right, but not the obligation, to terminate this Agreement if Client fails to pay fees ("Fees") owed to Lumenore when due and Client fails to cure such failure within ten (10) days after receipt of written notice from Lumenore. Lumenore reserves the right to suspend or terminate access to Software, Products, or support services ("Services") if any undisputed Fees are thirty (30) days or more overdue. Suspension or Termination of the Services for failure to pay undisputed Fees does not relieve Client of its obligation to pay Fees due.</p>
+
+                        <h3>2.4 Rights upon Termination</h3>
+                        <p>Client owns and will own all right, title and interest in and to any data provided by Client to Lumenore in connection with Client's use of the Software ("Client Data"). During the Term, Client grants to Lumenore a limited, non-exclusive license to use the Client Data solely for all reasonable and necessary purposes contemplated by this Agreement.</p>
+                        <p>In the event this Agreement is terminated, Lumenore shall (a) if Client so requests within thirty (30) days of termination, make available to Client a file of all Client Data within Lumenore's possession in a generally accepted, industry standard format, within thirty (30) days of such request; and (b) promptly delete Client Data from the production environment and non-production environment of the Hosting Services in a manner conforming to industry standard deletion methods.</p>
+                    </div>
+
+                    <!-- 3. Account Managers -->
+                    <div class="pp-section" id="account-managers">
+                        <span class="pp-section__num">Section 03</span>
+                        <h2 class="pp-section__title">Account Managers</h2>
+                        <p>Each Party shall designate one of its employees to be its Account Manager under this Agreement, who shall act for that Party on all matters. Each Party shall notify the other in writing of any replacement of an Account Manager.</p>
+                    </div>
+
+                    <!-- 4. Client's Obligations -->
+                    <div class="pp-section" id="client-obligations">
+                        <span class="pp-section__num">Section 04</span>
+                        <h2 class="pp-section__title">Client's Obligations</h2>
+                        <p>In consideration of Client's use of the Product, Client or its designates agree to:</p>
+                        <ol>
+                            <li>Provide accurate, current, and complete information about Client's usage of Lumenore Product as may be prompted by a registration form on the Product or request made via Lumenore account management.</li>
+                            <li>Maintain the security of Client's password and identification.</li>
+                            <li>Maintain and promptly update the Registration Data to keep it accurate, current and complete.</li>
+                            <li>Accept all risks of unauthorized access to information and Registration Data. Client has the sole responsibility for adequate protection and backup of data and/or equipment used in connection with the Product.</li>
+                        </ol>
+                        <p>Client is entirely responsible for all content that Client uploads or provides Lumenore to upload, posts or otherwise transmits via the Product. Client agrees not to upload, post or otherwise transmit via the Product content that:</p>
+                        <ol type="a">
+                            <li>is inaccurate, harmful, obscene, pornographic, defamatory, racist, violent, offensive, harassing, or otherwise objectionable to Lumenore or other users of the Product;</li>
+                            <li>includes unauthorized disclosure of personal information;</li>
+                            <li>violates or infringes anyone's intellectual property rights; or</li>
+                            <li>contains software viruses or any other computer code, files or programs designed to interrupt, destroy or limit the functionality of any computer software or hardware or telecommunications equipment.</li>
+                        </ol>
+                    </div>
+
+                    <!-- 5. Third Party Software -->
+                    <div class="pp-section" id="third-party">
+                        <span class="pp-section__num">Section 05</span>
+                        <h2 class="pp-section__title">Third Party Software</h2>
+                        <p>The use of the product per the Agreement may require use of Third-Party Software owned by respective Licensee. Nothing construed in this agreement shall be construed as granting to any party, any right, title, or interest in such Third-Party Software. The use of such Third-party software is governed by the respective license agreements.</p>
+                    </div>
+
+                    <!-- 6. Taxes -->
+                    <div class="pp-section" id="taxes">
+                        <span class="pp-section__num">Section 06</span>
+                        <h2 class="pp-section__title">Taxes</h2>
+                        <p>Client shall pay or reimburse Lumenore for any applicable present or future sales, use, value added tax, excise, goods, services, or other taxes relating to the Product, except that Lumenore shall be responsible for its franchise taxes, employment taxes and taxes based on its net income.</p>
+                    </div>
+
+                    <!-- 7. Service Levels -->
+                    <div class="pp-section" id="service-levels">
+                        <span class="pp-section__num">Section 07</span>
+                        <h2 class="pp-section__title">Service Levels</h2>
+
+                        <h3>7.1 Scope of Technical Support</h3>
+                        <p>Technical Support is intended to provide assistance to Named Customer Contacts for incidents and product issues beyond what is covered in the Documentation. Technical Support services consist of web-based submissions of incidents, providing workarounds or solutions for product issues, access to Supported Channels, and troubleshooting.</p>
+
+                        <h4>Severity 1 Issues</h4>
+                        <p>Critical incidents with severe performance impact or features not operating as documented, impacting 90% of the users or product functionality.</p>
+
+                        <h4>Severity 2 Issues</h4>
+                        <p>Incidents with performance impact or features not operating as documented, impacting at least 40% of the users or product functionality.</p>
+
+                        <h4>Severity 3 Issues</h4>
+                        <p>How-to questions and product issues with performance impact or features not operating as documented, impacting a small minority of users.</p>
+
+                        <h3>7.1.2 What Technical Support Excludes</h3>
+                        <ul>
+                            <li>Unavailability caused by circumstances beyond our reasonable control, including acts of God, acts of government, emergencies, natural disasters, flood, fire, civil unrest, acts of terror, strikes or other labor problems, or any other force majeure event.</li>
+                            <li>Problems resulting from Client's combining or merging the Subscription Service with any hardware or software not supplied by us or not identified by us in writing as compatible with the Subscription Service.</li>
+                            <li>Interruptions or delays resulting from telecommunications or internet service provider failures outside of our datacenter as measured by our third-party website availability monitoring provider.</li>
+                            <li>Any interruption or unavailability resulting from the misuse, improper use, alteration, or damage of the Subscription Service.</li>
+                            <li>Operational Issues.</li>
+                        </ul>
+
+                        <h3>7.2 Incident Severity and Response Times</h3>
+                        <p>The time for response and resolution is determined by the agreed terms and conditions outlined in the contract or statement of work.</p>
+
+                        <h3>7.3 Service Uptime</h3>
+                        <p>For the purposes of this section:</p>
+                        <p><strong>"Downtime"</strong> is unplanned outage/severe issue that constitutes a catastrophic problem causing complete inability to use the Subscription Service, excluding Free Services, across a significant portion of the production environment (e.g. crash or hang), resulting in production downtime and where there is no workaround or solution to the problem. This excludes planned outages communicated in advance through subscribed channels.</p>
+                        <p><strong>"Service Uptime"</strong> is calculated using the following formula:</p>
+                        <div class="pp-formula">
+                            Service Uptime = (total hours in calendar month − Excluded duration − Downtime duration)<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ÷ (total hours in calendar month − Excluded duration) × 100%
+                        </div>
+                        <p>We will use reasonable efforts to meet a <strong>Service Uptime of 99.9%</strong> for our analytical service in each calendar month. All availability calculations will be based on our system records. This 'Service Uptime' section does not apply to our Free Services.</p>
+
+                        <h3>7.4 Policy Terms</h3>
+                        <p>Coverage Hours and Business Hours are determined by the agreed terms and conditions outlined in the contract or statement of work.</p>
+                    </div>
+
+                    <!-- 8. Refund and Cancellation -->
+                    <div class="pp-section" id="refund-cancellation">
+                        <span class="pp-section__num">Section 08</span>
+                        <h2 class="pp-section__title">Refund and Cancellation</h2>
+
+                        <h3>8.1 Cancellations at Convenience and Refunds</h3>
+                        <p>You can cancel your Lumenore subscription at any time. However, canceling will turn off the auto-renewal of your subscription. Your Lumenore subscription automatically renews for periods equal to your initial purchase. For example, if you have chosen a one-month subscription, the subscription will automatically renew for another 30 days at the end of the first month if you do not cancel within the first 30 days.</p>
+                        <p>Once you cancel, you will not be charged again, and your benefits will continue until the end of the billing cycle. However, you won't be refunded for the period between your cancellation and the end of your subscription.</p>
+
+                        <h3>8.2 Cancellations for Cause and Refunds</h3>
+                        <p>The licenses may be canceled upon a breach or performance failure on the part of Lumenore. The Lumenore Customer Service Desk needs to be notified of such a breach within a reasonable time frame from when the issue is known to you. If the issue is not resolved within 15 (fifteen) days of such notice, you may cancel the contract and may be eligible for a refund for the period such default persists.</p>
+                        <p>For the sake of clarity, performance failure is meant to define only critical failures, such as the application not completely functioning, the application being broken, or complete disruption of service.</p>
+                    </div>
+
+                    <!-- 9. No Liability of Suppliers -->
+                    <div class="pp-section" id="no-liability-suppliers">
+                        <span class="pp-section__num">Section 09</span>
+                        <h2 class="pp-section__title">No Liability of Suppliers</h2>
+                        <div class="pp-warning">
+                            <p>NO SUPPLIER MAKES ANY WARRANTY, ASSUMES ANY LIABILITY, OR UNDERTAKES TO FURNISH TO CLIENT ANY SUPPORT OR INFORMATION CONCERNING PRODUCTS OR ANY PORTION OF PRODUCTS.</p>
+                        </div>
+                        <p>Client acknowledges that Client's rights under this Agreement, in the nature of warranty or otherwise, are solely against Lumenore. Client hereby releases all suppliers from any claims, damages or losses arising from the use of Product or Software, regardless of the form of action.</p>
+                    </div>
+
+                    <!-- 10. Limitation on Direct Damages -->
+                    <div class="pp-section" id="limitation-damages">
+                        <span class="pp-section__num">Section 10</span>
+                        <h2 class="pp-section__title">Limitation on Direct Damages</h2>
+                        <div class="pp-warning">
+                            <p>IN NO EVENT SHALL LUMENORE OR ANY SUPPLIER BE LIABLE FOR ANY INDIRECT, SPECIAL, INCIDENTAL, EXEMPLARY OR CONSEQUENTIAL DAMAGES OF ANY KIND (INCLUDING LOST PROFITS, LOSS OF USE OR INTERRUPTION OF BUSINESS), OR FOR LEGAL FEES, ARISING OUT OF THE USE OF THE SOFTWARE OR THE DOCUMENTATION, REGARDLESS OF THE FORM OF ACTION, WHETHER IN CONTRACT, TORT (INCLUDING NEGLIGENCE), STRICT PRODUCT LIABILITY OR OTHERWISE, EVEN IF LUMENORE HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.</p>
+                        </div>
+                        <p>In no event will Lumenore's aggregate liability for any claim arising out of or related to the Agreement exceed the License Fee paid by Client within the twelve (12) months prior to assertion of the claim. This limitation of liability shall not apply to liability for death or personal injury to the extent applicable law prohibits such limitation.</p>
+                    </div>
+
+                    <!-- 11. Indemnification -->
+                    <div class="pp-section" id="indemnification">
+                        <span class="pp-section__num">Section 11</span>
+                        <h2 class="pp-section__title">Indemnification</h2>
+
+                        <h3>11.1 General Indemnity</h3>
+                        <p>Lumenore and Client shall each indemnify, defend and hold the other harmless from all claims, damages, demands, liabilities, costs and expenses, arising by reason of any claim for personal injury of any agent, employee, customer or business visitor of the indemnitor or damage to tangible property (other than data or information) owned or leased by the indemnitor, to the extent caused by the negligence or willful misconduct of the indemnitor; provided, however, that indemnitee gives indemnitor: (a) prompt written notice of any such claims; (b) reasonable assistance in defending the claim; and (c) sole authority to defend or settle such claim.</p>
+
+                        <h3>11.2 Indemnification for Infringement</h3>
+                        <p>Lumenore shall, at its expense, defend or settle any claim, action or allegation brought against Client that the Software infringes any U.S. patent or U.S. copyright and shall pay any final judgments awarded or settlements entered into, provided that Client gives Lumenore prompt written notice of, reasonable assistance in, and sole control over the defense or settlement of such claims.</p>
+                        <p>In the event any such infringement, claim, action or allegation is brought or threatened, Lumenore may, at its sole option and expense: (a) procure for Client the right to continue use of the Software or infringing part thereof; (b) modify or amend the Software or infringing part thereof, or replace the Software or infringing part thereof with a functionally equivalent alternative; or (c) if neither of the foregoing is commercially practicable, terminate this Agreement and refund the monies paid by Client for the infringing Software less one [6 months in Term] for each month or portion thereof that this Agreement has been in effect.</p>
+                        <p>Lumenore will not be liable to Client for claims of indirect or contributory infringement. Lumenore will have no liability if Client modifies the Product or Software and such infringement would not have occurred but for such modification.</p>
+
+                        <h3>11.3 Mechanics of Indemnities</h3>
+                        <p>The indemnitor's obligations are conditioned upon the indemnitee: (i) giving the indemnitor prompt written notice of any claim, action, suit or proceeding for which the indemnitee is seeking indemnity; (ii) granting control of the defense and settlement to the indemnitor; and (iii) reasonably cooperating with the indemnitor at the indemnitor's expense.</p>
+                        <p>The indemnitee may participate in any defense at its sole expense. The indemnitor shall not consent to the entry of any judgment or enter into any settlement that provides for injunctive relief against the indemnitee without the indemnitee's written consent, which will not be unreasonably withheld.</p>
+                    </div>
+
+                    <!-- 12. Waiver -->
+                    <div class="pp-section" id="waiver">
+                        <span class="pp-section__num">Section 12</span>
+                        <h2 class="pp-section__title">Waiver</h2>
+                        <p>No change, waiver, or discharge hereof shall be valid unless in writing and signed by the Party against which it is sought to be enforced. No delay or omission by either Party in exercising any right hereunder shall be construed as a waiver. A waiver by either of the Parties of any provision or breach shall not be a waiver of any other provision or breach.</p>
+                    </div>
+
+                    <!-- 13. Non-Solicitation -->
+                    <div class="pp-section" id="non-solicitation">
+                        <span class="pp-section__num">Section 13</span>
+                        <h2 class="pp-section__title">Non-Solicitation</h2>
+                        <p>During the term of this Agreement and for one year thereafter, the Parties shall not hire or seek to hire any person employed then or within the preceding year by the other Party and involved directly or indirectly, except with prior written consent of the other Party. Such consent may be withheld in the other Party's sole discretion.</p>
+                    </div>
+
+                    <!-- 14. Confidential Information -->
+                    <div class="pp-section" id="confidential">
+                        <span class="pp-section__num">Section 14</span>
+                        <h2 class="pp-section__title">Confidential Information</h2>
+
+                        <h3>14.1 Definition</h3>
+                        <p>"Confidential Information" shall mean all nonpublic information, whether in oral, written or other tangible form that either party designates as being confidential, including without limitation, the terms and conditions of this Agreement. Each party shall keep confidential and disclose it only to those employees who need to know such information, which includes without limitation, pricing and other terms of the Agreement, technical "know-how," specifications, formulae, Client Data, compositions, designs, sketches, photographs, samples, prototypes, computer software and programs (including object code and source code), protocols, strategic business plans, financial information, product information, methods of operation, customer information, supplier information and other compilations of data.</p>
+                        <p>The receiving party's confidentiality obligations shall survive termination of the Agreement, for so long as the Confidential Information remains confidential. Notwithstanding the foregoing, Confidential Information does not include information that: (i) is or becomes generally available to the public other than as a result of a disclosure by either Party; (ii) is or becomes available to either party on a non-confidential basis from a source which is entitled to disclose it; or (iii) was developed by employees or agents of either Party independently of and without reference to any information communicated to one Party by the other.</p>
+
+                        <h3>14.2 Nondisclosure and Nonuse Obligation</h3>
+                        <p>Neither Party will make use of, disseminate, or in any way disclose any Confidential Information as provided in this Section, except as may be required by a court of competent jurisdiction. Both Parties will treat all Confidential Information with the same degree of care as they accord their own confidential information, and represent that they exercise at least reasonable care to protect their own confidential information.</p>
+                        <p>Both Parties agree that they shall disclose Confidential Information only to those employees who need to know such information, and both Parties certify that such employees have previously agreed, either as a condition to employment or in order to obtain the Confidential Information, to be bound by terms and conditions substantially similar to those of this Agreement. Either Party will immediately give notice to the other Party of any unauthorized use or disclosure of the Confidential Information.</p>
+                    </div>
+
+                    <!-- 15. Relationship of Parties -->
+                    <div class="pp-section" id="relationship">
+                        <span class="pp-section__num">Section 15</span>
+                        <h2 class="pp-section__title">Relationship of Parties</h2>
+                        <p>Lumenore is acting only as an independent contractor and does not undertake, by this Agreement, to perform any obligation of Client, whether regulatory or contractual, or to assume any responsibility for Client's business or operations. Neither Party shall act or represent itself, directly or by implication, as an agent of the other, except as expressly authorized under this Agreement. Lumenore has the sole right to supervise and manage its employees under this Agreement.</p>
+                    </div>
+
+                    <!-- 16. Force Majeure -->
+                    <div class="pp-section" id="force-majeure">
+                        <span class="pp-section__num">Section 16</span>
+                        <h2 class="pp-section__title">Force Majeure</h2>
+                        <p>Neither Party shall be liable for any failure or delay in its performance (other than non-payment) due to circumstances beyond its reasonable control, provided that it notifies the other Party as soon as practicable and uses reasonable commercial efforts to resume performance.</p>
+                    </div>
+
+                    <!-- 17. Severability -->
+                    <div class="pp-section" id="severability">
+                        <span class="pp-section__num">Section 17</span>
+                        <h2 class="pp-section__title">Severability</h2>
+                        <p>If any provision of this Agreement is declared or found to be illegal, unenforceable or void, then the Parties will be relieved of all obligations arising under such provision, but only to the extent that such provision is illegal, unenforceable or void. It is the intent and agreement of the Parties that this Agreement will be deemed amended by modifying such provision to the extent necessary to make it legal and enforceable while preserving its intent, or by substituting therefore another provision that is legal and enforceable and achieves the same objective.</p>
+                        <p>If the remainder of this Agreement will not be affected by such declaration or finding and is capable of substantial performance, then each provision not so affected will be enforced to the extent permitted by law.</p>
+                    </div>
+
+                    <!-- 18. Survival -->
+                    <div class="pp-section" id="survival">
+                        <span class="pp-section__num">Section 18</span>
+                        <h2 class="pp-section__title">Survival</h2>
+                        <p>Any sections of this Agreement that by their nature may reasonably be presumed to have been intended to survive any termination or expiration of this Agreement, shall survive any termination or expiration of this Agreement.</p>
+                    </div>
+
+                    <!-- 19. Export Restrictions -->
+                    <div class="pp-section" id="export">
+                        <span class="pp-section__num">Section 19</span>
+                        <h2 class="pp-section__title">Export Restrictions</h2>
+                        <p>Client acknowledges that the laws and regulations of the United States restrict the export and re-export of certain commodities and technical data of United States origin, including the Software and the Documentation, in any medium. Client agrees that Client will not export or re-export the Software or the Documentation in any medium without the appropriate United States and foreign government licenses.</p>
+                        <p>Client further acknowledges that it is knowledgeable about U.S. export licensing requirements or that Client will become so prior to engaging directly or indirectly in any export transaction including the Software and/or Documentation. Client hereby agrees to comply with the requirements of the U.S. Foreign Corrupt Practices Act (the "Act") and shall refrain from any payments to third parties which would cause Client or Lumenore or Lumenore's licensors to violate the Act.</p>
+                    </div>
+
+                    <!-- 20. Attorneys' Fees -->
+                    <div class="pp-section" id="attorneys-fees">
+                        <span class="pp-section__num">Section 20</span>
+                        <h2 class="pp-section__title">Attorneys' Fees</h2>
+                        <p>If either Party sues the other in connection with this Agreement, the prevailing Party shall recover its reasonable attorneys' fees and costs.</p>
+                    </div>
+
+                    <!-- 21. Statute of Limitations -->
+                    <div class="pp-section" id="statute-limitations">
+                        <span class="pp-section__num">Section 21</span>
+                        <h2 class="pp-section__title">Statute of Limitations</h2>
+                        <p>Neither Party may assert a claim against the other Party more than one year after the date that such claim arose.</p>
+                    </div>
+
+                    <!-- 22. Governing Law -->
+                    <div class="pp-section" id="governing-law">
+                        <span class="pp-section__num">Section 22</span>
+                        <h2 class="pp-section__title">Governing Law; Jurisdiction; Venue</h2>
+                        <p>This Agreement shall be governed by the laws of State of Michigan without giving effect to any rules of conflicts of law. Both Parties waive their right to a jury trial as to any or all of the issues arising out of or related to this Agreement. The Parties exclude, in its entirety, the application to this Agreement of the United Nations Convention on Contracts for the International Sale of Goods.</p>
+                        <p>The Parties consent to the exclusive jurisdiction of the appropriate federal court in the U.S. District Court for the Eastern District of Michigan, Southern Division or of the state courts in Oakland County, Michigan for any legal or equitable action or proceeding arising out of, or in connection with, this Agreement. Each of Lumenore and Supplier specifically waives any and all objections to venue in such courts.</p>
+                    </div>
+
+                    <!-- 23. Compliance with Laws -->
+                    <div class="pp-section" id="compliance">
+                        <span class="pp-section__num">Section 23</span>
+                        <h2 class="pp-section__title">Compliance with Laws</h2>
+                        <p>Each Party shall comply with all applicable treaties, agreements, statutes, rules, or ordinances for those foreign, federal, state, or local governmental entities with jurisdiction, as all may be newly enacted or amended from time to time ("Laws").</p>
+                    </div>
+
+                    <!-- 24. Media Releases -->
+                    <div class="pp-section" id="media-releases">
+                        <span class="pp-section__num">Section 24</span>
+                        <h2 class="pp-section__title">Media Releases</h2>
+                        <p>Neither Party shall identify the other Party in any media releases, public disclosures or marketing material without the prior consent of the other Party, except for (i) any announcement intended solely for a Party's internal distribution, (ii) any listing of the other Party as a client or vendor of the other in confidential proposals, and (iii) any disclosure required by law.</p>
+                    </div>
+
+                    <!-- 25. Assignment -->
+                    <div class="pp-section" id="assignment">
+                        <span class="pp-section__num">Section 25</span>
+                        <h2 class="pp-section__title">Assignment</h2>
+                        <p>Neither Party may or can assign any of its rights and obligations under this Agreement or any SOW without the prior written consent of the other, which consent will not be unreasonably withheld. Lumenore may use subcontractors to perform work under this Agreement or any SOW provided that any subcontract shall contain confidentiality provisions substantially similar to those herein.</p>
+                    </div>
+
+                    <!-- 26. Notices -->
+                    <div class="pp-section" id="notices">
+                        <span class="pp-section__num">Section 26</span>
+                        <h2 class="pp-section__title">Notices</h2>
+                        <p>Any notice under this Agreement shall be deemed delivered when delivered in person, the day after being sent by Federal Express or comparable overnight courier, or five days after being mailed by registered or certified U.S. mail, return receipt requested, to the Parties designated in the initial Subscription acceptance on the Lumenore website.</p>
+                    </div>
+
+                    <!-- 27. Modifications -->
+                    <div class="pp-section" id="modifications">
+                        <span class="pp-section__num">Section 27</span>
+                        <h2 class="pp-section__title">Modifications to This Agreement</h2>
+                        <p>This agreement can be modified from time to time; however such changes shall be notified to the end users in a timely manner.</p>
+                    </div>
+
+                    <!-- 28. Entire Agreement -->
+                    <div class="pp-section" id="entire-agreement">
+                        <span class="pp-section__num">Section 28</span>
+                        <h2 class="pp-section__title">Entire Agreement</h2>
+                        <p>This Agreement and the SOW(s) issued hereunder constitute the final, entire, and exclusive agreement between the Parties with respect to the subject matter hereof and may be amended or modified only in writing executed by both Parties. This Agreement supersedes, and the terms of this Agreement govern, any prior agreements.</p>
+                        <div class="pp-contact-card">
+                            <p><strong>Questions about this Agreement?</strong></p>
+                            <p>Lumenore, Inc. — 999 Tech Row, Madison Heights, MI 48071, USA</p>
+                            <p>Email: <a href="mailto:support@lumenore.com">support@lumenore.com</a></p>
+                        </div>
+                    </div>
+
+                </article>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-top">
+            <div class="brand-col footer-col reveal-left">
+                <div class="brand-logo">
+                    <img src="./assets/images/homeV2o/Lumenore logo.svg" alt="Lumenore" class="brand-logo-img">
+                    <img src="./assets/images/homeV2o/GPTW.svg" alt="Great Place to Work — Certified" class="gptw-badge">
+                </div>
+                <div class="ask-ai-box">
+                    <p class="ask-ai-label">Ask AI for a summary about Lumenore</p>
+                    <div class="ask-ai-icons">
+                        <a href="#" aria-label="ChatGPT"><img src="./assets/images/AI/openai.svg" alt="ChatGPT" width="24" height="24"></a>
+                        <a href="#" aria-label="Perplexity"><img src="./assets/images/AI/perplexity-dark.svg" alt="Perplexity" width="24" height="24"></a>
+                        <a href="#" aria-label="Gemini"><img src="./assets/images/AI/google-gemini-dark.svg" alt="Gemini" width="24" height="24"></a>
+                        <a href="#" aria-label="Claude"><img src="./assets/images/AI/claude.svg" alt="Claude" width="24" height="24"></a>
+                        <a href="#" aria-label="Grok"><img src="./assets/images/AI/grok.svg" alt="Grok" width="24" height="24"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-cta reveal-right" style="--reveal-delay:.18s">
+                <span class="footer-cta-halo" aria-hidden="true"></span>
+                <div class="footer-cta-text">
+                    <span class="footer-cta-eyebrow">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l2 5 5 2-5 2-2 5-2-5-5-2 5-2z" fill="currentColor"/></svg>
+                        Talk to a human
+                    </span>
+                    <h3>Got more questions?</h3>
+                    <p>Our team is here to answer any questions or customize the perfect plan for you.</p>
+                </div>
+                <a href="contact.html" class="footer-cta-button btn-primary">
+                    Get in Touch
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                </a>
+            </div>
+        </div>
+
+        <div class="footer-nav reveal-block" style="--reveal-delay:.28s">
+            <div class="footer-col">
+                <h4>Platform</h4>
+                <ul>
+                    <li><a href="why-us.html">Why Us</a></li>
+                    <li><a href="trust-and-security.html">Trust and Security</a></li>
+                    <li><a href="partners.html">Partners</a></li>
+                    <li><a href="professional-services.html">Professional Services</a></li>
+                    <li><a href="platform.html">Platform</a></li>
+                    <li><a href="release-notes.html">Latest Releases</a></li>
+                    <li><a href="watch-demo.html">Watch Demo</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Capabilities</h4>
+                <ul>
+                    <li><a href="data-connectors.html">Data Connectors</a></li>
+                    <li><a href="data-integration.html">Data Integration</a></li>
+                    <li><a href="data-lakehouse.html">Data Lakehouse</a></li>
+                    <li><a href="data-visualization.html">Data Visualization</a></li>
+                    <li><a href="data-universe.html">Data Universe</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="advanced-analytics.html">Advanced Analytics</a></li>
+                    <li><a href="embedded-analytics.html">Embedded Analytics</a></li>
+                    <li><a href="conversational-intelligence.html">Conversational Intelligence</a></li>
+                    <li><a href="decision-intelligence.html">Decision Intelligence</a></li>
+                    <li><a href="self-service-analytics.html">Self-Service Analytics</a></li>
+                    <li><a href="predictive-analytics.html">Predictive Analytics</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Product</h4>
+                <ul>
+                    <li><a href="lumenore-insights.html">Lumenore Insights</a></li>
+                    <li><a href="../lumenore-ask-me.html">Lumenore Ask Me</a></li>
+                    <li><a href="lumenore-data-magnet.html">Lumenore Data Magnet</a></li>
+                </ul>
+                <h4 class="col-spaced">Pricing</h4>
+                <ul><li><a href="pricing-insights.html">Lumenore Insights Pricing</a></li></ul>
+                <h4 class="col-spaced">Compare</h4>
+                <ul>
+                    <li><a href="tableau-alternative.html">Tableau Alternative</a></li>
+                    <li><a href="thoughtspot-alternative.html">ThoughtSpot Alternative</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Solutions</h4>
+                <ul>
+                    <li><a href="solutions-by-industry.html">By Industry</a></li>
+                    <li><a href="solutions-by-department.html">By Department</a></li>
+                </ul>
+                <h4 class="col-spaced">Company</h4>
+                <ul>
+                    <li><a href="about-us.html">About Us</a></li>
+                    <li><a href="career.html">Career</a></li>
+                    <li><a href="newsroom.html">Newsroom</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="contact-sales.html">Contact Sales</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="request-a-demo.html">Request Demo</a></li>
+                    <li><a href="community-support.html">Community Support</a></li>
+                    <li><a href="news-and-media.html">News &amp; Media</a></li>
+                    <li><a href="ebooks-whitepapers.html">Ebooks &amp; Whitepapers</a></li>
+                    <li><a href="success-stories.html">Success Stories</a></li>
+                    <li><a href="use-cases.html">Use Cases</a></li>
+                    <li><a href="blog.html">Blogs</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="knowledge-base.html">Knowledge Base</a></li>
+                    <li><a href="certifications.html">Certifications</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p>© 2025 Lumenore Inc. All rights reserved.</p>
+            <div class="copyright-social">
+                <a href="#" aria-label="X / Twitter"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+                <a href="#" aria-label="LinkedIn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452z"/></svg></a>
+                <a href="#" aria-label="YouTube"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+                <a href="#" aria-label="Instagram"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+            </div>
+            <div class="legal-links">
+                <a href="privacy.html">Privacy</a>
+                <a href="terms.html">Terms of Use</a>
+                <a href="eula.html" aria-current="page">License Agreement</a>
+                <a href="cookies.html">Cookies Settings</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+/* Platform mega-menu */
+(function () {
+    var mega = document.getElementById('platformMega'), detail = document.getElementById('platformDetail');
+    var productPane = document.getElementById('platformProductPane'), productTitle = document.getElementById('npProductTitle');
+    var productTag = document.getElementById('npProductTagline'), productDesc = document.getElementById('npProductDesc');
+    var ctaStart = document.getElementById('npProductStart'), ctaLearn = document.getElementById('npProductLearn');
+    var ctaPricing = document.getElementById('npProductPricing'), gridTitle = document.getElementById('platformGridTitle');
+    var grid = document.getElementById('platformGrid');
+    var navList = document.querySelectorAll('#platformMega [data-platform-item]');
+    var cards = document.querySelectorAll('#platformMega [data-platform-card]');
+    if (!mega || !detail) return;
+    var products = {
+        insights:   { tagline: 'Self-Service Analytics',   title: 'Lumenore Insights',    desc: 'Democratize data with self-service, AI-powered dashboards that empower every employee to make data-driven decisions.', start: '#', learn: '#', pricing: '#' },
+        askme:      { tagline: 'Conversational Analytics', title: 'Lumenore Ask Me',       desc: 'Query enterprise data in natural language. Get instant, governed insights enhanced by Agentic RAG.',                  start: '../lumenore-ask-me.html', learn: '../lumenore-ask-me.html', pricing: '#' },
+        datamagnet: { tagline: 'Enterprise ETL',            title: 'Lumenore Data Magnet', desc: 'Connect 50+ enterprise sources with low-code ETL. Accelerate high-volume transfers to your Lakehouse.',              start: '#', learn: '#', pricing: '#' }
+    };
+    function hideAll() { productPane.hidden = true; if (gridTitle) gridTitle.hidden = true; if (grid) grid.hidden = true; }
+    function showProduct(key) { var d = products[key]; if (!d) return; productTag.textContent = d.tagline; productTitle.textContent = d.title; productDesc.textContent = d.desc; ctaStart.setAttribute('href', d.start); if (ctaLearn) ctaLearn.setAttribute('href', d.learn); ctaPricing.setAttribute('href', d.pricing); productPane.hidden = false; if (gridTitle) gridTitle.hidden = true; if (grid) grid.hidden = true; }
+    function showGrid() { productPane.hidden = true; if (gridTitle) gridTitle.hidden = false; if (grid) grid.hidden = false; }
+    function highlight(key) { navList.forEach(function(n) { n.classList.toggle('is-active', n.dataset.platformItem === key); }); cards.forEach(function(c) { c.classList.toggle('is-active', c.dataset.platformCard === key); }); }
+    function clearHighlight() { navList.forEach(function(n) { n.classList.remove('is-active'); }); cards.forEach(function(c) { c.classList.remove('is-active'); }); }
+    navList.forEach(function(n) { var t = function() { var key = n.dataset.platformItem; highlight(key); if (n.dataset.platformType === 'product') showProduct(key); else showGrid(); }; n.addEventListener('mouseenter', t); n.addEventListener('focus', t); });
+    cards.forEach(function(c) { var t = function() { showGrid(); highlight(c.dataset.platformCard); }; c.addEventListener('mouseenter', t); c.addEventListener('focus', t); });
+    var navItem = mega.closest('.nav-item');
+    if (navItem) { navItem.addEventListener('mouseenter', function() { highlight('insights'); showProduct('insights'); }); navItem.addEventListener('focusin', function() { highlight('insights'); showProduct('insights'); }); navItem.addEventListener('mouseleave', function() { clearHighlight(); hideAll(); }); }
+})();
+
+/* Solutions mega-menu */
+(function () {
+    var mega = document.getElementById('solutionMega'); if (!mega) return;
+    var navList = mega.querySelectorAll('[data-solution-item]');
+    var industryTtl = document.getElementById('solIndustryTitle'), industryGrid = document.getElementById('solIndustryGrid');
+    var deptTtl = document.getElementById('solDepartmentTitle'), deptGrid = document.getElementById('solDepartmentGrid');
+    function hideAll() { industryTtl.hidden = true; industryGrid.hidden = true; deptTtl.hidden = true; deptGrid.hidden = true; }
+    function showIndustry() { industryTtl.hidden = false; industryGrid.hidden = false; deptTtl.hidden = true; deptGrid.hidden = true; }
+    function showDepartment() { industryTtl.hidden = true; industryGrid.hidden = true; deptTtl.hidden = false; deptGrid.hidden = false; }
+    function highlight(key) { navList.forEach(function(n) { n.classList.toggle('is-active', n.dataset.solutionItem === key); }); }
+    function clearHighlight() { navList.forEach(function(n) { n.classList.remove('is-active'); }); }
+    navList.forEach(function(n) { var t = function() { var key = n.dataset.solutionItem; highlight(key); if (key === 'department') showDepartment(); else showIndustry(); }; n.addEventListener('mouseenter', t); n.addEventListener('focus', t); });
+    var navItem = mega.closest('.nav-item');
+    if (navItem) { navItem.addEventListener('mouseenter', function() { highlight('industry'); showIndustry(); }); navItem.addEventListener('focusin', function() { highlight('industry'); showIndustry(); }); navItem.addEventListener('mouseleave', function() { clearHighlight(); hideAll(); }); }
+})();
+
+/* Company mega-menu */
+(function () {
+    var mega = document.getElementById('companyMega'); if (!mega) return;
+    var navList = mega.querySelectorAll('[data-company-item]');
+    var allTtl = document.getElementById('coAllTitle'), allGrid = document.getElementById('coAllGrid');
+    function hideAll() { if (allTtl) allTtl.hidden = true; if (allGrid) allGrid.hidden = true; }
+    function showAll() { if (allTtl) allTtl.hidden = false; if (allGrid) allGrid.hidden = false; }
+    function highlight() { navList.forEach(function(n) { n.classList.add('is-active'); }); }
+    function clearHighlight() { navList.forEach(function(n) { n.classList.remove('is-active'); }); }
+    navList.forEach(function(n) { n.addEventListener('mouseenter', function() { highlight(); showAll(); }); n.addEventListener('focus', function() { highlight(); showAll(); }); });
+    var navItem = mega.closest('.nav-item');
+    if (navItem) { navItem.addEventListener('mouseenter', function() { highlight(); showAll(); }); navItem.addEventListener('focusin', function() { highlight(); showAll(); }); navItem.addEventListener('mouseleave', function() { clearHighlight(); hideAll(); }); }
+})();
+
+/* Hover-gap bridge */
+(function () {
+    document.querySelectorAll('.nav-item.has-dropdown').forEach(function (item) {
+        var mega = item.querySelector('.nav-mega'); if (!mega) return;
+        var closeTimer = null;
+        function open() { clearTimeout(closeTimer); item.classList.add('is-open'); }
+        function scheduleClose() { closeTimer = setTimeout(function () { item.classList.remove('is-open'); }, 200); }
+        item.addEventListener('mouseenter', open); item.addEventListener('mouseleave', scheduleClose);
+        mega.addEventListener('mouseenter', open); mega.addEventListener('mouseleave', scheduleClose);
+    });
+})();
+
+/* Reveal animations */
+(function () {
+    var els = document.querySelectorAll('.reveal-block, .reveal-left, .reveal-right');
+    if (!els.length) return;
+    if (!('IntersectionObserver' in window)) { els.forEach(function(el) { el.classList.add('is-visible'); }); return; }
+    var obs = new IntersectionObserver(function(entries) { entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('is-visible'); obs.unobserve(e.target); } }); }, { threshold: 0.12 });
+    els.forEach(function(el) { obs.observe(el); });
+})();
+
+/* TOC active-link highlight on scroll */
+(function () {
+    var links = document.querySelectorAll('.pp-toc__list a');
+    if (!links.length) return;
+    var sections = Array.from(links).map(function(a) { return document.querySelector(a.getAttribute('href')); }).filter(Boolean);
+    var obs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+            if (e.isIntersecting) {
+                links.forEach(function(a) { a.classList.toggle('is-active', a.getAttribute('href') === '#' + e.target.id); });
+            }
+        });
+    }, { rootMargin: '-10% 0px -80% 0px' });
+    sections.forEach(function(s) { obs.observe(s); });
+})();
+
+/* Custom cursor */
+(function () {
+    var cursor = document.getElementById('customCursor'); if (!cursor) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { cursor.remove(); return; }
+    if (window.matchMedia('(hover: none)').matches) { cursor.remove(); return; }
+    var dot = cursor.querySelector('.cursor__dot'), ring = cursor.querySelector('.cursor__ring');
+    var dotX = 0, dotY = 0, ringX = 0, ringY = 0, RING_EASE = 0.20, raf = null, firstMove = false;
+    var INTERACTIVE_SEL = 'a, button, label, select, summary, [role="button"], [role="tab"], [role="menuitem"], [role="link"], .btn-primary';
+    var TEXT_SEL = 'input:not([type="button"]):not([type="submit"]):not([type="reset"]):not([type="checkbox"]):not([type="radio"]), textarea, [contenteditable="true"]';
+    function frame() { ringX += (dotX - ringX) * RING_EASE; ringY += (dotY - ringY) * RING_EASE; cursor.style.transform = 'translate3d(' + dotX + 'px,' + dotY + 'px,0)'; ring.style.transform = 'translate3d(' + (ringX - dotX) + 'px,' + (ringY - dotY) + 'px,0)'; if (Math.abs(dotX - ringX) > 0.3 || Math.abs(dotY - ringY) > 0.3) { raf = requestAnimationFrame(frame); } else { ringX = dotX; ringY = dotY; ring.style.transform = 'translate3d(0,0,0)'; raf = null; } }
+    function onMove(e) { dotX = e.clientX; dotY = e.clientY; if (!firstMove) { firstMove = true; ringX = dotX; ringY = dotY; cursor.style.transform = 'translate3d(' + dotX + 'px,' + dotY + 'px,0)'; cursor.classList.add('is-visible'); } if (raf === null) raf = requestAnimationFrame(frame); }
+    function onOver(e) { if (e.target.closest && e.target.closest(TEXT_SEL)) { cursor.classList.add('is-hidden'); cursor.classList.remove('is-active'); return; } cursor.classList.remove('is-hidden'); if (e.target.closest && e.target.closest(INTERACTIVE_SEL)) cursor.classList.add('is-active'); }
+    function onOut(e) { if (!e.relatedTarget || !e.relatedTarget.closest || !e.relatedTarget.closest(INTERACTIVE_SEL)) cursor.classList.remove('is-active'); }
+    document.addEventListener('mousemove', onMove, { passive: true });
+    document.addEventListener('mouseover', onOver);
+    document.addEventListener('mouseout', onOut);
+    document.addEventListener('mousedown', function() { cursor.classList.add('is-pressed'); });
+    document.addEventListener('mouseup', function() { cursor.classList.remove('is-pressed'); });
+    document.addEventListener('mouseleave', function() { cursor.classList.remove('is-visible'); });
+    document.addEventListener('mouseenter', function() { if (firstMove) cursor.classList.add('is-visible'); });
+})();
+</script>
+</body>
+</html>

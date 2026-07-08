@@ -7,7 +7,10 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Material+Symbols+Rounded&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
-    <script src="assets/images/Json/Askme-animation-1-.js"></script>
+    <script src="assets/images/Json/New/LandingPage.js"></script>
+    <script src="assets/images/Json/New/AskMe.js"></script>
+    <script src="assets/images/Json/New/DataMagnet.js"></script>
+    <script src="assets/images/Json/New/Insights.js"></script>
     <script src="assets/images/Json/Dashboard-Animation-1.js"></script>
     <script src="assets/images/Json/Data-Magnet_Animation-1.js"></script>
     <link href="assets/css/v2o/index.css?v=3" rel="stylesheet">
@@ -250,17 +253,17 @@
               <div class="cm-card is-active" data-product="askme">
                   <span class="cm-orb cm-orb-a" aria-hidden="true"></span>
                   <span class="cm-orb cm-orb-b" aria-hidden="true"></span>
-                  <img src="assets/images/products/askme-ui-preview.png" alt="Lumenore Ask Me preview">
+                  <div id="askMeLottie" role="img" aria-label="Lumenore Ask Me preview"></div>
               </div>
               <div class="cm-card" data-product="insights">
                   <span class="cm-orb cm-orb-a" aria-hidden="true"></span>
                   <span class="cm-orb cm-orb-b" aria-hidden="true"></span>
-                  <img src="assets/images/products/insights-ui-preview.png" alt="Lumenore Insights preview">
+                  <div id="insightsLottie" role="img" aria-label="Lumenore Insights preview"></div>
               </div>
               <div class="cm-card" data-product="datamagnet">
                   <span class="cm-orb cm-orb-a" aria-hidden="true"></span>
                   <span class="cm-orb cm-orb-b" aria-hidden="true"></span>
-                  <img src="assets/images/products/datamagnet-ui-preview.png" alt="Lumenore Data Magnet preview">
+                  <div id="dataMagnetLottie" role="img" aria-label="Lumenore Data Magnet preview"></div>
               </div>
           </div>
 
@@ -3284,6 +3287,57 @@ Features like customizable interactive reports and real-time data integration pr
 </script>
 
 <script>
+    /* ── Insights product card — Lottie animation ── */
+    (function () {
+        var el = document.getElementById('insightsLottie');
+        if (!el || typeof lottie === 'undefined' || typeof insightsLottieData === 'undefined') return;
+        var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        lottie.loadAnimation({
+            container: el,
+            renderer: 'svg',
+            loop: true,
+            autoplay: !reduce,
+            animationData: insightsLottieData,
+            rendererSettings: { preserveAspectRatio: 'xMidYMid meet', progressiveLoad: true }
+        });
+    })();
+</script>
+
+<script>
+    /* ── Data Magnet product card — Lottie animation ── */
+    (function () {
+        var el = document.getElementById('dataMagnetLottie');
+        if (!el || typeof lottie === 'undefined' || typeof dataMagnetLottieData === 'undefined') return;
+        var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        lottie.loadAnimation({
+            container: el,
+            renderer: 'svg',
+            loop: true,
+            autoplay: !reduce,
+            animationData: dataMagnetLottieData,
+            rendererSettings: { preserveAspectRatio: 'xMidYMid meet', progressiveLoad: true }
+        });
+    })();
+</script>
+
+<script>
+    /* ── Ask Me product card — Lottie animation ── */
+    (function () {
+        var el = document.getElementById('askMeLottie');
+        if (!el || typeof lottie === 'undefined' || typeof askMeLottieData === 'undefined') return;
+        var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        lottie.loadAnimation({
+            container: el,
+            renderer: 'svg',
+            loop: true,
+            autoplay: !reduce,
+            animationData: askMeLottieData,
+            rendererSettings: { preserveAspectRatio: 'xMidYMid meet', progressiveLoad: true }
+        });
+    })();
+</script>
+
+<script>
     /* ── Hero banner — Lottie animation ── */
     (function () {
         var el = document.getElementById('heroBannerLottie');
@@ -3294,7 +3348,7 @@ Features like customizable interactive reports and real-time data integration pr
             renderer: 'svg',
             loop: true,
             autoplay: !reduce,
-            path: 'assets/images/Json/Askme-animation.json',
+            animationData: landingPageLottieData,
             rendererSettings: { preserveAspectRatio: 'xMidYMid meet', progressiveLoad: true }
         });
     })();

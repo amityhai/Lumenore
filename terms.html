@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Use — Lumenore</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Material+Symbols+Rounded&display=swap" rel="stylesheet">
+    <link href="./style.css" rel="stylesheet">
+
+    <style>
+        /* ── Terms page ── */
+        body.inner-page {
+            background: var(--Royal-Blue-Blue-900, #051A3C);
+            color: var(--Base-White, #fcfcfc);
+        }
+
+        /* ── Hero ── */
+        .pp-hero {
+            position: relative;
+            overflow: hidden;
+            padding: 120px 0 100px;
+            text-align: center;
+        }
+        .pp-hero .hero-grid {
+            -webkit-mask-image: radial-gradient(ellipse 120% 100% at 50% 0%, #000 0%, rgba(0,0,0,.55) 55%, transparent 85%);
+                    mask-image: radial-gradient(ellipse 120% 100% at 50% 0%, #000 0%, rgba(0,0,0,.55) 55%, transparent 85%);
+        }
+        .pp-hero .hero-orbs { overflow: visible; }
+        .pp-hero .orb-violet { left: -4%; top: 5%; bottom: auto; width: 440px; height: 440px; }
+        .pp-hero .orb-cyan   { left: 50%; top: 15%; bottom: auto; transform: translateX(-50%); width: 560px; height: 440px; }
+        .pp-hero .orb-blue   { right: -4%; top: 5%; bottom: auto; width: 440px; height: 440px; }
+
+        .pp-hero__glow {
+            position: absolute; left: 50%; top: 50%;
+            transform: translate(-50%, -50%);
+            width: 760px; height: 340px;
+            background: radial-gradient(50% 50% at 50% 50%,
+                rgba(28,169,201,.25) 0%, rgba(40,99,195,.12) 55%, transparent 100%);
+            filter: blur(52px);
+            pointer-events: none; z-index: 2;
+        }
+        .pp-hero__inner {
+            position: relative; z-index: 4;
+            max-width: 700px; margin: 0 auto;
+            display: flex; flex-direction: column; align-items: center; gap: 20px;
+        }
+        .pp-hero__eyebrow {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 6px 16px;
+            border: 1px solid rgba(255,255,255,.14);
+            border-radius: 999px;
+            background: rgba(255,255,255,.04);
+            font-family: 'Inter', sans-serif;
+            font-size: 11px; font-weight: 600;
+            letter-spacing: .12em; text-transform: uppercase;
+            color: rgba(252,252,252,.55);
+        }
+        .pp-hero__eyebrow .het-dot {
+            width: 6px; height: 6px; border-radius: 50%;
+            background: var(--Turquoise-SkyBlue-500, #1ca9c9);
+            box-shadow: 0 0 8px rgba(28,169,201,.8);
+            flex-shrink: 0;
+        }
+        .pp-hero__title {
+            font-family: 'Fraunces', serif;
+            font-weight: 300;
+            font-size: clamp(40px, 5.5vw, 68px);
+            line-height: 1.1; letter-spacing: -.02em;
+            color: var(--Base-White, #fcfcfc);
+            margin: 0;
+        }
+        .pp-hero__meta {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            color: rgba(252,252,252,.45);
+            margin: 0;
+        }
+
+        /* ── Content layout ── */
+        .pp-content {
+            background: var(--blueGray-50, #F8FAFC);
+            padding: 80px 0 100px;
+        }
+        .pp-layout {
+            display: grid;
+            grid-template-columns: 220px 1fr;
+            gap: 56px;
+            align-items: start;
+        }
+
+        /* Sticky TOC */
+        .pp-toc {
+            position: sticky;
+            top: 96px;
+        }
+        .pp-toc__label {
+            font-family: 'Inter', sans-serif;
+            font-size: 11px; font-weight: 700;
+            letter-spacing: .12em; text-transform: uppercase;
+            color: var(--blueGray-400, #94A3B8);
+            margin-bottom: 16px;
+        }
+        .pp-toc__list {
+            list-style: none; margin: 0; padding: 0;
+            display: flex; flex-direction: column; gap: 2px;
+        }
+        .pp-toc__list a {
+            display: block;
+            font-family: 'Inter', sans-serif;
+            font-size: 13px; font-weight: 400; line-height: 1.5;
+            color: var(--blueGray-500, #64748B);
+            padding: 6px 10px;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: background .15s ease, color .15s ease;
+        }
+        .pp-toc__list a:hover,
+        .pp-toc__list a.is-active {
+            background: var(--Royal-Blue-Blue-50, #e7eef8);
+            color: var(--Royal-Blue-Blue-500, #0e48a5);
+        }
+        .pp-toc__divider {
+            height: 1px;
+            background: var(--blueGray-200, #E2E8F0);
+            margin: 10px 0;
+        }
+
+        /* Article */
+        .pp-article { max-width: 720px; }
+
+        .pp-section {
+            margin-bottom: 52px;
+            scroll-margin-top: 96px;
+        }
+        .pp-section:last-child { margin-bottom: 0; }
+
+        .pp-section__title {
+            font-family: 'Inter', sans-serif;
+            font-size: 20px; font-weight: 700; line-height: 1.3;
+            color: var(--Royal-Blue-Blue-900, #051A3C);
+            margin: 0 0 16px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid var(--blueGray-200, #E2E8F0);
+        }
+        .pp-article p {
+            font-family: 'Inter', sans-serif;
+            font-size: 15px; line-height: 26px;
+            color: var(--blueGray-600, #475569);
+            margin: 0 0 16px;
+        }
+        .pp-article p:last-child { margin-bottom: 0; }
+        .pp-article h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 15px; font-weight: 600;
+            color: var(--Royal-Blue-Blue-900, #051A3C);
+            margin: 24px 0 8px;
+        }
+        .pp-article ul, .pp-article ol {
+            font-family: 'Inter', sans-serif;
+            font-size: 15px; line-height: 26px;
+            color: var(--blueGray-600, #475569);
+            padding-left: 22px;
+            margin: 0 0 16px;
+            display: flex; flex-direction: column; gap: 6px;
+        }
+        .pp-article a {
+            color: var(--Royal-Blue-Blue-400, #4075c9);
+            text-decoration: underline;
+            text-decoration-color: transparent;
+            transition: text-decoration-color .15s ease;
+        }
+        .pp-article a:hover { text-decoration-color: currentColor; }
+
+        /* Callout box */
+        .pp-callout {
+            background: var(--Royal-Blue-Blue-50, #e7eef8);
+            border-left: 3px solid var(--Royal-Blue-Blue-400, #4075c9);
+            border-radius: 0 8px 8px 0;
+            padding: 16px 20px;
+            margin: 20px 0;
+        }
+        .pp-callout p {
+            font-size: 14px !important;
+            line-height: 22px !important;
+            color: var(--Royal-Blue-Blue-700, #0c3b87) !important;
+            margin: 0 !important;
+        }
+
+        /* Warning callout (disclaimer / limitation) */
+        .pp-warning {
+            background: var(--Violet-Violet-50, #f0ebf7);
+            border-left: 3px solid var(--Violet-Violet-450, #7747b6);
+            border-radius: 0 8px 8px 0;
+            padding: 16px 20px;
+            margin: 16px 0;
+        }
+        .pp-warning p {
+            font-family: 'Inter', sans-serif;
+            font-size: 13px !important; line-height: 21px !important;
+            color: var(--Violet-Violet-500, #55298e) !important;
+            margin: 0 !important;
+        }
+
+        /* Contact card */
+        .pp-contact-card {
+            background: var(--Base-White, #fcfcfc);
+            border: 1px solid var(--blueGray-200, #E2E8F0);
+            border-radius: 12px;
+            padding: 24px 28px;
+            margin-top: 20px;
+        }
+        .pp-contact-card p {
+            font-size: 14px !important; margin: 0 0 4px !important;
+        }
+        .pp-contact-card p strong { color: var(--Royal-Blue-Blue-900, #051A3C); }
+
+        /* Section number badge */
+        .pp-section__num {
+            display: inline-block;
+            font-family: 'Inter', sans-serif;
+            font-size: 11px; font-weight: 700;
+            letter-spacing: .1em; text-transform: uppercase;
+            color: var(--Turquoise-SkyBlue-500, #1ca9c9);
+            margin-bottom: 6px;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 960px) {
+            .pp-layout { grid-template-columns: 1fr; }
+            .pp-toc { position: static; margin-bottom: 40px; }
+            .pp-toc__list { flex-direction: row; flex-wrap: wrap; gap: 4px; }
+            .pp-toc__list a { font-size: 12px; }
+        }
+        @media (max-width: 768px) {
+            .pp-hero { padding: 80px 0 72px; }
+            .pp-content { padding: 56px 0 72px; }
+        }
+    </style>
+</head>
+<body class="inner-page">
+
+<!-- Custom cursor -->
+<div class="cursor" id="customCursor" aria-hidden="true">
+    <span class="cursor__ring"></span>
+    <span class="cursor__dot"></span>
+</div>
+
+<!-- ===== SITE TOP ===== -->
+<div class="site-top">
+    <div class="hello-bar">
+        <div class="hello-left">
+            <span class="hello-badge">Webinar</span>
+            <div class="hello-msg-group">
+                <span class="hello-message">We are Heading to AAHOACON 2026</span>
+                <a href="#" class="hello-cta">Register Now
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                </a>
+            </div>
+        </div>
+        <a href="#" class="hello-consult">Free Consultation</a>
+        <a href="#" class="hello-login">Log in</a>
+    </div>
+
+    <header class="site-header headerTop is-scrolled">
+        <a href="./index.html" class="brand-mark" aria-label="Lumenore home">
+            <img src="./assets/images/homeV2o/Lumenore logo.svg" alt="Lumenore" class="nav-logo-img">
+        </a>
+        <nav>
+            <ul class="nav-links">
+                <li class="nav-item has-dropdown nav-item--platform" data-mega-id="platformMega">
+                    <a href="#" class="nav-trigger">Platform
+                        <svg class="caret" viewBox="0 0 8 4" fill="none"><path d="M0 0l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                    <div class="nav-mega nav-mega--platform" role="menu" id="platformMega">
+                        <div class="np-nav">
+                            <div class="np-nav-section">
+                                <h6 class="np-nav-title">Products</h6>
+                                <ul class="np-nav-list">
+                                    <li><a href="#" data-platform-item="insights" data-platform-type="product">Lumenore Insights</a></li>
+                                    <li><a href="../lumenore-ask-me.html" data-platform-item="askme" data-platform-type="product">Lumenore Ask Me</a></li>
+                                    <li><a href="#" data-platform-item="datamagnet" data-platform-type="product">Lumenore Data Magnet</a></li>
+                                </ul>
+                            </div>
+                            <div class="np-nav-section">
+                                <ul class="np-nav-list">
+                                    <li><a href="#" data-platform-item="all-capabilities" data-platform-type="capability" class="np-cap-link">
+                                        <span>Capabilities</span>
+                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                                    </a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="np-detail" id="platformDetail">
+                            <div class="np-product-pane" id="platformProductPane" hidden>
+                                <span class="np-pane-kind"><span class="np-kind-dot"></span>Product</span>
+                                <p class="np-pane-tagline" id="npProductTagline">Self-Service Analytics</p>
+                                <h4 class="np-pane-title" id="npProductTitle">Lumenore Insights</h4>
+                                <p class="np-pane-desc" id="npProductDesc">Democratize data with self-service, AI-powered dashboards.</p>
+                                <a class="np-learn-more" id="npProductLearn" href="#">Learn more <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+                                <div class="np-pane-actions">
+                                    <a class="np-cta np-cta--primary" id="npProductStart" href="#">Start Free</a>
+                                    <a class="np-cta np-cta--secondary" id="npProductPricing" href="#">Pricing</a>
+                                </div>
+                            </div>
+                            <h6 class="np-nav-title np-grid-title" id="platformGridTitle" hidden>All Capabilities</h6>
+                            <div class="np-grid" id="platformGrid" hidden>
+                                <a href="#" class="np-grid-card" data-platform-card="connectors"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12h6M3 7h4M3 17h4M17 7h4M17 17h4"/><circle cx="12" cy="12" r="3"/><circle cx="5" cy="7" r="1.5"/><circle cx="5" cy="17" r="1.5"/><circle cx="19" cy="7" r="1.5"/><circle cx="19" cy="17" r="1.5"/></svg><span>Data Connectors</span></a>
+                                <a href="#" class="np-grid-card" data-platform-card="integration"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4v6a3 3 0 0 0 3 3h4a3 3 0 0 1 3 3v4"/><circle cx="7" cy="3" r="1.5"/><circle cx="17" cy="21" r="1.5"/></svg><span>Data Integration</span></a>
+                                <a href="#" class="np-grid-card" data-platform-card="lakehouse"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v6a9 3 0 0 0 18 0V5M3 11v6a9 3 0 0 0 18 0v-6"/></svg><span>Data Lakehouse</span></a>
+                                <a href="#" class="np-grid-card" data-platform-card="visualization"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V10M10 21V6M15 21V13M20 21V8"/></svg><span>Data Visualization</span></a>
+                                <a href="#" class="np-grid-card" data-platform-card="universe"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="9" ry="3.5"/><path d="M3 12h18"/></svg><span>Data Universe</span></a>
+                                <a href="#" class="np-grid-card" data-platform-card="dashboard"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="5" rx="1.5"/><rect x="13" y="10" width="8" height="11" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/></svg><span>Dashboard</span></a>
+                                <a href="#" class="np-grid-card" data-platform-card="advanced"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18l4-6 4 3 6-9 4 5"/></svg><span>Advanced Analytics</span></a>
+                                <a href="#" class="np-grid-card" data-platform-card="embedded"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M9 10l-2 2 2 2M15 10l2 2-2 2"/></svg><span>Embedded Analytics</span></a>
+                                <a href="#" class="np-grid-card" data-platform-card="conversational"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg><span>Conversational Intelligence</span></a>
+                                <a href="#" class="np-grid-card" data-platform-card="decision"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/><circle cx="12" cy="12" r="4"/></svg><span>Decision Intelligence</span></a>
+                                <a href="#" class="np-grid-card" data-platform-card="selfservice"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg><span>Self-Service Analytics</span></a>
+                                <a href="#" class="np-grid-card" data-platform-card="predictive"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12c0-5 4-9 9-9s9 4 9 9"/><path d="M12 7v5l3 2"/><circle cx="12" cy="12" r="9" stroke-dasharray="2 3"/></svg><span>Predictive Analytics</span></a>
+                            </div>
+                        </div>
+                        <aside class="np-releases">
+                            <h6 class="np-nav-title">Recent Releases</h6>
+                            <a class="np-release" href="#"><span class="np-release-tag">New</span><span class="np-release-title">Ask Me Agentic RAG Upgrade</span><span class="np-release-sub">Self-correction &amp; multimodal support.</span></a>
+                            <a class="np-release" href="#"><span class="np-release-title">Local LLM Integration</span><span class="np-release-sub">Keep sensitive data in-house with on-prem inference.</span></a>
+                            <a class="np-release" href="#"><span class="np-release-title">Visual Pipeline Builder</span><span class="np-release-sub">Low-code ETL flows in a drag-and-drop canvas.</span></a>
+                            <a class="np-view-all" href="#">View All Releases <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+                        </aside>
+                    </div>
+                </li>
+
+                <li class="nav-item has-dropdown nav-item--solutions" data-mega-id="solutionMega">
+                    <a href="#" class="nav-trigger">Solutions
+                        <svg class="caret" viewBox="0 0 8 4" fill="none"><path d="M0 0l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                    <div class="nav-mega nav-mega--platform nav-mega--solutions" role="menu" id="solutionMega">
+                        <div class="np-nav">
+                            <ul class="np-nav-list">
+                                <li><a href="#" data-solution-item="industry" class="np-cap-link"><span>By Industry</span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></li>
+                                <li><a href="#" data-solution-item="department" class="np-cap-link"><span>By Department</span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></li>
+                            </ul>
+                        </div>
+                        <div class="np-detail" id="solutionDetail">
+                            <h6 class="np-nav-title np-grid-title" id="solIndustryTitle" hidden>By Industry</h6>
+                            <div class="np-grid" id="solIndustryGrid" hidden>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v16M4 12h16"/></svg><span>Healthcare</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6h15l-1.5 9H7.5L6 6zM6 6L5 3H2"/></svg><span>Retail</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12l9-8 9 8M5 10v10h14V10"/></svg><span>Real Estate</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg><span>Insurance</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span>Financial Services</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10l-10-5L2 10l10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg><span>Education</span></a>
+                            </div>
+                            <h6 class="np-nav-title np-grid-title" id="solDepartmentTitle" hidden>By Department</h6>
+                            <div class="np-grid" id="solDepartmentGrid" hidden>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span>Finance</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18l6-6 4 4 8-8"/></svg><span>Sales</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l18-8v18z"/></svg><span>Marketing</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg><span>Human Resources</span></a>
+                            </div>
+                        </div>
+                        <aside class="np-releases">
+                            <h6 class="np-nav-title">Recent Blogs</h6>
+                            <a class="np-release" href="#"><span class="np-release-tag">Featured</span><span class="np-release-title">How AI-Powered Analytics is Reshaping Healthcare</span><span class="np-release-sub">Real-world results from teams using Lumenore.</span></a>
+                            <a class="np-release" href="#"><span class="np-release-title">5 Ways Sales Teams Use Self-Service BI</span><span class="np-release-sub">Faster pipeline insights without filing IT tickets.</span></a>
+                            <a class="np-view-all" href="#">View All Blogs <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+                        </aside>
+                    </div>
+                </li>
+
+                <li class="nav-item"><a href="#" class="nav-trigger">Pricing</a></li>
+
+                <li class="nav-item has-dropdown nav-item--resources" data-mega-id="resourcesMega">
+                    <a href="#" class="nav-trigger">Resources
+                        <svg class="caret" viewBox="0 0 8 4" fill="none"><path d="M0 0l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                    <div class="nav-mega nav-mega--resources" role="menu" id="resourcesMega">
+                        <div class="np-nav np-nav--wide">
+                            <div class="np-nav-section">
+                                <h6 class="np-nav-title">Watch</h6>
+                                <ul class="np-nav-list">
+                                    <li><a href="#">Demo</a></li>
+                                    <li><a href="#">Webinars &amp; Events</a></li>
+                                    <li><a href="#">Training</a></li>
+                                </ul>
+                            </div>
+                            <div class="np-nav-section">
+                                <h6 class="np-nav-title">Read</h6>
+                                <ul class="np-nav-list">
+                                    <li><a href="#">Blogs</a></li>
+                                    <li><a href="#">Use Cases</a></li>
+                                    <li><a href="#">eBooks &amp; Whitepapers</a></li>
+                                    <li><a href="#">Success Stories</a></li>
+                                </ul>
+                            </div>
+                            <div class="np-nav-section">
+                                <h6 class="np-nav-title">Learn</h6>
+                                <ul class="np-nav-list">
+                                    <li><a href="#">Certification</a></li>
+                                    <li><a href="#">Support Portal</a></li>
+                                    <li><a href="#">Knowledge Base</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <aside class="np-releases">
+                            <h6 class="np-nav-title">Recent Blogs</h6>
+                            <a class="np-release" href="#"><span class="np-release-tag">Featured</span><span class="np-release-title">Agentic RAG: Beyond Simple Retrieval</span><span class="np-release-sub">How self-correcting AI workflows are changing data queries.</span></a>
+                            <a class="np-release" href="#"><span class="np-release-title">A Practical Guide to Self-Service BI</span><span class="np-release-sub">Patterns that scale beyond the analytics team.</span></a>
+                            <a class="np-view-all" href="#">View All Blogs <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+                        </aside>
+                    </div>
+                </li>
+
+                <li class="nav-item has-dropdown nav-item--company" data-mega-id="companyMega">
+                    <a href="#" class="nav-trigger">Company
+                        <svg class="caret" viewBox="0 0 8 4" fill="none"><path d="M0 0l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                    <div class="nav-mega nav-mega--platform nav-mega--company" role="menu" id="companyMega">
+                        <div class="np-nav">
+                            <ul class="np-nav-list">
+                                <li><a href="#" data-company-item="all" class="np-cap-link"><span>Company</span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></li>
+                            </ul>
+                        </div>
+                        <div class="np-detail" id="companyDetail">
+                            <h6 class="np-nav-title np-grid-title" id="coAllTitle" hidden>Company</h6>
+                            <div class="np-grid" id="coAllGrid" hidden>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 7 7 .8-5.3 4.8 1.7 7.4-7.4-4-7.4 4 1.7-7.4L0 9.8 7 9z"/></svg><span>Lumenore Difference</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 11l-3 3-1.5-1.5"/></svg><span>Partners</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg><span>Careers</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6z"/></svg><span>Contact Us</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18l6-6 4 4 8-8"/><path d="M17 8h4v4"/></svg><span>Contact Sales</span></a>
+                            </div>
+                        </div>
+                        <aside class="np-releases">
+                            <h6 class="np-nav-title">Recent Blogs</h6>
+                            <a class="np-release" href="#"><span class="np-release-tag">Story</span><span class="np-release-title">Inside Lumenore: How We Build for Enterprise</span><span class="np-release-sub">The product principles behind self-correcting AI workflows.</span></a>
+                            <a class="np-release" href="#"><span class="np-release-title">Partner Program: 2026 Roadmap</span><span class="np-release-sub">New tiers, joint go-to-market, and certification.</span></a>
+                            <a class="np-view-all" href="#">View All Blogs <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+                        </aside>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <div class="nav-actions">
+            <a href="#" class="btn-demo">Request a Demo</a>
+            <a href="#" class="btn-start btn-primary btn-primary--sm">Start for Free</a>
+        </div>
+    </header>
+</div>
+
+<!-- ===== PAGE CONTENT ===== -->
+<main>
+
+    <!-- HERO -->
+    <section class="pp-hero">
+        <div class="hero-grid" aria-hidden="true"></div>
+        <div class="hero-orbs" aria-hidden="true">
+            <div class="hero-orb orb-violet"></div>
+            <div class="hero-orb orb-cyan"></div>
+            <div class="hero-orb orb-blue"></div>
+        </div>
+        <div class="hero-particles" aria-hidden="true">
+            <span class="particle"></span><span class="particle"></span>
+            <span class="particle"></span><span class="particle"></span>
+            <span class="particle"></span><span class="particle"></span>
+            <span class="particle"></span><span class="particle"></span>
+        </div>
+        <div class="pp-hero__glow" aria-hidden="true"></div>
+        <div class="container">
+            <div class="pp-hero__inner">
+                <p class="pp-hero__eyebrow">
+                    <span class="het-dot"></span>Legal &amp; Trust
+                </p>
+                <h1 class="pp-hero__title">Terms of Use</h1>
+                <p class="pp-hero__meta">Last modified: February 7, 2024</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTENT -->
+    <section class="pp-content">
+        <div class="container">
+            <div class="pp-layout">
+
+                <!-- TOC -->
+                <aside class="pp-toc" aria-label="Table of contents">
+                    <p class="pp-toc__label">Sections</p>
+                    <ul class="pp-toc__list">
+                        <li><a href="#use-of-site">1. Use of Site and/or Service</a></li>
+                        <li><a href="#registration">2. Registration Requirements</a></li>
+                        <li><a href="#account">3. Account Responsibility</a></li>
+                        <li><a href="#privacy-release">4. Privacy &amp; Release of Information</a></li>
+                        <li><a href="#user-conduct">5. User Conduct</a></li>
+                        <div class="pp-toc__divider"></div>
+                        <li><a href="#content">6. Content</a></li>
+                        <li><a href="#site-security">7. Site Security and Conduct</a></li>
+                        <li><a href="#network-security">8. System and Network Security</a></li>
+                        <li><a href="#ip-rights">9. Intellectual Property Rights</a></li>
+                        <li><a href="#infringement">10. Claims of Infringement</a></li>
+                        <div class="pp-toc__divider"></div>
+                        <li><a href="#representations">11. Representations</a></li>
+                        <li><a href="#disclaimer">12. Disclaimer of Warranty</a></li>
+                        <li><a href="#links">13. Links to Other Websites</a></li>
+                        <li><a href="#indemnity">14. Indemnity</a></li>
+                        <li><a href="#governing-law">15. Governing Law</a></li>
+                        <li><a href="#liability">16. Limitation of Liability</a></li>
+                        <li><a href="#violations">17. Consequences of Violation</a></li>
+                    </ul>
+                </aside>
+
+                <!-- Article -->
+                <article class="pp-article">
+
+                    <div class="pp-callout">
+                        <p>This Website (<a href="https://lumenore.com" target="_blank" rel="noopener">lumenore.com</a>) and the services described below are maintained and operated by <strong>Netlink Software Group America, Inc.</strong> — 999 Tech Row, Madison Heights, MI 48071. By using this Site or our Services, you agree to these Terms of Use. If you breach any provision, your authorization to use the Site automatically terminates.</p>
+                    </div>
+
+                    <div class="pp-section" id="use-of-site">
+                        <span class="pp-section__num">Section 01</span>
+                        <h2 class="pp-section__title">Use of Site and/or Service</h2>
+                        <p>This Website (<a href="https://lumenore.com" target="_blank" rel="noopener">https://lumenore.com</a>) and Portal ("Site") and the services provided ("Service") are maintained and operated by <strong>Netlink Software Group America, Inc.</strong> ("us," "we," "our," or "Company") with its registered office at Netlink Software Group America, Inc. – 999 Tech Row, Madison Heights, MI 48071. Lumenore is a suite of advanced products from Netlink Software Group America, Inc. focused on performance management. We offer this Site for you to view information and documents from us (collectively, "Content") using our interactive messaging capabilities ("Forums"), and to purchase our products and Services.</p>
+                        <p>Please note that you must be of the age of consent in your jurisdiction to use our Services and interact on our Site. If you breach any of the provisions in these Terms of Service ("Terms"), your authorization to use this Site or these Services automatically terminates.</p>
+                        <p>We reserve the right to change these Terms from time to time. If such changes are considered material, we will inform you by email, and the changes will take effect one month after sending the email. Your continued use of the Site or our Services after such changes will act as your agreement to accept these modified Terms. You are responsible to return to this Site from time to time to review the most current Terms.</p>
+                    </div>
+
+                    <div class="pp-section" id="registration">
+                        <span class="pp-section__num">Section 02</span>
+                        <h2 class="pp-section__title">Registration Requirements</h2>
+                        <p>You may view Content on the Site without registration. However, in order to participate in Forums and use other advanced Services, you must register with <strong>Lumenore</strong> using a valid email address. In so doing, you agree that the information you supply will be accurate and that you will not supply the email address of, or register under the name of, another person.</p>
+                        <p>We reserve the right to reject any username we deem offensive or inappropriate. You may not register as a business or entity name.</p>
+                    </div>
+
+                    <div class="pp-section" id="account">
+                        <span class="pp-section__num">Section 03</span>
+                        <h2 class="pp-section__title">Account Responsibility</h2>
+                        <p>You are solely responsible for protecting your account from access by others. We encourage you to select a hard-to-guess password and to not re-use that password across other platforms.</p>
+                        <p>While you can maintain multiple accounts, we can and do track multiple accounts that originate from a single IP address as one account. This means that if you violate the Terms severely enough to warrant being banned from the Site and you have multiple accounts, then all accounts from the same computer may also be banned. For this reason, we recommend that you neither share your account information with others, nor share the computers you use to access the Site with others.</p>
+                    </div>
+
+                    <div class="pp-section" id="privacy-release">
+                        <span class="pp-section__num">Section 04</span>
+                        <h2 class="pp-section__title">Privacy and Release of Information</h2>
+                        <p>It is our policy to not release your personal data to any third party except when you instruct us to do so, or when it is legally required. When law enforcement makes a lawful demand for personal data from us, we strive to limit the disclosure. We will release only the specific data mandated by the relevant legal demand.</p>
+                        <p>If compelled to disclose your personal data, we will promptly notify you and provide a copy of the demand unless we are legally prohibited from doing so.</p>
+                    </div>
+
+                    <div class="pp-section" id="user-conduct">
+                        <span class="pp-section__num">Section 05</span>
+                        <h2 class="pp-section__title">User Conduct</h2>
+                        <p>You agree not to use this Site for any of the following activities:</p>
+
+                        <h3>Offensive Posting</h3>
+                        <p>Posts of a patently offensive nature are not allowed. This includes, but is not limited to:</p>
+                        <ul>
+                            <li>Using vulgar, profane, or sexually explicit language</li>
+                            <li>Using race, religion, sexual orientation, culture, ethnicity, handicap, nationality, or gender as a means of insult</li>
+                            <li>Using threatening, harassing, defamatory, hate-speech, or libelous language</li>
+                            <li>Posting or requesting links to or material from pornographic, obscene, or hate-speech websites</li>
+                            <li>Posting links to websites with potentially offensive content without a clear warning</li>
+                        </ul>
+
+                        <h3>Posting Content from Other Websites</h3>
+                        <p>Any content you share or communicate via our Site must be your original work. If it is owned by someone else, you must have authorization from the owner. If you share or communicate content from another source, please include a link back to the original content. Please refrain from sharing or communicating private messages without a user's permission.</p>
+
+                        <h3>Flaming (Insulting Other Users)</h3>
+                        <p>Communications clearly insulting, calling out, provoking or harassing other users, individually or as a group, directly or indirectly, are not allowed. This includes name-calling, direct insults, offensive orders, insinuations, or insults towards family.</p>
+
+                        <h3>Trolling (Inciting Flames)</h3>
+                        <p>Communications intended solely to annoy and/or offend other users by going against the clear nature of the Forum are not allowed. This includes provoking other users to respond with flames, constant bickering/arguing, making misleading topic titles, asking obviously useless questions, or posting false information as fact.</p>
+
+                        <h3>Illegal Activities</h3>
+                        <p>Communications that violate or incite others to violate the law are not allowed. This includes, but is not limited to, providing illegal copies of copyrighted software, music, movies, videos, or other media, or methods of circumventing copyright protection.</p>
+
+                        <h3>Advertising</h3>
+                        <p>Communications that clearly advertise a service or product are not allowed. Users may include a website address in a signature, request comments on their personal site in a social setting, or provide interesting or relevant links to another site.</p>
+
+                        <h3>Impersonation</h3>
+                        <p>Users may be immediately banned (along with any associated accounts) for impersonating other users by creating and/or using an account with a name clearly intended to impersonate, mock, or antagonize another user, or otherwise falsely claiming to be another user.</p>
+
+                        <h3>Harassment / Stalking / Privacy</h3>
+                        <p>Continual harassing behavior directed towards a certain individual or group with the intent of creating an intimidating, offensive, or hostile environment, with or without use of explicit or implicit threats, is strictly prohibited.</p>
+
+                        <h3>Unauthorized Access</h3>
+                        <p>Accessing or attempting to access any user account not belonging to the rightful owner without permission is prohibited.</p>
+
+                        <h3>Bugs and Exploits</h3>
+                        <p>Using exploits or tricks in the Site code to gain privileges, access, or abilities not clearly intended by the board design is prohibited.</p>
+
+                        <h3>Other</h3>
+                        <p>Any other activity that is clearly detrimental to the flow of conversation and normal activities of our Site's users may be grounds for deleting the user's account.</p>
+                    </div>
+
+                    <div class="pp-section" id="content">
+                        <span class="pp-section__num">Section 06</span>
+                        <h2 class="pp-section__title">Content</h2>
+
+                        <h3>Ownership</h3>
+                        <p>Our sites include a combination of Content that we create, that our partners create, and that our users create. All materials we publish on our Site, including written materials, photographs, graphics, images, illustrations, marks, logos, sound or video clips, and Flash animation, are protected by our copyrights and trademarks or those of our partners. You may not modify, publish, transmit, participate in the transfer or sale of, reproduce, create derivative works of, distribute, publicly perform, publicly display, or in any way exploit any of the Content on our Site in whole or in part.</p>
+                        <p>If you would like to request permission to use any of the Content on our Site, please send an email to <a href="mailto:support@lumenore.com">support@lumenore.com</a>.</p>
+                        <p>By sharing or communicating on this Site, you automatically grant us the right to use, copy, modify, adapt or publish the content that you post, including for purposes of advertising and publicity, on the Site and elsewhere. You are solely responsible for all materials, whether publicly posted or privately transmitted, that you upload, post, email, transmit, or otherwise make available on our Site ("Your Content"). You certify that you own all intellectual property rights in Your Content.</p>
+                        <p>You hereby grant us, our affiliates, and our partners a worldwide, irrevocable, royalty-free, nonexclusive, sublicensable license to use, reproduce, create derivative works of, distribute, publicly perform, publicly display, transfer, transmit, distribute, and publish Your Content for the purposes of (i) displaying Your Content on our Sites, (ii) distributing Your Content either electronically or via other media, and/or (iii) storing Your Content in a remote database accessible by end users.</p>
+
+                        <h3>Accuracy</h3>
+                        <p>Our Site contains Content that we create as well as Content provided by third parties. We do not guarantee the accuracy, the integrity, or the quality of the Content on our Site, and you may not rely on any of this Content. Without limitation, we are not responsible for postings by users.</p>
+                        <p>You agree that neither we nor our sponsors or affiliates are responsible for the accuracy of Your Content. We do not control Your Content or the content posted by other users, and we do not guarantee the truthfulness or quality of any such Content.</p>
+
+                        <h3>Offensive Content</h3>
+                        <p>You may be exposed to Content that you find offensive, indecent, or objectionable or that is inaccurate, and you bear all risks associated with using that Content. We have the right, but not the obligation, to remove any Content that may, in our sole discretion, violate these Terms or that is otherwise objectionable. We are not responsible for screening any user content before it is posted.</p>
+                    </div>
+
+                    <div class="pp-section" id="site-security">
+                        <span class="pp-section__num">Section 07</span>
+                        <h2 class="pp-section__title">Site Security and Conduct</h2>
+                        <p>Any Content we upload to this Site will be accessible to all users of the Site. We have incorporated all reasonable and commercially available measures to protect the Site from unauthorized access. Any unauthorized commercial use of the Service is expressly prohibited.</p>
+                        <p>You agree to comply with all applicable local, state, national, and international laws and regulations and are solely responsible for all acts or omissions that occur under your user ID or password.</p>
+                    </div>
+
+                    <div class="pp-section" id="network-security">
+                        <span class="pp-section__num">Section 08</span>
+                        <h2 class="pp-section__title">System and Network Security</h2>
+                        <p>Violations of system or network security are prohibited, and may result in criminal and civil liability. We will investigate incidents involving such violations and may involve and will cooperate with law enforcement if a criminal violation is suspected.</p>
+                        <p>You must take reasonable security precautions in light of your use of the Service. You are solely responsible for any breaches of security affecting the servers under your control.</p>
+                    </div>
+
+                    <div class="pp-section" id="ip-rights">
+                        <span class="pp-section__num">Section 09</span>
+                        <h2 class="pp-section__title">Intellectual Property Rights</h2>
+                        <p>The Service and this Site are protected to the maximum extent permitted by copyright and trademark laws and international treaties. The Content of this Site, and related pages, is copyrighted property of <strong>Netlink Software Group America, Inc.</strong>, or other suppliers credited as the provider.</p>
+                        <p>You may not decompile or disassemble, reverse engineer or otherwise attempt to discover any source code contained in the Service. Without limiting the foregoing, you agree not to reproduce, duplicate, copy, sell, resell, or exploit for any commercial purposes, any aspect of the Site or the Service.</p>
+                    </div>
+
+                    <div class="pp-section" id="infringement">
+                        <span class="pp-section__num">Section 10</span>
+                        <h2 class="pp-section__title">Notification of Claims of Infringement</h2>
+                        <p>If you believe that your work has been copied in a way that constitutes copyright infringement, or your intellectual property rights have been otherwise violated, please notify us. You will also have to register the domain name and DMCA registered agent with the US Copyright Office in order to benefit from the safe harbor.</p>
+                        <div class="pp-contact-card">
+                            <p><strong>Lumenore, Inc.</strong></p>
+                            <p>Address: 999 Tech Row, Madison Heights, MI 48071, USA</p>
+                            <p>Email: <a href="mailto:dpo@lumenore.com">dpo@lumenore.com</a></p>
+                        </div>
+                        <p>Please provide the following information in your notification:</p>
+                        <ul>
+                            <li>Identify the material on the Site that you claim is infringing in sufficient detail so that we can find it.</li>
+                            <li>A statement that you have a good faith belief that the disputed use is not authorized by the copyright owner, its agent, or the law.</li>
+                            <li>A statement, under penalty of perjury, that (a) the information you have provided is accurate, and (b) that you are the owner of the copyright interest involved or that you are authorized to act on behalf of that owner.</li>
+                            <li>Your address, telephone number, and email address.</li>
+                            <li>Your physical or electronic signature.</li>
+                        </ul>
+                        <p>We will remove the infringing content according to the procedures outlined in the Digital Millennium Copyright Act of 1998. Pursuant to 17 U.S.C. 512(f), any misrepresentation of fact in a written notification will automatically subject the complaining party to liability for damages, costs, and attorneys' fees.</p>
+                    </div>
+
+                    <div class="pp-section" id="representations">
+                        <span class="pp-section__num">Section 11</span>
+                        <h2 class="pp-section__title">Representations</h2>
+                        <p>You represent and warrant that you will not hold us responsible for the quality, safety, or accuracy of the Content on the Site. We provide no warranty or guarantee regarding the accuracy, timeliness, performance, completeness or suitability of the information and materials found or offered on this website for any purposes.</p>
+                        <p>You acknowledge that such information and materials may contain inaccuracies or errors and we expressly exclude liability for any such inaccuracies or errors to the fullest extent permitted by law. If you are aware of any relevant errors, inaccuracies, or discrepancies, including pricing discrepancies, please alert us at <a href="mailto:support@lumenore.com">support@lumenore.com</a>.</p>
+                    </div>
+
+                    <div class="pp-section" id="disclaimer">
+                        <span class="pp-section__num">Section 12</span>
+                        <h2 class="pp-section__title">Disclaimer of Warranty</h2>
+                        <div class="pp-warning">
+                            <p>ALL EXPRESS AND IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT OF PROPRIETARY RIGHTS ARE EXPRESSLY DISCLAIMED TO THE FULLEST EXTENT PERMITTED BY LAW. TO THE FULLEST EXTENT PERMITTED BY LAW, COMPANY DISCLAIMS ANY WARRANTIES: (i) FOR THE SECURITY, RELIABILITY, TIMELINESS, ACCURACY, AND PERFORMANCE OF THE SITE AND THE SERVICE; (ii) FOR OTHER SERVICES OR GOODS RECEIVED THROUGH OR ADVERTISED ON THE COMPANY SITE OR THE SITES OR SERVICE, OR ACCESSED THROUGH ANY LINKS ON THE SITE; OR (iii) FOR VIRUSES OR OTHER HARMFUL COMPONENTS IN CONNECTION WITH THE SITE OR THE SERVICE.</p>
+                        </div>
+                        <p>You use any information or materials on this website entirely at your own risk. It is your responsibility to ensure that any products, services, or information available through this website meet your specific requirements.</p>
+                    </div>
+
+                    <div class="pp-section" id="links">
+                        <span class="pp-section__num">Section 13</span>
+                        <h2 class="pp-section__title">Links to Other Websites</h2>
+                        <p>The Site may contain links and pointers to other websites that are maintained by third parties. Such links do not mean that we endorse these third-party sites or any materials they contain. We do not control, and thus are not responsible for, the availability, accuracy, privacy policy, or currency of such third-party sites or any information, content, products or services accessible from such third-party sites.</p>
+                    </div>
+
+                    <div class="pp-section" id="indemnity">
+                        <span class="pp-section__num">Section 14</span>
+                        <h2 class="pp-section__title">Indemnity</h2>
+                        <p>You agree to indemnify and hold us, our officers, subsidiaries, affiliates, successors, assigns, directors, officers, agents, service providers, suppliers and employees, harmless from any claim or demand, including reasonable attorney fees and court costs, made by any third party due to or arising out of Content you submit, post or make available through the Service, your use of the Service, your violation of the Terms, your breach of any of the representations and warranties in these Terms, or your violation of any rights of another person or entity.</p>
+                    </div>
+
+                    <div class="pp-section" id="governing-law">
+                        <span class="pp-section__num">Section 15</span>
+                        <h2 class="pp-section__title">Governing Law</h2>
+                        <p>You further consent that this Agreement is governed by and shall be construed in accordance with the laws of the State of Michigan, U.S.A. without reference to its conflicts of law provisions. The United Nations Convention on Contracts for the International Sale of Goods shall not apply to this Agreement. You agree to submit to the personal and exclusive jurisdiction of the state and federal courts located in Michigan for any disputes arising out of the use of this Site.</p>
+                        <p>This Agreement constitutes the entire agreement between the parties with respect to the subject matter that it describes, and supersedes all prior proposals, negotiations, conversations, discussions and agreements between the parties concerning the information it covers.</p>
+                        <p>If any provision or part of a provision of this Agreement is found unenforceable by a court of competent jurisdiction, that provision shall be enforced to the maximum extent permissible so as to affect the intent of this Agreement. Any remaining provisions of the Agreement will continue to be enforced with full effect.</p>
+                    </div>
+
+                    <div class="pp-section" id="liability">
+                        <span class="pp-section__num">Section 16</span>
+                        <h2 class="pp-section__title">Limitation of Liability</h2>
+                        <div class="pp-warning">
+                            <p>UNDER NO CIRCUMSTANCES ARE WE LIABLE FOR DIRECT, INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL OR EXEMPLARY DAMAGES (EVEN IF WE HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES), RESULTING FROM ANY ASPECT OF YOUR USE OF THE SITE OR THE SERVICE, WHETHER THE DAMAGES ARISE FROM USE OR MISUSE OF THE SITE OR THE SERVICE, FROM INABILITY TO USE THE SITE OR THE SERVICE, OR THE INTERRUPTION, SUSPENSION, MODIFICATION, ALTERATION, OR TERMINATION OF THE SITE OR THE SERVICE. THESE LIMITATIONS SHALL APPLY TO THE FULLEST EXTENT PERMITTED BY LAW.</p>
+                        </div>
+                        <p>In some jurisdictions, limitations of liability are not permitted and some of the foregoing limitations may not apply to you.</p>
+                    </div>
+
+                    <div class="pp-section" id="violations">
+                        <span class="pp-section__num">Section 17</span>
+                        <h2 class="pp-section__title">Consequences of Violation of Terms</h2>
+                        <p>We may, without notice to you, suspend your Service or remove Your Content transmitted via the Site if we discover facts that lead us to reasonably believe the Site or Service is being used in violation of these Terms. You agree to cooperate with our reasonable investigation of any suspected violation of these Terms.</p>
+                        <p>We may attempt to contact you prior to your suspension; however, prior notification is not assured.</p>
+                    </div>
+
+                </article>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-top">
+            <div class="brand-col footer-col reveal-left">
+                <div class="brand-logo">
+                    <img src="./assets/images/homeV2o/Lumenore logo.svg" alt="Lumenore" class="brand-logo-img">
+                    <img src="./assets/images/homeV2o/GPTW.svg" alt="Great Place to Work — Certified" class="gptw-badge">
+                </div>
+                <div class="ask-ai-box">
+                    <p class="ask-ai-label">Ask AI for a summary about Lumenore</p>
+                    <div class="ask-ai-icons">
+                        <a href="#" aria-label="ChatGPT"><img src="./assets/images/AI/openai.svg" alt="ChatGPT" width="24" height="24"></a>
+                        <a href="#" aria-label="Perplexity"><img src="./assets/images/AI/perplexity-dark.svg" alt="Perplexity" width="24" height="24"></a>
+                        <a href="#" aria-label="Gemini"><img src="./assets/images/AI/google-gemini-dark.svg" alt="Gemini" width="24" height="24"></a>
+                        <a href="#" aria-label="Claude"><img src="./assets/images/AI/claude.svg" alt="Claude" width="24" height="24"></a>
+                        <a href="#" aria-label="Grok"><img src="./assets/images/AI/grok.svg" alt="Grok" width="24" height="24"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-cta reveal-right" style="--reveal-delay:.18s">
+                <span class="footer-cta-halo" aria-hidden="true"></span>
+                <div class="footer-cta-text">
+                    <span class="footer-cta-eyebrow">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l2 5 5 2-5 2-2 5-2-5-5-2 5-2z" fill="currentColor"/></svg>
+                        Talk to a human
+                    </span>
+                    <h3>Got more questions?</h3>
+                    <p>Our team is here to answer any questions or customize the perfect plan for you.</p>
+                </div>
+                <a href="contact.html" class="footer-cta-button btn-primary">
+                    Get in Touch
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                </a>
+            </div>
+        </div>
+
+        <div class="footer-nav reveal-block" style="--reveal-delay:.28s">
+            <div class="footer-col">
+                <h4>Platform</h4>
+                <ul>
+                    <li><a href="why-us.html">Why Us</a></li>
+                    <li><a href="trust-and-security.html">Trust and Security</a></li>
+                    <li><a href="partners.html">Partners</a></li>
+                    <li><a href="professional-services.html">Professional Services</a></li>
+                    <li><a href="platform.html">Platform</a></li>
+                    <li><a href="release-notes.html">Latest Releases</a></li>
+                    <li><a href="watch-demo.html">Watch Demo</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Capabilities</h4>
+                <ul>
+                    <li><a href="data-connectors.html">Data Connectors</a></li>
+                    <li><a href="data-integration.html">Data Integration</a></li>
+                    <li><a href="data-lakehouse.html">Data Lakehouse</a></li>
+                    <li><a href="data-visualization.html">Data Visualization</a></li>
+                    <li><a href="data-universe.html">Data Universe</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="advanced-analytics.html">Advanced Analytics</a></li>
+                    <li><a href="embedded-analytics.html">Embedded Analytics</a></li>
+                    <li><a href="conversational-intelligence.html">Conversational Intelligence</a></li>
+                    <li><a href="decision-intelligence.html">Decision Intelligence</a></li>
+                    <li><a href="self-service-analytics.html">Self-Service Analytics</a></li>
+                    <li><a href="predictive-analytics.html">Predictive Analytics</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Product</h4>
+                <ul>
+                    <li><a href="lumenore-insights.html">Lumenore Insights</a></li>
+                    <li><a href="../lumenore-ask-me.html">Lumenore Ask Me</a></li>
+                    <li><a href="lumenore-data-magnet.html">Lumenore Data Magnet</a></li>
+                </ul>
+                <h4 class="col-spaced">Pricing</h4>
+                <ul><li><a href="pricing-insights.html">Lumenore Insights Pricing</a></li></ul>
+                <h4 class="col-spaced">Compare</h4>
+                <ul>
+                    <li><a href="tableau-alternative.html">Tableau Alternative</a></li>
+                    <li><a href="thoughtspot-alternative.html">ThoughtSpot Alternative</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Solutions</h4>
+                <ul>
+                    <li><a href="solutions-by-industry.html">By Industry</a></li>
+                    <li><a href="solutions-by-department.html">By Department</a></li>
+                </ul>
+                <h4 class="col-spaced">Company</h4>
+                <ul>
+                    <li><a href="about-us.html">About Us</a></li>
+                    <li><a href="career.html">Career</a></li>
+                    <li><a href="newsroom.html">Newsroom</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="contact-sales.html">Contact Sales</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="request-a-demo.html">Request Demo</a></li>
+                    <li><a href="community-support.html">Community Support</a></li>
+                    <li><a href="news-and-media.html">News &amp; Media</a></li>
+                    <li><a href="ebooks-whitepapers.html">Ebooks &amp; Whitepapers</a></li>
+                    <li><a href="success-stories.html">Success Stories</a></li>
+                    <li><a href="use-cases.html">Use Cases</a></li>
+                    <li><a href="blog.html">Blogs</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="knowledge-base.html">Knowledge Base</a></li>
+                    <li><a href="certifications.html">Certifications</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p>© 2025 Lumenore Inc. All rights reserved.</p>
+            <div class="copyright-social">
+                <a href="#" aria-label="X / Twitter"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+                <a href="#" aria-label="LinkedIn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452z"/></svg></a>
+                <a href="#" aria-label="YouTube"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+                <a href="#" aria-label="Instagram"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+            </div>
+            <div class="legal-links">
+                <a href="privacy.html">Privacy</a>
+                <a href="terms.html" aria-current="page">Terms of Use</a>
+                <a href="cookies.html">Cookies Settings</a>
+                <a href="license.html">License Agreement</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+/* Platform mega-menu */
+(function () {
+    var mega = document.getElementById('platformMega'), detail = document.getElementById('platformDetail');
+    var productPane = document.getElementById('platformProductPane'), productTitle = document.getElementById('npProductTitle');
+    var productTag = document.getElementById('npProductTagline'), productDesc = document.getElementById('npProductDesc');
+    var ctaStart = document.getElementById('npProductStart'), ctaLearn = document.getElementById('npProductLearn');
+    var ctaPricing = document.getElementById('npProductPricing'), gridTitle = document.getElementById('platformGridTitle');
+    var grid = document.getElementById('platformGrid');
+    var navList = document.querySelectorAll('#platformMega [data-platform-item]');
+    var cards = document.querySelectorAll('#platformMega [data-platform-card]');
+    if (!mega || !detail) return;
+    var products = {
+        insights:   { tagline: 'Self-Service Analytics',   title: 'Lumenore Insights',    desc: 'Democratize data with self-service, AI-powered dashboards that empower every employee to make data-driven decisions.', start: '#', learn: '#', pricing: '#' },
+        askme:      { tagline: 'Conversational Analytics', title: 'Lumenore Ask Me',       desc: 'Query enterprise data in natural language. Get instant, governed insights enhanced by Agentic RAG.',                  start: '../lumenore-ask-me.html', learn: '../lumenore-ask-me.html', pricing: '#' },
+        datamagnet: { tagline: 'Enterprise ETL',            title: 'Lumenore Data Magnet', desc: 'Connect 50+ enterprise sources with low-code ETL. Accelerate high-volume transfers to your Lakehouse.',              start: '#', learn: '#', pricing: '#' }
+    };
+    function hideAll() { productPane.hidden = true; if (gridTitle) gridTitle.hidden = true; if (grid) grid.hidden = true; }
+    function showProduct(key) { var d = products[key]; if (!d) return; productTag.textContent = d.tagline; productTitle.textContent = d.title; productDesc.textContent = d.desc; ctaStart.setAttribute('href', d.start); if (ctaLearn) ctaLearn.setAttribute('href', d.learn); ctaPricing.setAttribute('href', d.pricing); productPane.hidden = false; if (gridTitle) gridTitle.hidden = true; if (grid) grid.hidden = true; }
+    function showGrid() { productPane.hidden = true; if (gridTitle) gridTitle.hidden = false; if (grid) grid.hidden = false; }
+    function highlight(key) { navList.forEach(function(n) { n.classList.toggle('is-active', n.dataset.platformItem === key); }); cards.forEach(function(c) { c.classList.toggle('is-active', c.dataset.platformCard === key); }); }
+    function clearHighlight() { navList.forEach(function(n) { n.classList.remove('is-active'); }); cards.forEach(function(c) { c.classList.remove('is-active'); }); }
+    navList.forEach(function(n) { var t = function() { var key = n.dataset.platformItem; highlight(key); if (n.dataset.platformType === 'product') showProduct(key); else showGrid(); }; n.addEventListener('mouseenter', t); n.addEventListener('focus', t); });
+    cards.forEach(function(c) { var t = function() { showGrid(); highlight(c.dataset.platformCard); }; c.addEventListener('mouseenter', t); c.addEventListener('focus', t); });
+    var navItem = mega.closest('.nav-item');
+    if (navItem) { navItem.addEventListener('mouseenter', function() { highlight('insights'); showProduct('insights'); }); navItem.addEventListener('focusin', function() { highlight('insights'); showProduct('insights'); }); navItem.addEventListener('mouseleave', function() { clearHighlight(); hideAll(); }); }
+})();
+
+/* Solutions mega-menu */
+(function () {
+    var mega = document.getElementById('solutionMega'); if (!mega) return;
+    var navList = mega.querySelectorAll('[data-solution-item]');
+    var industryTtl = document.getElementById('solIndustryTitle'), industryGrid = document.getElementById('solIndustryGrid');
+    var deptTtl = document.getElementById('solDepartmentTitle'), deptGrid = document.getElementById('solDepartmentGrid');
+    function hideAll() { industryTtl.hidden = true; industryGrid.hidden = true; deptTtl.hidden = true; deptGrid.hidden = true; }
+    function showIndustry() { industryTtl.hidden = false; industryGrid.hidden = false; deptTtl.hidden = true; deptGrid.hidden = true; }
+    function showDepartment() { industryTtl.hidden = true; industryGrid.hidden = true; deptTtl.hidden = false; deptGrid.hidden = false; }
+    function highlight(key) { navList.forEach(function(n) { n.classList.toggle('is-active', n.dataset.solutionItem === key); }); }
+    function clearHighlight() { navList.forEach(function(n) { n.classList.remove('is-active'); }); }
+    navList.forEach(function(n) { var t = function() { var key = n.dataset.solutionItem; highlight(key); if (key === 'department') showDepartment(); else showIndustry(); }; n.addEventListener('mouseenter', t); n.addEventListener('focus', t); });
+    var navItem = mega.closest('.nav-item');
+    if (navItem) { navItem.addEventListener('mouseenter', function() { highlight('industry'); showIndustry(); }); navItem.addEventListener('focusin', function() { highlight('industry'); showIndustry(); }); navItem.addEventListener('mouseleave', function() { clearHighlight(); hideAll(); }); }
+})();
+
+/* Company mega-menu */
+(function () {
+    var mega = document.getElementById('companyMega'); if (!mega) return;
+    var navList = mega.querySelectorAll('[data-company-item]');
+    var allTtl = document.getElementById('coAllTitle'), allGrid = document.getElementById('coAllGrid');
+    function hideAll() { if (allTtl) allTtl.hidden = true; if (allGrid) allGrid.hidden = true; }
+    function showAll() { if (allTtl) allTtl.hidden = false; if (allGrid) allGrid.hidden = false; }
+    function highlight() { navList.forEach(function(n) { n.classList.add('is-active'); }); }
+    function clearHighlight() { navList.forEach(function(n) { n.classList.remove('is-active'); }); }
+    navList.forEach(function(n) { n.addEventListener('mouseenter', function() { highlight(); showAll(); }); n.addEventListener('focus', function() { highlight(); showAll(); }); });
+    var navItem = mega.closest('.nav-item');
+    if (navItem) { navItem.addEventListener('mouseenter', function() { highlight(); showAll(); }); navItem.addEventListener('focusin', function() { highlight(); showAll(); }); navItem.addEventListener('mouseleave', function() { clearHighlight(); hideAll(); }); }
+})();
+
+/* Hover-gap bridge */
+(function () {
+    document.querySelectorAll('.nav-item.has-dropdown').forEach(function (item) {
+        var mega = item.querySelector('.nav-mega'); if (!mega) return;
+        var closeTimer = null;
+        function open() { clearTimeout(closeTimer); item.classList.add('is-open'); }
+        function scheduleClose() { closeTimer = setTimeout(function () { item.classList.remove('is-open'); }, 200); }
+        item.addEventListener('mouseenter', open); item.addEventListener('mouseleave', scheduleClose);
+        mega.addEventListener('mouseenter', open); mega.addEventListener('mouseleave', scheduleClose);
+    });
+})();
+
+/* Reveal animations */
+(function () {
+    var els = document.querySelectorAll('.reveal-block, .reveal-left, .reveal-right');
+    if (!els.length) return;
+    if (!('IntersectionObserver' in window)) { els.forEach(function(el) { el.classList.add('is-visible'); }); return; }
+    var obs = new IntersectionObserver(function(entries) { entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('is-visible'); obs.unobserve(e.target); } }); }, { threshold: 0.12 });
+    els.forEach(function(el) { obs.observe(el); });
+})();
+
+/* TOC active-link highlight on scroll */
+(function () {
+    var links = document.querySelectorAll('.pp-toc__list a');
+    if (!links.length) return;
+    var sections = Array.from(links).map(function(a) { return document.querySelector(a.getAttribute('href')); }).filter(Boolean);
+    var obs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+            if (e.isIntersecting) {
+                links.forEach(function(a) { a.classList.toggle('is-active', a.getAttribute('href') === '#' + e.target.id); });
+            }
+        });
+    }, { rootMargin: '-10% 0px -80% 0px' });
+    sections.forEach(function(s) { obs.observe(s); });
+})();
+
+/* Custom cursor */
+(function () {
+    var cursor = document.getElementById('customCursor'); if (!cursor) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { cursor.remove(); return; }
+    if (window.matchMedia('(hover: none)').matches) { cursor.remove(); return; }
+    var dot = cursor.querySelector('.cursor__dot'), ring = cursor.querySelector('.cursor__ring');
+    var dotX = 0, dotY = 0, ringX = 0, ringY = 0, RING_EASE = 0.20, raf = null, firstMove = false;
+    var INTERACTIVE_SEL = 'a, button, label, select, summary, [role="button"], [role="tab"], [role="menuitem"], [role="link"], .btn-primary';
+    var TEXT_SEL = 'input:not([type="button"]):not([type="submit"]):not([type="reset"]):not([type="checkbox"]):not([type="radio"]), textarea, [contenteditable="true"]';
+    function frame() { ringX += (dotX - ringX) * RING_EASE; ringY += (dotY - ringY) * RING_EASE; cursor.style.transform = 'translate3d(' + dotX + 'px,' + dotY + 'px,0)'; ring.style.transform = 'translate3d(' + (ringX - dotX) + 'px,' + (ringY - dotY) + 'px,0)'; if (Math.abs(dotX - ringX) > 0.3 || Math.abs(dotY - ringY) > 0.3) { raf = requestAnimationFrame(frame); } else { ringX = dotX; ringY = dotY; ring.style.transform = 'translate3d(0,0,0)'; raf = null; } }
+    function onMove(e) { dotX = e.clientX; dotY = e.clientY; if (!firstMove) { firstMove = true; ringX = dotX; ringY = dotY; cursor.style.transform = 'translate3d(' + dotX + 'px,' + dotY + 'px,0)'; cursor.classList.add('is-visible'); } if (raf === null) raf = requestAnimationFrame(frame); }
+    function onOver(e) { if (e.target.closest && e.target.closest(TEXT_SEL)) { cursor.classList.add('is-hidden'); cursor.classList.remove('is-active'); return; } cursor.classList.remove('is-hidden'); if (e.target.closest && e.target.closest(INTERACTIVE_SEL)) cursor.classList.add('is-active'); }
+    function onOut(e) { if (!e.relatedTarget || !e.relatedTarget.closest || !e.relatedTarget.closest(INTERACTIVE_SEL)) cursor.classList.remove('is-active'); }
+    document.addEventListener('mousemove', onMove, { passive: true });
+    document.addEventListener('mouseover', onOver);
+    document.addEventListener('mouseout', onOut);
+    document.addEventListener('mousedown', function() { cursor.classList.add('is-pressed'); });
+    document.addEventListener('mouseup', function() { cursor.classList.remove('is-pressed'); });
+    document.addEventListener('mouseleave', function() { cursor.classList.remove('is-visible'); });
+    document.addEventListener('mouseenter', function() { if (firstMove) cursor.classList.add('is-visible'); });
+})();
+</script>
+</body>
+</html>
