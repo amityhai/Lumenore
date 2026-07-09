@@ -1,0 +1,1446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Partners — Lumenore</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Material+Symbols+Rounded&display=swap" rel="stylesheet">
+    <link href="./style.css" rel="stylesheet">
+
+    <style>
+        /* ── Partners page ── */
+        body.inner-page { background: var(--Royal-Blue-Blue-900, #051A3C); }
+
+        /* ── HERO ── */
+        .pt-hero {
+            position: relative; overflow: hidden;
+            padding: 130px 0 120px; text-align: center;
+        }
+        .pt-hero .hero-grid {
+            -webkit-mask-image: radial-gradient(ellipse 130% 100% at 50% 0%, #000 0%, rgba(0,0,0,.5) 60%, transparent 90%);
+                    mask-image: radial-gradient(ellipse 130% 100% at 50% 0%, #000 0%, rgba(0,0,0,.5) 60%, transparent 90%);
+        }
+        .pt-hero .hero-orbs { overflow: visible; }
+        .pt-hero .orb-violet { left: -5%; top: 5%; bottom: auto; width: 480px; height: 480px; }
+        .pt-hero .orb-cyan   { left: 50%; top: 10%; bottom: auto; transform: translateX(-50%); width: 620px; height: 480px; }
+        .pt-hero .orb-blue   { right: -5%; top: 5%; bottom: auto; width: 480px; height: 480px; }
+        .pt-hero__glow {
+            position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%);
+            width: 900px; height: 420px;
+            background: radial-gradient(50% 50% at 50% 50%, rgba(28,169,201,.22) 0%, rgba(64,117,201,.10) 55%, transparent 100%);
+            filter: blur(60px); pointer-events: none; z-index: 2;
+        }
+        .pt-hero__inner {
+            position: relative; z-index: 4;
+            max-width: 780px; margin: 0 auto;
+            display: flex; flex-direction: column; align-items: center; gap: 24px;
+        }
+        .pt-hero__eyebrow {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 6px 16px; border-radius: 999px;
+            border: 1px solid rgba(255,255,255,.14);
+            background: rgba(255,255,255,.04);
+            font-family: 'Inter', sans-serif;
+            font-size: 11px; font-weight: 600;
+            letter-spacing: .12em; text-transform: uppercase;
+            color: rgba(252,252,252,.55);
+        }
+        .pt-hero__eyebrow .het-dot {
+            width: 6px; height: 6px; border-radius: 50%;
+            background: var(--Turquoise-SkyBlue-500, #1ca9c9);
+            box-shadow: 0 0 8px rgba(28,169,201,.8); flex-shrink: 0;
+        }
+        .pt-hero__title {
+            font-family: 'Fraunces', serif; font-weight: 300;
+            font-size: clamp(44px, 6vw, 76px); line-height: 1.08; letter-spacing: -.025em;
+            color: var(--Base-White, #fcfcfc); margin: 0;
+        }
+        .pt-hero__title em { font-style: normal; background: var(--AI-Agents-Text, linear-gradient(83.02deg, #4AE7FF 51.42%, #4075C9 63.25%, #E879F9 76.03%)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .pt-hero__desc {
+            font-family: 'Inter', sans-serif; font-size: 17px; line-height: 28px;
+            color: rgba(252,252,252,.60); max-width: 640px; margin: 0;
+        }
+        .pt-hero__ctas {
+            display: flex; align-items: center; gap: 16px; flex-wrap: wrap; justify-content: center;
+        }
+        .pt-hero__ctas .btn-ghost {
+            padding: 12px 28px;
+            border: 1px solid rgba(255,255,255,.20); border-radius: 6px;
+            font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 600;
+            color: var(--Base-White, #fcfcfc);
+            text-decoration: none;
+            transition: border-color .2s, background .2s;
+        }
+        .pt-hero__ctas .btn-ghost:hover { border-color: rgba(255,255,255,.4); background: rgba(255,255,255,.06); }
+
+        /* ── PARTNER LOGOS STRIP ── */
+        .pt-logos {
+            background: var(--Base-White, #fcfcfc);
+            padding: 52px 0 60px;
+            position: relative; overflow: hidden;
+        }
+        .pt-logos::before, .pt-logos::after {
+            content: ''; position: absolute; top: 0; bottom: 0; width: 120px; z-index: 2; pointer-events: none;
+        }
+        .pt-logos::before { left: 0; background: linear-gradient(to right, #fcfcfc, transparent); }
+        .pt-logos::after  { right: 0; background: linear-gradient(to left,  #fcfcfc, transparent); }
+        .pt-logos__label {
+            text-align: center;
+            font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 700;
+            letter-spacing: .16em; text-transform: uppercase;
+            color: var(--blueGray-400, #94A3B8);
+            margin-bottom: 32px;
+        }
+        .pt-logos__track {
+            display: flex; align-items: center; gap: 16px;
+            flex-wrap: wrap; justify-content: center;
+        }
+        .pt-logo-badge {
+            display: flex; align-items: center; justify-content: center;
+            padding: 12px 28px;
+            border: 1px solid var(--blueGray-200, #E2E8F0);
+            border-radius: 999px;
+            background: var(--blueGray-50, #F8FAFC);
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 13.5px; font-weight: 600;
+            color: var(--blueGray-500, #64748B);
+            letter-spacing: .03em;
+            transition: border-color .22s, color .22s, background .22s, box-shadow .22s;
+        }
+        .pt-logo-badge:hover {
+            border-color: var(--Royal-Blue-Blue-300, #7aa3e5);
+            color: var(--Royal-Blue-Blue-700, #0c3b87);
+            background: var(--Base-White, #fcfcfc);
+            box-shadow: 0 4px 18px rgba(64,117,201,.10);
+        }
+        .pt-logo-badge img {
+            height: 28px; width: auto; object-fit: contain;
+            filter: grayscale(1) opacity(.55);
+            transition: filter .22s;
+        }
+        .pt-logo-badge:hover img { filter: grayscale(0) opacity(1); }
+
+        /* ── PARTNERSHIP TYPES ── */
+        .pt-types {
+            background: var(--Base-White, #fcfcfc);
+            padding: 100px 0 108px;
+            position: relative; overflow: hidden;
+        }
+        /* subtle radial accent — very soft, won't read as dark */
+        .pt-types::before {
+            content: ''; position: absolute; right: -120px; top: -60px;
+            width: 560px; height: 560px;
+            background: radial-gradient(ellipse at 70% 30%, rgba(28,169,201,.06) 0%, rgba(64,117,201,.04) 55%, transparent 80%);
+            filter: blur(48px); pointer-events: none;
+        }
+        .pt-types__head { text-align: center; margin-bottom: 60px; position: relative; z-index: 2; }
+        .pt-types__eyebrow {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 5px 16px; border-radius: 999px;
+            border: 1px solid var(--Turquoise-SkyBlue-100, #c6eef5);
+            background: var(--Turquoise-SkyBlue-50, #e8f6fa);
+            font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 700;
+            letter-spacing: .14em; text-transform: uppercase;
+            color: var(--Turquoise-SkyBlue-600, #147d96);
+            margin-bottom: 18px;
+        }
+        .pt-types__title {
+            font-family: 'Fraunces', serif; font-weight: 300;
+            font-size: clamp(34px, 4vw, 56px); line-height: 1.12;
+            color: var(--Royal-Blue-Blue-900, #051A3C); margin: 0;
+        }
+        /* ── Partnership Programs grid ── */
+        .pt-types__grid {
+            display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px;
+            position: relative; z-index: 2;
+        }
+        .pt-type-card {
+            background: var(--Base-White, #fcfcfc);
+            border: 1px solid var(--blueGray-200, #E2E8F0);
+            border-radius: 20px; padding: 36px 36px 32px;
+            display: flex; flex-direction: column; gap: 16px;
+            position: relative; overflow: hidden;
+            transition: background .28s, border-color .28s, transform .28s, box-shadow .28s;
+        }
+        .pt-type-card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+            border-radius: 20px 20px 0 0; opacity: 0; transition: opacity .28s;
+        }
+        .pt-type-card--teal::before   { background: linear-gradient(90deg, #1ca9c9, #4AE7FF); }
+        .pt-type-card--blue::before   { background: linear-gradient(90deg, #4075c9, #7aa3e5); }
+        .pt-type-card--violet::before { background: linear-gradient(90deg, #7747b6, #b07de0); }
+        .pt-type-card--indigo::before { background: linear-gradient(90deg, #4553c4, #818cf8); }
+        .pt-type-card:hover { border-color: transparent; transform: translateY(-5px); }
+        .pt-type-card:hover::before { opacity: 1; }
+        .pt-type-card--teal:hover   { background: #f0fbfd; box-shadow: 0 20px 56px rgba(28,169,201,.14),  0 4px 16px rgba(5,26,60,.06); }
+        .pt-type-card--blue:hover   { background: #f0f5fd; box-shadow: 0 20px 56px rgba(64,117,201,.14),  0 4px 16px rgba(5,26,60,.06); }
+        .pt-type-card--violet:hover { background: #f7f2fc; box-shadow: 0 20px 56px rgba(119,71,182,.14), 0 4px 16px rgba(5,26,60,.06); }
+        .pt-type-card--indigo:hover { background: #f1f2fd; box-shadow: 0 20px 56px rgba(69,83,196,.14),  0 4px 16px rgba(5,26,60,.06); }
+        .pt-type-card__icon {
+            width: 52px; height: 52px; border-radius: 14px;
+            display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+        }
+        .pt-type-card__icon svg { width: 24px; height: 24px; }
+        .pt-type-card__icon--teal   { background: var(--Turquoise-SkyBlue-50, #e8f6fa); color: var(--Turquoise-SkyBlue-500, #1ca9c9); }
+        .pt-type-card__icon--blue   { background: var(--Royal-Blue-Blue-50, #e7eef8);   color: var(--Royal-Blue-Blue-400, #4075c9); }
+        .pt-type-card__icon--violet { background: var(--Violet-Violet-50, #f0ebf7);      color: var(--Violet-Violet-450, #7747b6); }
+        .pt-type-card__icon--indigo { background: #eef0fb; color: #4553c4; }
+        .pt-type-card__label {
+            font-family: 'Inter', sans-serif; font-size: 10.5px; font-weight: 700;
+            letter-spacing: .14em; text-transform: uppercase; color: var(--blueGray-400, #94A3B8);
+        }
+        .pt-type-card__title {
+            font-family: 'Inter', sans-serif; font-size: 19px; font-weight: 700;
+            color: var(--Royal-Blue-Blue-900, #051A3C); margin: 0; line-height: 1.3;
+        }
+        .pt-type-card__desc {
+            font-family: 'Inter', sans-serif; font-size: 14px; line-height: 24px;
+            color: var(--blueGray-500, #64748B); margin: 0;
+        }
+        .pt-type-card__benefits {
+            list-style: none; padding: 0; margin: 0;
+            display: flex; flex-direction: column; gap: 9px;
+            border-top: 1px solid var(--blueGray-100, #F1F5F9);
+            padding-top: 18px; margin-top: 4px;
+        }
+        .pt-type-card__benefits li {
+            display: flex; align-items: flex-start; gap: 10px;
+            font-family: 'Inter', sans-serif; font-size: 13.5px; line-height: 22px;
+            color: var(--blueGray-600, #475569);
+        }
+        .pt-type-card__benefits li .chk {
+            width: 18px; height: 18px; border-radius: 50%;
+            background: var(--Turquoise-SkyBlue-50, #e8f6fa);
+            color: var(--Turquoise-SkyBlue-500, #1ca9c9);
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0; margin-top: 2px;
+        }
+        .pt-type-card__benefits li .chk svg { width: 10px; height: 10px; }
+        .pt-type-card__cta {
+            display: inline-flex; align-items: center; gap: 6px;
+            font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 600;
+            color: var(--Royal-Blue-Blue-400, #4075c9);
+            text-decoration: none; margin-top: 6px;
+            transition: gap .2s, opacity .2s;
+        }
+        .pt-type-card__cta:hover { gap: 10px; opacity: .85; }
+
+        /* ── WHY PARTNER ── */
+        .pt-why {
+            background: var(--blueGray-50, #F8FAFC);
+            padding: 100px 0 108px;
+            position: relative;
+        }
+        .pt-why__head { text-align: center; margin-bottom: 60px; }
+        .pt-why__eyebrow {
+            display: inline-block;
+            font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 700;
+            letter-spacing: .14em; text-transform: uppercase;
+            color: var(--Turquoise-SkyBlue-500, #1ca9c9);
+            margin-bottom: 14px;
+        }
+        .pt-why__title {
+            font-family: 'Fraunces', serif; font-weight: 300;
+            font-size: clamp(34px, 4vw, 56px); line-height: 1.12;
+            color: var(--Royal-Blue-Blue-900, #051A3C); margin: 0;
+        }
+        .pt-why__grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
+        }
+        .pt-why-card {
+            background: var(--Base-White, #fcfcfc);
+            border: 1px solid var(--blueGray-200, #E2E8F0);
+            border-radius: 16px; padding: 28px 26px 26px;
+            display: flex; flex-direction: column; gap: 14px;
+            position: relative; overflow: hidden;
+            transition: box-shadow .25s, border-color .25s, transform .25s;
+        }
+        .pt-why-card::after {
+            content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+            width: 3px; border-radius: 16px 0 0 16px;
+            background: linear-gradient(180deg, var(--Turquoise-SkyBlue-400, #27c0df), var(--Royal-Blue-Blue-400, #4075c9));
+            opacity: 0; transition: opacity .25s;
+        }
+        .pt-why-card:hover {
+            box-shadow: 0 12px 40px rgba(5,26,60,.09);
+            border-color: var(--blueGray-300, #CBD5E1);
+            transform: translateY(-3px);
+        }
+        .pt-why-card:hover::after { opacity: 1; }
+        .pt-why-card__header {
+            display: flex; align-items: center; gap: 12px;
+        }
+        .pt-why-card__num {
+            font-family: 'Space Grotesk', sans-serif; font-size: 11px; font-weight: 700;
+            color: var(--blueGray-300, #CBD5E1); letter-spacing: .06em;
+            line-height: 1; padding-top: 2px;
+        }
+        .pt-why-card__icon {
+            width: 44px; height: 44px; border-radius: 12px;
+            display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+        }
+        .pt-why-card__icon svg { width: 20px; height: 20px; }
+        .pt-why-card__icon--teal   { background: var(--Turquoise-SkyBlue-50, #e8f6fa); color: var(--Turquoise-SkyBlue-500, #1ca9c9); }
+        .pt-why-card__icon--blue   { background: var(--Royal-Blue-Blue-50, #e7eef8);   color: var(--Royal-Blue-Blue-400, #4075c9); }
+        .pt-why-card__icon--violet { background: var(--Violet-Violet-50, #f0ebf7);      color: var(--Violet-Violet-450, #7747b6); }
+        .pt-why-card__title {
+            font-family: 'Inter', sans-serif; font-size: 14.5px; font-weight: 700;
+            color: var(--Royal-Blue-Blue-900, #051A3C); margin: 0; line-height: 1.35;
+        }
+        .pt-why-card__desc {
+            font-family: 'Inter', sans-serif; font-size: 13px; line-height: 21px;
+            color: var(--blueGray-500, #64748B); margin: 0;
+        }
+
+        /* ── BETTER TOGETHER (dark) ── */
+        .pt-better {
+            background: var(--blueGray-50, #F8FAFC);
+            padding: 108px 0 116px;
+            position: relative; overflow: hidden;
+        }
+        .pt-better::before { display: none; }
+        .pt-better::after  { display: none; }
+        .pt-better__bg-dots { display: none; }
+
+        .pt-better__inner {
+            position: relative; z-index: 2;
+            display: grid; grid-template-columns: 5fr 7fr; gap: 80px; align-items: center;
+        }
+
+        .pt-better__left { display: flex; flex-direction: column; gap: 0; }
+        .pt-better__eyebrow {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 5px 16px; border-radius: 999px;
+            border: 1px solid rgba(28,169,201,.3);
+            background: rgba(28,169,201,.08);
+            font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 700;
+            letter-spacing: .14em; text-transform: uppercase;
+            color: var(--Turquoise-SkyBlue-400, #27c0df);
+            margin-bottom: 22px; width: fit-content;
+        }
+        .pt-better__title {
+            font-family: 'Fraunces', serif; font-weight: 300;
+            font-size: clamp(36px, 4.5vw, 58px); line-height: 1.08; letter-spacing: -.025em;
+            color: var(--Royal-Blue-Blue-900, #051A3C);
+            margin: 0 0 24px;
+        }
+        .pt-better__desc {
+            font-family: 'Inter', sans-serif; font-size: 15.5px; line-height: 27px;
+            color: var(--blueGray-500, #64748B); margin: 0 0 16px;
+        }
+        .pt-better__desc:last-of-type { margin-bottom: 36px; }
+
+        .pt-better__stats {
+            display: flex; gap: 0; margin-bottom: 36px;
+        }
+        .pt-better__stat {
+            flex: 1; display: flex; flex-direction: column; gap: 4px;
+            padding-right: 24px;
+            border-right: 1px solid var(--blueGray-200, #E2E8F0);
+        }
+        .pt-better__stat:last-child { border-right: none; padding-right: 0; padding-left: 24px; flex: none; }
+        .pt-better__stat:nth-child(2) { padding-left: 24px; }
+        .pt-better__stat-num {
+            font-family: 'Space Grotesk', sans-serif; font-size: 26px; font-weight: 700;
+            letter-spacing: -.03em; line-height: 1;
+            color: var(--Royal-Blue-Blue-900, #051A3C);
+        }
+        .pt-better__stat-label {
+            font-family: 'Inter', sans-serif; font-size: 11.5px; font-weight: 500;
+            color: var(--blueGray-400, #94A3B8); line-height: 1.3;
+        }
+
+        .pt-better__cta {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 12px 26px; border-radius: 8px;
+            background: var(--Royal-Blue-Blue-400, #4075c9);
+            font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 700;
+            color: var(--Base-White, #fcfcfc); text-decoration: none;
+            transition: background .2s, transform .2s, box-shadow .2s;
+            width: fit-content;
+        }
+        .pt-better__cta:hover {
+            background: var(--Royal-Blue-Blue-500, #2d5db5);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(64,117,201,.35);
+        }
+        .pt-better__cta svg { width: 14px; height: 14px; transition: transform .2s; }
+        .pt-better__cta:hover svg { transform: translateX(3px); }
+
+        .pt-better__right {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+        }
+        .pt-better-feat {
+            display: flex; align-items: center; gap: 14px;
+            padding: 20px 20px;
+            background: #ffffff;
+            border: 1px solid var(--blueGray-200, #E2E8F0);
+            border-radius: 14px;
+            position: relative; overflow: hidden;
+            transition: background .25s, border-color .25s, transform .25s, box-shadow .25s;
+        }
+        .pt-better-feat::before {
+            content: ''; position: absolute; left: 0; top: 12px; bottom: 12px;
+            width: 3px; border-radius: 3px;
+            opacity: 0; transition: opacity .25s;
+        }
+        .pt-better-feat--teal::before   { background: linear-gradient(180deg, #27c0df, #4075c9); }
+        .pt-better-feat--blue::before   { background: linear-gradient(180deg, #4075c9, #7747b6); }
+        .pt-better-feat--violet::before { background: linear-gradient(180deg, #7747b6, #e879f9); }
+        .pt-better-feat:hover { transform: translateY(-3px); box-shadow: 0 12px 36px rgba(5,26,60,.09); }
+        .pt-better-feat--teal:hover   { background: #f0fbfd; border-color: rgba(28,169,201,.35); }
+        .pt-better-feat--blue:hover   { background: #f0f5fd; border-color: rgba(64,117,201,.35); }
+        .pt-better-feat--violet:hover { background: #f7f2fc; border-color: rgba(119,71,182,.35); }
+        .pt-better-feat:hover::before { opacity: 1; }
+        .pt-better-feat__icon {
+            width: 42px; height: 42px; border-radius: 10px;
+            display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+            transition: background .25s;
+        }
+        .pt-better-feat__icon svg { width: 18px; height: 18px; }
+        .pt-better-feat--teal   .pt-better-feat__icon { background: var(--Turquoise-SkyBlue-50, #e8f6fa); color: var(--Turquoise-SkyBlue-500, #1ca9c9); }
+        .pt-better-feat--blue   .pt-better-feat__icon { background: var(--Royal-Blue-Blue-50, #e7eef8);   color: var(--Royal-Blue-Blue-400, #4075c9); }
+        .pt-better-feat--violet .pt-better-feat__icon { background: var(--Violet-Violet-50, #f0ebf7);      color: var(--Violet-Violet-450, #7747b6); }
+        .pt-better-feat--teal:hover   .pt-better-feat__icon { background: #d0f2f9; }
+        .pt-better-feat--blue:hover   .pt-better-feat__icon { background: #dce8f7; }
+        .pt-better-feat--violet:hover .pt-better-feat__icon { background: #e6d9f3; }
+        .pt-better-feat__text {
+            font-family: 'Inter', sans-serif; font-size: 13.5px; font-weight: 600;
+            color: var(--Royal-Blue-Blue-900, #051A3C); line-height: 1.35;
+        }
+
+        /* ── SEE IN ACTION ── */
+        .pt-action {
+            background: var(--Royal-Blue-Blue-900, #051A3C);
+            padding: 100px 0 108px;
+            position: relative; overflow: hidden;
+        }
+        .pt-action::before {
+            content: ''; position: absolute; right: -100px; top: -80px;
+            width: 600px; height: 600px;
+            background: radial-gradient(ellipse at 60% 40%, rgba(28,169,201,.16) 0%, rgba(119,71,182,.08) 60%, transparent 85%);
+            filter: blur(70px); pointer-events: none;
+        }
+        .pt-action__inner {
+            position: relative; z-index: 2;
+            display: flex; flex-direction: column; align-items: center; gap: 56px;
+            text-align: center;
+        }
+        .pt-action__head { max-width: 680px; display: flex; flex-direction: column; gap: 18px; align-items: center; }
+        .pt-action__eyebrow {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 5px 14px; border-radius: 999px;
+            border: 1px solid rgba(28,169,201,.3);
+            background: rgba(28,169,201,.08);
+            font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 700;
+            letter-spacing: .14em; text-transform: uppercase;
+            color: var(--Turquoise-SkyBlue-400, #27c0df);
+        }
+        .pt-action__title {
+            font-family: 'Fraunces', serif; font-weight: 300;
+            font-size: clamp(34px, 4vw, 56px); line-height: 1.1;
+            color: var(--Base-White, #fcfcfc); margin: 0;
+        }
+        .pt-action__desc {
+            font-family: 'Inter', sans-serif; font-size: 16px; line-height: 27px;
+            color: rgba(252,252,252,.58); margin: 0;
+        }
+        /* video panel */
+        .pt-action__video-outer {
+            width: 100%; max-width: 860px;
+            position: relative;
+        }
+        /* glow ring behind video */
+        .pt-action__glow-ring {
+            position: absolute; inset: -24px;
+            border-radius: 28px;
+            background: radial-gradient(ellipse at 50% 50%, rgba(28,169,201,.22) 0%, rgba(64,117,201,.14) 50%, transparent 75%);
+            filter: blur(24px);
+            pointer-events: none;
+        }
+        .pt-action__video-wrap {
+            position: relative; border-radius: 20px; overflow: hidden;
+            aspect-ratio: 16/9;
+            box-shadow: 0 32px 80px rgba(0,0,0,.45), 0 0 0 1px rgba(255,255,255,.08);
+        }
+        .pt-action__video-wrap img {
+            width: 100%; height: 100%; object-fit: cover;
+            display: block; opacity: .85;
+        }
+        .pt-action__play {
+            position: absolute; inset: 0;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer;
+        }
+        /* pulsing ring */
+        .pt-action__play::before {
+            content: ''; position: absolute;
+            width: 96px; height: 96px; border-radius: 50%;
+            border: 2px solid rgba(28,169,201,.35);
+            animation: playPulse 2.2s ease-out infinite;
+        }
+        @keyframes playPulse {
+            0%   { transform: scale(1);   opacity: .8; }
+            100% { transform: scale(1.7); opacity: 0; }
+        }
+        .pt-action__play-btn {
+            width: 76px; height: 76px; border-radius: 50%;
+            background: rgba(255,255,255,.15);
+            backdrop-filter: blur(12px);
+            border: 2px solid rgba(255,255,255,.4);
+            display: flex; align-items: center; justify-content: center;
+            transition: background .2s, transform .2s, box-shadow .2s;
+            position: relative; z-index: 1;
+        }
+        .pt-action__play:hover .pt-action__play-btn {
+            background: rgba(255,255,255,.28);
+            transform: scale(1.1);
+            box-shadow: 0 0 32px rgba(28,169,201,.4);
+        }
+        .pt-action__play-btn svg { width: 30px; height: 30px; color: #fff; margin-left: 4px; }
+        /* video bg gradient */
+        .pt-action__video-bg {
+            position: absolute; inset: 0;
+            background: linear-gradient(135deg, #092d6e 0%, #7747b6 55%, #1ca9c9 100%);
+        }
+        .pt-action__video-bg::after {
+            content: ''; position: absolute; inset: 0;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Ccircle cx='1' cy='1' r='1' fill='rgba(255,255,255,0.06)'/%3E%3C/svg%3E") repeat;
+        }
+        /* floating stat chips on video */
+        .pt-action__stat {
+            position: absolute;
+            display: flex; align-items: center; gap: 8px;
+            padding: 10px 16px;
+            background: rgba(5,26,60,.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255,255,255,.15);
+            border-radius: 10px;
+            z-index: 3;
+        }
+        .pt-action__stat-icon {
+            width: 28px; height: 28px; border-radius: 7px;
+            background: rgba(28,169,201,.2); color: #4AE7FF;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .pt-action__stat-icon svg { width: 14px; height: 14px; }
+        .pt-action__stat-label {
+            font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 700;
+            color: var(--Base-White, #fcfcfc); line-height: 1.2;
+        }
+        .pt-action__stat-sub {
+            font-size: 10px; font-weight: 400; color: rgba(255,255,255,.5); display: block;
+        }
+        .pt-action__stat--tl { top: 18px; left: 18px; }
+        .pt-action__stat--br { bottom: 18px; right: 18px; }
+
+        @media (max-width: 768px) {
+            .pt-action__inner { gap: 36px; }
+        }
+
+        /* ── BIG PLANS FORM SECTION ── */
+        .pt-bigplans {
+            background: var(--blueGray-50, #F8FAFC);
+            padding: 100px 0 108px;
+            position: relative; overflow: hidden;
+        }
+        .pt-bigplans::before {
+            content: ''; position: absolute; left: -80px; top: -60px;
+            width: 480px; height: 480px;
+            background: radial-gradient(ellipse at 30% 30%, rgba(64,117,201,.08) 0%, transparent 70%);
+            filter: blur(50px); pointer-events: none;
+        }
+        .pt-bigplans__inner {
+            position: relative; z-index: 2;
+            display: grid; grid-template-columns: 5fr 7fr; gap: 64px; align-items: start;
+        }
+        .pt-bigplans__left { display: flex; flex-direction: column; gap: 20px; padding-top: 12px; }
+        .pt-bigplans__title {
+            font-family: 'Fraunces', serif; font-weight: 300;
+            font-size: clamp(36px, 4.5vw, 56px); line-height: 1.1;
+            letter-spacing: -.02em; margin: 0;
+        }
+        .pt-bigplans__title .blue {
+            background: var(--AI-Agents-Text, linear-gradient(83.02deg, #4AE7FF 51.42%, #4075C9 63.25%, #E879F9 76.03%));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .pt-bigplans__title .dark { color: var(--Royal-Blue-Blue-900, #051A3C); }
+        .pt-bigplans__desc {
+            font-family: 'Inter', sans-serif; font-size: 16px; line-height: 27px;
+            color: var(--blueGray-500, #64748B); margin: 0; max-width: 380px;
+        }
+        /* World map illustration */
+        .pt-map {
+            margin-top: 24px; position: relative; height: 280px;
+        }
+        .pt-map__bg {
+            position: absolute; inset: 0;
+            background-image: radial-gradient(circle, var(--Turquoise-SkyBlue-200, #8ddcec) 1px, transparent 1px);
+            background-size: 10px 10px;
+            -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 300'%3E%3Cellipse cx='105' cy='120' rx='85' ry='70'/%3E%3Cellipse cx='300' cy='100' rx='170' ry='80'/%3E%3Cellipse cx='490' cy='110' rx='90' ry='65'/%3E%3Cellipse cx='240' cy='200' rx='60' ry='40'/%3E%3Cellipse cx='390' cy='210' rx='40' ry='30'/%3E%3C/svg%3E");
+                    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 300'%3E%3Cellipse cx='105' cy='120' rx='85' ry='70'/%3E%3Cellipse cx='300' cy='100' rx='170' ry='80'/%3E%3Cellipse cx='490' cy='110' rx='90' ry='65'/%3E%3Cellipse cx='240' cy='200' rx='60' ry='40'/%3E%3Cellipse cx='390' cy='210' rx='40' ry='30'/%3E%3C/svg%3E");
+            -webkit-mask-size: 100% 100%;
+                    mask-size: 100% 100%;
+            opacity: .5;
+        }
+        /* avatar pin cards */
+        .pt-map__pin {
+            position: absolute;
+            display: flex; align-items: center; justify-content: center;
+            width: 60px; height: 72px;
+        }
+        .pt-map__pin::after {
+            content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+            width: 2px; height: 18px; background: var(--blueGray-300, #CBD5E1);
+        }
+        .pt-map__avatar {
+            width: 56px; height: 56px; border-radius: 8px;
+            border: 2px solid var(--blueGray-200, #E2E8F0);
+            background: var(--Base-White, #fcfcfc);
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 4px 14px rgba(5,26,60,.10);
+            overflow: hidden; flex-shrink: 0;
+        }
+        .pt-map__avatar svg { width: 38px; height: 38px; }
+        /* pin positions */
+        .pt-map__pin--1 { left: 18%; top: 22%; }
+        .pt-map__pin--2 { left: 60%; top: 2%; }
+        .pt-map__pin--3 { left: 46%; top: 44%; }
+        .pt-map__pin--4 { left: 8%; top: 55%; }
+        /* connecting lines */
+        .pt-map__lines {
+            position: absolute; inset: 0; pointer-events: none;
+        }
+
+        /* Form card */
+        .pt-form-card {
+            background: var(--Base-White, #fcfcfc);
+            border-radius: 20px;
+            padding: 40px 44px 44px;
+            box-shadow: 0 8px 48px rgba(5,26,60,.10), 0 0 0 1px rgba(64,117,201,.10);
+            position: relative; overflow: hidden;
+        }
+        .pt-form-card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+            background: var(--AI-Agents-Text, linear-gradient(83.02deg, #4AE7FF 51.42%, #4075C9 63.25%, #E879F9 76.03%));
+            border-radius: 20px 20px 0 0;
+        }
+        .pt-form-card__title {
+            font-family: 'Fraunces', serif; font-weight: 300;
+            font-size: 28px; letter-spacing: -.015em;
+            color: var(--Royal-Blue-Blue-900, #051A3C);
+            margin: 0 0 28px;
+        }
+        .pt-form { display: flex; flex-direction: column; gap: 18px; }
+        .pt-form__group { display: flex; flex-direction: column; gap: 6px; }
+        .pt-form__label {
+            font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500;
+            color: var(--blueGray-700, #334155);
+        }
+        .pt-form__label span.req { color: #e53e3e; }
+        .pt-form__input,
+        .pt-form__select,
+        .pt-form__textarea {
+            width: 100%; box-sizing: border-box;
+            padding: 11px 14px;
+            border: 1px solid var(--blueGray-200, #E2E8F0);
+            border-radius: 6px;
+            background: var(--blueGray-50, #F8FAFC);
+            font-family: 'Inter', sans-serif; font-size: 14px;
+            color: var(--blueGray-700, #334155);
+            outline: none;
+            transition: border-color .18s, box-shadow .18s;
+            -webkit-appearance: none; appearance: none;
+        }
+        .pt-form__input::placeholder,
+        .pt-form__textarea::placeholder { color: var(--blueGray-400, #94A3B8); }
+        .pt-form__input:focus,
+        .pt-form__select:focus,
+        .pt-form__textarea:focus {
+            border-color: var(--Royal-Blue-Blue-300, #7aa3e5);
+            box-shadow: 0 0 0 3px rgba(64,117,201,.12);
+            background: var(--Base-White, #fcfcfc);
+        }
+        .pt-form__select {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M0 0l6 8 6-8z' fill='%2394A3B8'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+            padding-right: 36px;
+            cursor: pointer;
+            color: var(--blueGray-400, #94A3B8);
+        }
+        .pt-form__select.has-value { color: var(--blueGray-700, #334155); }
+        .pt-form__textarea { resize: vertical; min-height: 96px; }
+        .pt-form__checkbox-row {
+            display: flex; align-items: flex-start; gap: 10px;
+            margin-top: 2px;
+        }
+        .pt-form__checkbox-row input[type="checkbox"] {
+            width: 15px; height: 15px; margin-top: 2px; flex-shrink: 0;
+            accent-color: var(--Royal-Blue-Blue-400, #4075c9); cursor: pointer;
+        }
+        .pt-form__checkbox-label {
+            font-family: 'Inter', sans-serif; font-size: 12.5px; line-height: 20px;
+            color: var(--blueGray-500, #64748B);
+        }
+        .pt-form__checkbox-label a {
+            color: var(--Royal-Blue-Blue-400, #4075c9); text-decoration: underline;
+        }
+        .pt-form__recaptcha {
+            display: flex; align-items: center; gap: 0;
+            border: 1px solid var(--blueGray-200, #E2E8F0);
+            border-radius: 4px; overflow: hidden;
+            width: fit-content; background: #f9f9f9;
+        }
+        .pt-form__recaptcha-text {
+            padding: 14px 16px;
+            font-family: 'Inter', sans-serif; font-size: 12px;
+            color: var(--blueGray-500, #64748B); line-height: 1.3;
+            border-right: 1px solid var(--blueGray-200, #E2E8F0);
+        }
+        .pt-form__recaptcha-logo {
+            padding: 10px 14px;
+            display: flex; flex-direction: column; align-items: center; gap: 3px;
+        }
+        .pt-form__recaptcha-logo svg { width: 32px; height: 32px; }
+        .pt-form__recaptcha-logo span {
+            font-size: 8px; color: var(--blueGray-400, #94A3B8); white-space: nowrap;
+        }
+        .pt-form__submit {
+            display: inline-flex; align-items: center; justify-content: center;
+            padding: 13px 32px; border-radius: 6px;
+            border: none; cursor: pointer;
+            background: var(--Royal-Blue-Blue-400, #4075c9);
+            font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 700;
+            color: var(--Base-White, #fcfcfc);
+            width: fit-content;
+            transition: background .18s, transform .18s;
+        }
+        .pt-form__submit:hover { background: var(--Royal-Blue-Blue-500, #2d5db5); transform: translateY(-1px); }
+
+        /* ── Responsive ── */
+        @media (max-width: 1024px) {
+            .pt-types__grid { grid-template-columns: 1fr; }
+            .pt-why__grid { grid-template-columns: repeat(2, 1fr); }
+            .pt-better__inner { grid-template-columns: 1fr; gap: 48px; }
+            .pt-better__right { grid-template-columns: 1fr; }
+            .pt-bigplans__inner { grid-template-columns: 1fr; gap: 48px; }
+        }
+        @media (max-width: 640px) {
+            .pt-why__grid { grid-template-columns: 1fr; }
+            .pt-why-card__num { font-size: 32px; }
+            .pt-hero { padding: 90px 0 80px; }
+            .pt-form-card { padding: 28px 22px 32px; }
+            .pt-better__right { grid-template-columns: 1fr; }
+            .pt-action__stat { display: none; }
+        }
+    </style>
+</head>
+<body class="inner-page">
+
+<!-- Custom cursor -->
+<div class="cursor" id="customCursor" aria-hidden="true">
+    <span class="cursor__ring"></span>
+    <span class="cursor__dot"></span>
+</div>
+
+<!-- ===== SITE TOP ===== -->
+<div class="site-top">
+    <div class="hello-bar">
+        <div class="hello-left">
+            <span class="hello-badge">Webinar</span>
+            <div class="hello-msg-group">
+                <span class="hello-message">We are Heading to AAHOACON 2026</span>
+                <a href="#" class="hello-cta">Register Now
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                </a>
+            </div>
+        </div>
+        <a href="#" class="hello-consult">Free Consultation</a>
+        <a href="#" class="hello-login">Log in</a>
+    </div>
+
+    <header class="site-header headerTop is-scrolled">
+        <a href="./index.html" class="brand-mark" aria-label="Lumenore home">
+            <img src="./assets/images/homeV2o/Lumenore logo.svg" alt="Lumenore" class="nav-logo-img">
+        </a>
+        <nav>
+            <ul class="nav-links">
+                <li class="nav-item has-dropdown nav-item--platform" data-mega-id="platformMega">
+                    <a href="#" class="nav-trigger">Platform
+                        <svg class="caret" viewBox="0 0 8 4" fill="none"><path d="M0 0l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                    <div class="nav-mega nav-mega--platform" role="menu" id="platformMega">
+                        <div class="np-nav">
+                            <div class="np-nav-section">
+                                <h6 class="np-nav-title">Products</h6>
+                                <ul class="np-nav-list">
+                                    <li><a href="#" data-platform-item="insights" data-platform-type="product">Lumenore Insights</a></li>
+                                    <li><a href="../lumenore-ask-me.html" data-platform-item="askme" data-platform-type="product">Lumenore Ask Me</a></li>
+                                    <li><a href="#" data-platform-item="datamagnet" data-platform-type="product">Lumenore Data Magnet</a></li>
+                                </ul>
+                            </div>
+                            <div class="np-nav-section">
+                                <ul class="np-nav-list">
+                                    <li><a href="#" data-platform-item="all-capabilities" data-platform-type="capability" class="np-cap-link"><span>Capabilities</span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="np-detail" id="platformDetail">
+                            <div class="np-product-pane" id="platformProductPane" hidden>
+                                <span class="np-pane-kind"><span class="np-kind-dot"></span>Product</span>
+                                <p class="np-pane-tagline" id="npProductTagline">Self-Service Analytics</p>
+                                <h4 class="np-pane-title" id="npProductTitle">Lumenore Insights</h4>
+                                <p class="np-pane-desc" id="npProductDesc">Democratize data with self-service, AI-powered dashboards.</p>
+                                <a class="np-learn-more" id="npProductLearn" href="#">Learn more <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+                                <div class="np-pane-actions">
+                                    <a class="np-cta np-cta--primary" id="npProductStart" href="#">Start Free</a>
+                                    <a class="np-cta np-cta--secondary" id="npProductPricing" href="#">Pricing</a>
+                                </div>
+                            </div>
+                            <h6 class="np-nav-title np-grid-title" id="platformGridTitle" hidden>All Capabilities</h6>
+                            <div class="np-grid" id="platformGrid" hidden>
+                                <a href="#" class="np-grid-card" data-platform-card="connectors"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12h6M3 7h4M3 17h4M17 7h4M17 17h4"/><circle cx="12" cy="12" r="3"/><circle cx="5" cy="7" r="1.5"/><circle cx="5" cy="17" r="1.5"/><circle cx="19" cy="7" r="1.5"/><circle cx="19" cy="17" r="1.5"/></svg><span>Data Connectors</span></a>
+                                <a href="#" class="np-grid-card" data-platform-card="integration"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4v6a3 3 0 0 0 3 3h4a3 3 0 0 1 3 3v4"/><circle cx="7" cy="3" r="1.5"/><circle cx="17" cy="21" r="1.5"/></svg><span>Data Integration</span></a>
+                                <a href="#" class="np-grid-card" data-platform-card="lakehouse"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v6a9 3 0 0 0 18 0V5M3 11v6a9 3 0 0 0 18 0v-6"/></svg><span>Data Lakehouse</span></a>
+                                <a href="#" class="np-grid-card" data-platform-card="visualization"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V10M10 21V6M15 21V13M20 21V8"/></svg><span>Data Visualization</span></a>
+                                <a href="#" class="np-grid-card" data-platform-card="universe"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="9" ry="3.5"/><path d="M3 12h18"/></svg><span>Data Universe</span></a>
+                                <a href="#" class="np-grid-card" data-platform-card="dashboard"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="5" rx="1.5"/><rect x="13" y="10" width="8" height="11" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/></svg><span>Dashboard</span></a>
+                                <a href="#" class="np-grid-card" data-platform-card="advanced"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18l4-6 4 3 6-9 4 5"/></svg><span>Advanced Analytics</span></a>
+                                <a href="#" class="np-grid-card" data-platform-card="embedded"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M9 10l-2 2 2 2M15 10l2 2-2 2"/></svg><span>Embedded Analytics</span></a>
+                                <a href="#" class="np-grid-card" data-platform-card="conversational"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg><span>Conversational Intelligence</span></a>
+                                <a href="#" class="np-grid-card" data-platform-card="decision"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/><circle cx="12" cy="12" r="4"/></svg><span>Decision Intelligence</span></a>
+                                <a href="#" class="np-grid-card" data-platform-card="selfservice"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg><span>Self-Service Analytics</span></a>
+                                <a href="#" class="np-grid-card" data-platform-card="predictive"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12c0-5 4-9 9-9s9 4 9 9"/><path d="M12 7v5l3 2"/><circle cx="12" cy="12" r="9" stroke-dasharray="2 3"/></svg><span>Predictive Analytics</span></a>
+                            </div>
+                        </div>
+                        <aside class="np-releases">
+                            <h6 class="np-nav-title">Recent Releases</h6>
+                            <a class="np-release" href="#"><span class="np-release-tag">New</span><span class="np-release-title">Ask Me Agentic RAG Upgrade</span><span class="np-release-sub">Self-correction &amp; multimodal support.</span></a>
+                            <a class="np-release" href="#"><span class="np-release-title">Local LLM Integration</span><span class="np-release-sub">Keep sensitive data in-house with on-prem inference.</span></a>
+                            <a class="np-release" href="#"><span class="np-release-title">Visual Pipeline Builder</span><span class="np-release-sub">Low-code ETL flows in a drag-and-drop canvas.</span></a>
+                            <a class="np-view-all" href="#">View All Releases <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+                        </aside>
+                    </div>
+                </li>
+
+                <li class="nav-item has-dropdown nav-item--solutions" data-mega-id="solutionMega">
+                    <a href="#" class="nav-trigger">Solutions
+                        <svg class="caret" viewBox="0 0 8 4" fill="none"><path d="M0 0l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                    <div class="nav-mega nav-mega--platform nav-mega--solutions" role="menu" id="solutionMega">
+                        <div class="np-nav">
+                            <ul class="np-nav-list">
+                                <li><a href="#" data-solution-item="industry" class="np-cap-link"><span>By Industry</span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></li>
+                                <li><a href="#" data-solution-item="department" class="np-cap-link"><span>By Department</span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></li>
+                            </ul>
+                        </div>
+                        <div class="np-detail" id="solutionDetail">
+                            <h6 class="np-nav-title np-grid-title" id="solIndustryTitle" hidden>By Industry</h6>
+                            <div class="np-grid" id="solIndustryGrid" hidden>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v16M4 12h16"/></svg><span>Healthcare</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6h15l-1.5 9H7.5L6 6zM6 6L5 3H2"/></svg><span>Retail</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12l9-8 9 8M5 10v10h14V10"/></svg><span>Real Estate</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg><span>Insurance</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span>Financial Services</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10l-10-5L2 10l10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg><span>Education</span></a>
+                            </div>
+                            <h6 class="np-nav-title np-grid-title" id="solDepartmentTitle" hidden>By Department</h6>
+                            <div class="np-grid" id="solDepartmentGrid" hidden>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span>Finance</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18l6-6 4 4 8-8"/></svg><span>Sales</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l18-8v18z"/></svg><span>Marketing</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg><span>Human Resources</span></a>
+                            </div>
+                        </div>
+                        <aside class="np-releases">
+                            <h6 class="np-nav-title">Recent Blogs</h6>
+                            <a class="np-release" href="#"><span class="np-release-tag">Featured</span><span class="np-release-title">How AI-Powered Analytics is Reshaping Healthcare</span><span class="np-release-sub">Real-world results from teams using Lumenore.</span></a>
+                            <a class="np-release" href="#"><span class="np-release-title">5 Ways Sales Teams Use Self-Service BI</span><span class="np-release-sub">Faster pipeline insights without filing IT tickets.</span></a>
+                            <a class="np-view-all" href="#">View All Blogs <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+                        </aside>
+                    </div>
+                </li>
+
+                <li class="nav-item"><a href="#" class="nav-trigger">Pricing</a></li>
+
+                <li class="nav-item has-dropdown nav-item--resources" data-mega-id="resourcesMega">
+                    <a href="#" class="nav-trigger">Resources
+                        <svg class="caret" viewBox="0 0 8 4" fill="none"><path d="M0 0l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                    <div class="nav-mega nav-mega--resources" role="menu" id="resourcesMega">
+                        <div class="np-nav np-nav--wide">
+                            <div class="np-nav-section"><h6 class="np-nav-title">Watch</h6><ul class="np-nav-list"><li><a href="#">Demo</a></li><li><a href="#">Webinars &amp; Events</a></li><li><a href="#">Training</a></li></ul></div>
+                            <div class="np-nav-section"><h6 class="np-nav-title">Read</h6><ul class="np-nav-list"><li><a href="#">Blogs</a></li><li><a href="#">Use Cases</a></li><li><a href="#">eBooks &amp; Whitepapers</a></li><li><a href="#">Success Stories</a></li></ul></div>
+                            <div class="np-nav-section"><h6 class="np-nav-title">Learn</h6><ul class="np-nav-list"><li><a href="#">Certification</a></li><li><a href="#">Support Portal</a></li><li><a href="#">Knowledge Base</a></li></ul></div>
+                        </div>
+                        <aside class="np-releases">
+                            <h6 class="np-nav-title">Recent Blogs</h6>
+                            <a class="np-release" href="#"><span class="np-release-tag">Featured</span><span class="np-release-title">Agentic RAG: Beyond Simple Retrieval</span><span class="np-release-sub">How self-correcting AI workflows are changing data queries.</span></a>
+                            <a class="np-release" href="#"><span class="np-release-title">A Practical Guide to Self-Service BI</span><span class="np-release-sub">Patterns that scale beyond the analytics team.</span></a>
+                            <a class="np-view-all" href="#">View All Blogs <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+                        </aside>
+                    </div>
+                </li>
+
+                <li class="nav-item has-dropdown nav-item--company" data-mega-id="companyMega">
+                    <a href="#" class="nav-trigger">Company
+                        <svg class="caret" viewBox="0 0 8 4" fill="none"><path d="M0 0l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                    <div class="nav-mega nav-mega--platform nav-mega--company" role="menu" id="companyMega">
+                        <div class="np-nav">
+                            <ul class="np-nav-list">
+                                <li><a href="#" data-company-item="all" class="np-cap-link"><span>Company</span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></li>
+                            </ul>
+                        </div>
+                        <div class="np-detail" id="companyDetail">
+                            <h6 class="np-nav-title np-grid-title" id="coAllTitle" hidden>Company</h6>
+                            <div class="np-grid" id="coAllGrid" hidden>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 7 7 .8-5.3 4.8 1.7 7.4-7.4-4-7.4 4 1.7-7.4L0 9.8 7 9z"/></svg><span>Lumenore Difference</span></a>
+                                <a href="partners.html" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 11l-3 3-1.5-1.5"/></svg><span>Partners</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg><span>Careers</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6z"/></svg><span>Contact Us</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18l6-6 4 4 8-8"/><path d="M17 8h4v4"/></svg><span>Contact Sales</span></a>
+                            </div>
+                        </div>
+                        <aside class="np-releases">
+                            <h6 class="np-nav-title">Recent Blogs</h6>
+                            <a class="np-release" href="#"><span class="np-release-tag">Story</span><span class="np-release-title">Inside Lumenore: How We Build for Enterprise</span><span class="np-release-sub">The product principles behind self-correcting AI workflows.</span></a>
+                            <a class="np-release" href="#"><span class="np-release-title">Partner Program: 2026 Roadmap</span><span class="np-release-sub">New tiers, joint go-to-market, and certification.</span></a>
+                            <a class="np-view-all" href="#">View All Blogs <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+                        </aside>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <div class="nav-actions">
+            <a href="#" class="btn-demo">Request a Demo</a>
+            <a href="#" class="btn-start btn-primary btn-primary--sm">Start for Free</a>
+        </div>
+    </header>
+</div>
+
+<!-- ===== PAGE ===== -->
+<main>
+
+    <!-- HERO -->
+    <section class="pt-hero">
+        <div class="hero-grid" aria-hidden="true"></div>
+        <div class="hero-orbs" aria-hidden="true">
+            <div class="hero-orb orb-violet"></div>
+            <div class="hero-orb orb-cyan"></div>
+            <div class="hero-orb orb-blue"></div>
+        </div>
+        <div class="hero-particles" aria-hidden="true">
+            <span class="particle"></span><span class="particle"></span><span class="particle"></span>
+            <span class="particle"></span><span class="particle"></span><span class="particle"></span>
+            <span class="particle"></span><span class="particle"></span>
+        </div>
+        <div class="pt-hero__glow" aria-hidden="true"></div>
+        <div class="container">
+            <div class="pt-hero__inner reveal-block">
+                <p class="pt-hero__eyebrow"><span class="het-dot"></span>Global Partner Network</p>
+                <h1 class="pt-hero__title">Partner with <em>Lumenore</em></h1>
+                <p class="pt-hero__desc">Join a global network of innovators and gain access to exclusive resources, co-marketing support, and revenue-sharing programs to expand your client offerings, strengthen relationships, and drive recurring revenue.</p>
+                <div class="pt-hero__ctas">
+                    <a href="#become-partner" class="btn-primary">Become a Lumenore Partner</a>
+                    <a href="#our-partners" class="btn-ghost">Explore Our Partners</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PARTNER LOGOS -->
+    <section class="pt-logos" id="our-partners">
+        <div class="container">
+            <p class="pt-logos__label">Our Partners Worldwide</p>
+            <div class="pt-logos__track">
+                <div class="pt-logo-badge">Raqmiyat</div>
+                <div class="pt-logo-badge">
+                    <img src="./assets/images/homeV2o/Logo section/thk.png" alt="RMG">
+                </div>
+                <div class="pt-logo-badge">Armsec</div>
+                <div class="pt-logo-badge">NovoAnalytic</div>
+                <div class="pt-logo-badge">PolarisTek</div>
+                <div class="pt-logo-badge">Rita</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PARTNERSHIP TYPES -->
+    <section class="pt-types">
+        <div class="container">
+            <div class="pt-types__head reveal-block">
+                <span class="pt-types__eyebrow">Partnership Programs</span>
+                <h2 class="pt-types__title">Choose the Partnership<br>That Works for You</h2>
+            </div>
+            <div class="pt-types__grid">
+
+                <!-- Reseller -->
+                <div class="pt-type-card pt-type-card--teal reveal-left" style="--reveal-delay:0s">
+                    <div class="pt-type-card__icon pt-type-card__icon--teal">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l7 4v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M8 12l2.5 2.5L16 9"/></svg>
+                    </div>
+                    <span class="pt-type-card__label">Reseller Partnership</span>
+                    <h3 class="pt-type-card__title">Expand Your Offerings, Earn More</h3>
+                    <p class="pt-type-card__desc">Introduce clients to Lumenore's AI-powered BI solutions and enhance your business portfolio. We handle the technology, while you enhance your offerings, build stronger client relationships and unlock new growth opportunities.</p>
+                    <ul class="pt-type-card__benefits">
+                        <li><span class="chk"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Gain access to a cutting-edge BI platform</li>
+                        <li><span class="chk"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Get sales and marketing support from our team</li>
+                        <li><span class="chk"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Expand your service portfolio with enterprise-grade analytics</li>
+                    </ul>
+                    <a href="#become-partner" class="pt-type-card__cta">Click here to know more.</a>
+                </div>
+
+                <!-- Technology Integration -->
+                <div class="pt-type-card pt-type-card--blue reveal-right" style="--reveal-delay:.08s">
+                    <div class="pt-type-card__icon pt-type-card__icon--blue">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12h6M3 7h4M3 17h4M17 7h4M17 17h4"/><circle cx="12" cy="12" r="3"/><circle cx="5" cy="7" r="1.5"/><circle cx="5" cy="17" r="1.5"/><circle cx="19" cy="7" r="1.5"/><circle cx="19" cy="17" r="1.5"/></svg>
+                    </div>
+                    <span class="pt-type-card__label">Technology Integration Partnership</span>
+                    <h3 class="pt-type-card__title">Build More Powerful Solutions</h3>
+                    <p class="pt-type-card__desc">Integrate Lumenore's analytics and BI features seamlessly into your existing platforms. Offer seamless data exchange and real-time insights to improve functionality and provide customers with AI-powered business intelligence.</p>
+                    <ul class="pt-type-card__benefits">
+                        <li><span class="chk"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Embed powerful AI-driven analytics into your platform.</li>
+                        <li><span class="chk"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Seamless data exchange for a unified experience</li>
+                        <li><span class="chk"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Drive growth through collaborative, end-to-end solutions</li>
+                    </ul>
+                    <a href="#become-partner" class="pt-type-card__cta">Click here to know more.</a>
+                </div>
+
+                <!-- Consulting & Implementation -->
+                <div class="pt-type-card pt-type-card--violet reveal-left" style="--reveal-delay:.14s">
+                    <div class="pt-type-card__icon pt-type-card__icon--violet">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                    </div>
+                    <span class="pt-type-card__label">Consulting &amp; Implementation Partnership</span>
+                    <h3 class="pt-type-card__title">Deliver AI-Powered Transformations</h3>
+                    <p class="pt-type-card__desc">Businesses need more than software, they need expertise. As a Lumenore Consulting &amp; Implementation Partner, you help clients implement, customize, and optimize advanced analytics solutions for measurable impact.</p>
+                    <ul class="pt-type-card__benefits">
+                        <li><span class="chk"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Provide expert implementation and customization services</li>
+                        <li><span class="chk"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Drive long-term revenue with ongoing support and advisory services</li>
+                        <li><span class="chk"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Leverage Lumenore's expertise to expand your service offerings</li>
+                    </ul>
+                    <a href="#become-partner" class="pt-type-card__cta">Click here to know more.</a>
+                </div>
+
+                <!-- White Label -->
+                <div class="pt-type-card pt-type-card--indigo reveal-right" style="--reveal-delay:.20s">
+                    <div class="pt-type-card__icon pt-type-card__icon--indigo">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+                    </div>
+                    <span class="pt-type-card__label">White Label Partnership</span>
+                    <h3 class="pt-type-card__title">Your Brand, Our Technology</h3>
+                    <p class="pt-type-card__desc">Empower your business with a fully branded analytics solution, seamlessly integrating Lumenore's powerful BI capabilities under your own identity. Offer cutting-edge AI-driven insights without the complexities of development and maintenance.</p>
+                    <ul class="pt-type-card__benefits">
+                        <li><span class="chk"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Deliver a branded analytics experience without building from scratch</li>
+                        <li><span class="chk"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Leverage AI-powered insights while maintaining full control over customer relationships</li>
+                        <li><span class="chk"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Expand market reach and differentiate your offerings with enterprise-grade BI</li>
+                        <li><span class="chk"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Scale effortlessly with a secure, high-performance analytics platform</li>
+                    </ul>
+                    <a href="#become-partner" class="pt-type-card__cta">Click here to know more.</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY PARTNER -->
+    <section class="pt-why">
+        <div class="container">
+            <div class="pt-why__head reveal-block">
+                <span class="pt-why__eyebrow">Partner Benefits</span>
+                <h2 class="pt-why__title">Why Partner with Lumenore?</h2>
+            </div>
+            <div class="pt-why__grid">
+
+                <div class="pt-why-card reveal-block" style="--reveal-delay:0s">
+                    <div class="pt-why-card__header">
+                        <div class="pt-why-card__icon pt-why-card__icon--teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l18-8v18z"/></svg></div>
+                        <span class="pt-why-card__num">01</span>
+                    </div>
+                    <h3 class="pt-why-card__title">Partner Marketing Manager</h3>
+                    <p class="pt-why-card__desc">Collaborate on tailored campaigns to amplify your reach, generate qualified leads, and accelerate revenue growth.</p>
+                </div>
+
+                <div class="pt-why-card reveal-block" style="--reveal-delay:.06s">
+                    <div class="pt-why-card__header">
+                        <div class="pt-why-card__icon pt-why-card__icon--blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18l4-6 4 3 6-9 4 5"/></svg></div>
+                        <span class="pt-why-card__num">02</span>
+                    </div>
+                    <h3 class="pt-why-card__title">Joint Business Plan</h3>
+                    <p class="pt-why-card__desc">Align strategies and resources to unlock shared goals, ensuring scalable growth and long-term success.</p>
+                </div>
+
+                <div class="pt-why-card reveal-block" style="--reveal-delay:.12s">
+                    <div class="pt-why-card__header">
+                        <div class="pt-why-card__icon pt-why-card__icon--violet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+                        <span class="pt-why-card__num">03</span>
+                    </div>
+                    <h3 class="pt-why-card__title">Partner Business Manager</h3>
+                    <p class="pt-why-card__desc">Receive dedicated guidance to optimize operations, resolve challenges, and maximize partnership ROI.</p>
+                </div>
+
+                <div class="pt-why-card reveal-block" style="--reveal-delay:.18s">
+                    <div class="pt-why-card__header">
+                        <div class="pt-why-card__icon pt-why-card__icon--teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg></div>
+                        <span class="pt-why-card__num">04</span>
+                    </div>
+                    <h3 class="pt-why-card__title">Special Pricing</h3>
+                    <p class="pt-why-card__desc">Access exclusive pricing structures to strengthen your competitive edge and boost profitability.</p>
+                </div>
+
+                <div class="pt-why-card reveal-block" style="--reveal-delay:.24s">
+                    <div class="pt-why-card__header">
+                        <div class="pt-why-card__icon pt-why-card__icon--blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+                        <span class="pt-why-card__num">05</span>
+                    </div>
+                    <h3 class="pt-why-card__title">Lumenore Software Access</h3>
+                    <p class="pt-why-card__desc">Deploy industry-leading AI and BI tools to deliver transformative insights and elevate client value.</p>
+                </div>
+
+                <div class="pt-why-card reveal-block" style="--reveal-delay:.30s">
+                    <div class="pt-why-card__header">
+                        <div class="pt-why-card__icon pt-why-card__icon--violet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+                        <span class="pt-why-card__num">06</span>
+                    </div>
+                    <h3 class="pt-why-card__title">PRM Access</h3>
+                    <p class="pt-why-card__desc">Streamline collaboration with a centralized portal for training, resources, and real-time performance tracking.</p>
+                </div>
+
+                <div class="pt-why-card reveal-block" style="--reveal-delay:.36s">
+                    <div class="pt-why-card__header">
+                        <div class="pt-why-card__icon pt-why-card__icon--teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></div>
+                        <span class="pt-why-card__num">07</span>
+                    </div>
+                    <h3 class="pt-why-card__title">Sales and Marketing Collaterals</h3>
+                    <p class="pt-why-card__desc">Leverage ready-made, brandable assets to shorten sales cycles and drive client conversions.</p>
+                </div>
+
+                <div class="pt-why-card reveal-block" style="--reveal-delay:.42s">
+                    <div class="pt-why-card__header">
+                        <div class="pt-why-card__icon pt-why-card__icon--blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+                        <span class="pt-why-card__num">08</span>
+                    </div>
+                    <h3 class="pt-why-card__title">Access to Launch Team for Driving Deals</h3>
+                    <p class="pt-why-card__desc">Get expert technical and sales support to close big and complex deals with confidence.</p>
+                </div>
+
+                <div class="pt-why-card reveal-block" style="--reveal-delay:.48s">
+                    <div class="pt-why-card__header">
+                        <div class="pt-why-card__icon pt-why-card__icon--violet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+                        <span class="pt-why-card__num">09</span>
+                    </div>
+                    <h3 class="pt-why-card__title">Access to Marketing Team to Help Execute Campaigns</h3>
+                    <p class="pt-why-card__desc">Partner with specialists to craft data-driven campaigns that resonate with your audience and drive results.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SEE LUMENORE IN ACTION -->
+    <section class="pt-action">
+        <div class="container">
+            <div class="pt-action__inner">
+                <div class="pt-action__head reveal-block">
+                    <span class="pt-action__eyebrow">Watch &amp; Learn</span>
+                    <h2 class="pt-action__title">See Lumenore in Action</h2>
+                    <p class="pt-action__desc">Watch Lumenore's AI-powered tools cut through complexity, uncover hidden opportunities, and empower leaders to act with precision – no guesswork, no delays.</p>
+                </div>
+                <div class="pt-action__video-outer reveal-block" style="--reveal-delay:.14s">
+                    <div class="pt-action__glow-ring" aria-hidden="true"></div>
+                    <div class="pt-action__video-wrap">
+                        <div class="pt-action__video-bg" aria-hidden="true"></div>
+                        <!-- floating stat chips -->
+                        <div class="pt-action__stat pt-action__stat--tl">
+                            <div class="pt-action__stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18l4-6 4 3 6-9 4 5"/></svg></div>
+                            <div><span class="pt-action__stat-label">Real-time Insights</span><span class="pt-action__stat-sub">AI-powered analytics</span></div>
+                        </div>
+                        <div class="pt-action__stat pt-action__stat--br">
+                            <div class="pt-action__stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12h6M3 7h4M3 17h4M17 7h4M17 17h4"/><circle cx="12" cy="12" r="3"/></svg></div>
+                            <div><span class="pt-action__stat-label">50+ Connectors</span><span class="pt-action__stat-sub">Connect any data source</span></div>
+                        </div>
+                        <div class="pt-action__play" role="button" aria-label="Watch Lumenore in Action" tabindex="0">
+                            <div class="pt-action__play-btn">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BETTER TOGETHER -->
+    <section class="pt-better">
+        <div class="pt-better__bg-dots" aria-hidden="true"></div>
+        <div class="container">
+            <div class="pt-better__inner">
+
+                <!-- Left -->
+                <div class="pt-better__left reveal-left">
+                    <span class="pt-better__eyebrow">Partnership Advantage</span>
+                    <h2 class="pt-better__title">Better Together</h2>
+                    <p class="pt-better__desc">We know you're committed to delivering the best for your clients - so are we. We combine AI-powered insights with custom-fit solutions to help you grow, overcome challenges, and drive sustainable profitability.</p>
+                    <p class="pt-better__desc">We bring the intelligence. You bring the impact. Together, we redefine what's possible.</p>
+
+                </div>
+
+                <!-- Right: feature grid -->
+                <div class="pt-better__right reveal-right" style="--reveal-delay:.12s">
+                    <div class="pt-better-feat pt-better-feat--teal">
+                        <div class="pt-better-feat__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2 5 5 2-5 2-2 5-2-5-5-2 5-2z"/></svg></div>
+                        <span class="pt-better-feat__text">AI-Powered Business Intelligence</span>
+                    </div>
+                    <div class="pt-better-feat pt-better-feat--blue">
+                        <div class="pt-better-feat__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>
+                        <span class="pt-better-feat__text">Industry-Ready, Tailored Solutions</span>
+                    </div>
+                    <div class="pt-better-feat pt-better-feat--violet">
+                        <div class="pt-better-feat__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+                        <span class="pt-better-feat__text">Ready to Use AI Dashboard Libraries</span>
+                    </div>
+                    <div class="pt-better-feat pt-better-feat--teal">
+                        <div class="pt-better-feat__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4M8 23h8"/></svg></div>
+                        <span class="pt-better-feat__text">Voice &amp; Text-Powered Analytics</span>
+                    </div>
+                    <div class="pt-better-feat pt-better-feat--blue">
+                        <div class="pt-better-feat__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12c0-5 4-9 9-9s9 4 9 9"/><path d="M12 7v5l3 2"/></svg></div>
+                        <span class="pt-better-feat__text">Predictive Analytics with Advanced AI</span>
+                    </div>
+                    <div class="pt-better-feat pt-better-feat--violet">
+                        <div class="pt-better-feat__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg></div>
+                        <span class="pt-better-feat__text">Flexible, Intuitive White-Label Solutions</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- BIG PLANS / PARTNER FORM -->
+    <section class="pt-bigplans" id="become-partner">
+        <div class="container">
+            <div class="pt-bigplans__inner">
+
+                <!-- Left: heading + map illustration -->
+                <div class="pt-bigplans__left reveal-left">
+                    <h2 class="pt-bigplans__title">
+                        <span class="blue">Big Plans</span> <span class="dark">Start Here</span>
+                    </h2>
+                    <p class="pt-bigplans__desc">You've got the vision, and we've got the tools and expertise. Let's start a conversation on your next big opportunity.</p>
+
+                    <!-- World map with avatar pins -->
+                    <div class="pt-map" aria-hidden="true">
+                        <div class="pt-map__bg"></div>
+                        <svg class="pt-map__lines" viewBox="0 0 400 280" fill="none">
+                            <line x1="90" y1="120" x2="210" y2="80"  stroke="#CBD5E1" stroke-width="1" stroke-dasharray="4 3"/>
+                            <line x1="210" y1="80"  x2="270" y2="140" stroke="#CBD5E1" stroke-width="1" stroke-dasharray="4 3"/>
+                            <line x1="210" y1="80"  x2="50"  y2="185" stroke="#CBD5E1" stroke-width="1" stroke-dasharray="4 3"/>
+                        </svg>
+                        <!-- Pin 1: woman ponytail — top left -->
+                        <div class="pt-map__pin pt-map__pin--1">
+                            <div class="pt-map__avatar">
+                                <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="60" height="60" rx="8" fill="#FEE2E2"/>
+                                    <circle cx="30" cy="22" r="9" fill="#F87171"/>
+                                    <!-- ponytail -->
+                                    <path d="M30 10 Q34 4 38 8" stroke="#1e293b" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+                                    <ellipse cx="38" cy="7" rx="3" ry="3.5" fill="#1e293b"/>
+                                    <!-- hair -->
+                                    <path d="M21 20 Q20 12 30 10 Q40 12 39 20" fill="#1e293b"/>
+                                    <!-- body -->
+                                    <path d="M17 48 Q18 36 30 34 Q42 36 43 48" fill="#EF4444"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <!-- Pin 2: man glasses — top right -->
+                        <div class="pt-map__pin pt-map__pin--2">
+                            <div class="pt-map__avatar">
+                                <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="60" height="60" rx="8" fill="#DBEAFE"/>
+                                    <circle cx="30" cy="22" r="9" fill="#93C5FD"/>
+                                    <!-- hair -->
+                                    <path d="M21 19 Q22 11 30 10 Q38 11 39 19" fill="#1e293b"/>
+                                    <!-- glasses -->
+                                    <rect x="22" y="23" width="6" height="4" rx="2" stroke="#1e293b" stroke-width="1.5" fill="none"/>
+                                    <rect x="32" y="23" width="6" height="4" rx="2" stroke="#1e293b" stroke-width="1.5" fill="none"/>
+                                    <line x1="28" y1="25" x2="32" y2="25" stroke="#1e293b" stroke-width="1.5"/>
+                                    <!-- body -->
+                                    <path d="M17 48 Q18 36 30 34 Q42 36 43 48" fill="#3B82F6"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <!-- Pin 3: woman short hair — middle -->
+                        <div class="pt-map__pin pt-map__pin--3">
+                            <div class="pt-map__avatar">
+                                <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="60" height="60" rx="8" fill="#D1FAE5"/>
+                                    <circle cx="30" cy="22" r="9" fill="#6EE7B7"/>
+                                    <!-- short hair -->
+                                    <path d="M21 20 Q21 10 30 10 Q39 10 39 20 Q39 14 30 14 Q21 14 21 20Z" fill="#1e293b"/>
+                                    <!-- body -->
+                                    <path d="M17 48 Q18 36 30 34 Q42 36 43 48" fill="#10B981"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <!-- Pin 4: man beard — bottom left -->
+                        <div class="pt-map__pin pt-map__pin--4">
+                            <div class="pt-map__avatar">
+                                <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="60" height="60" rx="8" fill="#FEF3C7"/>
+                                    <circle cx="30" cy="22" r="9" fill="#FCD34D"/>
+                                    <!-- hair/beard -->
+                                    <path d="M21 19 Q22 11 30 10 Q38 11 39 19" fill="#92400E"/>
+                                    <path d="M23 27 Q24 32 30 33 Q36 32 37 27" fill="#92400E"/>
+                                    <!-- body -->
+                                    <path d="M17 48 Q18 36 30 34 Q42 36 43 48" fill="#F59E0B"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: form card -->
+                <div class="pt-bigplans__right reveal-right" style="--reveal-delay:.10s">
+                    <div class="pt-form-card">
+                        <h3 class="pt-form-card__title">Become a<br>Partner Today</h3>
+                        <form class="pt-form" id="partner_form" novalidate>
+                            <div class="pt-form__group">
+                                <label class="pt-form__label" for="pf-name">Full Name<span class="req">*</span></label>
+                                <input class="pt-form__input" type="text" id="pf-name" name="full_name" placeholder="Enter Name" required>
+                            </div>
+                            <div class="pt-form__group">
+                                <label class="pt-form__label" for="pf-email">Company Email<span class="req">*</span></label>
+                                <input class="pt-form__input" type="email" id="pf-email" name="company_email" placeholder="Enter Company Email" required>
+                            </div>
+                            <div class="pt-form__group">
+                                <label class="pt-form__label" for="pf-phone">Phone Number<span class="req">*</span></label>
+                                <input class="pt-form__input" type="tel" id="pf-phone" name="phone_number" placeholder="Enter Phone Number" required>
+                            </div>
+                            <div class="pt-form__group">
+                                <label class="pt-form__label" for="pf-type">Partnership Type</label>
+                                <select class="pt-form__select" id="pf-type" name="partnership_type">
+                                    <option value="" disabled selected>Choose Partnership Type</option>
+                                    <option value="reseller">Reseller Partnership</option>
+                                    <option value="technology">Technology Integration Partnership</option>
+                                    <option value="consulting">Consulting &amp; Implementation Partnership</option>
+                                    <option value="whitelabel">White Label Partnership</option>
+                                </select>
+                            </div>
+                            <div class="pt-form__group">
+                                <label class="pt-form__label" for="pf-website">Website Link<span class="req">*</span></label>
+                                <input class="pt-form__input" type="url" id="pf-website" name="website_link" placeholder="Enter Website Link" required>
+                            </div>
+                            <div class="pt-form__group">
+                                <label class="pt-form__label" for="pf-business">Tell us about your business<span class="req">*</span></label>
+                                <textarea class="pt-form__textarea" id="pf-business" name="business_info" placeholder="Tell us about your business" rows="4" required></textarea>
+                            </div>
+                            <div class="pt-form__checkbox-row">
+                                <input type="checkbox" id="pf-privacy" name="privacy_agree" required>
+                                <label class="pt-form__checkbox-label" for="pf-privacy">
+                                    By clicking on 'Submit'. I acknowledge receipt of the Lumenore <a href="privacy.html">privacy policy</a>.<span class="req">*</span>
+                                </label>
+                            </div>
+                            <!-- reCAPTCHA visual placeholder -->
+                            <div class="pt-form__recaptcha" aria-label="reCAPTCHA">
+                                <div class="pt-form__recaptcha-text">protected by reCAPTCHA</div>
+                                <div class="pt-form__recaptcha-logo">
+                                    <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="32" cy="32" r="30" stroke="#4A90D9" stroke-width="4"/>
+                                        <path d="M32 10 C20 10 11 19 11 31 L20 31 C20 24 25 19 32 19 C39 19 44 24 44 31 L53 31 C53 19 44 10 32 10Z" fill="#4A90D9"/>
+                                        <path d="M20 33 L11 33 C11 45 20 54 32 54 C44 54 53 45 53 33 L44 33 C44 40 39 45 32 45 C25 45 20 40 20 33Z" fill="#4A90D9" opacity=".45"/>
+                                        <circle cx="32" cy="32" r="7" fill="#4A90D9"/>
+                                    </svg>
+                                    <span>reCAPTCHA<br>Privacy - Terms</span>
+                                </div>
+                            </div>
+                            <button type="submit" class="pt-form__submit">Submit</button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-top">
+            <div class="brand-col footer-col reveal-left">
+                <div class="brand-logo">
+                    <img src="./assets/images/homeV2o/Lumenore logo.svg" alt="Lumenore" class="brand-logo-img">
+                    <img src="./assets/images/homeV2o/GPTW.svg" alt="Great Place to Work — Certified" class="gptw-badge">
+                </div>
+                <div class="ask-ai-box">
+                    <p class="ask-ai-label">Ask AI for a summary about Lumenore</p>
+                    <div class="ask-ai-icons">
+                        <a href="#" aria-label="ChatGPT"><img src="./assets/images/AI/openai.svg" alt="ChatGPT" width="24" height="24"></a>
+                        <a href="#" aria-label="Perplexity"><img src="./assets/images/AI/perplexity-dark.svg" alt="Perplexity" width="24" height="24"></a>
+                        <a href="#" aria-label="Gemini"><img src="./assets/images/AI/google-gemini-dark.svg" alt="Gemini" width="24" height="24"></a>
+                        <a href="#" aria-label="Claude"><img src="./assets/images/AI/claude.svg" alt="Claude" width="24" height="24"></a>
+                        <a href="#" aria-label="Grok"><img src="./assets/images/AI/grok.svg" alt="Grok" width="24" height="24"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-cta reveal-right" style="--reveal-delay:.18s">
+                <span class="footer-cta-halo" aria-hidden="true"></span>
+                <div class="footer-cta-text">
+                    <span class="footer-cta-eyebrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l2 5 5 2-5 2-2 5-2-5-5-2 5-2z" fill="currentColor"/></svg>Talk to a human</span>
+                    <h3>Got more questions?</h3>
+                    <p>Our team is here to answer any questions or customize the perfect plan for you.</p>
+                </div>
+                <a href="contact.html" class="footer-cta-button btn-primary">Get in Touch <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+            </div>
+        </div>
+        <div class="footer-nav reveal-block" style="--reveal-delay:.28s">
+            <div class="footer-col"><h4>Platform</h4><ul><li><a href="why-us.html">Why Us</a></li><li><a href="trust-and-security.html">Trust and Security</a></li><li><a href="partners.html">Partners</a></li><li><a href="professional-services.html">Professional Services</a></li><li><a href="platform.html">Platform</a></li><li><a href="release-notes.html">Latest Releases</a></li><li><a href="watch-demo.html">Watch Demo</a></li></ul></div>
+            <div class="footer-col"><h4>Capabilities</h4><ul><li><a href="data-connectors.html">Data Connectors</a></li><li><a href="data-integration.html">Data Integration</a></li><li><a href="data-lakehouse.html">Data Lakehouse</a></li><li><a href="data-visualization.html">Data Visualization</a></li><li><a href="data-universe.html">Data Universe</a></li><li><a href="dashboard.html">Dashboard</a></li><li><a href="advanced-analytics.html">Advanced Analytics</a></li><li><a href="embedded-analytics.html">Embedded Analytics</a></li><li><a href="conversational-intelligence.html">Conversational Intelligence</a></li><li><a href="decision-intelligence.html">Decision Intelligence</a></li><li><a href="self-service-analytics.html">Self-Service Analytics</a></li><li><a href="predictive-analytics.html">Predictive Analytics</a></li></ul></div>
+            <div class="footer-col"><h4>Product</h4><ul><li><a href="lumenore-insights.html">Lumenore Insights</a></li><li><a href="../lumenore-ask-me.html">Lumenore Ask Me</a></li><li><a href="lumenore-data-magnet.html">Lumenore Data Magnet</a></li></ul><h4 class="col-spaced">Pricing</h4><ul><li><a href="pricing-insights.html">Lumenore Insights Pricing</a></li></ul><h4 class="col-spaced">Compare</h4><ul><li><a href="tableau-alternative.html">Tableau Alternative</a></li><li><a href="thoughtspot-alternative.html">ThoughtSpot Alternative</a></li></ul></div>
+            <div class="footer-col"><h4>Solutions</h4><ul><li><a href="solutions-by-industry.html">By Industry</a></li><li><a href="solutions-by-department.html">By Department</a></li></ul><h4 class="col-spaced">Company</h4><ul><li><a href="about-us.html">About Us</a></li><li><a href="career.html">Career</a></li><li><a href="newsroom.html">Newsroom</a></li><li><a href="contact.html">Contact Us</a></li><li><a href="contact-sales.html">Contact Sales</a></li></ul></div>
+            <div class="footer-col"><h4>Resources</h4><ul><li><a href="request-a-demo.html">Request Demo</a></li><li><a href="community-support.html">Community Support</a></li><li><a href="news-and-media.html">News &amp; Media</a></li><li><a href="ebooks-whitepapers.html">Ebooks &amp; Whitepapers</a></li><li><a href="success-stories.html">Success Stories</a></li><li><a href="use-cases.html">Use Cases</a></li><li><a href="blog.html">Blogs</a></li><li><a href="events.html">Events</a></li><li><a href="knowledge-base.html">Knowledge Base</a></li><li><a href="certifications.html">Certifications</a></li></ul></div>
+        </div>
+        <div class="copyright">
+            <p>© 2025 Lumenore Inc. All rights reserved.</p>
+            <div class="copyright-social">
+                <a href="#" aria-label="X / Twitter"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+                <a href="#" aria-label="LinkedIn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452z"/></svg></a>
+                <a href="#" aria-label="YouTube"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+                <a href="#" aria-label="Instagram"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+            </div>
+            <div class="legal-links">
+                <a href="privacy.html">Privacy</a>
+                <a href="terms.html">Terms of Use</a>
+                <a href="eula.html">License Agreement</a>
+                <a href="cookies.html">Cookies Settings</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+/* Platform mega-menu */
+(function(){var mega=document.getElementById('platformMega'),detail=document.getElementById('platformDetail');var productPane=document.getElementById('platformProductPane'),productTitle=document.getElementById('npProductTitle');var productTag=document.getElementById('npProductTagline'),productDesc=document.getElementById('npProductDesc');var ctaStart=document.getElementById('npProductStart'),ctaLearn=document.getElementById('npProductLearn');var ctaPricing=document.getElementById('npProductPricing'),gridTitle=document.getElementById('platformGridTitle');var grid=document.getElementById('platformGrid');var navList=document.querySelectorAll('#platformMega [data-platform-item]');var cards=document.querySelectorAll('#platformMega [data-platform-card]');if(!mega||!detail)return;var products={insights:{tagline:'Self-Service Analytics',title:'Lumenore Insights',desc:'Democratize data with self-service, AI-powered dashboards.',start:'#',learn:'#',pricing:'#'},askme:{tagline:'Conversational Analytics',title:'Lumenore Ask Me',desc:'Query enterprise data in natural language. Instant, governed insights.',start:'../lumenore-ask-me.html',learn:'../lumenore-ask-me.html',pricing:'#'},datamagnet:{tagline:'Enterprise ETL',title:'Lumenore Data Magnet',desc:'Connect 50+ enterprise sources with low-code ETL.',start:'#',learn:'#',pricing:'#'}};function hideAll(){productPane.hidden=true;if(gridTitle)gridTitle.hidden=true;if(grid)grid.hidden=true;}function showProduct(key){var d=products[key];if(!d)return;productTag.textContent=d.tagline;productTitle.textContent=d.title;productDesc.textContent=d.desc;ctaStart.setAttribute('href',d.start);if(ctaLearn)ctaLearn.setAttribute('href',d.learn);ctaPricing.setAttribute('href',d.pricing);productPane.hidden=false;if(gridTitle)gridTitle.hidden=true;if(grid)grid.hidden=true;}function showGrid(){productPane.hidden=true;if(gridTitle)gridTitle.hidden=false;if(grid)grid.hidden=false;}function highlight(key){navList.forEach(function(n){n.classList.toggle('is-active',n.dataset.platformItem===key);});cards.forEach(function(c){c.classList.toggle('is-active',c.dataset.platformCard===key);});}function clearHighlight(){navList.forEach(function(n){n.classList.remove('is-active');});cards.forEach(function(c){c.classList.remove('is-active');});}navList.forEach(function(n){var t=function(){var key=n.dataset.platformItem;highlight(key);if(n.dataset.platformType==='product')showProduct(key);else showGrid();};n.addEventListener('mouseenter',t);n.addEventListener('focus',t);});cards.forEach(function(c){var t=function(){showGrid();highlight(c.dataset.platformCard);};c.addEventListener('mouseenter',t);c.addEventListener('focus',t);});var navItem=mega.closest('.nav-item');if(navItem){navItem.addEventListener('mouseenter',function(){highlight('insights');showProduct('insights');});navItem.addEventListener('focusin',function(){highlight('insights');showProduct('insights');});navItem.addEventListener('mouseleave',function(){clearHighlight();hideAll();});}})();
+
+/* Solutions mega-menu */
+(function(){var mega=document.getElementById('solutionMega');if(!mega)return;var navList=mega.querySelectorAll('[data-solution-item]');var industryTtl=document.getElementById('solIndustryTitle'),industryGrid=document.getElementById('solIndustryGrid');var deptTtl=document.getElementById('solDepartmentTitle'),deptGrid=document.getElementById('solDepartmentGrid');function hideAll(){industryTtl.hidden=true;industryGrid.hidden=true;deptTtl.hidden=true;deptGrid.hidden=true;}function showIndustry(){industryTtl.hidden=false;industryGrid.hidden=false;deptTtl.hidden=true;deptGrid.hidden=true;}function showDepartment(){industryTtl.hidden=true;industryGrid.hidden=true;deptTtl.hidden=false;deptGrid.hidden=false;}function highlight(key){navList.forEach(function(n){n.classList.toggle('is-active',n.dataset.solutionItem===key);});}function clearHighlight(){navList.forEach(function(n){n.classList.remove('is-active');});}navList.forEach(function(n){var t=function(){var key=n.dataset.solutionItem;highlight(key);if(key==='department')showDepartment();else showIndustry();};n.addEventListener('mouseenter',t);n.addEventListener('focus',t);});var navItem=mega.closest('.nav-item');if(navItem){navItem.addEventListener('mouseenter',function(){highlight('industry');showIndustry();});navItem.addEventListener('focusin',function(){highlight('industry');showIndustry();});navItem.addEventListener('mouseleave',function(){clearHighlight();hideAll();});}})();
+
+/* Company mega-menu */
+(function(){var mega=document.getElementById('companyMega');if(!mega)return;var navList=mega.querySelectorAll('[data-company-item]');var allTtl=document.getElementById('coAllTitle'),allGrid=document.getElementById('coAllGrid');function hideAll(){if(allTtl)allTtl.hidden=true;if(allGrid)allGrid.hidden=true;}function showAll(){if(allTtl)allTtl.hidden=false;if(allGrid)allGrid.hidden=false;}function highlight(){navList.forEach(function(n){n.classList.add('is-active');});}function clearHighlight(){navList.forEach(function(n){n.classList.remove('is-active');});}navList.forEach(function(n){n.addEventListener('mouseenter',function(){highlight();showAll();});n.addEventListener('focus',function(){highlight();showAll();});});var navItem=mega.closest('.nav-item');if(navItem){navItem.addEventListener('mouseenter',function(){highlight();showAll();});navItem.addEventListener('focusin',function(){highlight();showAll();});navItem.addEventListener('mouseleave',function(){clearHighlight();hideAll();});}})();
+
+/* Hover-gap bridge */
+(function(){document.querySelectorAll('.nav-item.has-dropdown').forEach(function(item){var mega=item.querySelector('.nav-mega');if(!mega)return;var closeTimer=null;function open(){clearTimeout(closeTimer);item.classList.add('is-open');}function scheduleClose(){closeTimer=setTimeout(function(){item.classList.remove('is-open');},200);}item.addEventListener('mouseenter',open);item.addEventListener('mouseleave',scheduleClose);mega.addEventListener('mouseenter',open);mega.addEventListener('mouseleave',scheduleClose);});})();
+
+/* Reveal animations */
+(function(){var els=document.querySelectorAll('.reveal-block,.reveal-left,.reveal-right');if(!els.length)return;if(!('IntersectionObserver' in window)){els.forEach(function(el){el.classList.add('is-visible');});return;}var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('is-visible');obs.unobserve(e.target);}});},{threshold:0.12});els.forEach(function(el){obs.observe(el);});})();
+
+/* Custom cursor */
+(function(){var cursor=document.getElementById('customCursor');if(!cursor)return;if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){cursor.remove();return;}if(window.matchMedia('(hover: none)').matches){cursor.remove();return;}var dotX=0,dotY=0,ringX=0,ringY=0,RING_EASE=0.20,raf=null,firstMove=false;var ring=cursor.querySelector('.cursor__ring');var INTERACTIVE_SEL='a,button,label,select,summary,[role="button"],[role="tab"],[role="menuitem"],[role="link"],.btn-primary';var TEXT_SEL='input:not([type="button"]):not([type="submit"]):not([type="reset"]):not([type="checkbox"]):not([type="radio"]),textarea,[contenteditable="true"]';function frame(){ringX+=(dotX-ringX)*RING_EASE;ringY+=(dotY-ringY)*RING_EASE;cursor.style.transform='translate3d('+dotX+'px,'+dotY+'px,0)';ring.style.transform='translate3d('+(ringX-dotX)+'px,'+(ringY-dotY)+'px,0)';if(Math.abs(dotX-ringX)>0.3||Math.abs(dotY-ringY)>0.3){raf=requestAnimationFrame(frame);}else{ringX=dotX;ringY=dotY;ring.style.transform='translate3d(0,0,0)';raf=null;}}function onMove(e){dotX=e.clientX;dotY=e.clientY;if(!firstMove){firstMove=true;ringX=dotX;ringY=dotY;cursor.style.transform='translate3d('+dotX+'px,'+dotY+'px,0)';cursor.classList.add('is-visible');}if(raf===null)raf=requestAnimationFrame(frame);}function onOver(e){if(e.target.closest&&e.target.closest(TEXT_SEL)){cursor.classList.add('is-hidden');cursor.classList.remove('is-active');return;}cursor.classList.remove('is-hidden');if(e.target.closest&&e.target.closest(INTERACTIVE_SEL))cursor.classList.add('is-active');}function onOut(e){if(!e.relatedTarget||!e.relatedTarget.closest||!e.relatedTarget.closest(INTERACTIVE_SEL))cursor.classList.remove('is-active');}document.addEventListener('mousemove',onMove,{passive:true});document.addEventListener('mouseover',onOver);document.addEventListener('mouseout',onOut);document.addEventListener('mousedown',function(){cursor.classList.add('is-pressed');});document.addEventListener('mouseup',function(){cursor.classList.remove('is-pressed');});document.addEventListener('mouseleave',function(){cursor.classList.remove('is-visible');});document.addEventListener('mouseenter',function(){if(firstMove)cursor.classList.add('is-visible');});})();
+</script>
+</body>
+</html>
