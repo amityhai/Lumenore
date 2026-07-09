@@ -13247,10 +13247,13 @@ body.fc-preview {
 
 /* ── Standardise intro → content gap to 60px across all sections ── */
 .hero-bg-page .cm-intro,
-.hero-bg-page .personas-intro,
 .hero-bg-page .pricing-intro,
 .hero-bg-page .success-intro,
 .hero-bg-page .testimonial-intro {
+    margin-bottom: 60px !important;
+}
+/* Use ID + class to beat #personaSection .personas-intro { 96px } specificity */
+.hero-bg-page #personaSection .personas-intro {
     margin-bottom: 60px !important;
 }
 
