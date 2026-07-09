@@ -378,7 +378,7 @@ a{ color: inherit; text-decoration: none; }
     font-size: 15px;
     line-height: 25px;
     padding: 8px 16px;
-    border-radius: 8px;
+    border-radius: 6px;
     border: none;
     cursor: pointer;
     white-space: nowrap;
@@ -1022,8 +1022,8 @@ a{ color: inherit; text-decoration: none; }
 .product-detail h3{
     font-family: 'Fraunces', serif;
     font-weight: 300;
-    font-size: 38px;
-    line-height: 46px;
+    font-size: 32px;
+    line-height: 44px;
     color: var(--Base-White, #fcfcfc);
     margin: 0 0 34px;
    
@@ -1634,8 +1634,8 @@ a{ color: inherit; text-decoration: none; }
 .pex-text h3{
     font-family: 'Fraunces', serif;
     font-weight: 300;
-    font-size: 30px;
-    line-height: 40px;
+    font-size: 32px;
+    line-height: 44px;
     color: var(--cool-101828, #101828);
     margin: 0 0 22px;
     letter-spacing: -.3px;
@@ -2508,8 +2508,8 @@ a{ color: inherit; text-decoration: none; }
 .ps-title{
     font-family: 'Fraunces', serif;
     font-weight: 300;
-    font-size: 30px;
-    line-height: 40px;
+    font-size: 32px;
+    line-height: 44px;
     letter-spacing: -.3px;
     color: var(--cool-101828, #101828);
     margin: 0 0 14px;
@@ -2708,7 +2708,7 @@ a{ color: inherit; text-decoration: none; }
     align-items: center;
     gap: 10px;
     padding: 12px 22px;
-    border-radius: 12px;
+    border-radius: 6px;
     background: linear-gradient(135deg, var(--pa-accent) 0%, var(--pa-accent-secondary) 100%);
     color: #ffffff;
     font-family: 'Inter', sans-serif;
@@ -3840,7 +3840,7 @@ a{ color: inherit; text-decoration: none; }
     font-family: 'Fraunces', serif;
     font-weight: 300;
     font-size: 32px;
-    line-height: 44.8px;
+    line-height: 44px;
     color: var(--Base-White, #fcfcfc);
     margin: 0;
 }
@@ -4070,9 +4070,9 @@ a{ color: inherit; text-decoration: none; }
 }
 .footer-cta-text h3{
     font-family: 'Fraunces', serif;
-    font-weight: 400;
-    font-size: 30px;
-    line-height: 40px;
+    font-weight: 300;
+    font-size: 32px;
+    line-height: 44px;
     color: #ffffff;
     margin: 0 0 8px;
     letter-spacing: -.4px;
@@ -4246,7 +4246,7 @@ a{ color: inherit; text-decoration: none; }
     .site-footer .footer-nav{ grid-template-columns: 1fr repeat(3, 1fr); row-gap: 48px; }
     .brand-col{ grid-column: 1 / -1; }
     .product-stage{ gap: 40px; }
-    .product-detail h3{ font-size: 38px; line-height: 46px; }
+    .product-detail h3{ font-size: 30px; line-height: 42px; }
 }
 @media (max-width: 991px){
     .hello-bar{ padding: 10px 24px 11px; }
@@ -4267,7 +4267,7 @@ a{ color: inherit; text-decoration: none; }
     .product-progress{ display: none; }
     .product-stage{ grid-template-columns: 1fr; gap: 40px; min-height: 0; }
     .product-detail{ padding: 0; }
-    .product-detail h3{ font-size: 36px; line-height: 44px; }
+    .product-detail h3{ font-size: 28px; line-height: 38px; }
     .products-head{ margin-bottom: 40px; }
     .feature-grid,
     .story-grid{ grid-template-columns: 1fr; }
@@ -5195,7 +5195,7 @@ body.explore-locked{ overflow: hidden; }
     flex-direction: column;
     justify-content: center;
     min-height: 0;
-    padding: 96px 0 120px;
+    padding: 96px 0;
 }
 .trusted-section{ padding: 80px 0; }
 .section-products{ padding: 0; }
@@ -5321,7 +5321,7 @@ body.explore-locked{ overflow: hidden; }
     color: #101828;
     letter-spacing: -.01em;
 }
-.section-features .feature-card p{ color: #475467; }
+.section-features .feature-card p{ color: #4a5568; }
 
 @media (max-width: 991px){
     .container{ padding: 0 24px; }
@@ -6427,9 +6427,9 @@ body.explore-locked{ overflow: hidden; }
 .np-pane-title{
     margin: 0 0 8px;
     font-family: 'Fraunces', serif;
-    font-weight: 400;
-    font-size: 26px;
-    line-height: 32px;
+    font-weight: 300;
+    font-size: 22px;
+    line-height: 30px;
     letter-spacing: -.4px;
     color: #ffffff;
 }
@@ -7444,7 +7444,7 @@ body.explore-locked{ overflow: hidden; }
     flex-direction: column;
     justify-content: center;
     min-height: 0;
-    padding: 96px 0 120px;
+    padding: 96px 0;
 }
 .trusted-section{ padding: 80px 0; background: #051A3C; }
 .section-products{ padding: 0; }
@@ -7570,7 +7570,7 @@ body.explore-locked{ overflow: hidden; }
     color: #101828;
     letter-spacing: -.01em;
 }
-.section-features .feature-card p{ color: #475467; }
+.section-features .feature-card p{ color: #4a5568; }
 
 @media (max-width: 991px){
     .container{ padding: 0 24px; }
@@ -9633,17 +9633,17 @@ body.explore-locked{ overflow: hidden; }
     box-shadow: 0 0 8px var(--pa-accent-glow-a);
     transition: background .35s ease, box-shadow .35s ease;
 }
-/* Heading: 38px Fraunces Light, tighter leading */
+/* Heading: standardised to 32px Fraunces Light */
 #personaSection .pex-text h3{
-    font-size: 38px;
-    line-height: 1.22;
+    font-size: 32px;
+    line-height: 44px;
     margin-bottom: 0;
     max-width: 520px;
 }
 #personaSection .pex-text h3 .pquote{
     color: #101828;
     opacity: 1;
-    font-size: 38px;
+    font-size: 32px;
 }
 /* Body text */
 #personaSection .pex-text p{
@@ -11251,7 +11251,7 @@ body.fc-preview {
     font-family: 'Inter', sans-serif;
     font-size: 15px;
     line-height: 28px;
-    color: rgba(255,255,255,0.82);
+    color: rgba(252,252,252,0.72);
 }
 
 /* ══════════════════════════
@@ -12172,13 +12172,14 @@ body.fc-preview {
     text-align: left;
 }
 .hero-split__text h1 {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Fraunces', serif;
     font-size: 52px;
     line-height: 62px;
     color: #fcfcfc;
-    font-weight: 500;
-    letter-spacing: -1px;
+    font-weight: 300;
+    letter-spacing: -0.6px;
     margin: 0;
+    font-variation-settings: 'SOFT' 0, 'WONK' 1;
 }
 .hero-split__text .hero-sub {
     color: rgba(252, 252, 252, 0.72);
@@ -12435,12 +12436,13 @@ body.fc-preview {
 
 /* Heading: Space Grotesk Light 38px matching Figma */
 .pex-text h3 {
-    font-family: 'Space Grotesk', sans-serif !important;
+    font-family: 'Fraunces', serif !important;
     font-weight: 300 !important;
-    font-size: 38px !important;
-    line-height: 46px !important;
+    font-size: 32px !important;
+    line-height: 44px !important;
     margin: 0 0 20px !important;
     letter-spacing: -0.3px !important;
+    font-variation-settings: 'SOFT' 0, 'WONK' 1 !important;
 }
 
 /* Chips: vertical bullet list, not horizontal pills */
@@ -12985,8 +12987,8 @@ body.fc-preview {
 .hero-bg-page .cm-title {
     font-family: 'Fraunces', serif;
     font-weight: 300;
-    font-size: 40px;
-    line-height: 48px;
+    font-size: 44px;
+    line-height: 54px;
     letter-spacing: -.6px;
     color: #fcfcfc;
     margin: 0 0 16px;
@@ -13079,7 +13081,7 @@ body.fc-preview {
     line-height: 1;
     padding: 7px 13px;
     border: 1px solid rgba(255, 255, 255, .2);
-    border-radius: 999px;
+    border-radius: 50px;
     color: rgba(255, 255, 255, .82);
 }
 .hero-bg-page .cm-item-cta {
