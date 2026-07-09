@@ -15,7 +15,7 @@
         /* ── HERO ── */
         .pt-hero {
             position: relative; overflow: hidden;
-            padding: 130px 0 120px; text-align: center;
+            padding: 120px 0 100px;
         }
         .pt-hero .hero-grid {
             -webkit-mask-image: radial-gradient(ellipse 130% 100% at 50% 0%, #000 0%, rgba(0,0,0,.5) 60%, transparent 90%);
@@ -26,15 +26,19 @@
         .pt-hero .orb-cyan   { left: 50%; top: 10%; bottom: auto; transform: translateX(-50%); width: 620px; height: 480px; }
         .pt-hero .orb-blue   { right: -5%; top: 5%; bottom: auto; width: 480px; height: 480px; }
         .pt-hero__glow {
-            position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%);
-            width: 900px; height: 420px;
+            position: absolute; left: 65%; top: 50%; transform: translate(-50%,-50%);
+            width: 780px; height: 420px;
             background: radial-gradient(50% 50% at 50% 50%, rgba(28,169,201,.22) 0%, rgba(64,117,201,.10) 55%, transparent 100%);
             filter: blur(60px); pointer-events: none; z-index: 2;
         }
-        .pt-hero__inner {
+        /* two-column grid */
+        .pt-hero__layout {
             position: relative; z-index: 4;
-            max-width: 780px; margin: 0 auto;
-            display: flex; flex-direction: column; align-items: center; gap: 24px;
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 64px; align-items: center;
+        }
+        .pt-hero__inner {
+            display: flex; flex-direction: column; align-items: flex-start; gap: 24px;
         }
         .pt-hero__eyebrow {
             display: inline-flex; align-items: center; gap: 8px;
@@ -56,13 +60,23 @@
             font-size: clamp(44px, 6vw, 76px); line-height: 1.08; letter-spacing: -.025em;
             color: var(--Base-White, #fcfcfc); margin: 0;
         }
-        .pt-hero__title em { font-style: normal; background: var(--AI-Agents-Text, linear-gradient(83.02deg, #4AE7FF 51.42%, #4075C9 63.25%, #E879F9 76.03%)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .pt-hero__title em {
+            font-style: normal;
+            background: linear-gradient(110deg, #4AE7FF 0%, #4075C9 25%, #E879F9 55%, #4AE7FF 80%, #4075C9 100%);
+            background-size: 260% auto;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+            animation: heroShimmer 5s linear infinite;
+        }
+        @keyframes heroShimmer {
+            0%   { background-position: 0% center; }
+            100% { background-position: 260% center; }
+        }
         .pt-hero__desc {
             font-family: 'Inter', sans-serif; font-size: 17px; line-height: 28px;
             color: rgba(252,252,252,.60); max-width: 640px; margin: 0;
         }
         .pt-hero__ctas {
-            display: flex; align-items: center; gap: 16px; flex-wrap: wrap; justify-content: center;
+            display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
         }
         .pt-hero__ctas .btn-ghost {
             padding: 12px 28px;
@@ -73,6 +87,134 @@
             transition: border-color .2s, background .2s;
         }
         .pt-hero__ctas .btn-ghost:hover { border-color: rgba(255,255,255,.4); background: rgba(255,255,255,.06); }
+
+        /* ── HERO RIGHT VISUAL ── */
+
+        /* Pulsing eyebrow dot */
+        @keyframes heroDotPulse {
+            0%, 100% { box-shadow: 0 0 8px rgba(28,169,201,.8); }
+            50%       { box-shadow: 0 0 22px rgba(28,169,201,1), 0 0 44px rgba(28,169,201,.5); }
+        }
+        .pt-hero__eyebrow .het-dot { animation: heroDotPulse 2.5s ease-in-out infinite; }
+
+        /* Right column wrapper */
+        .pt-hero__right { position: relative; }
+        .pt-hero__viz { position: relative; padding: 48px 24px; }
+
+        /* Glassmorphism card */
+        .pt-hero__viz-card {
+            background: rgba(255,255,255,.055);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,.11);
+            border-radius: 20px; padding: 22px;
+            box-shadow: 0 24px 72px rgba(0,0,0,.40), 0 0 0 1px rgba(255,255,255,.05), inset 0 1px 0 rgba(255,255,255,.09);
+            position: relative; z-index: 5;
+        }
+        .pt-hero__viz-header {
+            display: flex; align-items: center; gap: 10px; margin-bottom: 18px;
+        }
+        .pt-hero__viz-dot {
+            width: 8px; height: 8px; border-radius: 50%;
+            background: #27c0df; box-shadow: 0 0 10px rgba(28,169,201,.8);
+        }
+        .pt-hero__viz-title {
+            font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 700;
+            color: rgba(252,252,252,.5); letter-spacing: .12em; text-transform: uppercase; flex: 1;
+        }
+        .pt-hero__viz-wdots { display: flex; gap: 5px; }
+        .pt-hero__viz-wdots span { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,.18); }
+        /* Stats row */
+        .pt-hero__viz-stats {
+            display: flex;
+            border-bottom: 1px solid rgba(255,255,255,.08);
+            padding-bottom: 18px; margin-bottom: 18px;
+        }
+        .pt-hero__viz-stat {
+            flex: 1; display: flex; flex-direction: column; gap: 4px;
+            padding-right: 14px; border-right: 1px solid rgba(255,255,255,.08);
+        }
+        .pt-hero__viz-stat:last-child { border-right: none; padding-right: 0; padding-left: 14px; }
+        .pt-hero__viz-stat:nth-child(2) { padding-left: 14px; }
+        .pt-hero__viz-stat-num {
+            font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 700;
+            color: #fcfcfc; letter-spacing: -.025em; line-height: 1;
+        }
+        .pt-hero__viz-stat-lbl {
+            font-family: 'Inter', sans-serif; font-size: 9.5px; font-weight: 600;
+            color: rgba(252,252,252,.4); text-transform: uppercase; letter-spacing: .10em;
+        }
+        /* Map area */
+        .pt-hero__viz-map {
+            position: relative; height: 178px; border-radius: 12px; overflow: hidden;
+            background: rgba(255,255,255,.025); margin-bottom: 14px;
+        }
+        .pt-hero__viz-map-bg {
+            position: absolute; inset: 0;
+            background-image: radial-gradient(circle, rgba(28,169,201,.25) 1px, transparent 1px);
+            background-size: 10px 10px; opacity: .65;
+        }
+        .pt-hero__viz-lines {
+            position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none;
+        }
+        /* Avatar pins on map */
+        .pt-hero__viz-pin {
+            position: absolute; display: flex; flex-direction: column; align-items: center;
+        }
+        .pt-hero__viz-pin::after {
+            content: ''; width: 1.5px; height: 10px;
+            background: linear-gradient(to bottom, rgba(28,169,201,.55), transparent);
+        }
+        .pt-hero__viz-avatar {
+            width: 36px; height: 36px; border-radius: 6px;
+            border: 1.5px solid rgba(255,255,255,.22); overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,.4);
+        }
+        .pt-hero__viz-avatar svg { width: 100%; height: 100%; display: block; }
+        .pt-hero__viz-pin--1 { left: 18%; top: 10%; }
+        .pt-hero__viz-pin--2 { left: 45%; top: 4%; }
+        .pt-hero__viz-pin--3 { right: 18%; top: 14%; }
+        .pt-hero__viz-pin--4 { left: 8%;  top: 54%; }
+        .pt-hero__viz-pin--5 { right: 22%; top: 52%; }
+        /* Partner name pills */
+        .pt-hero__viz-names { display: flex; gap: 7px; flex-wrap: wrap; }
+        .pt-hero__viz-names span {
+            padding: 4px 10px; border-radius: 999px;
+            background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.09);
+            font-family: 'Inter', sans-serif; font-size: 10.5px; font-weight: 500;
+            color: rgba(252,252,252,.5);
+        }
+        /* Floating partnership-type chips around the card */
+        .pt-hero__chip {
+            position: absolute;
+            display: inline-flex; align-items: center; gap: 7px;
+            padding: 9px 14px; border-radius: 999px;
+            background: rgba(255,255,255,.07);
+            backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255,255,255,.13);
+            font-family: 'Inter', sans-serif; font-size: 11.5px; font-weight: 600;
+            color: rgba(252,252,252,.82);
+            box-shadow: 0 4px 16px rgba(0,0,0,.22);
+            white-space: nowrap; z-index: 6;
+        }
+        .pt-hero__chip svg { flex-shrink: 0; opacity: .8; }
+        .pt-hero__chip--1 { top: 8px;  left: -14px; animation: heroFloat1 5.5s ease-in-out infinite; }
+        .pt-hero__chip--2 { top: 8px;  right: -14px; animation: heroFloat2 6.5s ease-in-out infinite .4s; }
+        .pt-hero__chip--3 { bottom: 8px; left: -14px; animation: heroFloat1 7s ease-in-out infinite 1s; }
+        .pt-hero__chip--4 { bottom: 8px; right: -14px; animation: heroFloat2 5s ease-in-out infinite 1.4s; }
+        @keyframes heroFloat1 { 0%, 100% { transform: translateY(0);     } 50% { transform: translateY(-12px); } }
+        @keyframes heroFloat2 { 0%, 100% { transform: translateY(-9px);  } 50% { transform: translateY(7px);   } }
+
+        /* Responsive */
+        @media (max-width: 1100px) {
+            .pt-hero__chip { display: none; }
+        }
+        @media (max-width: 1024px) {
+            .pt-hero__layout { grid-template-columns: 1fr; gap: 40px; }
+            .pt-hero__inner  { align-items: center; text-align: center; max-width: 640px; margin: 0 auto; }
+            .pt-hero__ctas   { justify-content: center; }
+            .pt-hero__desc   { max-width: 580px; }
+            .pt-hero__right  { display: none; }
+        }
 
         /* ── PARTNER LOGOS STRIP ── */
         .pt-logos {
@@ -938,17 +1080,152 @@
             <span class="particle"></span><span class="particle"></span>
         </div>
         <div class="pt-hero__glow" aria-hidden="true"></div>
+
         <div class="container">
-            <div class="pt-hero__inner reveal-block">
-                <p class="pt-hero__eyebrow"><span class="het-dot"></span>Global Partner Network</p>
-                <h1 class="pt-hero__title">Partner with <em>Lumenore</em></h1>
-                <p class="pt-hero__desc">Join a global network of innovators and gain access to exclusive resources, co-marketing support, and revenue-sharing programs to expand your client offerings, strengthen relationships, and drive recurring revenue.</p>
-                <div class="pt-hero__ctas">
-                    <a href="#become-partner" class="btn-primary">Become a Lumenore Partner</a>
-                    <a href="#our-partners" class="btn-ghost">Explore Our Partners</a>
+            <div class="pt-hero__layout">
+
+                <!-- LEFT: text content -->
+                <div class="pt-hero__inner reveal-left">
+                    <p class="pt-hero__eyebrow"><span class="het-dot"></span>Global Partner Network</p>
+                    <h1 class="pt-hero__title">Partner with <em>Lumenore</em></h1>
+                    <p class="pt-hero__desc">Join a global network of innovators and gain access to exclusive resources, co-marketing support, and revenue-sharing programs to expand your client offerings, strengthen relationships, and drive recurring revenue.</p>
+                    <div class="pt-hero__ctas">
+                        <a href="#become-partner" class="btn-primary">Become a Lumenore Partner</a>
+                        <a href="#our-partners" class="btn-ghost">Explore Our Partners</a>
+                    </div>
                 </div>
-            </div>
-        </div>
+
+                <!-- RIGHT: visual panel -->
+                <div class="pt-hero__right reveal-right" style="--reveal-delay:.14s">
+                    <div class="pt-hero__viz">
+
+                        <!-- Partnership type chips -->
+                        <div class="pt-hero__chip pt-hero__chip--1">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><path d="M12 2l7 4v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M8 12l2.5 2.5L16 9"/></svg>
+                            Reseller
+                        </div>
+                        <div class="pt-hero__chip pt-hero__chip--2">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+                            White Label
+                        </div>
+                        <div class="pt-hero__chip pt-hero__chip--3">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><path d="M9 12h6M3 7h4M3 17h4M17 7h4M17 17h4"/><circle cx="12" cy="12" r="3"/></svg>
+                            Technology
+                        </div>
+                        <div class="pt-hero__chip pt-hero__chip--4">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                            Consulting
+                        </div>
+
+                        <!-- Main glassmorphism card -->
+                        <div class="pt-hero__viz-card">
+                            <!-- Card chrome bar -->
+                            <div class="pt-hero__viz-header">
+                                <div class="pt-hero__viz-dot"></div>
+                                <span class="pt-hero__viz-title">Partner Network</span>
+                                <div class="pt-hero__viz-wdots" aria-hidden="true">
+                                    <span></span><span></span><span></span>
+                                </div>
+                            </div>
+                            <!-- Stats -->
+                            <div class="pt-hero__viz-stats">
+                                <div class="pt-hero__viz-stat">
+                                    <span class="pt-hero__viz-stat-num">200+</span>
+                                    <span class="pt-hero__viz-stat-lbl">Partners</span>
+                                </div>
+                                <div class="pt-hero__viz-stat">
+                                    <span class="pt-hero__viz-stat-num">40+</span>
+                                    <span class="pt-hero__viz-stat-lbl">Countries</span>
+                                </div>
+                                <div class="pt-hero__viz-stat">
+                                    <span class="pt-hero__viz-stat-num">4.9★</span>
+                                    <span class="pt-hero__viz-stat-lbl">Rating</span>
+                                </div>
+                            </div>
+                            <!-- World map with partner pins -->
+                            <div class="pt-hero__viz-map" aria-hidden="true">
+                                <div class="pt-hero__viz-map-bg"></div>
+                                <svg class="pt-hero__viz-lines" viewBox="0 0 400 178" fill="none">
+                                    <line x1="78"  y1="38"  x2="192" y2="22"  stroke="rgba(28,169,201,.35)" stroke-width="1" stroke-dasharray="4 3"/>
+                                    <line x1="192" y1="22"  x2="316" y2="40"  stroke="rgba(28,169,201,.35)" stroke-width="1" stroke-dasharray="4 3"/>
+                                    <line x1="192" y1="22"  x2="172" y2="108" stroke="rgba(28,169,201,.35)" stroke-width="1" stroke-dasharray="4 3"/>
+                                    <line x1="78"  y1="38"  x2="44"  y2="112" stroke="rgba(28,169,201,.35)" stroke-width="1" stroke-dasharray="4 3"/>
+                                    <line x1="316" y1="40"  x2="330" y2="108" stroke="rgba(28,169,201,.35)" stroke-width="1" stroke-dasharray="4 3"/>
+                                </svg>
+                                <!-- Pin 1 -->
+                                <div class="pt-hero__viz-pin pt-hero__viz-pin--1">
+                                    <div class="pt-hero__viz-avatar">
+                                        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <rect width="40" height="40" rx="6" fill="#FEE2E2"/>
+                                            <circle cx="20" cy="14" r="6" fill="#F87171"/>
+                                            <path d="M14 14 Q14 7 20 6 Q26 7 26 14" fill="#1e293b"/>
+                                            <path d="M11 34 Q12 24 20 22 Q28 24 29 34" fill="#EF4444"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <!-- Pin 2 -->
+                                <div class="pt-hero__viz-pin pt-hero__viz-pin--2">
+                                    <div class="pt-hero__viz-avatar">
+                                        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <rect width="40" height="40" rx="6" fill="#DBEAFE"/>
+                                            <circle cx="20" cy="14" r="6" fill="#93C5FD"/>
+                                            <path d="M14 12 Q15 6 20 6 Q25 6 26 12" fill="#1e293b"/>
+                                            <rect x="15" y="14" width="4" height="3" rx="1.5" stroke="#1e293b" stroke-width="1" fill="none"/>
+                                            <rect x="21" y="14" width="4" height="3" rx="1.5" stroke="#1e293b" stroke-width="1" fill="none"/>
+                                            <line x1="19" y1="15.5" x2="21" y2="15.5" stroke="#1e293b" stroke-width="1"/>
+                                            <path d="M11 34 Q12 24 20 22 Q28 24 29 34" fill="#3B82F6"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <!-- Pin 3 -->
+                                <div class="pt-hero__viz-pin pt-hero__viz-pin--3">
+                                    <div class="pt-hero__viz-avatar">
+                                        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <rect width="40" height="40" rx="6" fill="#D1FAE5"/>
+                                            <circle cx="20" cy="14" r="6" fill="#6EE7B7"/>
+                                            <path d="M14 13 Q14 6 20 6 Q26 6 26 13 Q26 8 20 8 Q14 8 14 13Z" fill="#1e293b"/>
+                                            <path d="M11 34 Q12 24 20 22 Q28 24 29 34" fill="#10B981"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <!-- Pin 4 -->
+                                <div class="pt-hero__viz-pin pt-hero__viz-pin--4">
+                                    <div class="pt-hero__viz-avatar">
+                                        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <rect width="40" height="40" rx="6" fill="#FEF3C7"/>
+                                            <circle cx="20" cy="14" r="6" fill="#FCD34D"/>
+                                            <path d="M14 12 Q15 6 20 6 Q25 6 26 12" fill="#92400E"/>
+                                            <path d="M15 19 Q16 23 20 24 Q24 23 25 19" fill="#92400E"/>
+                                            <path d="M11 34 Q12 24 20 22 Q28 24 29 34" fill="#F59E0B"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <!-- Pin 5 -->
+                                <div class="pt-hero__viz-pin pt-hero__viz-pin--5">
+                                    <div class="pt-hero__viz-avatar">
+                                        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <rect width="40" height="40" rx="6" fill="#EDE9FE"/>
+                                            <circle cx="20" cy="14" r="6" fill="#C4B5FD"/>
+                                            <path d="M14 12 Q15 6 20 6 Q25 6 26 12" fill="#4C1D95"/>
+                                            <path d="M11 34 Q12 24 20 22 Q28 24 29 34" fill="#7C3AED"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Partner name pills -->
+                            <div class="pt-hero__viz-names">
+                                <span>Raqmiyat</span>
+                                <span>NovoAnalytic</span>
+                                <span>PolarisTek</span>
+                                <span>Armsec</span>
+                            </div>
+                        </div><!-- /.pt-hero__viz-card -->
+
+                    </div><!-- /.pt-hero__viz -->
+                </div><!-- /.pt-hero__right -->
+
+            </div><!-- /.pt-hero__layout -->
+        </div><!-- /.container -->
     </section>
 
     <!-- PARTNER LOGOS -->
