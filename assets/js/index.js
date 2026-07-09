@@ -607,7 +607,7 @@
                             var delay = (idx++ * 0.08).toFixed(2);
                             parts.push('<span class="hw-outer"><span class="hw" style="animation-delay:' + delay + 's">' + chunk + '</span></span>');
                         } else if (chunk) {
-                            parts.push('<span style="display:inline-block;width:0.28em"></span>');
+                            parts.push(' ');
                         }
                     });
                 } else if (node.nodeType === 1) {
