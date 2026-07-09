@@ -1,0 +1,1267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing — Lumenore</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Material+Symbols+Rounded&display=swap" rel="stylesheet">
+    <link href="./style.css" rel="stylesheet">
+    <style>
+        body.inner-page { background: var(--Royal-Blue-Blue-900,#051A3C); color: var(--Base-White,#fcfcfc); }
+
+        /* ── HERO ── */
+        .pr-hero { position:relative; overflow:hidden; padding:130px 0 120px; text-align:center; }
+        .pr-hero .hero-grid { -webkit-mask-image:radial-gradient(ellipse 120% 100% at 50% 0%,#000 0%,rgba(0,0,0,.6) 55%,transparent 85%); mask-image:radial-gradient(ellipse 120% 100% at 50% 0%,#000 0%,rgba(0,0,0,.6) 55%,transparent 85%); }
+        .pr-hero .hero-orbs { overflow:visible; }
+        .pr-hero .orb-violet { left:-2%; top:10%; bottom:auto; width:500px; height:500px; }
+        .pr-hero .orb-cyan   { left:50%; top:20%; bottom:auto; transform:translateX(-50%); width:600px; height:500px; }
+        .pr-hero .orb-blue   { right:-2%; top:10%; bottom:auto; width:500px; height:500px; }
+        .pr-hero__glow { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:860px; height:400px; background:radial-gradient(50% 50% at 50% 50%,rgba(28,169,201,.30) 0%,rgba(40,99,195,.14) 55%,transparent 100%); filter:blur(56px); pointer-events:none; z-index:2; }
+        .pr-hero__inner { position:relative; z-index:4; max-width:820px; margin:0 auto; display:flex; flex-direction:column; align-items:center; gap:24px; }
+        .pr-hero__eyebrow { padding:6px 16px; border:1px solid rgba(255,255,255,.14); border-radius:999px; background:rgba(255,255,255,.04); font-size:11px; letter-spacing:.12em; text-transform:uppercase; font-family:'Inter',sans-serif; font-weight:600; }
+        .pr-hero__title { font-family:'Fraunces',serif; font-weight:300; font-size:clamp(44px,6vw,72px); line-height:1.1; letter-spacing:-.02em; color:var(--Base-White,#fcfcfc); margin:0; }
+        .pr-gradient { font-style:normal; background:var(--AI-Agents-Text,linear-gradient(83.02deg,#4AE7FF 51.42%,#4075C9 63.25%,#E879F9 76.03%)); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; color:transparent; }
+        .pr-hero__sub { font-family:'Inter',sans-serif; font-size:18px; line-height:30px; color:rgba(252,252,252,.62); max-width:540px; margin:0; }
+
+        /* ── EYEBROW (light sections) ── */
+        .pr-eyebrow { display:inline-block; font-family:'Inter',sans-serif; font-size:11.5px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--Turquoise-SkyBlue-500,#1ca9c9); margin-bottom:16px; }
+
+        /* ── PLANS SECTION ── */
+        .pr-plans {
+            background:linear-gradient(180deg,#eaf0fb 0%,#f4f7fc 50%,#f8fafc 100%);
+            padding:84px 0 120px;
+            position:relative;
+            overflow:hidden;
+        }
+        .pr-plans::before {
+            content:'';
+            position:absolute;
+            top:0;left:0;right:0;height:2px;
+            background:linear-gradient(90deg,transparent,#4075c9 35%,#7747b6 65%,transparent);
+        }
+        .pr-plans::after {
+            content:'';
+            position:absolute;
+            top:-200px;left:50%;transform:translateX(-50%);
+            width:1000px;height:700px;
+            background:radial-gradient(ellipse at 50% 30%,rgba(64,117,201,.09) 0%,rgba(119,71,182,.05) 50%,transparent 75%);
+            pointer-events:none;
+        }
+        .pr-plans__head { text-align:center; margin-bottom:56px; position:relative; z-index:1; }
+        .pr-plans__title { font-family:'Fraunces',serif; font-weight:300; font-size:clamp(36px,4.5vw,58px); line-height:1.1; letter-spacing:-.02em; color:var(--Royal-Blue-Blue-900,#051A3C); margin:0 0 14px; }
+        .pr-plans__sub { font-family:'Inter',sans-serif; font-size:16px; line-height:26px; color:var(--blueGray-500,#64748B); margin:0 auto; max-width:540px; }
+
+        /* ── TOGGLE ── */
+        .pr-toggle-wrap { display:inline-flex; align-items:center; gap:12px; background:#fff; border:1px solid rgba(226,232,240,.9); border-radius:999px; padding:6px 18px; margin-top:28px; box-shadow:0 2px 14px rgba(0,0,0,.07); }
+        .pr-toggle-lbl { font-family:'Inter',sans-serif; font-size:14px; font-weight:500; color:var(--blueGray-400,#94A3B8); cursor:pointer; transition:color .2s; }
+        .pr-toggle-lbl.is-active { color:var(--Royal-Blue-Blue-500,#0e48a5); font-weight:600; }
+        .pr-toggle-switch { position:relative; width:44px; height:24px; cursor:pointer; flex-shrink:0; }
+        .pr-toggle-switch input { opacity:0; width:0; height:0; position:absolute; }
+        .pr-toggle-track { position:absolute; inset:0; background:var(--blueGray-200,#E2E8F0); border-radius:999px; transition:background .25s; }
+        .pr-toggle-track::after { content:''; position:absolute; left:3px; top:3px; width:18px; height:18px; background:#fff; border-radius:50%; box-shadow:0 1px 4px rgba(0,0,0,.2); transition:transform .25s cubic-bezier(.22,.61,.36,1); }
+        .pr-toggle-switch input:checked ~ .pr-toggle-track { background:linear-gradient(135deg,#4075c9,#7747b6); }
+        .pr-toggle-switch input:checked ~ .pr-toggle-track::after { transform:translateX(20px); }
+        .pr-annual-badge { font-family:'Inter',sans-serif; font-size:10px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#fff; background:linear-gradient(135deg,#1ca9c9,#4075c9); padding:3px 10px; border-radius:999px; white-space:nowrap; box-shadow:0 2px 8px rgba(28,169,201,.4); }
+
+        /* ── CARDS GRID ── */
+        .pr-cards { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; align-items:center; position:relative; z-index:1; }
+
+        /* Base card */
+        .pr-card {
+            background:#fff;
+            border:1px solid rgba(215,225,240,.9);
+            border-radius:24px;
+            padding:36px 30px 42px;
+            position:relative;
+            transition:transform .3s cubic-bezier(.22,.61,.36,1),box-shadow .3s;
+            box-shadow:0 2px 16px rgba(14,36,80,.05);
+        }
+        .pr-card:hover { transform:translateY(-6px); box-shadow:0 20px 50px -14px rgba(14,36,80,.13); }
+
+        /* Essentials — floating & glowing */
+        .pr-card--featured {
+            border:1.5px solid transparent;
+            background:linear-gradient(#fff,#f5f9ff) padding-box,
+                       linear-gradient(160deg,#4AE7FF 0%,#4075C9 45%,#7747b6 100%) border-box;
+            box-shadow:0 28px 80px -18px rgba(64,117,201,.42), 0 6px 24px rgba(64,117,201,.12);
+            padding:50px 30px 54px;
+            transform:translateY(-18px);
+            border-radius:28px;
+            z-index:2;
+        }
+        .pr-card--featured::after {
+            content:'';
+            position:absolute;
+            inset:-2px;
+            border-radius:inherit;
+            background:linear-gradient(160deg,rgba(74,231,255,.15),rgba(64,117,201,.15),rgba(119,71,182,.1));
+            z-index:-1;
+            filter:blur(20px);
+            pointer-events:none;
+        }
+        .pr-card--featured:hover { transform:translateY(-24px); box-shadow:0 36px 90px -18px rgba(64,117,201,.52),0 8px 28px rgba(64,117,201,.16); }
+
+        /* Custom — dark premium */
+        .pr-card--dark {
+            background:linear-gradient(145deg,#0c2350 0%,#051A3C 60%,#071f38 100%);
+            border-color:rgba(255,255,255,.07);
+            color:#fcfcfc;
+            box-shadow:0 2px 20px rgba(0,0,0,.22);
+        }
+        .pr-card--dark:hover { transform:translateY(-6px); box-shadow:0 24px 60px -14px rgba(5,26,60,.55),0 0 0 1px rgba(28,169,201,.15); }
+
+        /* Most Popular badge */
+        .pr-popular {
+            position:absolute; top:-19px; left:50%; transform:translateX(-50%);
+            background:linear-gradient(135deg,#4075c9 0%,#7747b6 100%);
+            color:#fff;
+            font-family:'Inter',sans-serif; font-size:10px; font-weight:700;
+            letter-spacing:.16em; text-transform:uppercase;
+            padding:5px 24px; border-radius:999px; white-space:nowrap;
+            box-shadow:0 4px 18px rgba(64,117,201,.5);
+        }
+
+        /* Plan label */
+        .pr-card__plan { font-family:'Inter',sans-serif; font-size:11px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--Turquoise-SkyBlue-500,#1ca9c9); margin:0 0 20px; }
+        .pr-card--dark .pr-card__plan { color:rgba(255,255,255,.38); }
+
+        /* Price */
+        .pr-card__price-row { display:flex; align-items:flex-end; gap:4px; margin-bottom:6px; }
+        .pr-card__amount { font-family:'Fraunces',serif; font-weight:400; font-size:clamp(44px,5vw,64px); line-height:1; letter-spacing:-.03em; color:var(--Royal-Blue-Blue-900,#051A3C); }
+        .pr-card--featured .pr-card__amount { background:linear-gradient(135deg,#0a2456 30%,#2863c3 100%); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+        .pr-card--dark .pr-card__amount { color:#fff; -webkit-text-fill-color:#fff; }
+        .pr-card__amount-sup { font-family:'Inter',sans-serif; font-size:20px; font-weight:600; color:var(--Royal-Blue-Blue-900,#051A3C); padding-bottom:10px; }
+        .pr-card--dark .pr-card__amount-sup { color:rgba(255,255,255,.75); }
+        .pr-card__amount-per { font-family:'Inter',sans-serif; font-size:13px; color:var(--blueGray-400,#94A3B8); padding-bottom:10px; display:flex; flex-direction:column; justify-content:flex-end; line-height:1.5; }
+        .pr-card--dark .pr-card__amount-per { color:rgba(255,255,255,.35); }
+
+        .pr-card__billing { font-family:'Inter',sans-serif; font-size:12.5px; color:var(--blueGray-400,#94A3B8); min-height:20px; margin:0 0 18px; }
+        .pr-card--dark .pr-card__billing { color:rgba(255,255,255,.28); }
+
+        /* Description */
+        .pr-card__desc { font-family:'Inter',sans-serif; font-size:14px; line-height:22px; color:var(--blueGray-500,#64748B); margin:0 0 26px; padding-bottom:26px; border-bottom:1px solid rgba(226,232,240,.8); }
+        .pr-card--dark .pr-card__desc { color:rgba(255,255,255,.44); border-color:rgba(255,255,255,.07); }
+
+        /* CTA */
+        .pr-card__cta { margin-bottom:28px; }
+        .pr-card__cta a { display:block; text-align:center; padding:13px 22px; border-radius:10px; font-family:'Inter',sans-serif; font-size:15px; font-weight:600; letter-spacing:-.1px; text-decoration:none; transition:all .25s cubic-bezier(.22,.61,.36,1); }
+        .pr-card__cta a:hover { transform:translateY(-2px); }
+
+        /* Button variants */
+        .pr-btn-outline { background:transparent; border:1.5px solid rgba(64,117,201,.35); color:var(--Royal-Blue-Blue-600,#0a3578) !important; }
+        .pr-btn-outline:hover { background:var(--Royal-Blue-Blue-50,#e7eef8); border-color:var(--Royal-Blue-Blue-400,#4075c9); }
+        .pr-btn-gradient { background:linear-gradient(135deg,#1CA9C9 0%,#4075C9 50%,#7747B6 100%); color:#fff !important; border:none; box-shadow:0 8px 28px -8px rgba(64,117,201,.65),inset 0 1px 0 rgba(255,255,255,.2); animation:btnBreathe 6s ease-in-out infinite; }
+        .pr-btn-ghost { background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.16); color:#fff !important; }
+        .pr-btn-ghost:hover { background:rgba(255,255,255,.13); border-color:rgba(255,255,255,.28); }
+
+        /* Feature head */
+        .pr-card__feat-head { font-family:'Inter',sans-serif; font-size:10px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--blueGray-400,#94A3B8); margin:0 0 14px; }
+        .pr-card--dark .pr-card__feat-head { color:rgba(255,255,255,.26); }
+
+        /* Feature list */
+        .pr-card__feats { list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:13px; }
+        .pr-card__feats li { display:flex; align-items:flex-start; gap:10px; font-family:'Inter',sans-serif; font-size:13.5px; line-height:20px; color:#1e2d42; }
+        .pr-card--dark .pr-card__feats li { color:rgba(255,255,255,.78); }
+
+        /* Gradient checkmark */
+        .pr-ck {
+            flex-shrink:0; width:18px; height:18px; border-radius:50%;
+            background:linear-gradient(135deg,#1ca9c9 0%,#4075c9 100%);
+            color:#fff;
+            display:flex; align-items:center; justify-content:center;
+            margin-top:1px;
+            box-shadow:0 2px 6px rgba(28,169,201,.4);
+        }
+        .pr-card--dark .pr-ck { background:linear-gradient(135deg,rgba(28,169,201,.75),rgba(64,117,201,.65)); box-shadow:0 2px 6px rgba(28,169,201,.2); }
+        .pr-ck svg { width:10px; height:10px; }
+
+        /* ── FEATURE TABLE ── */
+        .pr-table-sec { background:var(--Base-White,#fcfcfc); padding:72px 0 96px; }
+        .pr-table-head { text-align:center; max-width:680px; margin:0 auto 52px; }
+        .pr-table-head h2 { font-family:'Fraunces',serif; font-weight:300; font-size:clamp(32px,4vw,50px); line-height:1.12; letter-spacing:-.02em; color:var(--Royal-Blue-Blue-900,#051A3C); margin:0; }
+
+        .pr-tbl-wrap { border:1px solid var(--blueGray-200,#E2E8F0); border-radius:16px; overflow:hidden; }
+        .pr-tbl-row { display:grid; grid-template-columns:2.4fr 1fr 1fr 1fr; border-bottom:1px solid var(--blueGray-200,#E2E8F0); }
+        .pr-tbl-row:last-child { border-bottom:none; }
+        .pr-tbl-row--head { background:var(--blueGray-50,#F8FAFC); }
+        .pr-tbl-row--group { background:var(--blueGray-50,#F8FAFC); }
+        .pr-tbl-group-label { grid-column:1/-1; padding:10px 20px; font-family:'Inter',sans-serif; font-size:11px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--blueGray-400,#94A3B8); }
+
+        .pr-tbl-cell { padding:15px 20px; font-family:'Inter',sans-serif; font-size:14px; line-height:22px; }
+        .pr-tbl-cell--feat { font-weight:500; color:var(--cool-101828,#101828); display:flex; align-items:center; }
+        .pr-tbl-cell--head { font-size:12px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--blueGray-500,#64748B); display:flex; align-items:center; justify-content:center; text-align:center; }
+        .pr-tbl-cell--val { display:flex; align-items:center; justify-content:center; text-align:center; font-size:13px; color:var(--blueGray-600,#475569); }
+        .pr-tbl-cell--ess { background:var(--Royal-Blue-Blue-50,#e7eef8); border-left:1px solid var(--Royal-Blue-Blue-150,#b8d0fd); border-right:1px solid var(--Royal-Blue-Blue-150,#b8d0fd); }
+        .pr-tbl-cell--ess.pr-tbl-cell--val { font-weight:600; color:var(--Royal-Blue-Blue-600,#0a3578); }
+        .pr-tbl-cell--ess.pr-tbl-cell--head { color:var(--Royal-Blue-Blue-500,#0e48a5); }
+
+        .tbl-check { width:20px; height:20px; border-radius:50%; background:var(--Turquoise-SkyBlue-50,#e8f6fa); color:var(--Turquoise-SkyBlue-500,#1ca9c9); display:inline-flex; align-items:center; justify-content:center; }
+        .tbl-check svg { width:11px; height:11px; }
+        .tbl-dash { width:16px; height:2px; background:var(--blueGray-200,#E2E8F0); border-radius:2px; }
+
+        /* ── FAQ ── */
+        .pr-faq { background:var(--blueGray-50,#F8FAFC); padding:72px 0 88px; }
+        .pr-faq__head { text-align:center; max-width:600px; margin:0 auto 48px; }
+        .pr-faq__head h2 { font-family:'Fraunces',serif; font-weight:300; font-size:clamp(30px,3.5vw,46px); line-height:1.12; letter-spacing:-.02em; color:var(--Royal-Blue-Blue-900,#051A3C); margin:0; }
+        .pr-faq__list { max-width:800px; margin:0 auto; }
+        .pr-faq__item { border-bottom:1px solid var(--blueGray-200,#E2E8F0); }
+        .pr-faq__item:first-child { border-top:1px solid var(--blueGray-200,#E2E8F0); }
+        .pr-faq__q { display:flex; align-items:center; justify-content:space-between; gap:24px; padding:22px 0; cursor:pointer; font-family:'Inter',sans-serif; font-size:16px; font-weight:600; color:var(--cool-101828,#101828); list-style:none; user-select:none; }
+        .pr-faq__q::-webkit-details-marker { display:none; }
+        .pr-faq__ico { flex-shrink:0; width:22px; height:22px; border-radius:50%; background:var(--blueGray-200,#E2E8F0); display:flex; align-items:center; justify-content:center; transition:transform .25s ease,background .2s; color:var(--blueGray-600,#475569); }
+        .pr-faq__ico svg { width:12px; height:12px; }
+        details[open] .pr-faq__ico { transform:rotate(45deg); background:var(--Royal-Blue-Blue-50,#e7eef8); color:var(--Royal-Blue-Blue-500,#0e48a5); }
+        .pr-faq__a { font-family:'Inter',sans-serif; font-size:14.5px; line-height:24px; color:var(--blueGray-600,#475569); padding:0 0 22px; margin:0; max-width:680px; }
+
+        /* ── BOTTOM CTA ── */
+        .pr-cta { background:var(--Royal-Blue-Blue-900,#051A3C); padding:96px 0; text-align:center; position:relative; overflow:hidden; }
+        .pr-cta__orb { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:800px; height:400px; background:radial-gradient(50% 50% at 50% 50%,rgba(64,117,201,.35) 0%,rgba(119,71,182,.15) 55%,transparent 100%); filter:blur(64px); pointer-events:none; }
+        .pr-cta__inner { position:relative; z-index:2; }
+        .pr-cta h2 { font-family:'Fraunces',serif; font-weight:300; font-size:clamp(34px,4.5vw,58px); line-height:1.1; letter-spacing:-.02em; color:var(--Base-White,#fcfcfc); margin:0 0 16px; }
+        .pr-cta p { font-family:'Inter',sans-serif; font-size:17px; line-height:28px; color:rgba(252,252,252,.6); max-width:500px; margin:0 auto 36px; }
+        .pr-cta__btns { display:flex; align-items:center; justify-content:center; gap:14px; flex-wrap:wrap; }
+
+        .pr-hero__ctas { display:flex; align-items:center; gap:14px; flex-wrap:wrap; justify-content:center; }
+        .tbl-cross { width:20px; height:20px; border-radius:50%; background:var(--blueGray-100,#F1F5F9); color:var(--blueGray-400,#94A3B8); display:inline-flex; align-items:center; justify-content:center; }
+        .tbl-cross svg { width:11px; height:11px; }
+        .pr-footnote { font-family:'Inter',sans-serif; font-size:12px; color:var(--blueGray-400,#94A3B8); text-align:center; margin-top:20px; }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width:1024px) { .pr-cards { grid-template-columns:1fr; max-width:480px; margin:0 auto; } .pr-tbl-row { grid-template-columns:1.8fr 1fr 1fr 1fr; } }
+        @media (max-width:768px) { .pr-hero { padding:80px 0 64px; } .pr-tbl-row { grid-template-columns:1.5fr 1fr 1fr 1fr; } .pr-tbl-cell { padding:10px 8px; font-size:11px; } .pr-cta__btns { flex-direction:column; } }
+    </style>
+</head>
+<body class="inner-page">
+
+<div class="cursor" id="customCursor" aria-hidden="true">
+    <span class="cursor__ring"></span>
+    <span class="cursor__dot"></span>
+</div>
+
+<!-- ===== SITE TOP ===== -->
+<div class="site-top">
+    <div class="hello-bar">
+        <div class="hello-left">
+            <span class="hello-badge">Webinar</span>
+            <div class="hello-msg-group">
+                <span class="hello-message">We are Heading to AAHOACON 2026</span>
+                <a href="#" class="hello-cta">Register Now <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+            </div>
+        </div>
+        <a href="#" class="hello-consult">Free Consultation</a>
+        <a href="#" class="hello-login">Log in</a>
+    </div>
+    <header class="site-header headerTop is-scrolled">
+        <a href="./index.html" class="brand-mark" aria-label="Lumenore home">
+            <img src="./assets/images/homeV2o/Lumenore logo.svg" alt="Lumenore" class="nav-logo-img">
+        </a>
+        <nav>
+            <ul class="nav-links">
+                <li class="nav-item has-dropdown nav-item--platform" data-mega-id="platformMega">
+                    <a href="#" class="nav-trigger">Platform <svg class="caret" viewBox="0 0 8 4" fill="none"><path d="M0 0l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                    <div class="nav-mega nav-mega--platform" role="menu" id="platformMega">
+                        <div class="np-nav">
+                            <div class="np-nav-section">
+                                <h6 class="np-nav-title">Products</h6>
+                                <ul class="np-nav-list">
+                                    <li><a href="#" data-platform-item="insights" data-platform-type="product">Lumenore Insights</a></li>
+                                    <li><a href="../lumenore-ask-me.html" data-platform-item="askme" data-platform-type="product">Lumenore Ask Me</a></li>
+                                    <li><a href="#" data-platform-item="datamagnet" data-platform-type="product">Lumenore Data Magnet</a></li>
+                                </ul>
+                            </div>
+                            <div class="np-nav-section">
+                                <ul class="np-nav-list">
+                                    <li><a href="#" data-platform-item="all-capabilities" data-platform-type="capability" class="np-cap-link"><span>Capabilities</span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="np-detail" id="platformDetail">
+                            <div class="np-product-pane" id="platformProductPane" hidden>
+                                <span class="np-pane-kind"><span class="np-kind-dot"></span>Product</span>
+                                <p class="np-pane-tagline" id="npProductTagline">Self-Service Analytics</p>
+                                <h4 class="np-pane-title" id="npProductTitle">Lumenore Insights</h4>
+                                <p class="np-pane-desc" id="npProductDesc">Democratize data with self-service, AI-powered dashboards that empower every employee to make data-driven decisions and maximize ROI instantly.</p>
+                                <a class="np-learn-more" id="npProductLearn" href="#">Learn more <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+                                <div class="np-pane-actions">
+                                    <a class="np-cta np-cta--primary" id="npProductStart" href="#">Start Free</a>
+                                    <a class="np-cta np-cta--secondary" id="npProductPricing" href="#">Pricing</a>
+                                </div>
+                            </div>
+                            <h6 class="np-nav-title np-grid-title" id="platformGridTitle" hidden>All Capabilities</h6>
+                            <div class="np-grid" id="platformGrid" hidden>
+                                <a href="#" class="np-grid-card" data-platform-card="connectors"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12h6M3 7h4M3 17h4M17 7h4M17 17h4"/><circle cx="12" cy="12" r="3"/><circle cx="5" cy="7" r="1.5"/><circle cx="5" cy="17" r="1.5"/><circle cx="19" cy="7" r="1.5"/><circle cx="19" cy="17" r="1.5"/></svg><span>Data Connectors</span></a>
+                                <a href="#" class="np-grid-card" data-platform-card="integration"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4v6a3 3 0 0 0 3 3h4a3 3 0 0 1 3 3v4"/><circle cx="7" cy="3" r="1.5"/><circle cx="17" cy="21" r="1.5"/></svg><span>Data Integration</span></a>
+                                <a href="#" class="np-grid-card" data-platform-card="lakehouse"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v6a9 3 0 0 0 18 0V5M3 11v6a9 3 0 0 0 18 0v-6"/></svg><span>Data Lakehouse</span></a>
+                                <a href="#" class="np-grid-card" data-platform-card="visualization"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V10M10 21V6M15 21V13M20 21V8"/></svg><span>Data Visualization</span></a>
+                                <a href="#" class="np-grid-card" data-platform-card="dashboard"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="5" rx="1.5"/><rect x="13" y="10" width="8" height="11" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/></svg><span>Dashboard</span></a>
+                                <a href="#" class="np-grid-card" data-platform-card="advanced"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18l4-6 4 3 6-9 4 5"/></svg><span>Advanced Analytics</span></a>
+                                <a href="#" class="np-grid-card" data-platform-card="embedded"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M9 10l-2 2 2 2M15 10l2 2-2 2"/></svg><span>Embedded Analytics</span></a>
+                                <a href="#" class="np-grid-card" data-platform-card="conversational"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg><span>Conversational Intelligence</span></a>
+                                <a href="#" class="np-grid-card" data-platform-card="selfservice"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg><span>Self-Service Analytics</span></a>
+                                <a href="#" class="np-grid-card" data-platform-card="predictive"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12c0-5 4-9 9-9s9 4 9 9"/><path d="M12 7v5l3 2"/></svg><span>Predictive Analytics</span></a>
+                            </div>
+                        </div>
+                        <aside class="np-releases">
+                            <h6 class="np-nav-title">Recent Releases</h6>
+                            <a class="np-release" href="#"><span class="np-release-tag">New</span><span class="np-release-title">Ask Me Agentic RAG Upgrade</span><span class="np-release-sub">Self-correction &amp; multimodal support — surfaces governed answers from documents, images, and tables.</span></a>
+                            <a class="np-release" href="#"><span class="np-release-title">Local LLM Integration</span><span class="np-release-sub">Keep sensitive data in-house with on-prem inference.</span></a>
+                            <a class="np-release" href="#"><span class="np-release-title">Visual Pipeline Builder</span><span class="np-release-sub">Low-code ETL flows in a drag-and-drop canvas.</span></a>
+                            <a class="np-view-all" href="#">View All Releases <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+                        </aside>
+                    </div>
+                </li>
+                <li class="nav-item has-dropdown nav-item--solutions" data-mega-id="solutionMega">
+                    <a href="#" class="nav-trigger">Solutions <svg class="caret" viewBox="0 0 8 4" fill="none"><path d="M0 0l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                    <div class="nav-mega nav-mega--platform nav-mega--solutions" role="menu" id="solutionMega">
+                        <div class="np-nav">
+                            <ul class="np-nav-list">
+                                <li><a href="#" data-solution-item="industry" class="np-cap-link"><span>By Industry</span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></li>
+                                <li><a href="#" data-solution-item="department" class="np-cap-link"><span>By Department</span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></li>
+                            </ul>
+                        </div>
+                        <div class="np-detail" id="solutionDetail">
+                            <h6 class="np-nav-title np-grid-title" id="solIndustryTitle" hidden>By Industry</h6>
+                            <div class="np-grid" id="solIndustryGrid" hidden>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4zM2 20v-1a8 8 0 0 1 16 0v1"/></svg><span>Healthcare</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6h15l-1.5 9H7.5L6 6zM6 6L5 3H2M9 21a1 1 0 1 0 0-2 1 1 0 0 0 0 2zM18 21a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/></svg><span>Retail</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0M1.42 9a16 16 0 0 1 21.16 0M8.53 16.11a6 6 0 0 1 6.95 0M12 20h.01"/></svg><span>Telecom</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12l9-8 9 8M5 10v10h14V10"/></svg><span>Real Estate</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg><span>Insurance</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l5-3v4l5-3v4l8-3v17z"/></svg><span>Manufacturing</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span>Financial Services</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg><span>Education</span></a>
+                            </div>
+                            <h6 class="np-nav-title np-grid-title" id="solDepartmentTitle" hidden>By Department</h6>
+                            <div class="np-grid" id="solDepartmentGrid" hidden>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span>Finance</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18l6-6 4 4 8-8"/><path d="M17 8h4v4"/></svg><span>Sales</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l18-8v18z"/></svg><span>Marketing</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg><span>Human Resources</span></a>
+                            </div>
+                        </div>
+                        <aside class="np-releases">
+                            <h6 class="np-nav-title">Recent Blogs</h6>
+                            <a class="np-release" href="#"><span class="np-release-tag">Featured</span><span class="np-release-title">How AI-Powered Analytics is Reshaping Healthcare</span><span class="np-release-sub">Real-world results from teams using Lumenore to cut reporting cycles in half.</span></a>
+                            <a class="np-release" href="#"><span class="np-release-title">5 Ways Sales Teams Use Self-Service BI</span><span class="np-release-sub">Faster pipeline insights without filing IT tickets.</span></a>
+                            <a class="np-view-all" href="#">View All Blogs <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+                        </aside>
+                    </div>
+                </li>
+                <li class="nav-item"><a href="./pricing.html" class="nav-trigger" aria-current="page">Pricing</a></li>
+                <li class="nav-item has-dropdown nav-item--resources" data-mega-id="resourcesMega">
+                    <a href="#" class="nav-trigger">Resources <svg class="caret" viewBox="0 0 8 4" fill="none"><path d="M0 0l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                    <div class="nav-mega nav-mega--resources" role="menu" id="resourcesMega">
+                        <div class="np-nav np-nav--wide">
+                            <div class="np-nav-section"><h6 class="np-nav-title">Watch</h6><ul class="np-nav-list"><li><a href="#">Demo</a></li><li><a href="#">Webinars &amp; Events</a></li><li><a href="#">Training</a></li></ul></div>
+                            <div class="np-nav-section"><h6 class="np-nav-title">Read</h6><ul class="np-nav-list"><li><a href="#">Blogs</a></li><li><a href="#">Use Cases</a></li><li><a href="#">eBooks &amp; Whitepapers</a></li><li><a href="#">News &amp; Media</a></li><li><a href="#">Success Stories</a></li></ul></div>
+                            <div class="np-nav-section"><h6 class="np-nav-title">Learn</h6><ul class="np-nav-list"><li><a href="#">Certification</a></li><li><a href="#">Support Portal</a></li><li><a href="#">Knowledge Base</a></li></ul></div>
+                        </div>
+                        <aside class="np-releases">
+                            <h6 class="np-nav-title">Recent Blogs</h6>
+                            <a class="np-release" href="#"><span class="np-release-tag">Featured</span><span class="np-release-title">Agentic RAG: Beyond Simple Retrieval</span><span class="np-release-sub">How self-correcting AI workflows are changing how teams query their data.</span></a>
+                            <a class="np-release" href="#"><span class="np-release-title">A Practical Guide to Self-Service BI</span><span class="np-release-sub">Patterns that scale beyond the analytics team.</span></a>
+                            <a class="np-view-all" href="#">View All Blogs <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+                        </aside>
+                    </div>
+                </li>
+                <li class="nav-item has-dropdown nav-item--company" data-mega-id="companyMega">
+                    <a href="#" class="nav-trigger">Company <svg class="caret" viewBox="0 0 8 4" fill="none"><path d="M0 0l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                    <div class="nav-mega nav-mega--platform nav-mega--company" role="menu" id="companyMega">
+                        <div class="np-nav"><ul class="np-nav-list"><li><a href="#" data-company-item="all" class="np-cap-link"><span>Company</span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></li></ul></div>
+                        <div class="np-detail" id="companyDetail">
+                            <h6 class="np-nav-title np-grid-title" id="coAllTitle" hidden>Company</h6>
+                            <div class="np-grid" id="coAllGrid" hidden>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 7 7 .8-5.3 4.8 1.7 7.4-7.4-4-7.4 4 1.7-7.4L0 9.8 7 9z"/></svg><span>Lumenore Difference</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 11l-3 3-1.5-1.5"/></svg><span>Partners</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg><span>Careers</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span>Contact Us</span></a>
+                                <a href="#" class="np-grid-card"><svg class="np-grid-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18l6-6 4 4 8-8"/><path d="M17 8h4v4"/></svg><span>Contact Sales</span></a>
+                            </div>
+                        </div>
+                        <aside class="np-releases">
+                            <h6 class="np-nav-title">Recent Blogs</h6>
+                            <a class="np-release" href="#"><span class="np-release-tag">Story</span><span class="np-release-title">Inside Lumenore: How We Build for Enterprise</span><span class="np-release-sub">The product principles behind self-correcting AI workflows.</span></a>
+                            <a class="np-release" href="#"><span class="np-release-title">Hiring Engineers Who Care</span><span class="np-release-sub">A peek inside the team culture and what we look for.</span></a>
+                            <a class="np-view-all" href="#">View All Blogs <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+                        </aside>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <div class="nav-actions">
+            <a href="#" class="btn-demo">Request a Demo</a>
+            <a href="#" class="btn-start btn-primary btn-primary--sm">Start for Free</a>
+        </div>
+    </header>
+</div>
+
+<!-- ===== PAGE CONTENT ===== -->
+<main>
+
+    <!-- HERO -->
+    <section class="pr-hero">
+        <div class="hero-grid" aria-hidden="true"></div>
+        <div class="hero-orbs" aria-hidden="true">
+            <div class="hero-orb orb-violet"></div>
+            <div class="hero-orb orb-cyan"></div>
+            <div class="hero-orb orb-blue"></div>
+        </div>
+        <div class="hero-particles" aria-hidden="true">
+            <span class="particle"></span><span class="particle"></span><span class="particle"></span>
+            <span class="particle"></span><span class="particle"></span><span class="particle"></span>
+            <span class="particle"></span><span class="particle"></span><span class="particle"></span>
+            <span class="particle"></span><span class="particle"></span><span class="particle"></span>
+        </div>
+        <div class="pr-hero__glow" aria-hidden="true"></div>
+        <div class="container">
+            <div class="pr-hero__inner">
+                <h1 class="pr-hero__title">Lumenore <em class="pr-gradient">Pricing</em></h1>
+                <p class="pr-hero__sub">Compare plans and choose what fits your data, team size, and analytics needs.</p>
+                <div class="pr-hero__ctas">
+                    <a href="#" class="btn-primary btn-primary--lg">Start for Free</a>
+                    <a href="#" class="btn-primary btn-primary--ghost btn-primary--lg">Watch a Demo</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PLANS + TOGGLE -->
+    <section class="pr-plans">
+        <div class="container">
+            <div class="pr-plans__head reveal-block">
+                <span class="pr-eyebrow">Pricing Plans</span>
+                <h2 class="pr-plans__title">Choose the right plan for your team</h2>
+                <p class="pr-plans__sub">Every plan includes Ask Me conversational analytics, dynamic dashboards, and 100+ data connectors.</p>
+                <div class="pr-toggle-wrap">
+                    <span class="pr-toggle-lbl is-active" id="lblMonthly">Pay Monthly</span>
+                    <label class="pr-toggle-switch" aria-label="Toggle annual billing">
+                        <input type="checkbox" id="billingToggle">
+                        <span class="pr-toggle-track"></span>
+                    </label>
+                    <span class="pr-toggle-lbl" id="lblAnnual">Pay Annually</span>
+                    <span class="pr-annual-badge">20% Off</span>
+                </div>
+            </div>
+
+            <!-- Cards -->
+            <div class="pr-cards reveal-block" style="--reveal-delay:.14s">
+
+                <!-- GROW -->
+                <div class="pr-card">
+                    <p class="pr-card__plan">Grow</p>
+                    <div class="pr-card__price-row">
+                        <span class="pr-card__amount" style="font-size:38px;letter-spacing:-.01em;">Free Forever</span>
+                    </div>
+                    <p class="pr-card__billing">&nbsp;</p>
+                    <p class="pr-card__desc">For individuals exploring Analytics and Business Intelligence</p>
+                    <div class="pr-card__cta">
+                        <a href="#" class="pr-btn-outline">Try Now</a>
+                    </div>
+                    <p class="pr-card__feat-head">What's included</p>
+                    <ul class="pr-card__feats">
+                        <li><span class="pr-ck"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Dynamic interactive dashboards</li>
+                        <li><span class="pr-ck"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Ask questions on your data using natural language (Ask Me)</li>
+                        <li><span class="pr-ck"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>2 user, up to 1 million rows of data</li>
+                        <li><span class="pr-ck"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>AI driven automated insights &amp; recommendations*</li>
+                    </ul>
+                </div>
+
+                <!-- ESSENTIALS (featured) -->
+                <div class="pr-card pr-card--featured">
+                    <span class="pr-popular">Most Popular</span>
+                    <p class="pr-card__plan">Essentials</p>
+                    <div class="pr-card__price-row">
+                        <span class="pr-card__amount-sup price-currency">$</span>
+                        <span class="pr-card__amount">
+                            <span class="price-monthly">50</span>
+                            <span class="price-annual" style="display:none">480</span>
+                        </span>
+                        <span class="pr-card__amount-per price-unit">
+                            <span class="price-monthly">per user/month</span>
+                            <span class="price-annual" style="display:none">per user/year</span>
+                        </span>
+                    </div>
+                    <p class="pr-card__billing billing-note" data-monthly="Billed monthly" data-annual="Billed annually — save 20%">Billed monthly</p>
+                    <p class="pr-card__desc">For growing teams that need AI powered Analytics, Business Intelligence and Collaboration</p>
+                    <div class="pr-card__cta">
+                        <a href="#" class="pr-btn-gradient">Try Now</a>
+                    </div>
+                    <p class="pr-card__feat-head">What's included</p>
+                    <ul class="pr-card__feats">
+                        <li><span class="pr-ck"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Creation of dashboards through AI</li>
+                        <li><span class="pr-ck"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Ask questions on your data using natural language (Ask Me)</li>
+                        <li><span class="pr-ck"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>5 to 20 users, up to 30 million rows of data</li>
+                        <li><span class="pr-ck"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Alerts, Notifications, Sharing &amp; Collaboration</li>
+                        <li><span class="pr-ck"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>AI driven automated insights &amp; recommendations*</li>
+                    </ul>
+                </div>
+
+                <!-- CUSTOM (dark) -->
+                <div class="pr-card pr-card--dark">
+                    <p class="pr-card__plan">Custom</p>
+                    <div class="pr-card__price-row">
+                        <span class="pr-card__amount" style="font-size:40px;padding-bottom:4px;">Get a Quote</span>
+                    </div>
+                    <p class="pr-card__billing">&nbsp;</p>
+                    <p class="pr-card__desc">For larger organizations needing unlimited scale, advanced security and governance</p>
+                    <div class="pr-card__cta">
+                        <a href="#" class="pr-btn-ghost">Contact Sales</a>
+                    </div>
+                    <p class="pr-card__feat-head">What's included</p>
+                    <ul class="pr-card__feats">
+                        <li><span class="pr-ck"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Real-time analytics with enterprise performance</li>
+                        <li><span class="pr-ck"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Custom AI credits and tailored models*</li>
+                        <li><span class="pr-ck"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>20 plus users with unlimited data volume</li>
+                        <li><span class="pr-ck"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Advanced security, governance and deployment on cloud or on-premise</li>
+                    </ul>
+                </div>
+
+            </div><!-- /pr-cards -->
+            <p class="pr-footnote">* All features consume AI Credits</p>
+        </div>
+    </section>
+
+    <!-- COMPARISON TABLE -->
+    <section class="pr-table-sec">
+        <div class="container">
+            <div class="pr-table-head reveal-block">
+                <span class="pr-eyebrow">Compare Plans</span>
+                <h2>Everything you get, side by side</h2>
+            </div>
+
+            <div class="pr-tbl-wrap reveal-block" style="--reveal-delay:.14s">
+
+                <!-- Header -->
+                <div class="pr-tbl-row pr-tbl-row--head">
+                    <div class="pr-tbl-cell pr-tbl-cell--feat" style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--blueGray-400);">Feature</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--head">Grow</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--head pr-tbl-cell--ess">Essentials</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--head">Custom</div>
+                </div>
+
+                <!-- Dashboard -->
+                <div class="pr-tbl-row pr-tbl-row--group"><div class="pr-tbl-group-label">Dashboard</div></div>
+                <div class="pr-tbl-row">
+                    <div class="pr-tbl-cell pr-tbl-cell--feat">Dashboards</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val">2</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val pr-tbl-cell--ess">10</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val">Custom</div>
+                </div>
+                <div class="pr-tbl-row">
+                    <div class="pr-tbl-cell pr-tbl-cell--feat">AI-Assisted Dashboard Creation*</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val"><span class="tbl-check"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val pr-tbl-cell--ess"><span class="tbl-check"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val">Custom</div>
+                </div>
+                <div class="pr-tbl-row">
+                    <div class="pr-tbl-cell pr-tbl-cell--feat">Charts per Dashboard</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val">15</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val pr-tbl-cell--ess">25</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val">Custom</div>
+                </div>
+                <div class="pr-tbl-row">
+                    <div class="pr-tbl-cell pr-tbl-cell--feat">Data Rows per Chart</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val">Up to 500</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val pr-tbl-cell--ess">Up to 5,000</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val">Up to 10,000</div>
+                </div>
+                <div class="pr-tbl-row">
+                    <div class="pr-tbl-cell pr-tbl-cell--feat">Create new metrics &amp; variables</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val"><span class="tbl-check"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val pr-tbl-cell--ess"><span class="tbl-check"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val"><span class="tbl-check"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+                </div>
+                <div class="pr-tbl-row">
+                    <div class="pr-tbl-cell pr-tbl-cell--feat">Storyboard</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val">1</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val pr-tbl-cell--ess">10</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val">Unlimited</div>
+                </div>
+                <div class="pr-tbl-row">
+                    <div class="pr-tbl-cell pr-tbl-cell--feat">Geospatial Analysis (Latitude and Longitude based)</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val"><span class="tbl-cross"><svg viewBox="0 0 16 16" fill="none"><path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span></div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val pr-tbl-cell--ess"><span class="tbl-check"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val"><span class="tbl-check"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+                </div>
+                <div class="pr-tbl-row">
+                    <div class="pr-tbl-cell pr-tbl-cell--feat">Scenario Analysis (What-if)</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val"><span class="tbl-cross"><svg viewBox="0 0 16 16" fill="none"><path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span></div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val pr-tbl-cell--ess"><span class="tbl-check"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val"><span class="tbl-check"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+                </div>
+
+                <!-- Data -->
+                <div class="pr-tbl-row pr-tbl-row--group"><div class="pr-tbl-group-label">Data</div></div>
+                <div class="pr-tbl-row">
+                    <div class="pr-tbl-cell pr-tbl-cell--feat">Data Rows</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val">Up to 1 million</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val pr-tbl-cell--ess">Up to 30 million</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val">Unlimited</div>
+                </div>
+                <div class="pr-tbl-row">
+                    <div class="pr-tbl-cell pr-tbl-cell--feat">Columns per Table</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val">Up to 100</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val pr-tbl-cell--ess">Up to 200</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val">Custom</div>
+                </div>
+                <div class="pr-tbl-row">
+                    <div class="pr-tbl-cell pr-tbl-cell--feat">Query Size</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val">Up to 100 MB</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val pr-tbl-cell--ess">Up to 300 MB</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val">Custom</div>
+                </div>
+                <div class="pr-tbl-row">
+                    <div class="pr-tbl-cell pr-tbl-cell--feat">Number of Datasets</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val">2</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val pr-tbl-cell--ess">5</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val">Unlimited</div>
+                </div>
+                <div class="pr-tbl-row">
+                    <div class="pr-tbl-cell pr-tbl-cell--feat">Tables per Dataset</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val">5</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val pr-tbl-cell--ess">20</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val">Unlimited</div>
+                </div>
+                <div class="pr-tbl-row">
+                    <div class="pr-tbl-cell pr-tbl-cell--feat">Number of Schemas</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val">2</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val pr-tbl-cell--ess">10</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val">Unlimited</div>
+                </div>
+                <div class="pr-tbl-row">
+                    <div class="pr-tbl-cell pr-tbl-cell--feat">Data Refresh Frequency</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val">Once per Dataset per day</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val pr-tbl-cell--ess">8 Times per Dataset per day</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val">Custom</div>
+                </div>
+
+                <!-- Data Connectors -->
+                <div class="pr-tbl-row pr-tbl-row--group"><div class="pr-tbl-group-label">Data Connectors</div></div>
+                <div class="pr-tbl-row">
+                    <div class="pr-tbl-cell pr-tbl-cell--feat">Data Source Connectors</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val">Files, RDBMS</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val pr-tbl-cell--ess">Files, APIs, RDBMS, SaaS Platform</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val">Files, APIs, RDBMS, SaaS Platforms, Custom connectors</div>
+                </div>
+                <div class="pr-tbl-row">
+                    <div class="pr-tbl-cell pr-tbl-cell--feat">Live Connectivity to Data lakehouse</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val"><span class="tbl-cross"><svg viewBox="0 0 16 16" fill="none"><path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span></div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val pr-tbl-cell--ess"><span class="tbl-cross"><svg viewBox="0 0 16 16" fill="none"><path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span></div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val"><span class="tbl-check"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+                </div>
+
+                <!-- Data Magnet -->
+                <div class="pr-tbl-row pr-tbl-row--group"><div class="pr-tbl-group-label">Data Magnet</div></div>
+                <div class="pr-tbl-row">
+                    <div class="pr-tbl-cell pr-tbl-cell--feat">Data Integration Layer (Data Processing)</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val">1 Million</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val pr-tbl-cell--ess">3 Million/Premium User</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val">Unlimited</div>
+                </div>
+                <div class="pr-tbl-row">
+                    <div class="pr-tbl-cell pr-tbl-cell--feat">Data Pipelines (Graphs)</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val">5</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val pr-tbl-cell--ess">25</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val">Unlimited</div>
+                </div>
+                <div class="pr-tbl-row">
+                    <div class="pr-tbl-cell pr-tbl-cell--feat">Jobs</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val">1</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val pr-tbl-cell--ess">10</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val">Unlimited</div>
+                </div>
+                <div class="pr-tbl-row">
+                    <div class="pr-tbl-cell pr-tbl-cell--feat">Refresh Frequency</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val">Once per pipeline per day</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val pr-tbl-cell--ess">Twice per pipeline per day</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val">Unlimited</div>
+                </div>
+
+                <!-- AI-Powered Analytics -->
+                <div class="pr-tbl-row pr-tbl-row--group"><div class="pr-tbl-group-label">AI-Powered Analytics</div></div>
+                <div class="pr-tbl-row">
+                    <div class="pr-tbl-cell pr-tbl-cell--feat">AI Credits*</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val">300</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val pr-tbl-cell--ess">3000</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val">Custom</div>
+                </div>
+                <div class="pr-tbl-row">
+                    <div class="pr-tbl-cell pr-tbl-cell--feat">AI Models*</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val">Standard models (GPT4.1 mini, GPT 4o mini)</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val pr-tbl-cell--ess">Enhanced models (Claude sonnet, GPT 4.1, GPT 4o, Perplexity sonar)</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val">Advanced reasoning and thinking models, Bring Your LLM (BYOAI)</div>
+                </div>
+                <div class="pr-tbl-row">
+                    <div class="pr-tbl-cell pr-tbl-cell--feat">Natural Language Querying*</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val"><span class="tbl-check"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val pr-tbl-cell--ess"><span class="tbl-check"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val"><span class="tbl-check"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+                </div>
+                <div class="pr-tbl-row">
+                    <div class="pr-tbl-cell pr-tbl-cell--feat">Narrative Insights (Gen AI)*</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val"><span class="tbl-check"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val pr-tbl-cell--ess"><span class="tbl-check"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val"><span class="tbl-check"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+                </div>
+                <div class="pr-tbl-row">
+                    <div class="pr-tbl-cell pr-tbl-cell--feat">AI Root-Cause Analysis*</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val"><span class="tbl-check"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val pr-tbl-cell--ess"><span class="tbl-check"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val"><span class="tbl-check"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+                </div>
+
+                <!-- Advanced Analytics (Data Science) -->
+                <div class="pr-tbl-row pr-tbl-row--group"><div class="pr-tbl-group-label">Advanced Analytics (Data Science)</div></div>
+                <div class="pr-tbl-row">
+                    <div class="pr-tbl-cell pr-tbl-cell--feat">Trends</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val">5</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val pr-tbl-cell--ess">20</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val">Unlimited</div>
+                </div>
+                <div class="pr-tbl-row">
+                    <div class="pr-tbl-cell pr-tbl-cell--feat">Correlations</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val">5</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val pr-tbl-cell--ess">20</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val">Unlimited</div>
+                </div>
+                <div class="pr-tbl-row">
+                    <div class="pr-tbl-cell pr-tbl-cell--feat">Outliers Detection</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val">5</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val pr-tbl-cell--ess">20</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val">Unlimited</div>
+                </div>
+                <div class="pr-tbl-row">
+                    <div class="pr-tbl-cell pr-tbl-cell--feat">Forecasting</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val">5</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val pr-tbl-cell--ess">20</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val">Unlimited</div>
+                </div>
+                <div class="pr-tbl-row">
+                    <div class="pr-tbl-cell pr-tbl-cell--feat">Classification (Multi-class)</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val">Not available</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val pr-tbl-cell--ess">10</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val">Unlimited</div>
+                </div>
+                <div class="pr-tbl-row">
+                    <div class="pr-tbl-cell pr-tbl-cell--feat">Regression</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val">Not available</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val pr-tbl-cell--ess">10</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val">Unlimited</div>
+                </div>
+                <div class="pr-tbl-row">
+                    <div class="pr-tbl-cell pr-tbl-cell--feat">Clustering</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val">Not available</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val pr-tbl-cell--ess">10</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val">Unlimited</div>
+                </div>
+                <div class="pr-tbl-row">
+                    <div class="pr-tbl-cell pr-tbl-cell--feat">Text and Sentiment Analysis</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val">Not available</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val pr-tbl-cell--ess">10</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val">Unlimited</div>
+                </div>
+                <div class="pr-tbl-row">
+                    <div class="pr-tbl-cell pr-tbl-cell--feat">Custom ML Algorithms and Models</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val">Not available</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val pr-tbl-cell--ess">Not available</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val"><span class="tbl-check"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+                </div>
+
+                <!-- Collaboration -->
+                <div class="pr-tbl-row pr-tbl-row--group"><div class="pr-tbl-group-label">Collaboration</div></div>
+                <div class="pr-tbl-row">
+                    <div class="pr-tbl-cell pr-tbl-cell--feat">Data Export Limits</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val">Up to 1 million rows</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val pr-tbl-cell--ess">Up to 3 million rows</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val">Unlimited</div>
+                </div>
+                <div class="pr-tbl-row">
+                    <div class="pr-tbl-cell pr-tbl-cell--feat">Sharing on Microsoft Teams</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val">Not available</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val pr-tbl-cell--ess">20 Shares per day</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val">Unlimited</div>
+                </div>
+                <div class="pr-tbl-row">
+                    <div class="pr-tbl-cell pr-tbl-cell--feat">Sharing on WhatsApp</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val">Not available</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val pr-tbl-cell--ess">20 Shares per day</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val">Unlimited</div>
+                </div>
+                <div class="pr-tbl-row">
+                    <div class="pr-tbl-cell pr-tbl-cell--feat">Schedule on Email Reports</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val">Not available</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val pr-tbl-cell--ess">5 per day</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val">Unlimited</div>
+                </div>
+                <div class="pr-tbl-row">
+                    <div class="pr-tbl-cell pr-tbl-cell--feat">Data Alerts on Email</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val">Not available</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val pr-tbl-cell--ess">5 per day</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val">Unlimited</div>
+                </div>
+                <div class="pr-tbl-row">
+                    <div class="pr-tbl-cell pr-tbl-cell--feat">Dashboard Export (PDF, PNG)</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val">No</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val pr-tbl-cell--ess">10 Exports per day</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val">Unlimited</div>
+                </div>
+                <div class="pr-tbl-row">
+                    <div class="pr-tbl-cell pr-tbl-cell--feat">Embedded Analytics (Public and Private Links)</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val"><span class="tbl-cross"><svg viewBox="0 0 16 16" fill="none"><path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span></div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val pr-tbl-cell--ess"><span class="tbl-cross"><svg viewBox="0 0 16 16" fill="none"><path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span></div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val"><span class="tbl-check"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+                </div>
+
+                <!-- Hosting, Governance and Administration -->
+                <div class="pr-tbl-row pr-tbl-row--group"><div class="pr-tbl-group-label">Hosting, Governance and Administration</div></div>
+                <div class="pr-tbl-row">
+                    <div class="pr-tbl-cell pr-tbl-cell--feat">Cloud Hosting</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val">Lumenore Global Cloud</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val pr-tbl-cell--ess">Lumenore Global Cloud</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val">Custom (AWS, Azure, GCP, Oracle, On-Prem, Private Cloud etc.)</div>
+                </div>
+                <div class="pr-tbl-row">
+                    <div class="pr-tbl-cell pr-tbl-cell--feat">Data Subject Access Request (DSAR)</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val"><span class="tbl-check"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val pr-tbl-cell--ess"><span class="tbl-check"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val"><span class="tbl-check"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+                </div>
+                <div class="pr-tbl-row">
+                    <div class="pr-tbl-cell pr-tbl-cell--feat">Row Level Security</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val"><span class="tbl-cross"><svg viewBox="0 0 16 16" fill="none"><path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span></div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val pr-tbl-cell--ess"><span class="tbl-check"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val"><span class="tbl-check"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+                </div>
+                <div class="pr-tbl-row">
+                    <div class="pr-tbl-cell pr-tbl-cell--feat">User Management</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val"><span class="tbl-cross"><svg viewBox="0 0 16 16" fill="none"><path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span></div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val pr-tbl-cell--ess"><span class="tbl-check"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val"><span class="tbl-check"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+                </div>
+                <div class="pr-tbl-row">
+                    <div class="pr-tbl-cell pr-tbl-cell--feat">Role Based Access Control (RBAC)</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val"><span class="tbl-cross"><svg viewBox="0 0 16 16" fill="none"><path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span></div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val pr-tbl-cell--ess"><span class="tbl-check"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val"><span class="tbl-check"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+                </div>
+                <div class="pr-tbl-row">
+                    <div class="pr-tbl-cell pr-tbl-cell--feat">Single Sign-On (SSO)</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val"><span class="tbl-cross"><svg viewBox="0 0 16 16" fill="none"><path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span></div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val pr-tbl-cell--ess"><span class="tbl-cross"><svg viewBox="0 0 16 16" fill="none"><path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span></div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val"><span class="tbl-check"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+                </div>
+
+                <!-- Extensibility -->
+                <div class="pr-tbl-row pr-tbl-row--group"><div class="pr-tbl-group-label">Extensibility</div></div>
+                <div class="pr-tbl-row">
+                    <div class="pr-tbl-cell pr-tbl-cell--feat">Logo Rebranding (White Labeling)</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val"><span class="tbl-cross"><svg viewBox="0 0 16 16" fill="none"><path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span></div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val pr-tbl-cell--ess"><span class="tbl-cross"><svg viewBox="0 0 16 16" fill="none"><path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span></div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val"><span class="tbl-check"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+                </div>
+
+                <!-- Support -->
+                <div class="pr-tbl-row pr-tbl-row--group"><div class="pr-tbl-group-label">Support</div></div>
+                <div class="pr-tbl-row">
+                    <div class="pr-tbl-cell pr-tbl-cell--feat">Knowledge Base</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val"><span class="tbl-check"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val pr-tbl-cell--ess"><span class="tbl-check"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val"><span class="tbl-check"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+                </div>
+                <div class="pr-tbl-row">
+                    <div class="pr-tbl-cell pr-tbl-cell--feat">Onboarding Videos and YouTube Tutorials</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val"><span class="tbl-check"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val pr-tbl-cell--ess"><span class="tbl-check"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val"><span class="tbl-check"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+                </div>
+                <div class="pr-tbl-row">
+                    <div class="pr-tbl-cell pr-tbl-cell--feat">Community Support</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val"><span class="tbl-check"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val pr-tbl-cell--ess"><span class="tbl-check"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val"><span class="tbl-check"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+                </div>
+                <div class="pr-tbl-row">
+                    <div class="pr-tbl-cell pr-tbl-cell--feat">Ticket Based Support</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val"><span class="tbl-cross"><svg viewBox="0 0 16 16" fill="none"><path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span></div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val pr-tbl-cell--ess"><span class="tbl-check"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val">Prioritized support available</div>
+                </div>
+                <div class="pr-tbl-row">
+                    <div class="pr-tbl-cell pr-tbl-cell--feat">Training</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val"><span class="tbl-cross"><svg viewBox="0 0 16 16" fill="none"><path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span></div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val pr-tbl-cell--ess"><span class="tbl-cross"><svg viewBox="0 0 16 16" fill="none"><path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span></div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val">Custom</div>
+                </div>
+                <div class="pr-tbl-row">
+                    <div class="pr-tbl-cell pr-tbl-cell--feat">Professional Services</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val"><span class="tbl-cross"><svg viewBox="0 0 16 16" fill="none"><path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span></div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val pr-tbl-cell--ess"><span class="tbl-cross"><svg viewBox="0 0 16 16" fill="none"><path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span></div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val">Custom</div>
+                </div>
+                <div class="pr-tbl-row">
+                    <div class="pr-tbl-cell pr-tbl-cell--feat">Data Consulting</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val"><span class="tbl-cross"><svg viewBox="0 0 16 16" fill="none"><path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span></div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val pr-tbl-cell--ess"><span class="tbl-cross"><svg viewBox="0 0 16 16" fill="none"><path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span></div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val">Custom</div>
+                </div>
+
+                <!-- Add-Ons -->
+                <div class="pr-tbl-row pr-tbl-row--group"><div class="pr-tbl-group-label">Add-Ons</div></div>
+                <div class="pr-tbl-row">
+                    <div class="pr-tbl-cell pr-tbl-cell--feat">AI Credits</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val"><span class="tbl-cross"><svg viewBox="0 0 16 16" fill="none"><path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span></div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val pr-tbl-cell--ess">1000 Credits for $10</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val">Custom</div>
+                </div>
+                <div class="pr-tbl-row">
+                    <div class="pr-tbl-cell pr-tbl-cell--feat">Number of Rows</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val"><span class="tbl-cross"><svg viewBox="0 0 16 16" fill="none"><path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span></div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val pr-tbl-cell--ess">100000 Rows for $150</div>
+                    <div class="pr-tbl-cell pr-tbl-cell--val">Custom</div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="pr-faq">
+        <div class="container">
+            <div class="pr-faq__head reveal-block">
+                <span class="pr-eyebrow">FAQ</span>
+                <h2>Frequently asked questions</h2>
+            </div>
+            <div class="pr-faq__list reveal-block" style="--reveal-delay:.12s">
+
+                <details class="pr-faq__item">
+                    <summary class="pr-faq__q">
+                        What are Lumenore credits, and how do they work?
+                        <span class="pr-faq__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></span>
+                    </summary>
+                    <p class="pr-faq__a">Lumenore credits offer access to AI-powered analytics features like conversational analytics, predictive analytics and advanced analytics. Each query consumes credits based on data size and complexity. The Grow plan includes 100 credits, while the Pro plan offers unlimited credits for $20 user/month or $204/year.</p>
+                </details>
+
+                <details class="pr-faq__item">
+                    <summary class="pr-faq__q">
+                        Is the Grow plan truly free?
+                        <span class="pr-faq__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></span>
+                    </summary>
+                    <p class="pr-faq__a">Yes, the Grow plan is completely free, forever. It includes core AI features and community support to help you get started.</p>
+                </details>
+
+                <details class="pr-faq__item">
+                    <summary class="pr-faq__q">
+                        What happens if I exceed my plan's limits?
+                        <span class="pr-faq__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></span>
+                    </summary>
+                    <p class="pr-faq__a">You can upgrade to the Essentials or Custom plan to access more features, credits, and resources.</p>
+                </details>
+
+                <details class="pr-faq__item">
+                    <summary class="pr-faq__q">
+                        How secure is my data?
+                        <span class="pr-faq__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></span>
+                    </summary>
+                    <p class="pr-faq__a">Lumenore uses enterprise-grade encryption and complies with global security standards to ensure your data remains safe.</p>
+                </details>
+
+                <details class="pr-faq__item">
+                    <summary class="pr-faq__q">
+                        Can I customize my plan?
+                        <span class="pr-faq__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></span>
+                    </summary>
+                    <p class="pr-faq__a">Absolutely! The Custom plan is designed to meet your unique requirements, including credits, storage, and integrations.</p>
+                </details>
+
+                <details class="pr-faq__item">
+                    <summary class="pr-faq__q">
+                        Does Lumenore support unstructured data and RAG-based insights?
+                        <span class="pr-faq__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></span>
+                    </summary>
+                    <p class="pr-faq__a">Lumenore supports unstructured data through Retrieval-Augmented Generation (RAG) as part of its AI capabilities. Users can ingest and analyze documents and text-based content to generate contextual insights and ask natural-language questions.</p>
+                </details>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- BOTTOM CTA -->
+    <section class="pr-cta">
+        <div class="pr-cta__orb" aria-hidden="true"></div>
+        <div class="container">
+            <div class="pr-cta__inner reveal-block">
+                <h2>Got more questions?</h2>
+                <p>Our team is here to answer any of your queries or help you choose the right plan for your team.</p>
+                <div class="pr-cta__btns">
+                    <a href="#" class="btn-primary btn-primary--lg">
+                        Book a Demo
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                    </a>
+                    <a href="#" class="btn-primary btn-primary--ghost btn-primary--lg">Buy Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-top">
+            <div class="brand-col footer-col reveal-left">
+                <div class="brand-logo">
+                    <img src="./assets/images/homeV2o/Lumenore logo.svg" alt="Lumenore" class="brand-logo-img">
+                    <img src="./assets/images/homeV2o/GPTW.svg" alt="Great Place to Work — Certified" class="gptw-badge">
+                </div>
+                <div class="ask-ai-box">
+                    <p class="ask-ai-label">Ask AI for a summary about Lumenore</p>
+                    <div class="ask-ai-icons">
+                        <a href="#" aria-label="ChatGPT"><img src="./assets/images/AI/openai.svg" alt="ChatGPT" width="24" height="24"></a>
+                        <a href="#" aria-label="Perplexity"><img src="./assets/images/AI/perplexity-dark.svg" alt="Perplexity" width="24" height="24"></a>
+                        <a href="#" aria-label="Gemini"><img src="./assets/images/AI/google-gemini-dark.svg" alt="Gemini" width="24" height="24"></a>
+                        <a href="#" aria-label="Claude"><img src="./assets/images/AI/claude.svg" alt="Claude" width="24" height="24"></a>
+                        <a href="#" aria-label="Grok"><img src="./assets/images/AI/grok.svg" alt="Grok" width="24" height="24"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-cta reveal-right" style="--reveal-delay:.18s">
+                <span class="footer-cta-halo" aria-hidden="true"></span>
+                <div class="footer-cta-text">
+                    <span class="footer-cta-eyebrow">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l2 5 5 2-5 2-2 5-2-5-5-2 5-2z" fill="currentColor"/></svg>
+                        Talk to a human
+                    </span>
+                    <h3>Got more questions?</h3>
+                    <p>Our team is here to answer any questions or customize the perfect plan for you.</p>
+                </div>
+                <a href="#" class="footer-cta-button btn-primary">
+                    Get in Touch
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="footer-nav reveal-block" style="--reveal-delay:.28s">
+            <div class="footer-col">
+                <h4>Platform</h4>
+                <ul>
+                    <li><a href="why-us.html">Why Us</a></li>
+                    <li><a href="trust-and-security.html">Trust and Security</a></li>
+                    <li><a href="partners.html">Partners</a></li>
+                    <li><a href="professional-services.html">Professional Services</a></li>
+                    <li><a href="platform.html">Platform</a></li>
+                    <li><a href="release-notes.html">Latest Releases</a></li>
+                    <li><a href="watch-demo.html">Watch Demo</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Capabilities</h4>
+                <ul>
+                    <li><a href="data-connectors.html">Data Connectors</a></li>
+                    <li><a href="data-integration.html">Data Integration</a></li>
+                    <li><a href="data-lakehouse.html">Data Lakehouse</a></li>
+                    <li><a href="data-visualization.html">Data Visualization</a></li>
+                    <li><a href="data-universe.html">Data Universe</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="advanced-analytics.html">Advanced Analytics</a></li>
+                    <li><a href="embedded-analytics.html">Embedded Analytics</a></li>
+                    <li><a href="conversational-intelligence.html">Conversational Intelligence</a></li>
+                    <li><a href="predictive-analytics.html">Predictive Analytics</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Product</h4>
+                <ul>
+                    <li><a href="lumenore-insights.html">Lumenore Insights</a></li>
+                    <li><a href="../lumenore-ask-me.html">Lumenore Ask Me</a></li>
+                    <li><a href="lumenore-data-magnet.html">Lumenore Data Magnet</a></li>
+                </ul>
+                <h4 class="col-spaced">Pricing</h4>
+                <ul>
+                    <li><a href="pricing.html">Pricing Plans</a></li>
+                </ul>
+                <h4 class="col-spaced">Compare</h4>
+                <ul>
+                    <li><a href="tableau-alternative.html">Tableau Alternative</a></li>
+                    <li><a href="thoughtspot-alternative.html">ThoughtSpot Alternative</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Solutions</h4>
+                <ul>
+                    <li><a href="solutions-by-industry.html">By Industry</a></li>
+                    <li><a href="solutions-by-department.html">By Department</a></li>
+                </ul>
+                <h4 class="col-spaced">Company</h4>
+                <ul>
+                    <li><a href="about-us.html">About Us</a></li>
+                    <li><a href="career.html">Career</a></li>
+                    <li><a href="newsroom.html">Newsroom</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="contact-sales.html">Contact Sales</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="request-a-demo.html">Request Demo</a></li>
+                    <li><a href="community-support.html">Community Support</a></li>
+                    <li><a href="news-and-media.html">News &amp; Media</a></li>
+                    <li><a href="ebooks-whitepapers.html">Ebooks &amp; Whitepapers</a></li>
+                    <li><a href="success-stories.html">Success Stories</a></li>
+                    <li><a href="use-cases.html">Use Cases</a></li>
+                    <li><a href="blog.html">Blogs</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="knowledge-base.html">Knowledge Base</a></li>
+                    <li><a href="certifications.html">Certifications</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© 2025 Lumenore Inc. All rights reserved.</p>
+            <div class="copyright-social">
+                <a href="#" aria-label="X / Twitter"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+                <a href="#" aria-label="LinkedIn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452z"/></svg></a>
+                <a href="#" aria-label="YouTube"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+                <a href="#" aria-label="Instagram"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+            </div>
+            <div class="legal-links">
+                <a href="privacy.html">Privacy</a>
+                <a href="terms.html">Terms of Use</a>
+                <a href="cookies.html">Cookies Settings</a>
+                <a href="license.html">License Agreement</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="./script.js"></script>
+<script>
+/* Billing toggle */
+(function () {
+    var toggle      = document.getElementById('billingToggle');
+    var lblMonthly  = document.getElementById('lblMonthly');
+    var lblAnnual   = document.getElementById('lblAnnual');
+    var monthlyEls  = document.querySelectorAll('.price-monthly');
+    var annualEls   = document.querySelectorAll('.price-annual');
+    var noteEls     = document.querySelectorAll('.billing-note');
+    if (!toggle) return;
+    toggle.addEventListener('change', function () {
+        var isAnnual = toggle.checked;
+        lblMonthly.classList.toggle('is-active', !isAnnual);
+        lblAnnual.classList.toggle('is-active', isAnnual);
+        monthlyEls.forEach(function (el) { el.style.display = isAnnual ? 'none' : ''; });
+        annualEls.forEach(function (el)  { el.style.display = isAnnual ? '' : 'none'; });
+        noteEls.forEach(function (el) {
+            el.textContent = isAnnual ? el.dataset.annual : el.dataset.monthly;
+        });
+    });
+})();
+
+/* Platform mega-menu */
+(function () {
+    var mega         = document.getElementById('platformMega');
+    var detail       = document.getElementById('platformDetail');
+    var productPane  = document.getElementById('platformProductPane');
+    var productTitle = document.getElementById('npProductTitle');
+    var productTag   = document.getElementById('npProductTagline');
+    var productDesc  = document.getElementById('npProductDesc');
+    var ctaStart     = document.getElementById('npProductStart');
+    var ctaLearn     = document.getElementById('npProductLearn');
+    var ctaPricing   = document.getElementById('npProductPricing');
+    var gridTitle    = document.getElementById('platformGridTitle');
+    var grid         = document.getElementById('platformGrid');
+    var navList      = document.querySelectorAll('#platformMega [data-platform-item]');
+    var cards        = document.querySelectorAll('#platformMega [data-platform-card]');
+    if (!mega || !detail) return;
+    var products = {
+        insights:   { tagline:'Self-Service Analytics',   title:'Lumenore Insights',    desc:'Democratize data with self-service, AI-powered dashboards that empower every employee to make data-driven decisions and maximize ROI instantly.', start:'#', learn:'#', pricing:'#' },
+        askme:      { tagline:'Conversational Analytics', title:'Lumenore Ask Me',       desc:'Query enterprise data and documents in natural language. Get instant, governed insights enhanced by Agentic RAG and seamless MCP integrations.', start:'../lumenore-ask-me.html', learn:'../lumenore-ask-me.html', pricing:'#' },
+        datamagnet: { tagline:'Enterprise ETL',           title:'Lumenore Data Magnet', desc:'Connect 50+ enterprise sources with low-code ETL. Accelerate high-volume transfers to your Lakehouse with secure, cost-effective automation.', start:'#', learn:'#', pricing:'#' }
+    };
+    function hideAll() { productPane.hidden=true; if(gridTitle)gridTitle.hidden=true; if(grid)grid.hidden=true; }
+    function showProduct(key) { var d=products[key]; if(!d)return; productTag.textContent=d.tagline; productTitle.textContent=d.title; productDesc.textContent=d.desc; ctaStart.href=d.start; ctaLearn.href=d.learn; ctaPricing.href=d.pricing; productPane.hidden=false; if(gridTitle)gridTitle.hidden=true; if(grid)grid.hidden=true; }
+    function showGrid() { productPane.hidden=true; if(gridTitle)gridTitle.hidden=false; if(grid)grid.hidden=false; }
+    function highlight(key) { navList.forEach(function(n){n.classList.toggle('is-active',n.dataset.platformItem===key);}); cards.forEach(function(c){c.classList.toggle('is-active',c.dataset.platformCard===key);}); }
+    function clearHighlight() { navList.forEach(function(n){n.classList.remove('is-active');}); cards.forEach(function(c){c.classList.remove('is-active');}); }
+    navList.forEach(function(n) { var t=function(){var key=n.dataset.platformItem; highlight(key); if(n.dataset.platformType==='product')showProduct(key); else showGrid();}; n.addEventListener('mouseenter',t); n.addEventListener('focus',t); });
+    cards.forEach(function(c) { var t=function(){showGrid(); highlight(c.dataset.platformCard);}; c.addEventListener('mouseenter',t); c.addEventListener('focus',t); });
+    var navItem=mega.closest('.nav-item');
+    if(navItem) { navItem.addEventListener('mouseenter',function(){highlight('insights');showProduct('insights');}); navItem.addEventListener('focusin',function(){highlight('insights');showProduct('insights');}); navItem.addEventListener('mouseleave',function(){clearHighlight();hideAll();}); }
+})();
+
+/* Solutions mega-menu */
+(function () {
+    var mega=document.getElementById('solutionMega'); if(!mega)return;
+    var navList=mega.querySelectorAll('[data-solution-item]');
+    var industryTtl=document.getElementById('solIndustryTitle'); var industryGrid=document.getElementById('solIndustryGrid');
+    var deptTtl=document.getElementById('solDepartmentTitle'); var deptGrid=document.getElementById('solDepartmentGrid');
+    function hideAll(){industryTtl.hidden=true;industryGrid.hidden=true;deptTtl.hidden=true;deptGrid.hidden=true;}
+    function showIndustry(){industryTtl.hidden=false;industryGrid.hidden=false;deptTtl.hidden=true;deptGrid.hidden=true;}
+    function showDepartment(){industryTtl.hidden=true;industryGrid.hidden=true;deptTtl.hidden=false;deptGrid.hidden=false;}
+    function highlight(key){navList.forEach(function(n){n.classList.toggle('is-active',n.dataset.solutionItem===key);});}
+    function clearHighlight(){navList.forEach(function(n){n.classList.remove('is-active');});}
+    navList.forEach(function(n){var t=function(){var key=n.dataset.solutionItem;highlight(key);if(key==='department')showDepartment();else showIndustry();}; n.addEventListener('mouseenter',t);n.addEventListener('focus',t);});
+    var navItem=mega.closest('.nav-item');
+    if(navItem){navItem.addEventListener('mouseenter',function(){highlight('industry');showIndustry();}); navItem.addEventListener('focusin',function(){highlight('industry');showIndustry();}); navItem.addEventListener('mouseleave',function(){clearHighlight();hideAll();});}
+})();
+
+/* Company mega-menu */
+(function () {
+    var mega=document.getElementById('companyMega'); if(!mega)return;
+    var navList=mega.querySelectorAll('[data-company-item]');
+    var allTtl=document.getElementById('coAllTitle'); var allGrid=document.getElementById('coAllGrid');
+    function hideAll(){if(allTtl)allTtl.hidden=true;if(allGrid)allGrid.hidden=true;}
+    function showAll(){if(allTtl)allTtl.hidden=false;if(allGrid)allGrid.hidden=false;}
+    function highlight(){navList.forEach(function(n){n.classList.add('is-active');});}
+    function clearHighlight(){navList.forEach(function(n){n.classList.remove('is-active');});}
+    navList.forEach(function(n){n.addEventListener('mouseenter',function(){highlight();showAll();}); n.addEventListener('focus',function(){highlight();showAll();});});
+    var navItem=mega.closest('.nav-item');
+    if(navItem){navItem.addEventListener('mouseenter',function(){highlight();showAll();}); navItem.addEventListener('focusin',function(){highlight();showAll();}); navItem.addEventListener('mouseleave',function(){clearHighlight();hideAll();});}
+})();
+
+/* Hover-gap bridge */
+(function () {
+    document.querySelectorAll('.nav-item.has-dropdown').forEach(function(item){
+        var mega=item.querySelector('.nav-mega'); if(!mega)return;
+        var closeTimer=null;
+        function open(){clearTimeout(closeTimer);item.classList.add('is-open');}
+        function scheduleClose(){closeTimer=setTimeout(function(){item.classList.remove('is-open');},200);}
+        item.addEventListener('mouseenter',open); item.addEventListener('mouseleave',scheduleClose);
+        mega.addEventListener('mouseenter',open); mega.addEventListener('mouseleave',scheduleClose);
+    });
+})();
+
+/* Reveal animations */
+(function () {
+    var els=document.querySelectorAll('.reveal-block,.reveal-left,.reveal-right');
+    if(!els.length)return;
+    if(!('IntersectionObserver' in window)){els.forEach(function(el){el.classList.add('is-visible');});return;}
+    var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('is-visible');obs.unobserve(e.target);}});},{threshold:0.12});
+    els.forEach(function(el){obs.observe(el);});
+})();
+
+/* Custom cursor */
+(function () {
+    var cursor=document.getElementById('customCursor'); if(!cursor)return;
+    if(window.matchMedia('(prefers-reduced-motion:reduce)').matches){cursor.remove();return;}
+    if(window.matchMedia('(hover:none)').matches){cursor.remove();return;}
+    var dot=cursor.querySelector('.cursor__dot'); var ring=cursor.querySelector('.cursor__ring');
+    var dotX=0,dotY=0,ringX=0,ringY=0,EASE=0.20,raf=null,firstMove=false;
+    var INTERACTIVE='a,button,label,select,summary,[role="button"],[role="tab"],[role="menuitem"],[role="link"],.btn-primary';
+    var TEXT='input:not([type="button"]):not([type="submit"]):not([type="reset"]):not([type="checkbox"]):not([type="radio"]),textarea,[contenteditable="true"]';
+    function frame(){ringX+=(dotX-ringX)*EASE;ringY+=(dotY-ringY)*EASE;cursor.style.transform='translate3d('+dotX+'px,'+dotY+'px,0)';ring.style.transform='translate3d('+(ringX-dotX)+'px,'+(ringY-dotY)+'px,0)';if(Math.abs(dotX-ringX)>0.3||Math.abs(dotY-ringY)>0.3){raf=requestAnimationFrame(frame);}else{ringX=dotX;ringY=dotY;ring.style.transform='translate3d(0,0,0)';raf=null;}}
+    function onMove(e){dotX=e.clientX;dotY=e.clientY;if(!firstMove){firstMove=true;ringX=dotX;ringY=dotY;cursor.style.transform='translate3d('+dotX+'px,'+dotY+'px,0)';cursor.classList.add('is-visible');}if(raf===null)raf=requestAnimationFrame(frame);}
+    function onOver(e){if(e.target.closest&&e.target.closest(TEXT)){cursor.classList.add('is-hidden');cursor.classList.remove('is-active');return;}cursor.classList.remove('is-hidden');if(e.target.closest&&e.target.closest(INTERACTIVE))cursor.classList.add('is-active');}
+    function onOut(e){if(!e.relatedTarget||!e.relatedTarget.closest||!e.relatedTarget.closest(INTERACTIVE))cursor.classList.remove('is-active');}
+    document.addEventListener('mousemove',onMove,{passive:true});
+    document.addEventListener('mouseover',onOver);
+    document.addEventListener('mouseout',onOut);
+    document.addEventListener('mousedown',function(){cursor.classList.add('is-pressed');});
+    document.addEventListener('mouseup',function(){cursor.classList.remove('is-pressed');});
+    document.addEventListener('mouseleave',function(){cursor.classList.remove('is-visible');});
+    document.addEventListener('mouseenter',function(){if(firstMove)cursor.classList.add('is-visible');});
+})();
+</script>
+</body>
+</html>
