@@ -2,5 +2,12 @@
   "framework": null,
   "buildCommand": null,
   "installCommand": null,
-  "outputDirectory": "."
+  "outputDirectory": ".",
+  "redirects": [
+    {
+      "source": "/Final-home-page.html",
+      "destination": "/",
+      "permanent": true
+    }
+  ]
 }
