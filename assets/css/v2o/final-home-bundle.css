@@ -12159,12 +12159,12 @@ body.fc-preview {
 .hero-split {
     display: flex;
     align-items: center;
-    gap: 80px;
+    gap: 56px;
     padding: 60px 0;
     width: 100%;
 }
 .hero-split__text {
-    flex: 0 0 48%;
+    flex: 0 0 42%;
     max-width: 640px;
     display: flex;
     flex-direction: column;
