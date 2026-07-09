@@ -12159,12 +12159,12 @@ body.fc-preview {
 .hero-split {
     display: flex;
     align-items: center;
-    gap: 56px;
+    gap: 40px;
     padding: 60px 0;
     width: 100%;
 }
 .hero-split__text {
-    flex: 0 0 42%;
+    flex: 0 0 36%;
     max-width: 640px;
     display: flex;
     flex-direction: column;
@@ -12214,6 +12214,8 @@ body.fc-preview {
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: visible;
+    margin-right: -80px;
 }
 /* Dark backdrop behind browser — lifts GIF off the card grid */
 .hero-split__visual::before {
