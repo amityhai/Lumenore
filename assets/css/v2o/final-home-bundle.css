@@ -12173,11 +12173,11 @@ body.fc-preview {
 }
 .hero-split__text h1 {
     font-family: 'Fraunces', serif;
-    font-size: 52px;
-    line-height: 62px;
+    font-size: 64px;
+    line-height: 74px;
     color: #fcfcfc;
     font-weight: 300;
-    letter-spacing: -0.6px;
+    letter-spacing: -0.8px;
     margin: 0;
     font-variation-settings: 'SOFT' 0, 'WONK' 1;
 }
