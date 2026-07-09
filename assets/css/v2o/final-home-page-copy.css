@@ -587,7 +587,7 @@
 
 /* ── Hero container — full 1500px width ── */
 .hero-section .container {
-    max-width: 1500px !important;
+    max-width: 1320px !important;
     padding: 0 24px !important;
 }
 
@@ -1402,8 +1402,8 @@
 /* Drop the legacy 300vh scroll-pin track — natural height now */
 .hero-bg-page #productSection { height: auto !important; }
 .hero-bg-page #productSection .container {
-    padding-top: 88px;
-    padding-bottom: 88px;
+    padding-top: 0;
+    padding-bottom: 0;
     position: relative;
     z-index: 1;
 }
@@ -1676,4 +1676,39 @@
 .hero-bg-page .sh-accent,
 .hero-bg-page .th-accent {
     background-image: var(--grad-brand) !important;
+}
+
+/* ── Personas section: reset homepage.css 1500px-based padding to match 1320px standard ── */
+.hero-bg-page #personaSection .container {
+    max-width: 1320px !important;
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+}
+
+/* ── Standardise intro → content gap to 60px across all sections ── */
+.hero-bg-page .cm-intro,
+.hero-bg-page .personas-intro,
+.hero-bg-page .pricing-intro,
+.hero-bg-page .success-intro,
+.hero-bg-page .testimonial-intro {
+    margin-bottom: 60px !important;
+}
+
+/* ── Standardise section padding to 96px top/bottom ──
+   Exceptions: Trusted stays 65px (compact logo strip);
+   Personas & Testimonials keep their large bottom padding for gradient fade effects. ── */
+.hero-bg-page .section-products,
+.hero-bg-page .fc-section,
+.hero-bg-page .section-pricing,
+.hero-bg-page .section-success,
+.hero-bg-page .section-trust {
+    padding-top: 96px !important;
+    padding-bottom: 96px !important;
+}
+.hero-bg-page .section-personas {
+    padding-top: 96px !important;
+    padding-bottom: 96px !important;
+}
+.hero-bg-page .section-testimonial {
+    padding-top: 96px !important;
 }
