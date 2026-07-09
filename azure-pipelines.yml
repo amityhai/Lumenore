@@ -1,0 +1,46 @@
+# Azure Static Web Apps — deploy the Lumenore marketing site
+#
+# Static HTML/CSS, no build step. Production deploys from `main`; pull requests
+# get their own temporary preview URL (staging environment) to share with teams.
+#
+# One-time setup in Azure DevOps:
+#   1. Create the Static Web App resource in the Azure portal, choose
+#      "Other" (or Azure DevOps) as the source so it does NOT auto-generate its
+#      own pipeline — you use this file instead.
+#   2. Copy the app's "Deployment token" (Portal > your Static Web App >
+#      Manage deployment token).
+#   3. Pipelines > Library (or this pipeline's Variables) > add a *secret*
+#      variable named  AZURE_STATIC_WEB_APPS_API_TOKEN  with that token.
+#   4. For preview URLs on PRs: enable a Build Validation branch policy on
+#      `main` that runs this pipeline (Repos > Branches > main > Branch policies).
+
+trigger:
+  branches:
+    include:
+      - main
+
+# PR builds are triggered by a Build Validation branch policy in Azure DevOps
+# (Azure Repos ignores the `pr:` key that GitHub pipelines use). Set that up
+# per step 4 above; the task below auto-creates/tears down the preview env.
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+  - checkout: self
+    submodules: true
+
+  - task: AzureStaticWebApp@0
+    displayName: Deploy to Azure Static Web Apps
+    inputs:
+      # Repo root holds index.html — the whole site is served as-is.
+      app_location: "/"
+      # No API/backend functions in this project.
+      api_location: ""
+      # No build output folder; the source IS the deployable site.
+      output_location: ""
+      # Pure static site — skip the Oryx build step entirely.
+      skip_app_build: true
+      skip_api_build: true
+    env:
+      azure_static_web_apps_api_token: $(AZURE_STATIC_WEB_APPS_API_TOKEN)

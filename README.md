@@ -36,27 +36,40 @@ python3 -m http.server 8000
 | `assets/images/` | Images, logos, GIFs, Lottie JSON |
 | `vercel.json` | Vercel static-deploy config |
 
-## Remotes & deployment
+## Deployment — Azure Static Web Apps
 
-Two remotes are in play:
+The site deploys straight from **Azure DevOps** via `azure-pipelines.yml`, so the
+team repo is also the deploy source — no GitHub mirror required.
 
-| Remote | Repo | Purpose |
-|--------|------|---------|
-| `azure` | Azure DevOps `Lumenore-marketing-2025` | Team source of truth / collaboration |
-| `amityhai` | GitHub `amityhai/Lumenore` | **Connected to Vercel** — pushing here deploys the site |
-| `all` | both of the above | Convenience: pushes to Azure **and** GitHub at once |
+- **Production** deploys on every push to `main`.
+- **Pull requests** get their own temporary **preview URL** (a staging
+  environment) to share with different teams for review — torn down when the PR
+  closes.
 
-Vercel auto-deploys from the **GitHub** repo (Vercel has no Azure DevOps integration),
-so to publish a change you must land it on GitHub too. The `all` remote does both:
+### One-time setup
+
+1. Create a **Static Web App** resource in the Azure portal; pick **Other** as
+   the deployment source so Azure doesn't generate its own pipeline (this file
+   replaces it).
+2. Copy the app's **deployment token** (Portal → your Static Web App → *Manage
+   deployment token*).
+3. In Azure DevOps → **Pipelines → Library** (or the pipeline's Variables), add
+   a **secret** variable `AZURE_STATIC_WEB_APPS_API_TOKEN` set to that token.
+4. Create the pipeline from `azure-pipelines.yml`.
+5. For PR preview URLs: add a **Build Validation** branch policy on `main` that
+   runs this pipeline (Repos → Branches → `main` → Branch policies).
+
+### Everyday workflow
 
 ```bash
 git pull azure main          # get latest team changes
+git checkout -b my-change    # branch for anything non-trivial
 # ...make changes...
 git add -A && git commit -m "your message"
-git push all main            # -> Azure (team) AND GitHub (triggers Vercel deploy)
+git push azure my-change     # open a PR in Azure DevOps -> preview URL to share
 ```
 
-Vercel config lives in `vercel.json` (static site, output = repo root).
+Merging the PR into `main` publishes to production automatically.
 
-Please branch for larger changes and open a Pull Request in Azure DevOps rather than
-pushing directly to `main`.
+> Legacy: `vercel.json` and the GitHub (`amityhai`) / `all` remotes are from the
+> old Vercel-via-GitHub flow. Once Static Web Apps is live you can retire them.
