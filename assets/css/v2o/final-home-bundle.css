@@ -12287,6 +12287,45 @@ body.fc-preview {
 }
 .hero-split__visual .hero-banner-lottie svg { display: block !important; }
 
+/* ── Hero responsive — single column, centred text ── */
+@media (max-width: 991px) {
+    .hero-split {
+        flex-direction: column;
+        gap: 48px;
+        padding: 56px 0 40px;
+    }
+    .hero-split__text {
+        flex: none;
+        max-width: 100%;
+        text-align: center;
+        align-items: center;
+    }
+    .hero-split__text h1 {
+        font-size: 48px;
+        line-height: 58px;
+    }
+    .hero-split__text .hero-sub {
+        text-align: center;
+        max-width: 560px;
+        margin: 0 auto;
+    }
+    .hero-split__ctas {
+        justify-content: center;
+    }
+    .hero-split__visual {
+        margin-right: 0;
+        width: 100%;
+        max-width: 680px;
+        margin: 0 auto;
+    }
+}
+@media (max-width: 575px) {
+    .hero-split__text h1 {
+        font-size: 36px;
+        line-height: 46px;
+    }
+}
+
 /* ── Hero text entrance animations ── */
 /* ── Word stagger — fade + rise ── */
 .hw-outer {
