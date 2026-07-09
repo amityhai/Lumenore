@@ -145,11 +145,15 @@ body::before{
     opacity: .65;
 }
 h1, h2, h3, h4{
-    font-family: 'Fraunces', serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-weight: 300;
     color: var(--cool-101828, #101828);
     margin: 0;
-    font-variation-settings: 'SOFT' 0, 'WONK' 1;
+}
+h3 {
+    font-size: 19px;
+    line-height: 28px;
+    font-weight: 500;
 }
 h5, h6, p, a, li, button, input{
     font-family: 'Inter', sans-serif;
@@ -271,7 +275,7 @@ a{ color: inherit; text-decoration: none; }
     text-decoration: none;
 }
 .site-header .brand-mark .brand-l{
-    font-family: 'Fraunces', serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-weight: 500;
     font-size: 30px;
     line-height: 30px;
@@ -279,7 +283,7 @@ a{ color: inherit; text-decoration: none; }
     margin-right: 2px;
 }
 .site-header .brand-mark .brand-word{
-    font-family: 'Fraunces', serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-weight: 400;
     font-size: 17px;
     letter-spacing: .12em;
@@ -453,12 +457,18 @@ a{ color: inherit; text-decoration: none; }
     font-weight: 300;
 }
 .hero-section h1 .ai-agents-gradient{
-    background: var(--AI-Agents-Text);
+    background: linear-gradient(110deg,#4AE7FF 0%,#4075C9 25%,#E879F9 55%,#4AE7FF 80%,#4075C9 100%);
+    background-size: 260% auto;
     -webkit-background-clip: text;
             background-clip: text;
     -webkit-text-fill-color: transparent;
             color: transparent;
     font-weight: 400;
+    animation: heroShimmer 5s linear infinite;
+}
+@keyframes heroShimmer {
+    0%   { background-position: 0% center; }
+    100% { background-position: 260% center; }
 }
 .hero-section .hero-sub{
     color: var(--Base-White, #fcfcfc);
@@ -745,7 +755,7 @@ a{ color: inherit; text-decoration: none; }
 .trusted-section h2{
     /* Canonical sitewide H2 — Fraunces 300 / 44px / 54px / -0.6px tracking.
        Same scale used by features/personas/pricing/success/testimonial. */
-    font-family: 'Fraunces', serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-weight: 300;
     font-size: 44px;
     line-height: 54px;
@@ -812,7 +822,7 @@ a{ color: inherit; text-decoration: none; }
 }
 .products-intro .products-title{
     /* Canonical sitewide H2 — Fraunces 300 / 44px / 54px / -0.6px tracking */
-    font-family: 'Fraunces', serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-weight: 300;
     font-size: 44px;
     line-height: 54px;
@@ -1012,7 +1022,7 @@ a{ color: inherit; text-decoration: none; }
     background: var(--pd-accent);
 }
 .product-detail h3{
-    font-family: 'Fraunces', serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-weight: 300;
     font-size: 38px;
     line-height: 46px;
@@ -1290,7 +1300,7 @@ a{ color: inherit; text-decoration: none; }
     box-shadow: 0 0 0 3px rgba(18, 182, 248, .18);
 }
 .section-features h2{
-    font-family: 'Fraunces', serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-weight: 300;
     font-size: 44px;
     line-height: 54px;
@@ -1384,7 +1394,7 @@ a{ color: inherit; text-decoration: none; }
 }
 .feature-card .fc-icon svg{ width: 24px; height: 24px; }
 .feature-card h5{
-    font-family: 'Fraunces', serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-weight: 400;
     font-size: 20px;
     line-height: 30px;
@@ -1495,7 +1505,7 @@ a{ color: inherit; text-decoration: none; }
     box-shadow: 0 0 0 3px rgba(40, 99, 195, .12);
 }
 .section-personas h2{
-    font-family: 'Fraunces', serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-weight: 300;
     font-size: 44px;
     line-height: 54px;
@@ -1624,7 +1634,7 @@ a{ color: inherit; text-decoration: none; }
     transition: background .35s ease, box-shadow .35s ease;
 }
 .pex-text h3{
-    font-family: 'Fraunces', serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-weight: 300;
     font-size: 30px;
     line-height: 40px;
@@ -1636,7 +1646,7 @@ a{ color: inherit; text-decoration: none; }
 .pex-text h3 .pquote{
     color: var(--pa-accent);
     opacity: .5;
-    font-family: 'Fraunces', serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-size: 34px;
     line-height: 1;
     margin: 0 1px;
@@ -1945,7 +1955,7 @@ a{ color: inherit; text-decoration: none; }
 /* Stat row used by the trend card */
 .sc-stat-row{ display: flex; align-items: baseline; gap: 10px; margin-bottom: 10px; }
 .sc-num{
-    font-family: 'Fraunces', serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-weight: 300;
     font-size: 30px;
     line-height: 1.05;
@@ -2169,7 +2179,7 @@ a{ color: inherit; text-decoration: none; }
     gap: 4px;
 }
 .sc-metric-num{
-    font-family: 'Fraunces', serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-weight: 300;
     font-size: 40px;
     line-height: 1;
@@ -2253,7 +2263,7 @@ a{ color: inherit; text-decoration: none; }
     transition: background .4s ease;
 }
 .section-pricing h2{
-    font-family: 'Fraunces', serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-weight: 300;
     font-size: 44px;
     line-height: 54px;
@@ -2274,7 +2284,7 @@ a{ color: inherit; text-decoration: none; }
     font-style: italic;
 }
 .section-pricing .section-sub{
-    font-family: 'Fraunces', serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-weight: 300;
     font-size: 19px;
     line-height: 30px;
@@ -2498,7 +2508,7 @@ a{ color: inherit; text-decoration: none; }
     transition: color .4s ease, background .4s ease, border-color .4s ease;
 }
 .ps-title{
-    font-family: 'Fraunces', serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-weight: 300;
     font-size: 30px;
     line-height: 40px;
@@ -2793,7 +2803,7 @@ a{ color: inherit; text-decoration: none; }
     transition: color .4s ease;
 }
 .psr-title{
-    font-family: 'Fraunces', serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-weight: 400;
     font-size: 22px;
     line-height: 32px;
@@ -2879,7 +2889,7 @@ a{ color: inherit; text-decoration: none; }
 }
 .psr-stat::before{ content: none; }
 .psr-stat-num{
-    font-family: 'Fraunces', serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-weight: 300;
     font-size: 36px;
     line-height: 1;
@@ -3143,7 +3153,7 @@ a{ color: inherit; text-decoration: none; }
     box-shadow: 0 0 0 3px rgba(28, 169, 201, .12);
 }
 .section-success h2{
-    font-family: 'Fraunces', serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-weight: 300;
     font-size: 44px;
     line-height: 54px;
@@ -3380,7 +3390,7 @@ a{ color: inherit; text-decoration: none; }
     box-shadow: 0 0 0 3px var(--ss-accent-soft);
 }
 .story-card .story-title{
-    font-family: 'Fraunces', serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-weight: 400;
     font-size: 19px;
     line-height: 28px;
@@ -3484,7 +3494,7 @@ a{ color: inherit; text-decoration: none; }
     box-shadow: 0 0 0 3px rgba(14, 72, 165, .12);
 }
 .section-testimonial h2{
-    font-family: 'Fraunces', serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-weight: 300;
     font-size: 44px;
     line-height: 54px;
@@ -3793,7 +3803,7 @@ a{ color: inherit; text-decoration: none; }
     /* Canonical sitewide H2 — Fraunces 300 / 44px / 54px / -0.6px tracking.
        Alignment stays left here because this H2 sits in a 2-column grid
        beside the compliance badges, not a centered heading layout. */
-    font-family: 'Fraunces', serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-weight: 300;
     font-size: 44px;
     line-height: 54px;
@@ -3829,7 +3839,7 @@ a{ color: inherit; text-decoration: none; }
     gap: 28px;
 }
 .before-decide h3{
-    font-family: 'Fraunces', serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-weight: 300;
     font-size: 32px;
     line-height: 44.8px;
@@ -4061,7 +4071,7 @@ a{ color: inherit; text-decoration: none; }
     50%      { transform: rotate(180deg); opacity: .7; }
 }
 .footer-cta-text h3{
-    font-family: 'Fraunces', serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-weight: 400;
     font-size: 30px;
     line-height: 40px;
@@ -4151,7 +4161,7 @@ a{ color: inherit; text-decoration: none; }
     max-width: 220px;
 }
 .ask-ai-box .ask-ai-label{
-    font-family: 'Fraunces', serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-weight: 300;
     font-size: 18px;
     line-height: 26px;
@@ -6512,7 +6522,7 @@ body.explore-locked{ overflow: hidden; }
 }
 .np-pane-title{
     margin: 0 0 8px;
-    font-family: 'Fraunces', serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-weight: 400;
     font-size: 26px;
     line-height: 32px;
@@ -6814,7 +6824,7 @@ body.explore-locked{ overflow: hidden; }
     box-shadow: 0 0 8px rgba(40, 99, 195, .55);
 }
 .pm-title{
-    font-family: 'Fraunces', serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-weight: 400;
     font-size: 32px;
     line-height: 42px;
@@ -6973,7 +6983,7 @@ body.explore-locked{ overflow: hidden; }
     margin-bottom: 10px;
 }
 .pa-title{
-    font-family: 'Fraunces', serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-weight: 400;
     font-size: 18px;
     line-height: 26px;
@@ -7057,7 +7067,7 @@ body.explore-locked{ overflow: hidden; }
 }
 .pa-kpi-icon svg{ width: 18px; height: 18px; }
 .pa-kpi-stat{
-    font-family: 'Fraunces', serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-weight: 300;
     font-size: 52px;
     line-height: 56px;
@@ -8073,7 +8083,7 @@ body.explore-locked{ overflow: hidden; }
     line-height: 26px !important;
 }
 .trusted-section h3{
-    font-family: 'Fraunces', serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-weight: 300;
     font-size: 32px;
     line-height: 42px;
@@ -8205,7 +8215,7 @@ body.explore-locked{ overflow: hidden; }
     min-height: 0 !important;
 }
 .products-head .pd-name{
-    font-family: 'Fraunces', serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-size: clamp(22px, 2.4vw, 34px);
     font-weight: 300;
     line-height: 1.2;
@@ -8244,7 +8254,7 @@ body.explore-locked{ overflow: hidden; }
     transition: none !important;
 }
 .product-detail h3.pd-tagline{
-    font-family: 'Fraunces', serif !important;
+    font-family: 'Space Grotesk', sans-serif !important;
     font-size: clamp(18px, 2vw, 24px) !important;
     font-weight: 300 !important;
     line-height: 1.3 !important;
@@ -9942,7 +9952,7 @@ body.explore-locked{ overflow: hidden; }
     line-height: 26px !important;
 }
 .trusted-section h3{
-    font-family: 'Fraunces', serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-weight: 300;
     font-size: 32px;
     line-height: 42px;
@@ -10074,7 +10084,7 @@ body.explore-locked{ overflow: hidden; }
     min-height: 0 !important;
 }
 .products-head .pd-name{
-    font-family: 'Fraunces', serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-size: clamp(22px, 2.4vw, 34px);
     font-weight: 300;
     line-height: 1.2;
@@ -10111,7 +10121,7 @@ body.explore-locked{ overflow: hidden; }
     transition: none !important;
 }
 .product-detail h3.pd-tagline{
-    font-family: 'Fraunces', serif !important;
+    font-family: 'Space Grotesk', sans-serif !important;
     font-size: clamp(18px, 2vw, 24px) !important;
     font-weight: 300 !important;
     line-height: 1.3 !important;
@@ -11333,7 +11343,7 @@ body.fc-preview {
 }
 
 .fc-heading {
-    font-family: 'Fraunces', serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-weight: 300;
     font-size: 44px;
     line-height: 54px;
@@ -11659,40 +11669,6 @@ body.fc-preview {
    hero-bg-concept.css  (page overrides)
 ──────────────────────────────────────────────────────────── */
 
-/* ── Global font override: remap Fraunces → Space Grotesk on this page ──
-   Every font-family:'Fraunces' declaration in every upstream CSS file
-   (index.css, home.css, homepage.css, features-capabilities.css) will
-   automatically render Space Grotesk without touching those files.       ── */
-@font-face {
-    font-family: 'Fraunces';
-    font-style: normal;
-    font-weight: 300;
-    font-display: swap;
-    src: url(https://fonts.gstatic.com/s/spacegrotesk/v22/V8mQoQDjQSkFtoMM3T6r8E7mF71Q-gOoraIAEj62UUsj.ttf) format('truetype');
-}
-@font-face {
-    font-family: 'Fraunces';
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: url(https://fonts.gstatic.com/s/spacegrotesk/v22/V8mQoQDjQSkFtoMM3T6r8E7mF71Q-gOoraIAEj7oUUsj.ttf) format('truetype');
-}
-@font-face {
-    font-family: 'Fraunces';
-    font-style: normal;
-    font-weight: 500;
-    font-display: swap;
-    src: url(https://fonts.gstatic.com/s/spacegrotesk/v22/V8mQoQDjQSkFtoMM3T6r8E7mF71Q-gOoraIAEj7aUUsj.ttf) format('truetype');
-}
-@font-face {
-    font-family: 'Fraunces';
-    font-style: normal;
-    font-weight: 600;
-    font-display: swap;
-    src: url(https://fonts.gstatic.com/s/spacegrotesk/v22/V8mQoQDjQSkFtoMM3T6r8E7mF71Q-gOoraIAEj42Vksj.ttf) format('truetype');
-}
-/* Clear any Fraunces-specific variation axes (SOFT, WONK, etc.) site-wide */
-* { font-variation-settings: normal; }
 /* fc-accent is an <em> — remove default italic */
 .fc-accent { font-style: normal !important; }
 

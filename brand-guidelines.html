@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lumenore Brand Guidelines 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --s: 1;
+  --navy:        #051A3C;
+  --blue-50:     #e7eef8;
+  --blue-150:    #b8d0fd;
+  --blue-200:    #9fbae4;
+  --blue-350:    #5886d0;
+  --blue-400:    #4075c9;
+  --blue-450:    #2863c3;
+  --blue-500:    #0e48a5;
+  --blue-750:    #07214b;
+  --blue-850:    #04142d;
+  --violet-50:   #f0ebf7;
+  --violet-250:  #b499d7;
+  --violet-450:  #7747b6;
+  --violet-500:  #55298e;
+  --violet-550:  #4d2580;
+  --sky:         #12b6f8;
+  --turq:        #1ca9c9;
+  --white:       #fcfcfc;
+  --grey-200:    #f7f7f7;
+  --body-text:   #4a5568;
+  --heading:     #101828;
+  --grad-btn:    linear-gradient(270deg, #7747b6 0%, #4075c9 50.7%, #1ca9c9 100%);
+  --grad-ai:     linear-gradient(83.02deg, #4AE7FF 51.42%, #4075C9 63.25%, #E879F9 76.03%);
+  --grad-search: linear-gradient(86.83deg, #22d3ee 0.77%, #3b82f6 50%, #e879f9 99.23%);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Inter', -apple-system, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  background: #111;
+}
+
+/* ── SCREEN ─────────────────────────────────────────────── */
+@media screen {
+  body { padding: 20px; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+  .slide-frame {
+    width:  calc(var(--s) * 1920px);
+    height: calc(var(--s) * 1080px);
+    position: relative;
+    flex-shrink: 0;
+  }
+  .slide {
+    position: absolute; top: 0; left: 0;
+    width: 1920px; height: 1080px;
+    transform: scale(var(--s));
+    transform-origin: top left;
+  }
+}
+
+/* ── PRINT ───────────────────────────────────────────────── */
+@media print {
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { padding: 0; background: none; display: block; }
+  @page { size: 1920px 1080px; margin: 0; }
+  .slide-frame { width: 1920px; height: 1080px; position: relative; break-after: page; }
+  .slide { position: absolute; top: 0; left: 0; width: 1920px; height: 1080px; transform: none !important; }
+}
+
+/* ── BASE SLIDE ──────────────────────────────────────────── */
+.slide { overflow: hidden; position: relative; }
+.slide--dark   { background: var(--navy); color: var(--white); }
+.slide--white  { background: var(--white); color: var(--heading); }
+.slide--grey   { background: var(--grey-200); color: var(--heading); }
+.slide--finale { background: linear-gradient(160deg, #4D2580 0%, #031430 38%, #000D22 100%); color: var(--white); }
+
+.slide-num {
+  position: absolute; bottom: 48px; right: 72px;
+  font-size: 12px; font-weight: 500; letter-spacing: 3px;
+  color: rgba(252,252,252,0.18);
+  font-variant-numeric: tabular-nums;
+}
+.slide-num--on-white { color: rgba(16,24,40,0.15); }
+
+.eyebrow {
+  font-size: 11px; font-weight: 600; letter-spacing: 2.5px;
+  text-transform: uppercase; margin-bottom: 16px;
+  color: rgba(252,252,252,0.38);
+}
+.eyebrow--blue { color: var(--blue-450); }
+
+.top-stripe {
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 4px;
+  background: var(--grad-btn);
+}
+
+/* Fraunces utility */
+.ff-fraunces { font-family: 'Space Grotesk', sans-serif; }
+
+/* ══════════════════════════════════════════════════════════
+   SLIDE 1 — COVER
+   ══════════════════════════════════════════════════════════ */
+.s1 {
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; text-align: center;
+}
+.s1-orb {
+  position: absolute; border-radius: 50%;
+  filter: blur(100px); pointer-events: none;
+}
+.s1-orb-v {
+  width: 900px; height: 700px;
+  background: radial-gradient(circle, rgba(119,71,182,0.42) 0%, transparent 70%);
+  top: -160px; left: -280px;
+}
+.s1-orb-c {
+  width: 700px; height: 560px;
+  background: radial-gradient(circle, rgba(28,169,201,0.3) 0%, transparent 70%);
+  bottom: -120px; right: -160px;
+}
+.s1-wordmark {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 100px; font-weight: 300; letter-spacing: -2px;
+  color: var(--white); position: relative; z-index: 1;
+  margin-bottom: 24px;
+}
+.s1-bar {
+  width: 260px; height: 3px;
+  background: var(--grad-btn); border-radius: 2px;
+  margin: 0 auto 30px; position: relative; z-index: 1;
+}
+.s1-subtitle {
+  font-size: 17px; font-weight: 400; letter-spacing: 5px;
+  text-transform: uppercase; color: rgba(252,252,252,0.5);
+  position: relative; z-index: 1;
+}
+.s1-year {
+  position: absolute; top: 60px; right: 80px;
+  font-size: 13px; color: rgba(252,252,252,0.2); letter-spacing: 1px;
+}
+.s1-footer {
+  position: absolute; bottom: 56px; left: 50%;
+  transform: translateX(-50%);
+  font-size: 11px; font-weight: 500; letter-spacing: 3px;
+  text-transform: uppercase; color: rgba(252,252,252,0.15);
+  white-space: nowrap;
+}
+
+/* ══════════════════════════════════════════════════════════
+   SLIDE 2 — BRAND ESSENCE
+   ══════════════════════════════════════════════════════════ */
+.s2 {
+  display: grid;
+  grid-template-columns: 1fr 2px 1fr;
+}
+.s2-col {
+  padding: 100px 96px;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.s2-col-right { padding-left: 88px; }
+.s2-divider {
+  background: linear-gradient(180deg,
+    transparent 0%,
+    rgba(64,117,201,0.25) 20%,
+    rgba(119,71,182,0.35) 50%,
+    rgba(64,117,201,0.25) 80%,
+    transparent 100%);
+  margin: 48px 0;
+}
+.s2-heading {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 52px; font-weight: 300; letter-spacing: -0.5px;
+  color: var(--heading); line-height: 1.12; margin-bottom: 28px;
+}
+.s2-body {
+  font-size: 17px; line-height: 1.75; color: var(--body-text);
+  max-width: 520px;
+}
+.s2-traits { display: flex; flex-direction: column; gap: 2px; }
+.s2-trait {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 62px; font-weight: 300; letter-spacing: -1px; line-height: 1.08;
+}
+.s2-trait:nth-child(1) { color: var(--heading); }
+.s2-trait:nth-child(2) { color: var(--blue-500); }
+.s2-trait:nth-child(3) { color: var(--violet-450); }
+.s2-trait:nth-child(4) { color: var(--heading); opacity: 0.45; }
+.s2-trait:nth-child(5) { color: var(--body-text); font-size: 42px; }
+
+/* ══════════════════════════════════════════════════════════
+   SLIDE 3 — COLOR: ROYAL BLUE
+   ══════════════════════════════════════════════════════════ */
+.s3 { padding: 80px 96px; display: flex; flex-direction: column; }
+.s3-header { margin-bottom: 56px; }
+.s3-heading {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 52px; font-weight: 300; letter-spacing: -0.5px;
+  color: var(--white); margin-bottom: 8px;
+}
+.s3-sub { font-size: 16px; color: rgba(252,252,252,0.45); }
+.s3-swatches {
+  display: flex; gap: 14px;
+  align-items: flex-end; flex: 1;
+}
+.sw { flex: 1; display: flex; flex-direction: column; gap: 14px; }
+.sw-color {
+  border-radius: 10px; flex-shrink: 0;
+  display: flex; align-items: flex-end; justify-content: center;
+  padding-bottom: 12px;
+}
+.sw-color::after {
+  content: 'Aa';
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13px; font-weight: 700; letter-spacing: 0.3px;
+}
+.tc-dark::after  { color: rgba(16,24,40,0.8); }
+.tc-light::after { color: rgba(252,252,252,0.88); }
+.sw-token {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.5px;
+  color: rgba(252,252,252,0.38); margin-bottom: 3px;
+}
+.sw-hex {
+  font-size: 14px; font-weight: 500; color: rgba(252,252,252,0.82);
+  font-family: 'SF Mono', 'Fira Code', 'Courier New', monospace;
+  font-variant-numeric: tabular-nums;
+}
+.sw-name { font-size: 11px; color: rgba(252,252,252,0.32); margin-top: 2px; }
+.sw-font {
+  font-size: 11px; font-weight: 500; letter-spacing: 0.3px;
+  color: rgba(252,252,252,0.22); margin-top: 6px;
+  font-family: 'SF Mono', 'Fira Code', 'Courier New', monospace;
+}
+
+/* Royal Blue 50–900 ramp silhouette */
+.rb-50  .sw-color { height: 60px;  background: #e7eef8; }
+.rb-100 .sw-color { height: 90px;  background: #cddaf5; }
+.rb-200 .sw-color { height: 132px; background: #9fbae4; }
+.rb-300 .sw-color { height: 182px; background: #6f98d4; }
+.rb-400 .sw-color { height: 240px; background: #4075c9; }
+.rb-500 .sw-color { height: 420px; background: #0e48a5; }
+.rb-600 .sw-color { height: 310px; background: #0c3b87; }
+.rb-700 .sw-color { height: 210px; background: #082e69; }
+.rb-800 .sw-color { height: 140px; background: #06204c; }
+.rb-900 .sw-color { height: 490px; background: #051a3c; border: 1px solid rgba(255,255,255,0.1); }
+
+/* Violet 50–900 ramp silhouette */
+.vi-50  .sw-color { height: 60px;  background: #f0ebf7; }
+.vi-100 .sw-color { height: 90px;  background: #e2d5f0; }
+.vi-200 .sw-color { height: 132px; background: #c9b3e3; }
+.vi-300 .sw-color { height: 182px; background: #a882d2; }
+.vi-400 .sw-color { height: 240px; background: #8256bf; }
+.vi-500 .sw-color { height: 420px; background: #55298e; }
+.vi-600 .sw-color { height: 310px; background: #441f73; }
+.vi-700 .sw-color { height: 210px; background: #331659; }
+.vi-800 .sw-color { height: 140px; background: #220e3f; }
+.vi-900 .sw-color { height: 490px; background: #130825; border: 1px solid rgba(255,255,255,0.1); }
+
+/* Turquoise 50–900 ramp silhouette */
+.tq-50  .sw-color { height: 60px;  background: #e5f7fb; }
+.tq-100 .sw-color { height: 90px;  background: #c7eef5; }
+.tq-200 .sw-color { height: 132px; background: #90daec; }
+.tq-300 .sw-color { height: 182px; background: #59c6e2; }
+.tq-400 .sw-color { height: 240px; background: #2db6d5; }
+.tq-500 .sw-color { height: 420px; background: #1ca9c9; }
+.tq-600 .sw-color { height: 310px; background: #168fa8; }
+.tq-700 .sw-color { height: 210px; background: #117487; }
+.tq-800 .sw-color { height: 140px; background: #0b5866; }
+.tq-900 .sw-color { height: 490px; background: #063c45; border: 1px solid rgba(255,255,255,0.1); }
+
+/* ══════════════════════════════════════════════════════════
+   SLIDE 6 — FONT COLOR
+   ══════════════════════════════════════════════════════════ */
+.s-fc {
+  background: #07101e;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  padding: 56px 80px 48px;
+  gap: 40px;
+}
+.s-fc-hd { }
+.s-fc-hd .eyebrow { color: rgba(255,255,255,0.4); margin-bottom: 10px; }
+.s-fc-hd h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 300; font-size: 44px; color: #fcfcfc;
+  margin: 0; letter-spacing: -0.5px;
+}
+.s-fc-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+.s-fc-card {
+  border-radius: 16px;
+  padding: 44px 48px;
+  display: flex; flex-direction: column; gap: 16px;
+}
+.s-fc-card--light { background: #f4f6fa; }
+.s-fc-card--dark  { background: #0e1b30; border: 1px solid rgba(255,255,255,0.08); }
+.s-fc-eyebrow {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin: 0;
+}
+.s-fc-sample {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 80px; font-weight: 300; line-height: 1; letter-spacing: -2px;
+}
+.s-fc-hex {
+  font-family: 'SF Mono','Fira Code','Courier New',monospace;
+  font-size: 18px; font-weight: 600; letter-spacing: 0.5px;
+}
+.s-fc-rule {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px; line-height: 1.7;
+  margin: 0; flex: 1;
+}
+.s-fc-chips { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 4px; }
+.s-fc-chip {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px; font-weight: 500; letter-spacing: 0.2px;
+  padding: 5px 12px; border-radius: 50px;
+}
+.s-fc-strips {
+  display: flex; flex-direction: column; gap: 14px;
+}
+.s-fc-strip-row {
+  display: grid; grid-template-columns: 90px 1fr; align-items: center; gap: 16px;
+}
+.s-fc-strip-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px; font-weight: 500; letter-spacing: 0.3px;
+  color: rgba(252,252,252,0.38); text-align: right;
+}
+.s-fc-strip {
+  display: grid; grid-template-columns: repeat(10,1fr);
+  border-radius: 8px; overflow: hidden; height: 44px;
+}
+.s-fc-sw {
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.2px;
+}
+
+/* ══════════════════════════════════════════════════════════
+   SLIDE 7 — GRADIENTS
+   ══════════════════════════════════════════════════════════ */
+.s5 { display: flex; flex-direction: column; }
+.s5-band {
+  height: 210px; flex-shrink: 0;
+  background: var(--grad-btn);
+  display: flex; align-items: flex-end;
+  padding: 0 96px 36px;
+}
+.s5-band-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 52px; font-weight: 300; color: white; letter-spacing: -0.5px;
+}
+.s5-cards {
+  flex: 1; background: var(--navy);
+  padding: 56px 96px;
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 48px;
+}
+.s5-card { display: flex; flex-direction: column; gap: 20px; }
+.s5-grad-bar { height: 68px; border-radius: 10px; flex-shrink: 0; }
+.s5-token {
+  font-size: 14px; font-weight: 600; color: var(--white);
+  margin-bottom: 6px; letter-spacing: 0.3px;
+}
+.s5-desc { font-size: 13px; color: rgba(252,252,252,0.45); line-height: 1.65; margin-bottom: 12px; }
+.s5-code {
+  font-family: 'SF Mono', 'Fira Code', 'Courier New', monospace;
+  font-size: 11px; color: rgba(252,252,252,0.38); line-height: 1.8;
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07);
+  padding: 14px; border-radius: 6px;
+}
+
+/* ══════════════════════════════════════════════════════════
+   SLIDE 8 — TYPOGRAPHY FAMILIES
+   ══════════════════════════════════════════════════════════ */
+.s6 { display: flex; flex-direction: column; }
+.s6-bar { height: 4px; background: var(--grad-btn); flex-shrink: 0; }
+.s6-body {
+  flex: 1; display: grid;
+  grid-template-columns: 1fr 1px 1fr;
+}
+.s6-col {
+  padding: 76px 96px;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.s6-col-b { background: var(--grey-200); }
+.s6-divider { background: rgba(16,24,40,0.08); margin: 40px 0; }
+.s6-face {
+  font-size: 12px; font-weight: 700; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--blue-450); margin-bottom: 20px;
+}
+.s6-specimen {
+  font-size: 128px; font-weight: 300; line-height: 1; letter-spacing: -4px;
+  color: var(--heading); margin-bottom: 20px;
+}
+.s6-specimen-sans { font-family: 'Space Grotesk', sans-serif; }
+.s6-sample { font-size: 18px; line-height: 1.7; color: var(--body-text); max-width: 460px; margin-bottom: 36px; }
+.s6-sample-serif { font-family: 'Space Grotesk', sans-serif; color: var(--heading); }
+.s6-role-label {
+  font-size: 11px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--body-text); opacity: 0.5; margin-bottom: 6px;
+}
+.s6-role-text { font-size: 14px; color: var(--body-text); line-height: 1.6; }
+
+/* ══════════════════════════════════════════════════════════
+   SLIDE 9 — TYPE SCALE
+   ══════════════════════════════════════════════════════════ */
+.s7 { padding: 80px 96px; display: flex; gap: 80px; align-items: stretch; }
+.s7-left { flex: 0 0 280px; display: flex; flex-direction: column; justify-content: center; }
+.s7-heading {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 52px; font-weight: 300; letter-spacing: -0.5px;
+  color: var(--white); margin-bottom: 16px;
+}
+.s7-intro { font-size: 15px; color: rgba(252,252,252,0.45); line-height: 1.7; }
+.s7-right {
+  flex: 1; border-left: 1px solid rgba(252,252,252,0.08);
+  padding-left: 80px;
+  display: flex; flex-direction: column; justify-content: center; gap: 0;
+}
+.tr {
+  display: grid; grid-template-columns: 110px 1fr;
+  align-items: center; gap: 40px;
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(252,252,252,0.05);
+}
+.tr:last-child { border-bottom: none; }
+.tr-meta { text-align: right; }
+.tr-size {
+  font-size: 12px; font-weight: 600; color: rgba(252,252,252,0.3);
+  letter-spacing: 0.3px; font-variant-numeric: tabular-nums;
+}
+.tr-hint { font-size: 11px; color: rgba(252,252,252,0.18); margin-top: 2px; }
+.tr-sample { color: var(--white); font-weight: 300; letter-spacing: -0.2px; }
+.tr-serif { font-family: 'Space Grotesk', sans-serif; }
+
+/* ══════════════════════════════════════════════════════════
+   SLIDE 10 — SPACING
+   ══════════════════════════════════════════════════════════ */
+.s8 { padding: 80px 96px; display: flex; flex-direction: column; }
+.s8-heading {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 44px; font-weight: 300; letter-spacing: -0.5px;
+  color: var(--heading); margin-bottom: 6px;
+}
+.s8-sub { font-size: 15px; color: var(--body-text); margin-bottom: 48px; }
+.s8-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; flex: 1; }
+.s8-panel {
+  background: var(--white); border: 1px solid rgba(16,24,40,0.07);
+  border-radius: 14px; padding: 36px 40px;
+  display: flex; flex-direction: column; gap: 20px;
+}
+.s8-panel-tag {
+  font-size: 11px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--blue-450);
+}
+.s8-panel-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 26px; font-weight: 300; color: var(--heading);
+  margin-top: -4px;
+}
+.container-demo {
+  border: 1.5px dashed rgba(64,117,201,0.3); border-radius: 8px; padding: 20px;
+}
+.container-inner {
+  background: var(--blue-50); border-radius: 4px;
+  padding: 12px 16px; font-size: 13px; font-weight: 600; color: var(--blue-500);
+  text-align: center;
+}
+.container-margin {
+  font-size: 12px; color: var(--body-text);
+  text-align: center; margin-top: 8px;
+}
+.pad-diagram { display: flex; flex-direction: column; gap: 5px; }
+.pad-band {
+  border-radius: 5px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 600;
+}
+.pad-top, .pad-bot {
+  height: 36px;
+  background: rgba(64,117,201,0.1);
+  border: 1px dashed rgba(64,117,201,0.3);
+  color: var(--blue-500);
+}
+.pad-content {
+  height: 70px;
+  background: var(--blue-50); color: var(--blue-500);
+}
+.sp-scale { display: flex; align-items: flex-end; gap: 9px; }
+.sp-col { display: flex; flex-direction: column; align-items: center; gap: 5px; }
+.sp-block { background: var(--blue-400); border-radius: 3px; width: 28px; }
+.sp-val { font-size: 10px; color: var(--body-text); font-variant-numeric: tabular-nums; }
+.layout-list { display: flex; flex-direction: column; gap: 8px; }
+.layout-item {
+  background: var(--blue-50); border-radius: 6px;
+  padding: 9px 14px; font-size: 13px; font-weight: 500; color: var(--blue-500);
+}
+
+/* ══════════════════════════════════════════════════════════
+   SLIDE 11 — COMPONENTS
+   ══════════════════════════════════════════════════════════ */
+.s9 { padding: 80px 96px; display: flex; flex-direction: column; }
+.s9-heading {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 44px; font-weight: 300; letter-spacing: -0.5px;
+  color: var(--white); margin-bottom: 6px;
+}
+.s9-sub { font-size: 15px; color: rgba(252,252,252,0.45); margin-bottom: 52px; }
+.s9-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; flex: 1; }
+.s9-sec-label {
+  font-size: 11px; font-weight: 600; letter-spacing: 2px;
+  text-transform: uppercase; color: rgba(252,252,252,0.3);
+  margin-bottom: 28px;
+}
+
+/* Buttons */
+.btn-list { display: flex; flex-direction: column; gap: 22px; margin-bottom: 40px; }
+.btn-row { display: flex; align-items: center; gap: 24px; }
+.btn-tag { font-size: 12px; color: rgba(252,252,252,0.35); width: 130px; flex-shrink: 0; }
+.btn-a {
+  background: var(--grad-btn); color: #fcfcfc;
+  font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 700;
+  padding: 10px 24px; border: none; border-radius: 6px; cursor: default;
+}
+.btn-b {
+  background: linear-gradient(var(--navy), var(--navy)) padding-box, var(--grad-btn) border-box;
+  border: 2px solid transparent; color: #fcfcfc;
+  font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 700;
+  padding: 9px 22px; border-radius: 6px; cursor: default;
+}
+.btn-c {
+  color: rgba(252,252,252,0.9); font-size: 15px; font-weight: 700;
+  cursor: default; display: flex; align-items: center; gap: 8px;
+}
+.btn-c em { color: var(--sky); font-style: normal; }
+
+/* Pills */
+.pills { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
+.pill {
+  padding: 7px 16px; border-radius: 50px;
+  font-size: 12px; font-weight: 500; letter-spacing: 0.5px;
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.pill-dot { width: 6px; height: 6px; border-radius: 50%; }
+
+/* Radius */
+.radius-row { display: flex; gap: 18px; align-items: flex-end; flex-wrap: wrap; margin-bottom: 32px; }
+.ri { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.ri-box {
+  width: 64px; height: 64px;
+  background: rgba(64,117,201,0.2);
+  border: 2px solid rgba(64,117,201,0.45);
+}
+.ri-val { font-size: 12px; font-weight: 600; color: rgba(252,252,252,0.55); font-variant-numeric: tabular-nums; }
+.ri-use { font-size: 11px; color: rgba(252,252,252,0.28); text-align: center; max-width: 72px; }
+
+/* ══════════════════════════════════════════════════════════
+   SLIDE 12 — CLOSING
+   ══════════════════════════════════════════════════════════ */
+.s10 { display: flex; align-items: center; padding: 80px 128px; }
+.s10-orb-l {
+  position: absolute; width: 800px; height: 800px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(119,71,182,0.28) 0%, transparent 70%);
+  filter: blur(80px); top: -200px; left: -300px;
+}
+.s10-orb-r {
+  position: absolute; width: 650px; height: 650px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(28,169,201,0.22) 0%, transparent 70%);
+  filter: blur(80px); bottom: -150px; right: -150px;
+}
+.s10-inner {
+  position: relative; z-index: 1;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 120px; width: 100%;
+}
+.s10-label {
+  font-size: 11px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase;
+  color: rgba(252,252,252,0.28); margin-bottom: 28px;
+}
+.s10-headline {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 76px; font-weight: 300; letter-spacing: -1.5px; line-height: 1.02;
+  color: var(--white); margin-bottom: 36px;
+}
+.s10-headline em {
+  font-style: italic;
+  background: var(--grad-ai);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+}
+.s10-accent { width: 160px; height: 3px; background: var(--grad-btn); border-radius: 2px; }
+.s10-wordmark {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 22px; font-weight: 300; letter-spacing: 1px;
+  color: rgba(252,252,252,0.35); margin-top: 48px;
+}
+.s10-rules-title {
+  font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+  color: rgba(252,252,252,0.3); margin-bottom: 30px;
+}
+.s10-rules { list-style: none; display: flex; flex-direction: column; gap: 22px; }
+.s10-rule { display: flex; gap: 18px; align-items: flex-start; }
+.s10-num {
+  font-size: 12px; font-weight: 600; color: var(--sky); opacity: 0.65;
+  flex-shrink: 0; margin-top: 2px; font-variant-numeric: tabular-nums;
+}
+.s10-text { font-size: 15px; color: rgba(252,252,252,0.6); line-height: 1.65; }
+.s10-text strong { color: var(--white); font-weight: 600; }
+</style>
+<script>
+(function () {
+  function upd() {
+    var g = 40;
+    var s = Math.min((window.innerWidth - g * 2) / 1920, 1);
+    document.documentElement.style.setProperty('--s', s);
+  }
+  window.addEventListener('resize', upd);
+  upd();
+})();
+</script>
+</head>
+<body>
+
+<!-- ══ SLIDE 1: COVER ══════════════════════════════════════ -->
+<div class="slide-frame">
+<div class="slide slide--dark s1">
+  <div class="s1-orb s1-orb-v"></div>
+  <div class="s1-orb s1-orb-c"></div>
+  <span class="s1-year">2026</span>
+  <div class="s1-wordmark">Lumenore</div>
+  <div class="s1-bar"></div>
+  <p class="s1-subtitle">Brand &nbsp; Guidelines</p>
+  <div class="s1-footer">Visual Identity System &nbsp;·&nbsp; Confidential</div>
+</div>
+</div>
+
+<!-- ══ SLIDE 2: BRAND ESSENCE ══════════════════════════════ -->
+<div class="slide-frame">
+<div class="slide slide--white s2">
+  <div class="top-stripe"></div>
+  <div class="s2-col">
+    <p class="eyebrow eyebrow--blue">Brand Foundation</p>
+    <h2 class="s2-heading">Who We Are</h2>
+    <p class="s2-body">Lumenore is an agentic analytics platform for the enterprise — built for teams that need to move from question to decision without engineering overhead. Our design reflects that promise: intelligent, calm, and precise.</p>
+  </div>
+  <div class="s2-divider"></div>
+  <div class="s2-col s2-col-right">
+    <p class="eyebrow eyebrow--blue">Brand Personality</p>
+    <div class="s2-traits">
+      <span class="s2-trait">Intelligent.</span>
+      <span class="s2-trait">Trustworthy.</span>
+      <span class="s2-trait">Precise.</span>
+      <span class="s2-trait">Calm.</span>
+      <span class="s2-trait">Enterprise-ready.</span>
+    </div>
+  </div>
+  <div class="slide-num slide-num--on-white">02</div>
+</div>
+</div>
+
+<!-- ══ SLIDE 3: COLOR — ROYAL BLUE ══════════════════════════ -->
+<div class="slide-frame">
+<div class="slide slide--dark s3">
+  <div class="s3-header">
+    <p class="eyebrow">Color System</p>
+    <h2 class="s3-heading">Royal Blue — Primary Palette</h2>
+    <p class="s3-sub">The full 50–900 ramp. From surface tints to interactive accents to the deep canvas.</p>
+  </div>
+  <div class="s3-swatches">
+    <div class="sw rb-50">
+      <div class="sw-color tc-dark"></div>
+      <div><div class="sw-token">Blue‑50</div><div class="sw-hex">#e7eef8</div><div class="sw-font">#101828</div></div>
+    </div>
+    <div class="sw rb-100">
+      <div class="sw-color tc-dark"></div>
+      <div><div class="sw-token">Blue‑100</div><div class="sw-hex">#cddaf5</div><div class="sw-font">#101828</div></div>
+    </div>
+    <div class="sw rb-200">
+      <div class="sw-color tc-dark"></div>
+      <div><div class="sw-token">Blue‑200</div><div class="sw-hex">#9fbae4</div><div class="sw-font">#101828</div></div>
+    </div>
+    <div class="sw rb-300">
+      <div class="sw-color tc-dark"></div>
+      <div><div class="sw-token">Blue‑300</div><div class="sw-hex">#6f98d4</div><div class="sw-font">#101828</div></div>
+    </div>
+    <div class="sw rb-400">
+      <div class="sw-color tc-light"></div>
+      <div><div class="sw-token">Blue‑400</div><div class="sw-hex">#4075c9</div><div class="sw-font">#fcfcfc</div></div>
+    </div>
+    <div class="sw rb-500">
+      <div class="sw-color tc-light"></div>
+      <div><div class="sw-token">Blue‑500</div><div class="sw-hex">#0e48a5</div><div class="sw-name">Primary</div><div class="sw-font">#fcfcfc</div></div>
+    </div>
+    <div class="sw rb-600">
+      <div class="sw-color tc-light"></div>
+      <div><div class="sw-token">Blue‑600</div><div class="sw-hex">#0c3b87</div><div class="sw-font">#fcfcfc</div></div>
+    </div>
+    <div class="sw rb-700">
+      <div class="sw-color tc-light"></div>
+      <div><div class="sw-token">Blue‑700</div><div class="sw-hex">#082e69</div><div class="sw-font">#fcfcfc</div></div>
+    </div>
+    <div class="sw rb-800">
+      <div class="sw-color tc-light"></div>
+      <div><div class="sw-token">Blue‑800</div><div class="sw-hex">#06204c</div><div class="sw-font">#fcfcfc</div></div>
+    </div>
+    <div class="sw rb-900">
+      <div class="sw-color tc-light"></div>
+      <div><div class="sw-token">Blue‑900</div><div class="sw-hex">#051a3c</div><div class="sw-name">Canvas</div><div class="sw-font">#fcfcfc</div></div>
+    </div>
+  </div>
+  <div class="slide-num">03</div>
+</div>
+</div>
+
+<!-- ══ SLIDE 4: COLOR — VIOLET ══════════════════════════════ -->
+<div class="slide-frame">
+<div class="slide slide--dark s3">
+  <div class="s3-header">
+    <p class="eyebrow">Color System</p>
+    <h2 class="s3-heading">Violet — Secondary Palette</h2>
+    <p class="s3-sub">The full 50–900 ramp. From light tints to the Ask Me accent to the deep finale canvas.</p>
+  </div>
+  <div class="s3-swatches">
+    <div class="sw vi-50">
+      <div class="sw-color tc-dark"></div>
+      <div><div class="sw-token">Violet‑50</div><div class="sw-hex">#f0ebf7</div><div class="sw-font">#101828</div></div>
+    </div>
+    <div class="sw vi-100">
+      <div class="sw-color tc-dark"></div>
+      <div><div class="sw-token">Violet‑100</div><div class="sw-hex">#e2d5f0</div><div class="sw-font">#101828</div></div>
+    </div>
+    <div class="sw vi-200">
+      <div class="sw-color tc-dark"></div>
+      <div><div class="sw-token">Violet‑200</div><div class="sw-hex">#c9b3e3</div><div class="sw-font">#101828</div></div>
+    </div>
+    <div class="sw vi-300">
+      <div class="sw-color tc-dark"></div>
+      <div><div class="sw-token">Violet‑300</div><div class="sw-hex">#a882d2</div><div class="sw-font">#101828</div></div>
+    </div>
+    <div class="sw vi-400">
+      <div class="sw-color tc-light"></div>
+      <div><div class="sw-token">Violet‑400</div><div class="sw-hex">#8256bf</div><div class="sw-font">#fcfcfc</div></div>
+    </div>
+    <div class="sw vi-500">
+      <div class="sw-color tc-light"></div>
+      <div><div class="sw-token">Violet‑500</div><div class="sw-hex">#55298e</div><div class="sw-name">Primary</div><div class="sw-font">#fcfcfc</div></div>
+    </div>
+    <div class="sw vi-600">
+      <div class="sw-color tc-light"></div>
+      <div><div class="sw-token">Violet‑600</div><div class="sw-hex">#441f73</div><div class="sw-font">#fcfcfc</div></div>
+    </div>
+    <div class="sw vi-700">
+      <div class="sw-color tc-light"></div>
+      <div><div class="sw-token">Violet‑700</div><div class="sw-hex">#331659</div><div class="sw-font">#fcfcfc</div></div>
+    </div>
+    <div class="sw vi-800">
+      <div class="sw-color tc-light"></div>
+      <div><div class="sw-token">Violet‑800</div><div class="sw-hex">#220e3f</div><div class="sw-font">#fcfcfc</div></div>
+    </div>
+    <div class="sw vi-900">
+      <div class="sw-color tc-light"></div>
+      <div><div class="sw-token">Violet‑900</div><div class="sw-hex">#130825</div><div class="sw-name">Canvas</div><div class="sw-font">#fcfcfc</div></div>
+    </div>
+  </div>
+  <div class="slide-num">04</div>
+</div>
+</div>
+
+<!-- ══ SLIDE 5: COLOR — TURQUOISE ══════════════════════════ -->
+<div class="slide-frame">
+<div class="slide slide--dark s3">
+  <div class="s3-header">
+    <p class="eyebrow">Color System</p>
+    <h2 class="s3-heading">Turquoise — Tertiary Palette</h2>
+    <p class="s3-sub">The full 50–900 ramp. Used for Data Magnet accents, hover highlights, and gradient endpoints.</p>
+  </div>
+  <div class="s3-swatches">
+    <div class="sw tq-50">
+      <div class="sw-color tc-dark"></div>
+      <div><div class="sw-token">Turq‑50</div><div class="sw-hex">#e5f7fb</div><div class="sw-font">#101828</div></div>
+    </div>
+    <div class="sw tq-100">
+      <div class="sw-color tc-dark"></div>
+      <div><div class="sw-token">Turq‑100</div><div class="sw-hex">#c7eef5</div><div class="sw-font">#101828</div></div>
+    </div>
+    <div class="sw tq-200">
+      <div class="sw-color tc-dark"></div>
+      <div><div class="sw-token">Turq‑200</div><div class="sw-hex">#90daec</div><div class="sw-font">#101828</div></div>
+    </div>
+    <div class="sw tq-300">
+      <div class="sw-color tc-dark"></div>
+      <div><div class="sw-token">Turq‑300</div><div class="sw-hex">#59c6e2</div><div class="sw-font">#101828</div></div>
+    </div>
+    <div class="sw tq-400">
+      <div class="sw-color tc-dark"></div>
+      <div><div class="sw-token">Turq‑400</div><div class="sw-hex">#2db6d5</div><div class="sw-font">#101828</div></div>
+    </div>
+    <div class="sw tq-500">
+      <div class="sw-color tc-light"></div>
+      <div><div class="sw-token">Turq‑500</div><div class="sw-hex">#1ca9c9</div><div class="sw-name">Primary</div><div class="sw-font">#fcfcfc</div></div>
+    </div>
+    <div class="sw tq-600">
+      <div class="sw-color tc-light"></div>
+      <div><div class="sw-token">Turq‑600</div><div class="sw-hex">#168fa8</div><div class="sw-font">#fcfcfc</div></div>
+    </div>
+    <div class="sw tq-700">
+      <div class="sw-color tc-light"></div>
+      <div><div class="sw-token">Turq‑700</div><div class="sw-hex">#117487</div><div class="sw-font">#fcfcfc</div></div>
+    </div>
+    <div class="sw tq-800">
+      <div class="sw-color tc-light"></div>
+      <div><div class="sw-token">Turq‑800</div><div class="sw-hex">#0b5866</div><div class="sw-font">#fcfcfc</div></div>
+    </div>
+    <div class="sw tq-900">
+      <div class="sw-color tc-light"></div>
+      <div><div class="sw-token">Turq‑900</div><div class="sw-hex">#063c45</div><div class="sw-name">Canvas</div><div class="sw-font">#fcfcfc</div></div>
+    </div>
+  </div>
+  <div class="slide-num">05</div>
+</div>
+</div>
+
+<!-- ══ SLIDE 6: FONT COLOR ═══════════════════════════════════ -->
+<div class="slide-frame">
+<div class="slide slide--dark s-fc">
+  <div class="s-fc-hd">
+    <p class="eyebrow">Typography System</p>
+    <h2>Font Color — When to Use Dark or Light Text</h2>
+  </div>
+  <div class="s-fc-body">
+    <div class="s-fc-card s-fc-card--light">
+      <p class="s-fc-eyebrow" style="color:rgba(16,24,40,0.4);">Dark Text</p>
+      <div class="s-fc-sample" style="color:#101828;">Aa</div>
+      <div class="s-fc-hex" style="color:#101828;">#101828</div>
+      <p class="s-fc-rule" style="color:rgba(16,24,40,0.65);">Use on 50–300 tints across all brand color families, and as the default body copy color on all white and light-grey surfaces.</p>
+      <div class="s-fc-chips">
+        <span class="s-fc-chip" style="background:#cddaf5;color:#101828;">Blue 50–300</span>
+        <span class="s-fc-chip" style="background:#e2d5f0;color:#101828;">Violet 50–300</span>
+        <span class="s-fc-chip" style="background:#c7eef5;color:#101828;">Turq 50–400</span>
+      </div>
+    </div>
+    <div class="s-fc-card s-fc-card--dark">
+      <p class="s-fc-eyebrow" style="color:rgba(252,252,252,0.38);">Light Text</p>
+      <div class="s-fc-sample" style="color:#fcfcfc;">Aa</div>
+      <div class="s-fc-hex" style="color:#fcfcfc;">#fcfcfc</div>
+      <p class="s-fc-rule" style="color:rgba(252,252,252,0.55);">Use on 400–900 shades across Blue and Violet, on 500–900 in Turquoise, and on all dark canvas and overlay surfaces.</p>
+      <div class="s-fc-chips">
+        <span class="s-fc-chip" style="background:#4075c9;color:#fcfcfc;">Blue 400–900</span>
+        <span class="s-fc-chip" style="background:#8256bf;color:#fcfcfc;">Violet 400–900</span>
+        <span class="s-fc-chip" style="background:#1ca9c9;color:#fcfcfc;">Turq 500–900</span>
+      </div>
+    </div>
+  </div>
+  <div class="s-fc-strips">
+    <div class="s-fc-strip-row">
+      <span class="s-fc-strip-label">Royal Blue</span>
+      <div class="s-fc-strip">
+        <div class="s-fc-sw" style="background:#e7eef8;color:rgba(16,24,40,0.75);">50</div>
+        <div class="s-fc-sw" style="background:#cddaf5;color:rgba(16,24,40,0.75);">100</div>
+        <div class="s-fc-sw" style="background:#9fbae4;color:rgba(16,24,40,0.75);">200</div>
+        <div class="s-fc-sw" style="background:#6f98d4;color:rgba(16,24,40,0.75);">300</div>
+        <div class="s-fc-sw" style="background:#4075c9;color:rgba(252,252,252,0.88);">400</div>
+        <div class="s-fc-sw" style="background:#0e48a5;color:rgba(252,252,252,0.88);">500</div>
+        <div class="s-fc-sw" style="background:#0c3b87;color:rgba(252,252,252,0.88);">600</div>
+        <div class="s-fc-sw" style="background:#082e69;color:rgba(252,252,252,0.88);">700</div>
+        <div class="s-fc-sw" style="background:#06204c;color:rgba(252,252,252,0.88);">800</div>
+        <div class="s-fc-sw" style="background:#051a3c;color:rgba(252,252,252,0.88);">900</div>
+      </div>
+    </div>
+    <div class="s-fc-strip-row">
+      <span class="s-fc-strip-label">Violet</span>
+      <div class="s-fc-strip">
+        <div class="s-fc-sw" style="background:#f0ebf7;color:rgba(16,24,40,0.75);">50</div>
+        <div class="s-fc-sw" style="background:#e2d5f0;color:rgba(16,24,40,0.75);">100</div>
+        <div class="s-fc-sw" style="background:#c9b3e3;color:rgba(16,24,40,0.75);">200</div>
+        <div class="s-fc-sw" style="background:#a882d2;color:rgba(16,24,40,0.75);">300</div>
+        <div class="s-fc-sw" style="background:#8256bf;color:rgba(252,252,252,0.88);">400</div>
+        <div class="s-fc-sw" style="background:#55298e;color:rgba(252,252,252,0.88);">500</div>
+        <div class="s-fc-sw" style="background:#441f73;color:rgba(252,252,252,0.88);">600</div>
+        <div class="s-fc-sw" style="background:#331659;color:rgba(252,252,252,0.88);">700</div>
+        <div class="s-fc-sw" style="background:#220e3f;color:rgba(252,252,252,0.88);">800</div>
+        <div class="s-fc-sw" style="background:#130825;color:rgba(252,252,252,0.88);">900</div>
+      </div>
+    </div>
+    <div class="s-fc-strip-row">
+      <span class="s-fc-strip-label">Turquoise</span>
+      <div class="s-fc-strip">
+        <div class="s-fc-sw" style="background:#e5f7fb;color:rgba(16,24,40,0.75);">50</div>
+        <div class="s-fc-sw" style="background:#c7eef5;color:rgba(16,24,40,0.75);">100</div>
+        <div class="s-fc-sw" style="background:#90daec;color:rgba(16,24,40,0.75);">200</div>
+        <div class="s-fc-sw" style="background:#59c6e2;color:rgba(16,24,40,0.75);">300</div>
+        <div class="s-fc-sw" style="background:#2db6d5;color:rgba(16,24,40,0.75);">400</div>
+        <div class="s-fc-sw" style="background:#1ca9c9;color:rgba(252,252,252,0.88);">500</div>
+        <div class="s-fc-sw" style="background:#168fa8;color:rgba(252,252,252,0.88);">600</div>
+        <div class="s-fc-sw" style="background:#117487;color:rgba(252,252,252,0.88);">700</div>
+        <div class="s-fc-sw" style="background:#0b5866;color:rgba(252,252,252,0.88);">800</div>
+        <div class="s-fc-sw" style="background:#063c45;color:rgba(252,252,252,0.88);">900</div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-num">06</div>
+</div>
+</div>
+
+<!-- ══ SLIDE 7: GRADIENTS ══════════════════════════════════ -->
+<div class="slide-frame">
+<div class="slide s5">
+  <div class="s5-band">
+    <h2 class="s5-band-title">Gradients</h2>
+  </div>
+  <div class="s5-cards">
+    <div class="s5-card">
+      <div class="s5-grad-bar" style="background:linear-gradient(270deg,#7747b6 0%,#4075c9 50.7%,#1ca9c9 100%);"></div>
+      <div>
+        <div class="s5-token">--Explore-Button</div>
+        <div class="s5-desc">All primary CTA buttons. Never redeclare inline — always reference this token.</div>
+        <div class="s5-code">linear-gradient(<br>&nbsp;&nbsp;270deg,<br>&nbsp;&nbsp;#7747b6 0%,<br>&nbsp;&nbsp;#4075c9 50.7%,<br>&nbsp;&nbsp;#1ca9c9 100%<br>)</div>
+      </div>
+    </div>
+    <div class="s5-card">
+      <div class="s5-grad-bar" style="background:linear-gradient(83.02deg,#4AE7FF 51.42%,#4075C9 63.25%,#E879F9 76.03%);"></div>
+      <div>
+        <div class="s5-token">--AI-Agents-Text</div>
+        <div class="s5-desc">Hero H1 gradient span on "Agentic Analytics". Text use only — background-clip: text.</div>
+        <div class="s5-code">linear-gradient(<br>&nbsp;&nbsp;83.02deg,<br>&nbsp;&nbsp;#4AE7FF 51.42%,<br>&nbsp;&nbsp;#4075C9 63.25%,<br>&nbsp;&nbsp;#E879F9 76.03%<br>)</div>
+      </div>
+    </div>
+    <div class="s5-card">
+      <div class="s5-grad-bar" style="background:linear-gradient(86.83deg,#22d3ee 0.77%,#3b82f6 50%,#e879f9 99.23%);"></div>
+      <div>
+        <div class="s5-token">--Search-Glow</div>
+        <div class="s5-desc">Ambient glow behind hero search bar. Decorative only — not for UI elements.</div>
+        <div class="s5-code">linear-gradient(<br>&nbsp;&nbsp;86.83deg,<br>&nbsp;&nbsp;#22d3ee 0.77%,<br>&nbsp;&nbsp;#3b82f6 50%,<br>&nbsp;&nbsp;#e879f9 99.23%<br>)</div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-num">07</div>
+</div>
+</div>
+
+<!-- ══ SLIDE 8: TYPOGRAPHY FAMILIES ═══════════════════════ -->
+<div class="slide-frame">
+<div class="slide s6" style="background:var(--white);">
+  <div class="s6-bar"></div>
+  <div class="s6-body">
+    <div class="s6-col">
+      <p class="s6-face">Space Grotesk</p>
+      <div class="s6-specimen s6-specimen-sans">Aa</div>
+      <p class="s6-sample s6-sample-serif">The enterprise deserves better than dashboards. Agentic Analytics for teams that decide without waiting.</p>
+      <p class="s6-role-label">Role</p>
+      <p class="s6-role-text">All headings H1–H4 · Editorial display · Taglines<br>Weight: 300 Light only · Variation: 'SOFT' 0, 'WONK' 1</p>
+    </div>
+    <div class="s6-divider"></div>
+    <div class="s6-col s6-col-b">
+      <p class="s6-face">Inter</p>
+      <div class="s6-specimen" style="letter-spacing:-4px;">Aa</div>
+      <p class="s6-sample">Designed for screens at every size. Precise spacing, variable weight, exceptional legibility from caption to display.</p>
+      <p class="s6-role-label">Role</p>
+      <p class="s6-role-text">Body text · Navigation · Buttons · Labels · Legal copy<br>Weights used: 300, 400, 500, 600, 700</p>
+    </div>
+  </div>
+  <div class="slide-num slide-num--on-white">08</div>
+</div>
+</div>
+
+<!-- ══ SLIDE 9: TYPE SCALE ══════════════════════════════════ -->
+<div class="slide-frame">
+<div class="slide slide--dark s7">
+  <div class="s7-left">
+    <p class="eyebrow">Typography</p>
+    <h2 class="s7-heading">Type Scale</h2>
+    <p class="s7-intro">A deliberate size ladder. Every step has a single semantic role — no two sizes serve the same function.</p>
+  </div>
+  <div class="s7-right">
+    <div class="tr">
+      <div class="tr-meta"><div class="tr-size">64 / 74px</div><div class="tr-hint">Space Grotesk 300</div></div>
+      <div class="tr-sample tr-serif" style="font-size:60px;line-height:1.1;">H1 — Hero</div>
+    </div>
+    <div class="tr">
+      <div class="tr-meta"><div class="tr-size">44 / 54px</div><div class="tr-hint">Space Grotesk 300</div></div>
+      <div class="tr-sample tr-serif" style="font-size:44px;line-height:1.2;">H2 — Section Heading</div>
+    </div>
+    <div class="tr">
+      <div class="tr-meta"><div class="tr-size">32 / 44px</div><div class="tr-hint">Space Grotesk 500</div></div>
+      <div class="tr-sample tr-serif" style="font-size:32px;line-height:1.37;font-weight:500;">H3 — Sub-heading</div>
+    </div>
+    <div class="tr">
+      <div class="tr-meta"><div class="tr-size">22 / 30px</div><div class="tr-hint">Space Grotesk 500</div></div>
+      <div class="tr-sample tr-serif" style="font-size:22px;line-height:1.36;font-weight:500;">H4 — Card &amp; Pane Title</div>
+    </div>
+    <div class="tr">
+      <div class="tr-meta"><div class="tr-size">15 / 26px</div><div class="tr-hint">Inter 400</div></div>
+      <div class="tr-sample" style="font-size:15px;line-height:1.73;color:rgba(252,252,252,0.65);">Body — paragraph and feature copy. On dark: rgba(252,252,252, 0.72). On white: #4a5568.</div>
+    </div>
+    <div class="tr">
+      <div class="tr-meta"><div class="tr-size">11 / 16px</div><div class="tr-hint">Inter 500–600</div></div>
+      <div class="tr-sample" style="font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(252,252,252,0.38);">Eyebrow Label — Section Identifier</div>
+    </div>
+  </div>
+  <div class="slide-num">09</div>
+</div>
+</div>
+
+<!-- ══ SLIDE 10: SPACING ══════════════════════════════════════ -->
+<div class="slide-frame">
+<div class="slide slide--grey s8">
+  <div class="top-stripe"></div>
+  <h2 class="s8-heading">Spacing &amp; Layout</h2>
+  <p class="s8-sub">8px base unit. Section padding is fixed — no exceptions permitted.</p>
+  <div class="s8-grid">
+    <div class="s8-panel">
+      <p class="s8-panel-tag">Container</p>
+      <p class="s8-panel-title">1320px max-width</p>
+      <div class="container-demo">
+        <div style="font-size:11px;color:var(--body-text);text-align:center;margin-bottom:8px;">← 24px padding</div>
+        <div class="container-inner">max-width: 1320px · margin: 0 auto</div>
+        <div style="font-size:11px;color:var(--body-text);text-align:center;margin-top:8px;">24px padding →</div>
+      </div>
+      <p style="font-size:13px;color:var(--body-text);">All page sections use 1320px. The hero Lottie visual uses <code style="font-size:12px;background:var(--blue-50);padding:2px 6px;border-radius:3px;color:var(--blue-500);">margin-right: -80px</code> to bleed right — an intentional design exception.</p>
+    </div>
+    <div class="s8-panel">
+      <p class="s8-panel-tag">Section Padding</p>
+      <p class="s8-panel-title">96px top &amp; bottom</p>
+      <div class="pad-diagram">
+        <div class="pad-band pad-top">96px</div>
+        <div class="pad-band pad-content">Section content</div>
+        <div class="pad-band pad-bot">96px</div>
+      </div>
+      <p style="font-size:13px;color:var(--body-text);">Intro block → content gap is always <strong>60px</strong> (margin-bottom on .cm-intro, .personas-intro, .pricing-intro, etc.)</p>
+    </div>
+    <div class="s8-panel">
+      <p class="s8-panel-tag">Spacing Scale</p>
+      <p class="s8-panel-title">8px base unit</p>
+      <div class="sp-scale">
+        <div class="sp-col"><div class="sp-block" style="height:4px;opacity:.3;"></div><div class="sp-val">4</div></div>
+        <div class="sp-col"><div class="sp-block" style="height:8px;opacity:.35;"></div><div class="sp-val">8</div></div>
+        <div class="sp-col"><div class="sp-block" style="height:14px;opacity:.4;"></div><div class="sp-val">12</div></div>
+        <div class="sp-col"><div class="sp-block" style="height:20px;opacity:.45;"></div><div class="sp-val">16</div></div>
+        <div class="sp-col"><div class="sp-block" style="height:28px;opacity:.5;"></div><div class="sp-val">24</div></div>
+        <div class="sp-col"><div class="sp-block" style="height:36px;opacity:.55;"></div><div class="sp-val">32</div></div>
+        <div class="sp-col"><div class="sp-block" style="height:48px;opacity:.6;"></div><div class="sp-val">40</div></div>
+        <div class="sp-col"><div class="sp-block" style="height:60px;opacity:.65;"></div><div class="sp-val">48</div></div>
+        <div class="sp-col"><div class="sp-block" style="height:72px;opacity:.72;"></div><div class="sp-val">60</div></div>
+        <div class="sp-col"><div class="sp-block" style="height:88px;opacity:.8;"></div><div class="sp-val">80</div></div>
+        <div class="sp-col"><div class="sp-block" style="height:104px;opacity:1;"></div><div class="sp-val">96</div></div>
+      </div>
+    </div>
+    <div class="s8-panel">
+      <p class="s8-panel-tag">Grid Patterns</p>
+      <p class="s8-panel-title">Common layouts</p>
+      <div class="layout-list">
+        <div class="layout-item">Hero · flex: text 36% + visual 1fr · gap 40px</div>
+        <div class="layout-item">Products · 1fr 1fr · gap 48px</div>
+        <div class="layout-item">Personas · minmax(320px, .95fr) 1.15fr · gap 80px</div>
+        <div class="layout-item">Footer nav · 1.3fr repeat(5, 1fr) · gap 48px</div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-num slide-num--on-white">10</div>
+</div>
+</div>
+
+<!-- ══ SLIDE 11: COMPONENTS ══════════════════════════════════ -->
+<div class="slide-frame">
+<div class="slide slide--dark s9">
+  <p class="eyebrow">Components</p>
+  <h2 class="s9-heading">Buttons, Radius &amp; Chips</h2>
+  <p class="s9-sub">Every interactive element follows a strict radius discipline and uses token-defined gradients.</p>
+  <div class="s9-grid">
+    <div>
+      <p class="s9-sec-label">Button Variants</p>
+      <div class="btn-list">
+        <div class="btn-row">
+          <span class="btn-tag">Primary CTA</span>
+          <button class="btn-a">Start for Free →</button>
+        </div>
+        <div class="btn-row">
+          <span class="btn-tag">Secondary CTA</span>
+          <button class="btn-b">Request a Demo</button>
+        </div>
+        <div class="btn-row">
+          <span class="btn-tag">Text / Link CTA</span>
+          <span class="btn-c">Learn more <em>→</em></span>
+        </div>
+      </div>
+      <p class="s9-sec-label" style="margin-top:32px;">Chips &amp; Pills — always 50px radius</p>
+      <div class="pills">
+        <span class="pill" style="background:rgba(119,71,182,0.15);border:1px solid rgba(119,71,182,0.4);color:#b499d7;"><span class="pill-dot" style="background:#7747b6;"></span>Ask Me</span>
+        <span class="pill" style="background:rgba(40,99,195,0.15);border:1px solid rgba(40,99,195,0.4);color:#9fbae4;"><span class="pill-dot" style="background:#2863c3;"></span>Insights</span>
+        <span class="pill" style="background:rgba(28,169,201,0.15);border:1px solid rgba(28,169,201,0.4);color:#12b6f8;"><span class="pill-dot" style="background:#1ca9c9;"></span>Data Magnet</span>
+        <span class="pill" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.14);color:rgba(252,252,252,0.65);">Enterprise</span>
+        <span class="pill" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.14);color:rgba(252,252,252,0.65);">Analytics</span>
+      </div>
+    </div>
+    <div>
+      <p class="s9-sec-label">Border Radius Scale</p>
+      <div class="radius-row">
+        <div class="ri"><div class="ri-box" style="border-radius:4px;"></div><div class="ri-val">4px</div><div class="ri-use">Micro tags</div></div>
+        <div class="ri"><div class="ri-box" style="border-radius:6px;"></div><div class="ri-val">6px</div><div class="ri-use">All buttons</div></div>
+        <div class="ri"><div class="ri-box" style="border-radius:12px;"></div><div class="ri-val">12px</div><div class="ri-use">Search / CTA</div></div>
+        <div class="ri"><div class="ri-box" style="border-radius:18px;"></div><div class="ri-val">18px</div><div class="ri-use">Feature cards</div></div>
+        <div class="ri"><div class="ri-box" style="border-radius:20px;"></div><div class="ri-val">20px</div><div class="ri-use">Story cards</div></div>
+        <div class="ri"><div class="ri-box" style="border-radius:24px;"></div><div class="ri-val">24px</div><div class="ri-use">Pricing panel</div></div>
+        <div class="ri"><div class="ri-box" style="border-radius:28px;"></div><div class="ri-val">28px</div><div class="ri-use">Testimonials</div></div>
+        <div class="ri"><div class="ri-box" style="border-radius:50px;width:80px;"></div><div class="ri-val">50px</div><div class="ri-use">All pills</div></div>
+        <div class="ri"><div class="ri-box" style="border-radius:50%;width:64px;height:64px;"></div><div class="ri-val">50%</div><div class="ri-use">Avatars</div></div>
+      </div>
+      <p style="font-size:14px;color:rgba(252,252,252,0.55);line-height:1.7;">All action buttons = <strong style="color:#fcfcfc;">6px</strong>. All pills = <strong style="color:#fcfcfc;">50px</strong>. Cards graduate with prominence: 18 → 20 → 24 → 28px. Never mix these values.</p>
+    </div>
+  </div>
+  <div class="slide-num">11</div>
+</div>
+</div>
+
+<!-- ══ SLIDE 12: CLOSING ══════════════════════════════════ -->
+<div class="slide-frame">
+<div class="slide slide--finale s10">
+  <div class="s10-orb-l"></div>
+  <div class="s10-orb-r"></div>
+  <div class="s10-inner">
+    <div>
+      <p class="s10-label">Lumenore · Brand Guidelines · 2026</p>
+      <h2 class="s10-headline">Design with<br><em>intention</em>.</h2>
+      <div class="s10-accent"></div>
+      <p class="s10-wordmark">Lumenore</p>
+    </div>
+    <div>
+      <p class="s10-rules-title">The Non-Negotiables</p>
+      <ul class="s10-rules">
+        <li class="s10-rule">
+          <span class="s10-num">01</span>
+          <span class="s10-text"><strong>All headings use Space Grotesk 300.</strong> No heading may use Fraunces or Inter. No exceptions.</span>
+        </li>
+        <li class="s10-rule">
+          <span class="s10-num">02</span>
+          <span class="s10-text"><strong>Buttons are always 6px radius.</strong> Pills are always 50px. Do not deviate from these values.</span>
+        </li>
+        <li class="s10-rule">
+          <span class="s10-num">03</span>
+          <span class="s10-text"><strong>Section padding is 96px.</strong> Intro-to-content gap is 60px. These are not suggestions.</span>
+        </li>
+        <li class="s10-rule">
+          <span class="s10-num">04</span>
+          <span class="s10-text"><strong>Body text on white is #4a5568.</strong> On dark, rgba(252,252,252, 0.72). No other values.</span>
+        </li>
+        <li class="s10-rule">
+          <span class="s10-num">05</span>
+          <span class="s10-text"><strong>Use --Explore-Button for all gradient CTAs.</strong> Never redeclare the gradient inline in component CSS.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="slide-num">12</div>
+</div>
+</div>
+
+</body>
+</html>

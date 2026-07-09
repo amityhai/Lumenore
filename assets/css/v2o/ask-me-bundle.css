@@ -150,7 +150,7 @@ body::before{
     opacity: .65;
 }
 h1, h2, h3, h4{
-    font-family: 'Fraunces', serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-weight: 300;
     color: var(--cool-101828, #101828);
     margin: 0;
@@ -276,7 +276,7 @@ a{ color: inherit; text-decoration: none; }
     text-decoration: none;
 }
 .site-header .brand-mark .brand-l{
-    font-family: 'Fraunces', serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-weight: 500;
     font-size: 30px;
     line-height: 30px;
@@ -284,7 +284,7 @@ a{ color: inherit; text-decoration: none; }
     margin-right: 2px;
 }
 .site-header .brand-mark .brand-word{
-    font-family: 'Fraunces', serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-weight: 400;
     font-size: 17px;
     letter-spacing: .12em;
@@ -750,7 +750,7 @@ a{ color: inherit; text-decoration: none; }
 .trusted-section h2{
     /* Canonical sitewide H2 — Fraunces 300 / 44px / 54px / -0.6px tracking.
        Same scale used by features/personas/pricing/success/testimonial. */
-    font-family: 'Fraunces', serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-weight: 300;
     font-size: 44px;
     line-height: 54px;
@@ -817,7 +817,7 @@ a{ color: inherit; text-decoration: none; }
 }
 .products-intro .products-title{
     /* Canonical sitewide H2 — Fraunces 300 / 44px / 54px / -0.6px tracking */
-    font-family: 'Fraunces', serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-weight: 300;
     font-size: 44px;
     line-height: 54px;
@@ -1017,7 +1017,7 @@ a{ color: inherit; text-decoration: none; }
     background: var(--pd-accent);
 }
 .product-detail h3{
-    font-family: 'Fraunces', serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-weight: 300;
     font-size: 38px;
     line-height: 46px;
@@ -1295,7 +1295,7 @@ a{ color: inherit; text-decoration: none; }
     box-shadow: 0 0 0 3px rgba(18, 182, 248, .18);
 }
 .section-features h2{
-    font-family: 'Fraunces', serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-weight: 300;
     font-size: 44px;
     line-height: 54px;
@@ -1389,7 +1389,7 @@ a{ color: inherit; text-decoration: none; }
 }
 .feature-card .fc-icon svg{ width: 24px; height: 24px; }
 .feature-card h5{
-    font-family: 'Fraunces', serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-weight: 400;
     font-size: 20px;
     line-height: 30px;
@@ -1500,7 +1500,7 @@ a{ color: inherit; text-decoration: none; }
     box-shadow: 0 0 0 3px rgba(40, 99, 195, .12);
 }
 .section-personas h2{
-    font-family: 'Fraunces', serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-weight: 300;
     font-size: 44px;
     line-height: 54px;
@@ -1629,7 +1629,7 @@ a{ color: inherit; text-decoration: none; }
     transition: background .35s ease, box-shadow .35s ease;
 }
 .pex-text h3{
-    font-family: 'Fraunces', serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-weight: 300;
     font-size: 30px;
     line-height: 40px;
@@ -1641,7 +1641,7 @@ a{ color: inherit; text-decoration: none; }
 .pex-text h3 .pquote{
     color: var(--pa-accent);
     opacity: .5;
-    font-family: 'Fraunces', serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-size: 34px;
     line-height: 1;
     margin: 0 1px;
@@ -1950,7 +1950,7 @@ a{ color: inherit; text-decoration: none; }
 /* Stat row used by the trend card */
 .sc-stat-row{ display: flex; align-items: baseline; gap: 10px; margin-bottom: 10px; }
 .sc-num{
-    font-family: 'Fraunces', serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-weight: 300;
     font-size: 30px;
     line-height: 1.05;
@@ -2174,7 +2174,7 @@ a{ color: inherit; text-decoration: none; }
     gap: 4px;
 }
 .sc-metric-num{
-    font-family: 'Fraunces', serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-weight: 300;
     font-size: 40px;
     line-height: 1;
@@ -2258,7 +2258,7 @@ a{ color: inherit; text-decoration: none; }
     transition: background .4s ease;
 }
 .section-pricing h2{
-    font-family: 'Fraunces', serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-weight: 300;
     font-size: 44px;
     line-height: 54px;
@@ -2279,7 +2279,7 @@ a{ color: inherit; text-decoration: none; }
     font-style: italic;
 }
 .section-pricing .section-sub{
-    font-family: 'Fraunces', serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-weight: 300;
     font-size: 19px;
     line-height: 30px;
@@ -2503,7 +2503,7 @@ a{ color: inherit; text-decoration: none; }
     transition: color .4s ease, background .4s ease, border-color .4s ease;
 }
 .ps-title{
-    font-family: 'Fraunces', serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-weight: 300;
     font-size: 30px;
     line-height: 40px;
@@ -2798,7 +2798,7 @@ a{ color: inherit; text-decoration: none; }
     transition: color .4s ease;
 }
 .psr-title{
-    font-family: 'Fraunces', serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-weight: 400;
     font-size: 22px;
     line-height: 32px;
@@ -2884,7 +2884,7 @@ a{ color: inherit; text-decoration: none; }
 }
 .psr-stat::before{ content: none; }
 .psr-stat-num{
-    font-family: 'Fraunces', serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-weight: 300;
     font-size: 36px;
     line-height: 1;
@@ -3148,7 +3148,7 @@ a{ color: inherit; text-decoration: none; }
     box-shadow: 0 0 0 3px rgba(28, 169, 201, .12);
 }
 .section-success h2{
-    font-family: 'Fraunces', serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-weight: 300;
     font-size: 44px;
     line-height: 54px;
@@ -3385,7 +3385,7 @@ a{ color: inherit; text-decoration: none; }
     box-shadow: 0 0 0 3px var(--ss-accent-soft);
 }
 .story-card .story-title{
-    font-family: 'Fraunces', serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-weight: 400;
     font-size: 19px;
     line-height: 28px;
@@ -3489,7 +3489,7 @@ a{ color: inherit; text-decoration: none; }
     box-shadow: 0 0 0 3px rgba(14, 72, 165, .12);
 }
 .section-testimonial h2{
-    font-family: 'Fraunces', serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-weight: 300;
     font-size: 44px;
     line-height: 54px;
@@ -3798,7 +3798,7 @@ a{ color: inherit; text-decoration: none; }
     /* Canonical sitewide H2 — Fraunces 300 / 44px / 54px / -0.6px tracking.
        Alignment stays left here because this H2 sits in a 2-column grid
        beside the compliance badges, not a centered heading layout. */
-    font-family: 'Fraunces', serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-weight: 300;
     font-size: 44px;
     line-height: 54px;
@@ -3834,7 +3834,7 @@ a{ color: inherit; text-decoration: none; }
     gap: 28px;
 }
 .before-decide h3{
-    font-family: 'Fraunces', serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-weight: 300;
     font-size: 32px;
     line-height: 44.8px;
@@ -4066,7 +4066,7 @@ a{ color: inherit; text-decoration: none; }
     50%      { transform: rotate(180deg); opacity: .7; }
 }
 .footer-cta-text h3{
-    font-family: 'Fraunces', serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-weight: 400;
     font-size: 30px;
     line-height: 40px;
@@ -4156,7 +4156,7 @@ a{ color: inherit; text-decoration: none; }
     max-width: 220px;
 }
 .ask-ai-box .ask-ai-label{
-    font-family: 'Fraunces', serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-weight: 300;
     font-size: 18px;
     line-height: 26px;
@@ -6517,7 +6517,7 @@ body.explore-locked{ overflow: hidden; }
 }
 .np-pane-title{
     margin: 0 0 8px;
-    font-family: 'Fraunces', serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-weight: 400;
     font-size: 26px;
     line-height: 32px;
@@ -6819,7 +6819,7 @@ body.explore-locked{ overflow: hidden; }
     box-shadow: 0 0 8px rgba(40, 99, 195, .55);
 }
 .pm-title{
-    font-family: 'Fraunces', serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-weight: 400;
     font-size: 32px;
     line-height: 42px;
@@ -6978,7 +6978,7 @@ body.explore-locked{ overflow: hidden; }
     margin-bottom: 10px;
 }
 .pa-title{
-    font-family: 'Fraunces', serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-weight: 400;
     font-size: 18px;
     line-height: 26px;
@@ -7062,7 +7062,7 @@ body.explore-locked{ overflow: hidden; }
 }
 .pa-kpi-icon svg{ width: 18px; height: 18px; }
 .pa-kpi-stat{
-    font-family: 'Fraunces', serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-weight: 300;
     font-size: 52px;
     line-height: 56px;
@@ -8051,7 +8051,7 @@ body.explore-locked{ overflow: hidden; }
 }
 
 .trusted-section h3{
-    font-family: 'Fraunces', serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-weight: 300;
     font-size: 32px;
     line-height: 42px;
@@ -8200,7 +8200,7 @@ body.explore-locked{ overflow: hidden; }
 }
 .section-features .feature-card:hover .fc-icon{ transform: translateY(-2px) scale(1.06); box-shadow: 0 12px 24px -8px rgba(119, 71, 182, .7); }
 .section-features .feature-card .fc-icon svg{ width: 24px; height: 24px; }
-.section-features .feature-card h5{ color: #ffffff; letter-spacing: -.01em; font-family: 'Fraunces', serif; font-weight: 400; font-size: 20px; line-height: 28px; margin: 0 0 8px; }
+.section-features .feature-card h5{ color: #ffffff; letter-spacing: -.01em; font-family: 'Space Grotesk', sans-serif; font-weight: 400; font-size: 20px; line-height: 28px; margin: 0 0 8px; }
 .section-features .feature-card p{ color: rgba(202,213,226,.75); font-family: 'Inter', sans-serif; font-weight: 400; font-size: 14px; line-height: 23px; margin: 0; }
 
 /* ════════════ Nav logo + glow (common with home.html) ════════════ */
@@ -8438,7 +8438,7 @@ body.explore-locked{ overflow: hidden; }
     box-shadow: 0 0 0 3px rgba(40, 99, 195, .14);
 }
 .section-aiagent h2{
-    font-family: 'Fraunces', serif; font-weight: 300;
+    font-family: 'Space Grotesk', sans-serif; font-weight: 300;
     font-size: 44px; line-height: 54px; color: var(--cool-101828, #101828);
     margin: 18px 0 14px; letter-spacing: -.01em;
 }
@@ -8479,7 +8479,7 @@ h2 .ah-accent{
 }
 .aiagent-item:hover .ai-icon{ transform: translateY(-2px) scale(1.06); }
 .aiagent-item .ai-icon svg{ width: 26px; height: 26px; }
-.aiagent-item h5{ font-family:'Fraunces',serif; font-weight:400; font-size:21px; line-height:30px; color: var(--cool-101828, #101828); margin: 4px 0 0; letter-spacing:-.01em; }
+.aiagent-item h5{ font-family:'Space Grotesk',serif; font-weight:400; font-size:21px; line-height:30px; color: var(--cool-101828, #101828); margin: 4px 0 0; letter-spacing:-.01em; }
 .aiagent-item p{ font-family:'Inter',sans-serif; font-weight:400; font-size:15px; line-height:25px; color: #4a5568; margin: 0; }
 
 /* ════════════ JUST ASK — stepper showcase (dark) ════════════ */
@@ -8528,7 +8528,7 @@ h2 .ah-accent{
 .ja-eyebrow svg{ color: #12b6f8; flex-shrink: 0; }
 
 .ja-heading{
-    font-family: 'Fraunces', serif; font-weight: 300;
+    font-family: 'Space Grotesk', sans-serif; font-weight: 300;
     font-size: 44px; line-height: 54px; letter-spacing: -.01em;
     color: #fff; margin: 0;
     max-width: 680px;
@@ -8737,7 +8737,7 @@ h2 .ah-accent{
 }
 
 .ja-panel-title{
-    font-family: 'Fraunces', serif; font-weight: 300;
+    font-family: 'Space Grotesk', sans-serif; font-weight: 300;
     font-size: 28px; line-height: 37px; letter-spacing: -.01em;
     color: #fff; margin: 0;
 }
@@ -9052,7 +9052,7 @@ h2 .ah-accent{
 .section-features .container{ position: relative; z-index: 1; }
 .section-features .features-head{ display: flex; align-items: center; justify-content: center; gap: 24px; margin-bottom: 44px; }
 .section-features .features-head h2{
-    font-family: 'Fraunces', serif; font-weight: 300;
+    font-family: 'Space Grotesk', sans-serif; font-weight: 300;
     font-size: 44px; line-height: 54px; color: #ffffff;
     margin: 0; letter-spacing: -.01em; text-align: center;
 }
@@ -9090,7 +9090,7 @@ h2 .ah-accent{
 }
 .section-resources .container{ position: relative; z-index: 1; }
 .section-resources h2{
-    font-family: 'Fraunces', serif; font-weight: 300;
+    font-family: 'Space Grotesk', sans-serif; font-weight: 300;
     font-size: 44px; line-height: 54px;
     color: var(--cool-101828, #101828);
     text-align: center; margin: 0 auto 56px; letter-spacing: -.01em;
@@ -9145,7 +9145,7 @@ h2 .ah-accent{
 
 .op-intro{ text-align: center; margin-bottom: 64px; }
 .op-intro h2{
-    font-family: 'Fraunces', serif; font-weight: 300;
+    font-family: 'Space Grotesk', sans-serif; font-weight: 300;
     font-size: 44px; line-height: 54px; letter-spacing: -.01em;
     color: var(--cool-101828, #101828); margin: 0 0 12px;
 }
@@ -9253,7 +9253,7 @@ h2 .ah-accent{
 .op-card--magnet  .op-pill::before{ background: #1ca9c9; }
 
 .op-body h3{
-    font-family: 'Fraunces', serif; font-weight: 300;
+    font-family: 'Space Grotesk', sans-serif; font-weight: 300;
     font-size: 30px; line-height: 40px; letter-spacing: -.02em;
     color: #101828; margin: 0 0 12px;
 }
