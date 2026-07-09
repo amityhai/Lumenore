@@ -12110,14 +12110,6 @@ body.fc-preview {
     ) !important;
 }
 
-/* ── Suppress the section-personas ::before dot-grid too ── */
-#personaSection::before,
-.section-personas::before {
-    content: none !important;
-    display: none !important;
-    background: none !important;
-    opacity: 0 !important;
-}
 
 /* ── Bottom fade — hero blends into trusted section ── */
 .hero-stage::after {
