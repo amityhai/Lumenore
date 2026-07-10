@@ -1,7 +1,12 @@
 /* Shared styles for Privacy, Terms, and EULA pages */
 
-/* Match index.html container width */
-.container { max-width: 1500px; padding: 0 40px; }
+/* Container — Bootstrap-style breakpoint ladder (capped at 1320px, matches all inner pages) */
+.container { width: 100%; max-width: 100%; margin-right: auto; margin-left: auto; padding-right: 1rem; padding-left: 1rem; }
+@media (min-width: 576px)  { .container { max-width: 540px; } }
+@media (min-width: 768px)  { .container { max-width: 720px; } }
+@media (min-width: 992px)  { .container { max-width: 960px; } }
+@media (min-width: 1200px) { .container { max-width: 1140px; } }
+@media (min-width: 1400px) { .container { max-width: 1320px; } }
 
 body.inner-page {
     background: var(--Royal-Blue-Blue-900, #051A3C);
