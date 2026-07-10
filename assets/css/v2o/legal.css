@@ -154,7 +154,7 @@ body.inner-page {
 }
 
 /* ── Article body ── */
-.pp-article { max-width: 720px; }
+.pp-article { max-width: 100%; }
 
 .pp-section {
     margin-bottom: 52px;
