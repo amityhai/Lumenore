@@ -11,12 +11,6 @@
 </head>
 <body class="inner-page">
 
-<!-- Custom cursor -->
-<div class="cursor" id="customCursor" aria-hidden="true">
-    <span class="cursor__ring"></span>
-    <span class="cursor__dot"></span>
-</div>
-
 <!-- ===== SITE TOP ===== -->
 <div class="site-top">
     <div class="hello-bar">
@@ -866,27 +860,6 @@
     sections.forEach(function(s) { obs.observe(s); });
 })();
 
-/* Custom cursor */
-(function () {
-    var cursor = document.getElementById('customCursor'); if (!cursor) return;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { cursor.remove(); return; }
-    if (window.matchMedia('(hover: none)').matches) { cursor.remove(); return; }
-    var dot = cursor.querySelector('.cursor__dot'), ring = cursor.querySelector('.cursor__ring');
-    var dotX = 0, dotY = 0, ringX = 0, ringY = 0, RING_EASE = 0.20, raf = null, firstMove = false;
-    var INTERACTIVE_SEL = 'a, button, label, select, summary, [role="button"], [role="tab"], [role="menuitem"], [role="link"], .btn-primary';
-    var TEXT_SEL = 'input:not([type="button"]):not([type="submit"]):not([type="reset"]):not([type="checkbox"]):not([type="radio"]), textarea, [contenteditable="true"]';
-    function frame() { ringX += (dotX - ringX) * RING_EASE; ringY += (dotY - ringY) * RING_EASE; cursor.style.transform = 'translate3d(' + dotX + 'px,' + dotY + 'px,0)'; ring.style.transform = 'translate3d(' + (ringX - dotX) + 'px,' + (ringY - dotY) + 'px,0)'; if (Math.abs(dotX - ringX) > 0.3 || Math.abs(dotY - ringY) > 0.3) { raf = requestAnimationFrame(frame); } else { ringX = dotX; ringY = dotY; ring.style.transform = 'translate3d(0,0,0)'; raf = null; } }
-    function onMove(e) { dotX = e.clientX; dotY = e.clientY; if (!firstMove) { firstMove = true; ringX = dotX; ringY = dotY; cursor.style.transform = 'translate3d(' + dotX + 'px,' + dotY + 'px,0)'; cursor.classList.add('is-visible'); } if (raf === null) raf = requestAnimationFrame(frame); }
-    function onOver(e) { if (e.target.closest && e.target.closest(TEXT_SEL)) { cursor.classList.add('is-hidden'); cursor.classList.remove('is-active'); return; } cursor.classList.remove('is-hidden'); if (e.target.closest && e.target.closest(INTERACTIVE_SEL)) cursor.classList.add('is-active'); }
-    function onOut(e) { if (!e.relatedTarget || !e.relatedTarget.closest || !e.relatedTarget.closest(INTERACTIVE_SEL)) cursor.classList.remove('is-active'); }
-    document.addEventListener('mousemove', onMove, { passive: true });
-    document.addEventListener('mouseover', onOver);
-    document.addEventListener('mouseout', onOut);
-    document.addEventListener('mousedown', function() { cursor.classList.add('is-pressed'); });
-    document.addEventListener('mouseup', function() { cursor.classList.remove('is-pressed'); });
-    document.addEventListener('mouseleave', function() { cursor.classList.remove('is-visible'); });
-    document.addEventListener('mouseenter', function() { if (firstMove) cursor.classList.add('is-visible'); });
-})();
 </script>
 </body>
 </html>

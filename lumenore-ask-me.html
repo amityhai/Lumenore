@@ -18,12 +18,6 @@
 </head>
 <body>
 
-<!-- ===== CUSTOM CURSOR — magnetic dot + trailing ring ===== -->
-<div class="cursor" id="customCursor" aria-hidden="true">
-    <span class="cursor__ring"></span>
-    <span class="cursor__dot"></span>
-</div>
-
 <!-- ═══════════ HERO STAGE — nav + hero share one premium dark canvas (common theme) ═══════════ -->
 <div class="hero-stage">
 
@@ -1262,107 +1256,6 @@
             });
         }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
         els.forEach(el => io.observe(el));
-    })();
-</script>
-
-<script>
-    /* Custom cursor — Linear-style magnetic dot + trailing ring (verbatim from home.html).
-       Two elements share one parent that gets transform-translated to the exact cursor
-       position every frame. The dot snaps to target. The ring lerps with its own
-       current/target track so it trails the dot with a buttery follow.
-
-       The hover state (`.is-active`) is added when the cursor is over any interactive
-       element (anchors, buttons, role=tab, custom CTAs, etc.) — the ring then expands
-       + tints violet to telegraph that the element is clickable. mousedown adds
-       `.is-pressed` for tactile shrink on click. Text inputs add `.is-hidden` so the
-       native I-beam takes over cleanly.
-
-       Performance:
-        • Both layers ride one rAF loop
-        • passive mousemove keeps scroll fluid
-        • Self-suspends when target is reached
-        • Skipped on touch + prefers-reduced-motion */
-    (function () {
-        const cursor = document.getElementById('customCursor');
-        if (!cursor) return;
-        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { cursor.remove(); return; }
-        if (window.matchMedia('(hover: none)').matches) { cursor.remove(); return; }
-
-        const dot  = cursor.querySelector('.cursor__dot');
-        const ring = cursor.querySelector('.cursor__ring');
-
-        /* Dot tracks the cursor exactly; ring lerps toward the same target */
-        let dotX = 0, dotY = 0;
-        let ringX = 0, ringY = 0;
-        const RING_EASE = 0.20;   /* trail length on the ring */
-
-        let raf = null;
-        let firstMove = false;
-
-        /* Selector list for "this is interactive — grow the ring" */
-        const INTERACTIVE_SEL = [
-            'a', 'button', 'label', 'select', 'summary',
-            '[role="button"]', '[role="tab"]', '[role="menuitem"]', '[role="link"]',
-            '.btn-primary', '.psb', '.ps-pill', '.px-tab', '.product-tab',
-            '.testimonial-tab', '.hero-search-tag', '.story-card',
-            '.feature-card', '.psb-arrow', '.followup', '.ex-followup',
-            '.aiagent-item', '.other-card', '.rc-card', '.nav-arrow'
-        ].join(',');
-
-        /* Inputs/textareas — hide the custom cursor and let native I-beam show */
-        const TEXT_SEL = 'input:not([type="button"]):not([type="submit"]):not([type="reset"]):not([type="checkbox"]):not([type="radio"]), textarea, [contenteditable="true"]';
-
-        function frame() {
-            ringX += (dotX - ringX) * RING_EASE;
-            ringY += (dotY - ringY) * RING_EASE;
-            cursor.style.transform = 'translate3d(' + dotX + 'px,' + dotY + 'px,0)';
-            ring.style.transform   = 'translate3d(' + (ringX - dotX) + 'px,' + (ringY - dotY) + 'px,0)';
-
-            if (Math.abs(dotX - ringX) > 0.3 || Math.abs(dotY - ringY) > 0.3) {
-                raf = requestAnimationFrame(frame);
-            } else {
-                ringX = dotX; ringY = dotY;
-                ring.style.transform = 'translate3d(0,0,0)';
-                raf = null;
-            }
-        }
-
-        function onMove(e) {
-            dotX = e.clientX;
-            dotY = e.clientY;
-            if (!firstMove) {
-                firstMove = true;
-                ringX = dotX; ringY = dotY;
-                cursor.style.transform = 'translate3d(' + dotX + 'px,' + dotY + 'px,0)';
-                cursor.classList.add('is-visible');
-            }
-            if (raf === null) raf = requestAnimationFrame(frame);
-        }
-
-        function onOver(e) {
-            if (e.target.closest(TEXT_SEL)) {
-                cursor.classList.add('is-hidden');
-                cursor.classList.remove('is-active');
-                return;
-            }
-            cursor.classList.remove('is-hidden');
-            if (e.target.closest(INTERACTIVE_SEL)) {
-                cursor.classList.add('is-active');
-            }
-        }
-        function onOut(e) {
-            if (!e.relatedTarget || !e.relatedTarget.closest || !e.relatedTarget.closest(INTERACTIVE_SEL)) {
-                cursor.classList.remove('is-active');
-            }
-        }
-
-        document.addEventListener('mousemove', onMove, { passive: true });
-        document.addEventListener('mouseover', onOver);
-        document.addEventListener('mouseout', onOut);
-        document.addEventListener('mousedown', () => cursor.classList.add('is-pressed'));
-        document.addEventListener('mouseup',   () => cursor.classList.remove('is-pressed'));
-        document.addEventListener('mouseleave', () => cursor.classList.remove('is-visible'));
-        document.addEventListener('mouseenter', () => { if (firstMove) cursor.classList.add('is-visible'); });
     })();
 </script>
 
