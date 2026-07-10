@@ -1,5 +1,8 @@
 /* Shared styles for Privacy, Terms, and EULA pages */
 
+/* Match index.html container width */
+.container { max-width: 1500px; padding: 0 40px; }
+
 body.inner-page {
     background: var(--Royal-Blue-Blue-900, #051A3C);
     color: var(--Base-White, #fcfcfc);
