@@ -1,5 +1,13 @@
 body.inner-page { background: var(--Royal-Blue-Blue-900,#051A3C); color: var(--Base-White,#fcfcfc); }
 
+/* Container — matches index.html breakpoint ladder (capped at 1320px) */
+.container { width: 100%; max-width: 100%; margin-right: auto; margin-left: auto; padding-right: 1rem; padding-left: 1rem; }
+@media (min-width: 576px)  { .container { max-width: 540px; } }
+@media (min-width: 768px)  { .container { max-width: 720px; } }
+@media (min-width: 992px)  { .container { max-width: 960px; } }
+@media (min-width: 1200px) { .container { max-width: 1140px; } }
+@media (min-width: 1400px) { .container { max-width: 1320px; } }
+
 /* ── HERO ── */
 .pr-hero { position:relative; overflow:hidden; padding:96px 0; text-align:center; }
 .pr-hero .hero-grid { -webkit-mask-image:radial-gradient(ellipse 120% 100% at 50% 0%,#000 0%,rgba(0,0,0,.6) 55%,transparent 85%); mask-image:radial-gradient(ellipse 120% 100% at 50% 0%,#000 0%,rgba(0,0,0,.6) 55%,transparent 85%); }

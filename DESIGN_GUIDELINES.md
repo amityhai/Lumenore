@@ -137,8 +137,19 @@ Inter         — weights 300/400/500/600/700          (sans, body/UI/buttons)
 
 ## 4. Layout & Grid System
 
-- **Container:** `.container { max-width: 1320px; margin: 0 auto; padding: 0 24px; }`
-- All sections standardised to **1320px** container width. Do not use 1500px or 1280px for new sections.
+- **Container:** Bootstrap-style breakpoint ladder capped at `1320px` — `540px → 720px → 960px → 1140px → 1320px`. Padding `0 1rem` base, section-level overrides permitted for hero only.
+- All sections standardised to **1320px** container width. Do not use `1500px` or `1280px` for new sections.
+- This container standard applies to **all pages** — `index.html` (via `final-home-bundle.css`), `pricing.html` (via `pricing.css`), `partners.html` (via `partners.css`), `privacy.html` and `terms.html` (via `legal.css`).
+
+**Container CSS (copy verbatim into every page's stylesheet):**
+```css
+.container { width: 100%; max-width: 100%; margin-right: auto; margin-left: auto; padding-right: 1rem; padding-left: 1rem; }
+@media (min-width: 576px)  { .container { max-width: 540px; } }
+@media (min-width: 768px)  { .container { max-width: 720px; } }
+@media (min-width: 992px)  { .container { max-width: 960px; } }
+@media (min-width: 1200px) { .container { max-width: 1140px; } }
+@media (min-width: 1400px) { .container { max-width: 1320px; } }
+```
 - **Full-bleed bars** (hello bar, header, footer) use background full-width while content aligns to the container.
 
 ### CSS Grid columns per section
