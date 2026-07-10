@@ -94,7 +94,7 @@ body.inner-page {
 .pp-layout {
     display: grid;
     grid-template-columns: 220px 1fr;
-    gap: 56px;
+    gap: 80px;
     align-items: start;
     position: relative;
     z-index: 1;
