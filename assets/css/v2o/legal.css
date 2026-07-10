@@ -107,11 +107,17 @@ body.inner-page {
     height: calc(100vh - 100px);
     overflow-y: auto;
     scrollbar-width: thin;
-    scrollbar-color: var(--blueGray-200, #E2E8F0) transparent;
+    scrollbar-color: #4075c9 transparent;
 }
-.pp-toc::-webkit-scrollbar { width: 4px; }
+.pp-toc::-webkit-scrollbar { width: 3px; }
 .pp-toc::-webkit-scrollbar-track { background: transparent; }
-.pp-toc::-webkit-scrollbar-thumb { background: var(--blueGray-200, #E2E8F0); border-radius: 4px; }
+.pp-toc::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #4075c9 0%, #1ca9c9 100%);
+    border-radius: 10px;
+    opacity: 0;
+    transition: opacity .2s ease;
+}
+.pp-toc:hover::-webkit-scrollbar-thumb { opacity: 1; }
 .pp-toc__label {
     font-family: 'Inter', sans-serif;
     font-size: 11px; font-weight: 700;
