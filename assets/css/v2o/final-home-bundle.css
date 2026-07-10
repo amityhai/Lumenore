@@ -178,8 +178,9 @@ a{ color: inherit; text-decoration: none; }
  * Site header — hello bar + nav bar (Figma 994:29783)
  * ----------------------------------------------------------- */
 .site-top{
-    position: relative;
-    z-index: 20;
+    position: sticky;
+    top: 0;
+    z-index: 200;
     border-bottom: 1px solid rgba(252, 252, 252, .2);
 }
 
@@ -5536,7 +5537,7 @@ body.explore-locked{ overflow: hidden; }
     display: flex;
     flex-direction: column;
 }
-.hero-stage .site-top{ position: relative; z-index: 4; background: transparent; }
+.hero-stage .site-top{ position: sticky; top: 0; z-index: 200; background: transparent; }
 .hero-st age .hello-bar{ background: transparent; }
 .hero-stage .site-header{ background: transparent; }
 .hero-stage .hero-section{
@@ -5883,13 +5884,14 @@ body.explore-locked{ overflow: hidden; }
    equal-specificity `background: #051A3C` solid fill.
    ════════════════════════════════════════════════════════════════ */
 .site-top.site-top{
-    position: relative;
-    z-index: 60;
+    position: sticky;
+    top: 0;
+    z-index: 200;
     background: transparent;
     border-bottom: none;
 }
 .hello-bar.hello-bar{
-    background: rgba(7, 33, 75, .55);
+    background: rgba(7, 33, 75, .92);
     -webkit-backdrop-filter: blur(16px) saturate(150%);
             backdrop-filter: blur(16px) saturate(150%);
     border-bottom: 1px solid rgba(255, 255, 255, .06);
@@ -5897,7 +5899,7 @@ body.explore-locked{ overflow: hidden; }
 }
 .site-header.site-header{
     position: relative;
-    background: rgba(3, 13, 30, .55);
+    background: rgba(5, 20, 55, .92);
     -webkit-backdrop-filter: blur(18px) saturate(155%);
             backdrop-filter: blur(18px) saturate(155%);
     border-bottom: 1px solid rgba(255, 255, 255, .06);
@@ -5922,11 +5924,9 @@ body.explore-locked{ overflow: hidden; }
         transparent 100%);
     pointer-events: none;
 }
-/* When the user scrolls, the existing JS adds .is-scrolled — bump
-   the opacity slightly so the glass reads cleanly on lighter
-   sections below the hero. */
+/* .is-scrolled — same glass at full opacity; consistent on any background. */
 .site-header.is-scrolled.is-scrolled{
-    background: rgba(3, 13, 30, .72);
+    background: rgba(5, 20, 55, .95);
     -webkit-backdrop-filter: blur(20px) saturate(160%);
             backdrop-filter: blur(20px) saturate(160%);
 }
@@ -7785,7 +7785,7 @@ body.explore-locked{ overflow: hidden; }
     display: flex;
     flex-direction: column;
 }
-.hero-stage .site-top{ position: relative; z-index: 4; background: transparent; }
+.hero-stage .site-top{ position: sticky; top: 0; z-index: 200; background: transparent; }
 .hero-st age .hello-bar{ background: transparent; }
 .hero-stage .site-header{ background: transparent; }
 .hero-stage .hero-section{

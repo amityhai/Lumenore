@@ -169,7 +169,7 @@ body.inner-page { background: var(--Royal-Blue-Blue-900,#051A3C); color: var(--B
 .pr-table-head { text-align:center; max-width:680px; margin:0 auto 60px; position:relative; z-index:1; }
 .pr-table-head h2 { font-family:'Space Grotesk',sans-serif; font-weight:300; font-size:clamp(26px,3.5vw,44px); line-height:54px; letter-spacing:-0.6px; color:var(--Royal-Blue-Blue-900,#051A3C); margin:0; }
 
-.pr-tbl-wrap { background:#fcfcfc; border:1px solid var(--blueGray-200,#E2E8F0); border-radius:20px; overflow:hidden; box-shadow:var(--Card-Shadow,0 4px 24px rgba(0,0,0,.12)); position:relative; z-index:1; }
+.pr-tbl-wrap { background:#fcfcfc; border:1px solid var(--blueGray-200,#E2E8F0); border-radius:20px; overflow:clip; box-shadow:var(--Card-Shadow,0 4px 24px rgba(0,0,0,.12)); position:relative; z-index:1; }
 .pr-tbl-row { display:grid; grid-template-columns:2.4fr 1fr 1fr 1fr; border-bottom:1px solid var(--blueGray-100,#F1F5F9); }
 .pr-tbl-row:last-child { border-bottom:none; }
 .pr-tbl-row--head { background:#fcfcfc; position:sticky; top:0; z-index:10; box-shadow:0 2px 10px rgba(14,36,80,.07); }
